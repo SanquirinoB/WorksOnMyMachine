@@ -37,6 +37,7 @@ private:
 
     TWeakObjectPtr<UPrimitiveComponent> Anchor;
     bool bAttachedToAnchor = false;
+    bool bAnchorActivated = false;
     bool bReelingIn = false;
 
     void ClearAnchor();

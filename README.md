@@ -31,7 +31,8 @@ Portable Black Hole Device. **Tab** cycles through carried types. While
 floating, hold **E** to latch onto steel.
 You can release **E** once attached. Hold **Left Shift** to run, and use a jump or
 throw recoil to break contact. Press **Q** to activate the most recently
-deployed remote gadget. Open `L_DTestLane` to try the steel floor, wall, and
+deployed remote gadget. With an anchored grapple, press **Q** to pull toward it
+and **Q** again to release and reel it in. Open `L_DTestLane` to try the steel floor, wall, and
 ceiling alongside the grappling hook, remote grenade, portable black hole,
 plates, and throw switch.
 The workshop has steam, sparks, and an ambient loop. The source soundtrack is

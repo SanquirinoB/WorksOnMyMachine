@@ -365,6 +365,7 @@ void ADGrapplingHook::ClearAnchor()
         DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
         Anchor.Reset();
         bAttachedToAnchor = false;
+        bAnchorActivated = false;
         SetActorEnableCollision(true);
     }
 }
@@ -418,11 +419,11 @@ void ADGrapplingHook::OnDeployedImpact(const FHitResult& Hit)
 
 void ADGrapplingHook::OnRemoteActivationRequested(ADPawn& Pawn)
 {
-    if (!Anchor.IsValid())
+    if (!Anchor.IsValid() || bAnchorActivated)
     {
+        ClearAnchor();
         if (RecallSpeed > 0.f && !bReelingIn)
         {
-            ClearAnchor();
             Movement->StopMovementImmediately();
             Movement->Deactivate();
             bReelingIn = true;
@@ -430,6 +431,7 @@ void ADGrapplingHook::OnRemoteActivationRequested(ADPawn& Pawn)
         return;
     }
 
+    bAnchorActivated = true;
     const FVector TowardHook = Movement->ConstrainDirectionToPlane(GetActorLocation() - Pawn.GetActorLocation());
     if (PullSpeed <= 0.f || TowardHook.IsNearlyZero())
     {
