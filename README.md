@@ -18,7 +18,8 @@ Delerict is an Unreal Engine 5.8.4 project for Windows in the WorksOnMyMachine r
 
 Start **Standalone Game** in `L_MainMenu` and choose **New Game** to enter
 `L_DCampaign`. The opening quarters, weighted plate tutorial, grapple bay and
-escape pods share one playable map. Press **Esc** or the gamepad **Menu** button
+escape pods share one playable map. Press **J** to teleport to the escape-pod
+room entrance. Press **Esc** or the gamepad **Menu** button
 to pause. Open **Settings**
 from the title or pause menu to adjust video and audio or view the controls.
 Use **WASD**, the **arrow keys**, or the **left stick** for directional input.

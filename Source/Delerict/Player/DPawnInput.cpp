@@ -3,6 +3,7 @@
 
 #include "DMoverComponent.h"
 #include "DPlayerTuning.h"
+#include "DefaultMovementSet/InstantMovementEffects/BasicInstantMovementEffects.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/LocalPlayer.h"
 #include "EnhancedInputComponent.h"
@@ -12,6 +13,7 @@
 #include "InputAction.h"
 #include "InputMappingContext.h"
 #include "InputModifiers.h"
+#include "Kismet/GameplayStatics.h"
 #include "MoveLibrary/ConstrainedMoveUtils.h"
 #include "UnrealClient.h"
 #include "Widgets/SViewport.h"
@@ -177,8 +179,43 @@ void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     Input->BindAction(ThrowAction, ETriggerEvent::Completed, this, &ThisClass::ReleaseThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Canceled, this, &ThisClass::CancelThrowCharge);
     Input->BindAction(ActivateThrowableAction, ETriggerEvent::Started, this, &ThisClass::ActivateThrownItem);
+    PlayerInputComponent->BindKey(EKeys::J, IE_Pressed, this, &ThisClass::GoToBodoqueRoom);
     PlayerInputComponent->BindKey(EKeys::Escape, IE_Pressed, this, &ThisClass::PauseGame);
     PlayerInputComponent->BindKey(EKeys::Gamepad_Special_Right, IE_Pressed, this, &ThisClass::PauseGame);
+}
+
+void ADPawn::GoToBodoqueRoom()
+{
+    if (!HasAuthority())
+    {
+        return;
+    }
+
+    TArray<AActor*> Arrivals;
+    UGameplayStatics::GetAllActorsWithTag(this, TEXT("Delerict.BodoqueRoomStart"), Arrivals);
+    if (Arrivals.Num() != 1)
+    {
+        return;
+    }
+
+    StopMoving();
+    StopRun();
+    StopMagnetHold();
+    CancelJumpCharge();
+    CancelThrowCharge();
+    bInitialMagneticCaptureRequested = false;
+    PendingImpulses.Reset();
+
+    auto Teleport = MakeShared<FTeleportEffect>();
+    Teleport->TargetLocation = UPlanarConstraintUtils::ConstrainLocationToPlane(
+        Mover->GetPlanarConstraint(), Arrivals[0]->GetActorLocation());
+    Teleport->bUseActorRotation = false;
+    Teleport->TargetRotation = GetTuning().LockedRotation;
+    Mover->QueueInstantMovementEffect(Teleport);
+
+    auto Stop = MakeShared<FApplyVelocityEffect>();
+    Stop->ForceMovementMode = DefaultModeNames::Flying;
+    Mover->QueueInstantMovementEffect(Stop);
 }
 
 void ADPawn::PauseGame()

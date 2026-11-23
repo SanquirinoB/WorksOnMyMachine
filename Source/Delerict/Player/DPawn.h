@@ -172,6 +172,7 @@ private:
     void CreateInputMappings();
     void ClearInput();
     void PauseGame();
+    void GoToBodoqueRoom();
     void SetUpAimCursor(APlayerController& Player);
     void RestoreAimCursor();
     void UpdateAim();
