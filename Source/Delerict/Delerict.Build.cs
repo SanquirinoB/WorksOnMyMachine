@@ -7,7 +7,8 @@ public class Delerict : ModuleRules
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         PrivateDependencyModuleNames.AddRange(new[]
         {
-            "Core", "CoreUObject", "Engine", "AnimGraphRuntime", "EnhancedInput", "GameplayCameras", "InputCore", "Mover"
+            "Core", "CoreUObject", "Engine", "AnimGraphRuntime", "CoreKitTween",
+            "EnhancedInput", "GameplayCameras", "InputCore", "Mover"
         });
     }
 }

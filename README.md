@@ -16,8 +16,9 @@ Delerict is an Unreal Engine 5.8.4 project for Windows in the WorksOnMyMachine r
 
 4. Open [Delerict.uproject](Delerict.uproject) in Unreal Editor.
 
-Press **Play** in the startup map. Move with **A/D**, the **left/right arrows**, or
-the **left stick**. Jump with **Space** or the **bottom gamepad face button**.
+Press **Play** in the startup map, `L_DHangar`. Move with **A/D**, the
+**left/right arrows**, or the **left stick**. Jump with **Space** or the **bottom
+gamepad face button**. Open `L_DTestLane` for the movement and camera test fixtures.
 
 CoreKit is included in [Plugins/CoreKit](Plugins/CoreKit). Its
 [quick start](Plugins/CoreKit/Docs/QuickStart.md) covers the reusable systems.
