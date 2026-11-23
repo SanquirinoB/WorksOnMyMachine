@@ -2,6 +2,7 @@
 
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "Components/DirectionalLightComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Engine/Blueprint.h"
 #include "Engine/DirectionalLight.h"
 #include "Engine/World.h"
@@ -11,6 +12,7 @@
 #include "Kismet2/BlueprintEditorUtils.h"
 #include "Kismet2/KismetEditorUtilities.h"
 #include "LevelDesign/DLevelBlock.h"
+#include "LevelDesign/DDockingPoint.h"
 #include "LevelDesign/DRoomMarker.h"
 #include "Materials/MaterialInstanceConstant.h"
 #include "Misc/PackageName.h"
@@ -163,9 +165,14 @@ int32 UDLevelDesignCommandlet::Main(const FString&)
         FVector(110, 300, 150), Green, TEXT("CHECKPOINT"), TEXT("Checkpoint activado"));
     UClass* Exit = BuildMarker(TEXT("BP_DExit"), EDRoomMarkerRole::Exit, FVector(110, 300, 180),
         Blue, TEXT("SALIDA"), TEXT("Sala completada"));
-    if (!Floor || !Platform || !Wall || !Start || !Hazard || !Checkpoint || !Exit)
+    UClass* Dock = FindOrCreatePrefab(TEXT("BP_DDockingPoint"), ADDockingPoint::StaticClass(),
+        [Step](AActor& Actor)
+        {
+            Actor.FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, Step);
+        });
+    if (!Floor || !Platform || !Wall || !Start || !Hazard || !Checkpoint || !Exit || !Dock)
     {
-        UE_LOG(LogDLevelDesign, Error, TEXT("Unable to prepare all seven kit prefabs"));
+        UE_LOG(LogDLevelDesign, Error, TEXT("Unable to prepare the kit prefabs"));
         return 1;
     }
     if (FPackageName::DoesPackageExist(LabPath))
@@ -207,6 +214,6 @@ int32 UDLevelDesignCommandlet::Main(const FString&)
         UE_LOG(LogDLevelDesign, Error, TEXT("Unable to save the pilot map"));
         return 1;
     }
-    UE_LOG(LogDLevelDesign, Display, TEXT("Created %s and its seven Blueprint prefabs"), *LabPath);
+    UE_LOG(LogDLevelDesign, Display, TEXT("Created %s and its Blueprint prefabs"), *LabPath);
     return 0;
 }
