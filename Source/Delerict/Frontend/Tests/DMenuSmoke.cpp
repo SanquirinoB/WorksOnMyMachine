@@ -5,7 +5,9 @@
 #include "Components/ComboBoxString.h"
 #include "Components/Slider.h"
 #include "Containers/Ticker.h"
+#include "CoreKitFrontend/CoreKitFrontendSettings.h"
 #include "CoreKitFrontend/CoreKitFrontendSubsystem.h"
+#include "CoreKitLoading/CoreKitLoadingSubsystem.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
@@ -14,6 +16,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Misc/Paths.h"
 #include "Misc/CommandLine.h"
+#include "Misc/PackageName.h"
 #include "Misc/Parse.h"
 #include "Sound/SoundWave.h"
 #include "UnrealClient.h"
@@ -76,8 +79,10 @@ void RunSmoke(UWorld* World)
 {
     UGameInstance* Game = World ? World->GetGameInstance() : nullptr;
     if (!Game || !Game->GetSubsystem<UCoreKitFrontendSubsystem>()) { Finish(false, 0); return; }
+    const FName EntryMap(*FPackageName::GetShortName(GetDefault<UCoreKitFrontendSettings>()->FirstGameMap.GetLongPackageName()));
     FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateWeakLambda(Game,
-        [Game, Step = 0, OriginalMusic = 1.f, ChangedMusic = 0.f, OriginalMode = 0, Deadline = FPlatformTime::Seconds() + 55.0](float) mutable
+        [Game, EntryMap, bSawLoading = false, Step = 0, OriginalMusic = 1.f, ChangedMusic = 0.f, OriginalMode = 0,
+            Deadline = FPlatformTime::Seconds() + 55.0](float) mutable
         {
             if (FPlatformTime::Seconds() >= Deadline) { return Finish(false, Step); }
             UWorld* Current = Game->GetWorld();
@@ -208,11 +213,23 @@ void RunSmoke(UWorld* World)
                 if (!Options && Menu) { ++Step; }
                 break;
             case 19:
-                Step += Click(Menu, TEXT("NewGame"));
+                if (Click(Menu, TEXT("NewGame")))
+                {
+                    bSawLoading = Game->GetSubsystem<UCoreKitLoadingSubsystem>()->IsLoadingScreenVisible();
+                    if (bSawLoading) { Capture(TEXT("NewGameLoading.png")); }
+                    ++Step;
+                }
                 break;
             case 20:
+                bSawLoading |= Game->GetSubsystem<UCoreKitLoadingSubsystem>()->IsLoadingScreenVisible();
                 if (!Player || !Cast<ADPawn>(Player->GetPawn()) || Frontend->GetState() != ECoreKitFrontendState::Gameplay) { break; }
-                if (Current->GetFName() != TEXT("L_DHangar") || PlayingTitleTracks() != 0) { return Finish(false, Step); }
+                if (Current->GetFName() != EntryMap || Player->GetPawn()->GetClass()->GetFName() != TEXT("BP_DPlayer_C")
+                    || !bSawLoading || PlayingTitleTracks() != 0)
+                {
+                    UE_LOG(LogTemp, Error, TEXT("Expected entry %s, BP_DPlayer_C and visible loading. Got %s, %s, loading=%d."),
+                        *EntryMap.ToString(), *Current->GetName(), *Player->GetPawn()->GetClass()->GetName(), bSawLoading);
+                    return Finish(false, Step);
+                }
                 Player->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::Escape, IE_Pressed, 1.f));
                 Player->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::Escape, IE_Released, 0.f));
                 ++Step;
@@ -253,7 +270,7 @@ void RunSmoke(UWorld* World)
                 }
                 break;
             case 28:
-                if (Current->GetFName() == TEXT("L_DHangar") && Frontend->GetState() == ECoreKitFrontendState::Gameplay
+                if (Current->GetFName() == EntryMap && Frontend->GetState() == ECoreKitFrontendState::Gameplay
                     && Player && Cast<ADPawn>(Player->GetPawn()) && PlayingTitleTracks() == 0)
                 {
                     return Finish(true, Step);

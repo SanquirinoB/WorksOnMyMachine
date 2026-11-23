@@ -4,7 +4,9 @@
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
+#include "CoreKitLoading/CoreKitOpenLevelRequest.h"
 #include "Engine/Engine.h"
+#include "Engine/GameInstance.h"
 #include "Engine/StaticMesh.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
@@ -101,6 +103,13 @@ void ADRoomMarker::OnEntered(UPrimitiveComponent*, AActor* OtherActor, UPrimitiv
     OnMarkerActivated(Pawn);
     if (MarkerRole == EDRoomMarkerRole::Exit && !Destination.IsNull())
     {
-        UGameplayStatics::OpenLevelBySoftObjectPtr(this, Destination);
+        if (GetWorld()->GetNetMode() == NM_Standalone && GetGameInstance()->GetGameViewportClient())
+        {
+            UCoreKitOpenLevelRequest::OpenLevelWithLoading(this, Destination, {})->Activate();
+        }
+        else
+        {
+            UGameplayStatics::OpenLevelBySoftObjectPtr(this, Destination);
+        }
     }
 }
