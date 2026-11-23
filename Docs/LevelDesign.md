@@ -7,6 +7,7 @@ Abre `L_DLevelDesignLab` desde `Content/Maps` y pulsa **Play**. Toma carrera con
 Para armar tu propia sala, crea un nivel o duplica el laboratorio desde el Content Browser. Abre **Window → Place Actors → Delerict** y coloca las piezas en la vista lateral. Usa el mismo valor de **Y** en el inicio y en las piezas jugables. La vista lateral y la rejilla estándar de Unreal sirven para alinear en X y Z. Puedes iniciar una prueba desde el `PlayerStart` de tu nivel o elegir **Play From Here** en el viewport.
 
 - **Suelo, plataforma y pared.** `Dimensions` controla ancho (X), profundidad (Y) y altura (Z) en centímetros. `Finish` cambia el acabado. El pivote está en el centro de la base.
+- **Botas magnéticas.** En `BP_DPlatform`, el acabado azul `MI_DPlatform` habilita el acople por la cara superior local (+Z). Puedes girar la pieza para usarla como pared o techo. En la campaña, la franja cian de los rieles señala la cara de acople.
 - **Inicio.** Colócalo unos 100 cm sobre la superficie transitable. Su Y fija el carril de Mover.
 - **Punto de acople.** Arrastra `BP_DDockingPoint` desde `Content/Delerict/LevelDesign/Prefabs`. Orienta el eje X hacia la aproximación y ajusta `Docking Offset` y `Approach Radius`. El punto expone la pose al sistema de movimiento cuando el Pawn está al alcance y `Docking Enabled` está activo.
 - **Peligro.** `Dimensions` define el volumen. Al tocarlo aparece **You Died**. Pulsa **Retry** para volver al checkpoint activo o al inicio del nivel. Para probar la pantalla en cualquier sala, ejecuta `Die` en la consola durante Play.
