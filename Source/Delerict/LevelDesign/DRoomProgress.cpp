@@ -1,6 +1,9 @@
 #include "DRoomProgress.h"
 
 #include "../Frontend/DMenu.h"
+#include "CoreKitFrontend/CoreKitFrontendSubsystem.h"
+#include "Engine/Engine.h"
+#include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/PlayerController.h"
@@ -11,15 +14,82 @@ bool UDRoomProgress::DoesSupportWorldType(EWorldType::Type WorldType) const
     return WorldType == EWorldType::Game || WorldType == EWorldType::PIE;
 }
 
+void UDRoomProgress::Deinitialize()
+{
+    if (auto* Frontend = UGameInstance::GetSubsystem<UCoreKitFrontendSubsystem>(GetWorld()->GetGameInstance()))
+    {
+        Frontend->OnGameArrived.RemoveDynamic(this, &ThisClass::OnGameArrived);
+        Frontend->OnCheckpointSaved.RemoveDynamic(this, &ThisClass::OnCheckpointSaved);
+    }
+    Super::Deinitialize();
+}
+
 bool UDRoomProgress::SetCheckpoint(APlayerController& Player, const FTransform& Transform)
 {
     FDPlayerProgress& Progress = Players.FindOrAdd(&Player);
-    if (Progress.bRespawnPending || (Progress.Checkpoint.IsSet() && Progress.Checkpoint->Equals(Transform)))
+    if (Progress.bRespawnPending || (!bSaveFailed && Progress.Checkpoint.IsSet() && Progress.Checkpoint->Equals(Transform)))
     {
         return false;
     }
     Progress.Checkpoint = Transform;
+    if (GetWorld()->GetNetMode() == NM_Standalone && Player.IsLocalController())
+    {
+        SaveCheckpoint();
+    }
     return true;
+}
+
+TOptional<FTransform> UDRoomProgress::GetCheckpoint(const APlayerController& Player) const
+{
+    const auto* Progress = Players.Find(&Player);
+    return Progress ? Progress->Checkpoint : TOptional<FTransform>();
+}
+
+void UDRoomProgress::SaveCheckpoint()
+{
+    auto* Frontend = GetWorld()->GetGameInstance()->GetSubsystem<UCoreKitFrontendSubsystem>();
+    if (!Frontend) { return; }
+    if (Frontend->GetState() == ECoreKitFrontendState::Traveling)
+    {
+        // A start marker can overlap the pawn before New Game or Continue finishes arriving.
+        Frontend->OnGameArrived.AddUniqueDynamic(this, &ThisClass::OnGameArrived);
+        return;
+    }
+    Frontend->OnCheckpointSaved.AddUniqueDynamic(this, &ThisClass::OnCheckpointSaved);
+    if (!Frontend->SaveCheckpoint(TEXT("checkpoint"), true))
+    {
+        OnCheckpointSaved(false);
+    }
+}
+
+void UDRoomProgress::OnGameArrived(bool bContinuing)
+{
+    auto* Frontend = GetWorld()->GetGameInstance()->GetSubsystem<UCoreKitFrontendSubsystem>();
+    Frontend->OnGameArrived.RemoveDynamic(this, &ThisClass::OnGameArrived);
+    if (!bContinuing) { SaveCheckpoint(); }
+}
+
+void UDRoomProgress::OnCheckpointSaved(bool bSucceeded)
+{
+    bSaveFailed = !bSucceeded;
+    if (bSaveFailed)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Could not persist the Delerict checkpoint."));
+        if (GEngine)
+        {
+            GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow,
+                NSLOCTEXT("Delerict", "CheckpointSaveFailed", "Checkpoint available for this session only. Saving failed.").ToString());
+        }
+    }
+}
+
+void UDRoomProgress::RestoreCheckpoint(APlayerController& Player, const FTransform& Transform)
+{
+    Players.FindOrAdd(&Player).Checkpoint = Transform;
+    if (!Respawn(Player))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Could not spawn at the saved checkpoint in %s."), *GetWorld()->GetName());
+    }
 }
 
 void UDRoomProgress::RequestRespawn(APlayerController& Player, APawn& Pawn)
@@ -58,10 +128,16 @@ void UDRoomProgress::RequestRespawn(APlayerController& Player, APawn& Pawn)
 
 bool UDRoomProgress::Retry(APlayerController& Player)
 {
-    FDPlayerProgress* Progress = Players.Find(&Player);
+    const auto* Progress = Players.Find(&Player);
+    return Progress && Progress->bRespawnPending && Respawn(Player);
+}
+
+bool UDRoomProgress::Respawn(APlayerController& Player)
+{
+    FDPlayerProgress& Progress = Players.FindChecked(&Player);
     APawn* PreviousPawn = Player.GetPawn();
     AGameModeBase* Mode = GetWorld()->GetAuthGameMode();
-    if (!Progress || !Progress->bRespawnPending || !PreviousPawn || !Mode)
+    if (!PreviousPawn || !Mode)
     {
         return false;
     }
@@ -69,9 +145,9 @@ bool UDRoomProgress::Retry(APlayerController& Player)
     const bool bWasCollidable = PreviousPawn->GetActorEnableCollision();
     PreviousPawn->SetActorEnableCollision(false);
     APawn* Replacement = nullptr;
-    if (Progress->Checkpoint.IsSet())
+    if (Progress.Checkpoint.IsSet())
     {
-        Replacement = Mode->SpawnDefaultPawnAtTransform(&Player, Progress->Checkpoint.GetValue());
+        Replacement = Mode->SpawnDefaultPawnAtTransform(&Player, Progress.Checkpoint.GetValue());
     }
     if (!Replacement)
     {

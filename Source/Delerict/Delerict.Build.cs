@@ -11,7 +11,7 @@ public class Delerict : ModuleRules
         PrivateDependencyModuleNames.AddRange(new[]
         {
             "Core", "CoreUObject", "Engine", "AnimGraphRuntime", "CoreKitTween",
-            "CoreKitBasicUI", "CoreKitFrontend", "CoreKitLoading", "CoreKitNavigation", "MoviePlayer",
+            "CoreKitBasicUI", "CoreKitFrontend", "CoreKitLoading", "CoreKitNavigation", "CoreKitSave", "MoviePlayer",
             "EnhancedInput", "GameplayCameras", "GameplayTags", "InputCore", "Mover", "Slate", "SlateCore", "UMG"
         });
     }

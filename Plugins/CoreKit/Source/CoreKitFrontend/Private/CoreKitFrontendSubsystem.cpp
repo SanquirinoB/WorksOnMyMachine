@@ -247,6 +247,7 @@ void UCoreKitFrontendSubsystem::NewGame()
 			UpdateState(ECoreKitFrontendState::MainMenu, LOCTEXT("DistinctMaps", "Set a first game map distinct from the main menu."));
 			return;
 		}
+		ActiveCheckpoint = nullptr;
 		StartTravel(Config().FirstGameMap, false);
 	}
 }
@@ -344,9 +345,21 @@ void UCoreKitFrontendSubsystem::ReturnToMainMenu()
 	}
 }
 
-bool UCoreKitFrontendSubsystem::SaveCheckpoint(const FString& Slot)
+bool UCoreKitFrontendSubsystem::RestartFromCheckpoint()
 {
-	if (State != ECoreKitFrontendState::Gameplay || bSaving || Slot.IsEmpty() || !GetWorld())
+	if (!CanRestartFromCheckpoint() || SavedMap(*ActiveCheckpoint).IsNull())
+	{
+		return false;
+	}
+	PendingSnapshot = ActiveCheckpoint;
+	StartTravel(SavedMap(*PendingSnapshot), false);
+	return true;
+}
+
+bool UCoreKitFrontendSubsystem::SaveCheckpoint(const FString& Slot, bool bQueueIfBusy)
+{
+	if (State != ECoreKitFrontendState::Gameplay || Slot.IsEmpty() || !GetWorld()
+		|| (bSaving && (!bQueueIfBusy || (QueuedCheckpoint && QueuedSlot != Slot))))
 	{
 		return false;
 	}
@@ -356,15 +369,35 @@ bool UCoreKitFrontendSubsystem::SaveCheckpoint(const FString& Slot)
 	{
 		return false;
 	}
+	ActiveCheckpoint = Snapshot;
+	if (bSaving)
+	{
+		QueuedCheckpoint = Snapshot;
+		QueuedSlot = Slot;
+	}
+	else
+	{
+		WriteCheckpoint(Slot, Snapshot);
+	}
+	return true;
+}
+
+void UCoreKitFrontendSubsystem::WriteCheckpoint(const FString& Slot, UCoreKitWorldSaveGame* Snapshot)
+{
 	bSaving = true;
 	auto* Request = UCoreKitSaveRequest::SaveCoreKitSlot(this, SlotNamespace() + Slot, Snapshot);
 	Request->CompletedNative.AddWeakLambda(this, [this](ECoreKitSaveResult Result, USaveGame*, const FCoreKitSaveSlotInfo&)
 	{
 		bSaving = false;
+		if (QueuedCheckpoint)
+		{
+			UCoreKitWorldSaveGame* Next = QueuedCheckpoint;
+			QueuedCheckpoint = nullptr;
+			WriteCheckpoint(QueuedSlot, Next);
+		}
 		OnCheckpointSaved.Broadcast(Result == ECoreKitSaveResult::Success);
 	});
 	Request->Activate();
-	return true;
 }
 
 void UCoreKitFrontendSubsystem::StartTravel(TSoftObjectPtr<UWorld> Destination, bool bToMenu, const FText& ReturnMessage)
@@ -395,6 +428,10 @@ void UCoreKitFrontendSubsystem::StartTravel(TSoftObjectPtr<UWorld> Destination, 
 	{
 		FTSTicker::RemoveTicker(ArrivalTicker);
 		PendingTravelId.Invalidate();
+		if (Result == ECoreKitTravelResult::Success && bContinuing)
+		{
+			ActiveCheckpoint = PendingSnapshot;
+		}
 		PendingSnapshot = nullptr;
 		const bool bRecovered = bRecoveredCheckpoint;
 		bRecoveredCheckpoint = false;

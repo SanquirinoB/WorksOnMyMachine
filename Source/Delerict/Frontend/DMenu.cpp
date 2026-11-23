@@ -123,6 +123,10 @@ TSharedRef<SWidget> UDMenu::RebuildWidget()
     if (bPause)
     {
         PrimaryButton = AddAction(*Actions, TEXT("Resume"), LOCTEXT("Resume", "Resume"), GET_FUNCTION_NAME_CHECKED(ThisClass, Resume));
+        UButton* Checkpoint = AddAction(*Actions, TEXT("RestartCheckpoint"), LOCTEXT("RestartCheckpoint", "Return to Last Checkpoint"),
+            GET_FUNCTION_NAME_CHECKED(ThisClass, RestartCheckpoint));
+        Checkpoint->SetIsEnabled(bHasCheckpoint);
+        Checkpoint->SetRenderOpacity(bHasCheckpoint ? 1.f : .5f);
     }
     else
     {
@@ -271,7 +275,8 @@ void UDMenu::RefreshTitle()
 bool UDMenu::OpenPause(APlayerController& Player)
 {
     const auto* Frontend = Player.GetGameInstance()->GetSubsystem<UCoreKitFrontendSubsystem>();
-    return Frontend && Frontend->GetState() == ECoreKitFrontendState::Gameplay && OpenOverlay(Player, EScreen::Pause, false);
+    return Frontend && Frontend->GetState() == ECoreKitFrontendState::Gameplay &&
+        OpenOverlay(Player, EScreen::Pause, Frontend->CanRestartFromCheckpoint());
 }
 
 bool UDMenu::OpenDeath(APlayerController& Player, bool bCheckpoint)
@@ -452,6 +457,16 @@ void UDMenu::Retry()
     }
     UGameplayStatics::SetGamePaused(this, false);
     CloseOverlay();
+}
+
+void UDMenu::RestartCheckpoint()
+{
+    auto* Frontend = GetFrontend();
+    if (Frontend && Frontend->CanRestartFromCheckpoint() && Frontend->RestartFromCheckpoint())
+    {
+        UGameplayStatics::SetGamePaused(this, false);
+        CloseOverlay();
+    }
 }
 
 void UDMenu::ReturnToTitle()

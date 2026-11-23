@@ -22,6 +22,7 @@
 #include "UnrealClient.h"
 #include "UObject/UObjectIterator.h"
 #include "../DMenu.h"
+#include "../../LevelDesign/DRoomProgress.h"
 #include "../../Player/DPawn.h"
 
 namespace
@@ -284,6 +285,104 @@ void RunSmoke(UWorld* World)
 FAutoConsoleCommandWithWorld SmokeCommand(TEXT("Delerict.MenuSmoke"),
     TEXT("Test the Delerict frontend in a standalone development process."),
     FConsoleCommandWithWorldDelegate::CreateStatic(&RunSmoke));
+
+// Run in a fresh process with the isolated profile populated by LevelDesign.PlayableRoute.
+void ResumeLabCheckpoint(UWorld* World)
+{
+    enum class EStep { Continue, LoadedLab, TestLane, ReturnedToLab, ReloadedLatest, ReadLatest, LatestOnDisk, Title, NewGame };
+    auto* Game = World->GetGameInstance();
+    FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateWeakLambda(Game,
+        [Game, Step = EStep::Continue, Deadline = FPlatformTime::Seconds() + 75.](float) mutable
+        {
+            auto Fail = [&] { return Finish(false, 100 + static_cast<int32>(Step)); };
+            if (FPlatformTime::Seconds() > Deadline) { return Fail(); }
+            UWorld* Current = Game->GetWorld();
+            auto* Player = Current ? Current->GetFirstPlayerController() : nullptr;
+            if (!Player) { return true; }
+            auto* Frontend = Game->GetSubsystem<UCoreKitFrontendSubsystem>();
+            UUserWidget* Menu = FindScreen(Current, false);
+            const bool bPlaying = Frontend->GetState() == ECoreKitFrontendState::Gameplay && Player->GetPawn();
+            switch (Step)
+            {
+            case EStep::Continue:
+                if (Frontend->CanContinue() && Click(Menu, TEXT("Continue"))) { Step = EStep::LoadedLab; }
+                break;
+            case EStep::LoadedLab:
+            case EStep::ReturnedToLab:
+            case EStep::ReloadedLatest:
+            case EStep::LatestOnDisk:
+                if (bPlaying && Current->GetFName() == TEXT("L_DLevelDesignLab"))
+                {
+                    auto* Progress = Current->GetSubsystem<UDRoomProgress>();
+                    const auto Checkpoint = Progress->GetCheckpoint(*Player);
+                    const FVector Latest(1975., 0., 140.);
+                    const FVector Expected = (Step == EStep::ReloadedLatest || Step == EStep::LatestOnDisk) ?
+                        Latest : FVector(1450., 0., 100.);
+                    if (!Checkpoint || !Checkpoint->GetLocation().Equals(Expected, 1.) ||
+                        !Player->GetPawn()->GetActorLocation().Equals(Expected, 10.) ||
+                        UGameplayStatics::IsGamePaused(Current) || Menu)
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("Expected %s. Checkpoint %s, pawn %s."), *Expected.ToString(),
+                            Checkpoint ? *Checkpoint->GetLocation().ToString() : TEXT("missing"),
+                            *Player->GetPawn()->GetActorLocation().ToString());
+                        return Fail();
+                    }
+                    if (Step == EStep::LoadedLab)
+                    {
+                        UGameplayStatics::OpenLevel(Current, TEXT("/Game/Maps/L_DTestLane"));
+                        Step = EStep::TestLane;
+                    }
+                    else if (Step == EStep::ReturnedToLab)
+                    {
+                        // Reaching two checkpoints before the first disk write completes must retain the newest one.
+                        if (!Progress->SetCheckpoint(*Player, FTransform(FVector(1850., 0., 140.))) ||
+                            !Progress->SetCheckpoint(*Player, FTransform(Latest)) || !UDMenu::OpenPause(*Player) ||
+                            !Click(FindScreen(Current, false), TEXT("RestartCheckpoint"))) { return Fail(); }
+                        Step = EStep::ReloadedLatest;
+                    }
+                    else
+                    {
+                        Frontend->ReturnToMainMenu();
+                        Step = Step == EStep::ReloadedLatest ? EStep::ReadLatest : EStep::Title;
+                    }
+                }
+                break;
+            case EStep::TestLane:
+                if (bPlaying && Current->GetFName() == TEXT("L_DTestLane"))
+                {
+                    if (!UDMenu::OpenPause(*Player) || !UGameplayStatics::IsGamePaused(Current) ||
+                        !Click(FindScreen(Current, false), TEXT("RestartCheckpoint"))) { return Fail(); }
+                    Step = EStep::ReturnedToLab;
+                }
+                break;
+            case EStep::Title:
+                if (Frontend->CanContinue() && Click(Menu, TEXT("NewGame")) && Click(Menu, TEXT("Confirm")))
+                {
+                    Step = EStep::NewGame;
+                }
+                break;
+            case EStep::ReadLatest:
+                if (Frontend->CanContinue() && Click(Menu, TEXT("Continue"))) { Step = EStep::LatestOnDisk; }
+                break;
+            case EStep::NewGame:
+                if (bPlaying)
+                {
+                    if (!UDMenu::OpenPause(*Player)) { return Fail(); }
+                    Menu = FindScreen(Current, false);
+                    const auto* Button = Menu ? Cast<UButton>(Menu->GetWidgetFromName(TEXT("RestartCheckpoint"))) : nullptr;
+                    if (!Button || Button->GetIsEnabled() || !Click(Menu, TEXT("Resume"))) { return Fail(); }
+                    UE_LOG(LogTemp, Display, TEXT("DELERICT_CHECKPOINT_COLD_CONTINUE_PAUSE_NEW_GAME_PASSED"));
+                    return Finish(true, 100 + static_cast<int32>(Step));
+                }
+                break;
+            }
+            return true;
+        }), .15f);
+}
+
+FAutoConsoleCommandWithWorld ResumeLabCommand(TEXT("Delerict.ResumeLabCheckpoint"),
+    TEXT("Verify cold Continue and the pause checkpoint action with a saved LevelDesign.PlayableRoute profile."),
+    FConsoleCommandWithWorldDelegate::CreateStatic(&ResumeLabCheckpoint));
 }
 
 #endif

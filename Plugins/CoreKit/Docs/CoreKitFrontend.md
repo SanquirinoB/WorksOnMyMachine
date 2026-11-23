@@ -62,6 +62,8 @@ Bind **On Game Arrived** from the destination's setup, such as a gameplay Player
 
 ### Continue
 
+Native pause menus can use `CanRestartFromCheckpoint()` and `RestartFromCheckpoint()` to reopen the current run's last captured or continued snapshot, including its map and participants. New Game clears this in-memory snapshot. Disk persistence is confirmed by **On Checkpoint Saved**. Pass **Queue If Busy** to **Save Checkpoint** for closely spaced triggers. While a write is running the newest queued capture for the same slot replaces the previous queued capture.
+
 The title screen queries slot headers within **Slot Prefix** to decide whether to enable **Continue**. The headers identify candidates. Clicking Continue verifies the stored records, requires a readable world snapshot and opens the saved map. A verified checkpoint in another slot takes precedence if it is newer than a recovered backup.
 
 Continue applies the snapshot after arrival readiness and before the loading overlay releases gameplay input. Read **Get Status** on **On Game Arrived** to display recovery or missing-participant messages. If every candidate fails verification or points to an unavailable map, the title screen reports that no checkpoint could be loaded. If travel or restoration fails after a destination has started loading, the frontend attempts to return to the title with an error message. For details on slot banks and metadata, see [CoreKitSave](CoreKitSave.md#slot-catalog).

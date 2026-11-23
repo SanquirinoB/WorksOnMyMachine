@@ -61,7 +61,10 @@ public:
 
 	/** Captures the current map and opted-in participants. Completion is reported by OnCheckpointSaved. */
 	UFUNCTION(BlueprintCallable, Category = "CoreKit|Frontend")
-	bool SaveCheckpoint(const FString& Slot = TEXT("checkpoint"));
+	bool SaveCheckpoint(const FString& Slot = TEXT("checkpoint"), bool bQueueIfBusy = false);
+
+	bool CanRestartFromCheckpoint() const { return State == ECoreKitFrontendState::Gameplay && ActiveCheckpoint != nullptr; }
+	bool RestartFromCheckpoint();
 
 	/** Only needed when Wait For Project Ready is enabled. The ID is valid for this travel only. */
 	UFUNCTION(BlueprintCallable, Category = "CoreKit|Frontend")
@@ -94,6 +97,7 @@ private:
 	void StartTravel(TSoftObjectPtr<UWorld> Destination, bool bToMenu, const FText& ReturnMessage = {});
 	void WaitForArrival(FGuid TravelId);
 	void RestoreArrival(FGuid TravelId);
+	void WriteCheckpoint(const FString& Slot, UCoreKitWorldSaveGame* Snapshot);
 	void ApplyAudio(UWorld* World, const FVector3f& Volumes);
 	void SaveAudio(const FVector3f& Volumes);
 	APlayerController* FindController(UWorld* World) const;
@@ -103,6 +107,14 @@ private:
 
 	UPROPERTY(Transient)
 	TObjectPtr<UCoreKitWorldSaveGame> PendingSnapshot;
+
+	UPROPERTY(Transient)
+	TObjectPtr<UCoreKitWorldSaveGame> ActiveCheckpoint;
+
+	UPROPERTY(Transient)
+	TObjectPtr<UCoreKitWorldSaveGame> QueuedCheckpoint;
+
+	FString QueuedSlot;
 
 	TWeakObjectPtr<UWorld> AudioWorld;
 	TWeakObjectPtr<USoundMix> ActiveAudioMix;

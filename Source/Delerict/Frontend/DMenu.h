@@ -43,6 +43,7 @@ private:
     UFUNCTION() void StartNewGame();
     UFUNCTION() void Settings();
     UFUNCTION() void Resume();
+    UFUNCTION() void RestartCheckpoint();
     UFUNCTION() void Retry();
     UFUNCTION() void ReturnToTitle();
     UFUNCTION() void Exit();
