@@ -47,9 +47,6 @@ powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\Scripts\Build-Wi
 The default archive is `Saved/Builds/Win64Shipping/Windows/`. Open
 `Delerict.exe` from that directory to play the packaged game.
 
-[Vault CI setup](Scripts/VaultCI/README.md) covers automated Shipping builds
-and downloading the latest verified archive.
-
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,
 and `Saved/`.
