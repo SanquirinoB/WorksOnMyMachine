@@ -4,8 +4,9 @@
 #include "Animation/AnimNode_SequencePlayer.h"
 #include "Animation/AnimSequence.h"
 #include "AnimNodes/AnimNode_TwoWayBlend.h"
-#include "DefaultMovementSet/CharacterMoverComponent.h"
+#include "DMoverComponent.h"
 #include "DPawn.h"
+#include "DPlayerTuning.h"
 
 struct FDLocomotionProxy : FAnimInstanceProxy
 {
@@ -39,7 +40,7 @@ struct FDLocomotionProxy : FAnimInstanceProxy
         const float Speed = Pawn->Mover->GetVelocity().Size2D();
         const float MoveWeight = Pawn->WalkAnimation || Pawn->RunAnimation ? FMath::Clamp(Speed / 120.f, 0.f, 1.f) : 0.f;
         const float RunWeight = Pawn->RunAnimation ? FMath::GetMappedRangeValueClamped(
-            FVector2f(160.f, FMath::Max(161.f, Pawn->MaxGroundSpeed)), FVector2f(0.f, 1.f), Speed) : 0.f;
+            FVector2f(160.f, FMath::Max(161.f, Pawn->GetTuning().SurfaceRunSpeed)), FVector2f(0.f, 1.f), Speed) : 0.f;
         GroundBlend.Alpha = FMath::FInterpTo(GroundBlend.Alpha, MoveWeight, DeltaSeconds, 12.f);
         GaitBlend.Alpha = FMath::FInterpTo(GaitBlend.Alpha, RunWeight, DeltaSeconds, 12.f);
         const float AirWeight = Pawn->AirborneAnimation && Pawn->Mover->IsAirborne() ? 1.f : 0.f;
