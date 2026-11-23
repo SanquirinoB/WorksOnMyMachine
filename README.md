@@ -25,8 +25,9 @@ Aim with the mouse or right stick. Hold and release **Space** or the bottom
 gamepad face button for the jump charge. Free flight retains velocity after an
 impulse. Hold **Right Mouse Button** to charge a throw and release it to launch
 the selected item. Press **F** to grab a nearby item and **Tab** to cycle
-between available throwables. Hold **E** to attach to a nearby steel face and
-**Left Shift** to run while attached. Press **Q** to activate the most recently
+between available throwables. While floating, hold **E** to latch onto steel.
+You can release **E** once attached. Hold **Left Shift** to run, and use a jump or
+throw recoil to break contact. Press **Q** to activate the most recently
 deployed remote gadget. Open `L_DTestLane` to try the steel floor, wall, and
 ceiling alongside the grappling hook, remote grenade, portable black hole,
 plates, and throw switch.

@@ -76,6 +76,7 @@ namespace
 
             case EDTraversalStep::Attach:
                 if (!Mover->IsMagneticallyAttached()) { break; }
+                Key(EKeys::E, IE_Released);
                 BeforeMove = Location;
                 Floor->AddActorWorldOffset(FVector(40., 0., 0.));
                 Advance(EDTraversalStep::Move, .2);
@@ -106,7 +107,6 @@ namespace
             case EDTraversalStep::SelectHook:
                 Test.TestTrue(TEXT("Releasing a charged jump leaves contact with outward velocity"),
                     Mover->IsFlying() && Pawn->GetVelocity().Z > 50.);
-                Key(EKeys::E, IE_Released);
                 Test.TestTrue(TEXT("The grappling hook enters the throwable slot"), Pawn->TryGrabThrowable(*Hook));
                 Key(EKeys::Gamepad_RightY, IE_Axis, 0.f);
                 Key(EKeys::Gamepad_RightX, IE_Axis);
