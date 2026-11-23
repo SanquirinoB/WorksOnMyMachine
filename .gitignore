@@ -1,12 +1,22 @@
-# Unreal build outputs, caches, and local settings
+# Generated Unreal output at any project or plugin depth
 Binaries/
 DerivedDataCache/
 Intermediate/
 Saved/
 **/Config/UserEngine.ini
 
-# Generated Visual Studio files
+# Compiler symbols and intermediate files
+*.pdb
+*.exp
+*.ilk
+*.pch
+*.gch
+*.ipch
+
+# Local IDE settings and generated project files
 .vs/
+.idea/
+.serena/
 *.sln
 *.slnx
 *.sln.DotSettings.user
@@ -15,5 +25,21 @@ Saved/
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+*.opensdf
+*.sdf
 *.VC.db
 *.VC.opendb
+*.xcodeproj/
+*.xcworkspace/
+compile_commands.json
+
+# Local Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
