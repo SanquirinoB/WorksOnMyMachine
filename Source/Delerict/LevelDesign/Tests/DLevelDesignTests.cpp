@@ -1,6 +1,14 @@
 #if WITH_DEV_AUTOMATION_TESTS
 
 #include "../DRoomProgress.h"
+#include "../../Frontend/DMenu.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
+#include "Components/Button.h"
+#include "Framework/Application/SlateApplication.h"
+#include "Layout/WidgetPath.h"
+#include "Input/HittestGrid.h"
+#include "Widgets/SWindow.h"
+#include "Kismet/GameplayStatics.h"
 #include "../../Player/DMoverComponent.h"
 #include "../../Player/DPawn.h"
 #include "GameFramework/PlayerController.h"
@@ -12,7 +20,40 @@
 
 namespace
 {
-    enum class EDRouteStep : uint8 { Start, Rise, Checkpoint, Descend, Hazard, Retry, Exit };
+    enum class EDRouteStep : uint8 { Start, StartScreen, Restarted, Rise, Checkpoint, Descend, Hazard, Respawned, Retry, Exit };
+
+    bool PressRetry(FAutomationTestBase& Test, APlayerController& Player, bool bUseMouse)
+    {
+        TArray<UUserWidget*> Menus;
+        UWidgetBlueprintLibrary::GetAllWidgetsOfClass(&Player, Menus, UDMenu::StaticClass(), true);
+        if (!Test.TestEqual(TEXT("A single menu owns the viewport on death"), Menus.Num(), 1)) { return false; }
+        auto* Button = Cast<UButton>(Menus[0]->GetWidgetFromName(TEXT("Retry")));
+        if (!Test.TestNotNull(TEXT("Retry button"), Button) ||
+            !Test.TestTrue(TEXT("Retry initially has user focus"), Button->HasUserFocus(&Player))) { return false; }
+
+        auto& Slate = FSlateApplication::Get();
+        if (bUseMouse)
+        {
+            const auto Window = Slate.FindWidgetWindow(Button->TakeWidget());
+            if (!Test.TestTrue(TEXT("Retry has a game window"), Window.IsValid())) { return false; }
+            const FGeometry& Geometry = Button->GetCachedGeometry();
+            const FVector2D Center = Geometry.LocalToAbsolute(Geometry.GetLocalSize() * .5f);
+            const FWidgetPath Path(Window->GetHittestGrid().GetBubblePath(FVector2f(Center), 0.f, false, 0));
+            if (!Test.TestTrue(TEXT("A click hits Retry"), Path.ContainsWidget(Button->GetCachedWidget().Get()))) { return false; }
+            const TSet<FKey> Up, Down{EKeys::LeftMouseButton};
+            Slate.RoutePointerMoveEvent(Path, FPointerEvent(0, Center, Center, Up, EKeys::Invalid, 0, {}), false);
+            Slate.RoutePointerDownEvent(Path, FPointerEvent(0, Center, Center, Down, EKeys::LeftMouseButton, 0, {}));
+            Slate.RoutePointerUpEvent(Path, FPointerEvent(0, Center, Center, Up, EKeys::LeftMouseButton, 0, {}));
+        }
+        else
+        {
+            const FKeyEvent Confirm(EKeys::Gamepad_FaceButton_Bottom, {}, 0, false, 0, 0);
+            Slate.ProcessKeyDownEvent(Confirm);
+            Slate.ProcessKeyUpEvent(Confirm);
+        }
+        return Test.TestFalse(TEXT("Retry closes the death screen"), Menus[0]->IsInViewport()) &&
+            Test.TestFalse(TEXT("Retry resumes play"), UGameplayStatics::IsGamePaused(&Player));
+    }
 
     class FDPlayLabRoute final : public IAutomationLatentCommand
     {
@@ -47,6 +88,23 @@ namespace
             case EDRouteStep::Start:
                 Test.TestTrue(TEXT("Lab uses its start prefab"), FMath::Abs(Position.X) < 30.);
                 OriginalPawn = Pawn;
+                StartPosition = Position;
+                Pawn->Die();
+                Pawn->Die();
+                Step = EDRouteStep::StartScreen;
+                break;
+            case EDRouteStep::StartScreen:
+                if (UGameplayStatics::IsGamePaused(World))
+                {
+                    Test.TestTrue(TEXT("Death waits for Retry"), Pawn == OriginalPawn.Get());
+                    if (!PressRetry(Test, *Player, false)) { return true; }
+                    Step = EDRouteStep::Restarted;
+                }
+                break;
+            case EDRouteStep::Restarted:
+                Test.TestTrue(TEXT("Without a checkpoint Retry uses the level start"),
+                    Pawn != OriginalPawn.Get() && Position.Equals(StartPosition, 5.));
+                OriginalPawn = Pawn;
                 SetDrift(FVector(440., 0., 110.));
                 Step = EDRouteStep::Rise;
                 break;
@@ -78,6 +136,14 @@ namespace
                 }
                 break;
             case EDRouteStep::Hazard:
+                if (UGameplayStatics::IsGamePaused(World))
+                {
+                    Test.TestTrue(TEXT("Hazard holds the original pawn until Retry"), Pawn == OriginalPawn.Get());
+                    if (!PressRetry(Test, *Player, true)) { return true; }
+                    Step = EDRouteStep::Respawned;
+                }
+                break;
+            case EDRouteStep::Respawned:
                 if (Pawn != OriginalPawn.Get())
                 {
                     Test.TestTrue(TEXT("Hazard respawns the player at the activated checkpoint"),
@@ -109,6 +175,7 @@ namespace
         FAutomationTestBase& Test;
         const double Started = FPlatformTime::Seconds();
         EDRouteStep Step = EDRouteStep::Start;
+        FVector StartPosition = FVector::ZeroVector;
         TWeakObjectPtr<ADPawn> OriginalPawn;
     };
 }

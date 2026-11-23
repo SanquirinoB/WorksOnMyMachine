@@ -17,6 +17,7 @@ class UDMenu : public UCoreKitFrontendMenu
 
 public:
     static bool OpenPause(APlayerController& Player);
+    static bool OpenDeath(APlayerController& Player, bool bHasCheckpoint);
     UWidget* GetInitialFocus_Implementation() const override;
 
 protected:
@@ -26,11 +27,14 @@ protected:
     FReply NativeOnKeyDown(const FGeometry& Geometry, const FKeyEvent& Event) override;
 
 private:
+    enum class EScreen { Title, Pause, Death };
+    static bool OpenOverlay(APlayerController& Player, EScreen Screen, bool bHasCheckpoint);
+    void BuildDeathCard();
     enum class EPrompt { NewGame, Return, Exit };
     void OpenPrompt(EPrompt Action, const FText& Question, const FText& Detail);
     void CloseSettings();
     void ReleaseFocus(FGuid& Scope);
-    void ClosePause();
+    void CloseOverlay();
     UButton* AddAction(UVerticalBox& Column, FName Name, const FText& Label, FName Handler);
     void BuildPrompt();
 
@@ -39,6 +43,7 @@ private:
     UFUNCTION() void StartNewGame();
     UFUNCTION() void Settings();
     UFUNCTION() void Resume();
+    UFUNCTION() void Retry();
     UFUNCTION() void ReturnToTitle();
     UFUNCTION() void Exit();
     UFUNCTION() void CancelPrompt();
@@ -61,7 +66,8 @@ private:
     FGuid PauseFocus;
     FGuid ChildFocus;
     EPrompt PendingAction = EPrompt::Exit;
-    bool bPause = false;
+    EScreen Screen = EScreen::Title;
+    bool bHasCheckpoint = false;
     bool bPreviousCursor = false;
     EMouseCursor::Type PreviousCursorShape = EMouseCursor::Default;
 };

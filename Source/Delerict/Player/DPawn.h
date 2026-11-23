@@ -44,6 +44,11 @@ public:
     FSimpleMulticastDelegate OnGrabRequested;
     FSimpleMulticastDelegate OnSelectThrowableRequested;
 
+    /** Trigger the same death and retry flow as a room hazard. */
+    UFUNCTION(BlueprintCallable, Exec, Category = "Player")
+    void Die();
+
+    void FellOutOfWorld(const UDamageType& DamageType) override;
     FVector GetVelocity() const override;
     void ProduceInput_Implementation(int32 SimTimeMs, FMoverInputCmdContext& InputCmd) override;
 

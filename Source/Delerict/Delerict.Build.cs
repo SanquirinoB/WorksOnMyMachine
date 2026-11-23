@@ -12,7 +12,7 @@ public class Delerict : ModuleRules
         {
             "Core", "CoreUObject", "Engine", "AnimGraphRuntime", "CoreKitTween",
             "CoreKitBasicUI", "CoreKitFrontend", "CoreKitNavigation",
-            "EnhancedInput", "GameplayCameras", "InputCore", "Mover", "SlateCore", "UMG"
+            "EnhancedInput", "GameplayCameras", "InputCore", "Mover", "Slate", "SlateCore", "UMG"
         });
     }
 }

@@ -1,5 +1,6 @@
 #include "DRoomProgress.h"
 
+#include "../Frontend/DMenu.h"
 #include "Engine/World.h"
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/PlayerController.h"
@@ -24,7 +25,7 @@ bool UDRoomProgress::SetCheckpoint(APlayerController& Player, const FTransform& 
 void UDRoomProgress::RequestRespawn(APlayerController& Player, APawn& Pawn)
 {
     FDPlayerProgress& Progress = Players.FindOrAdd(&Player);
-    if (Progress.bRespawnPending)
+    if (Progress.bRespawnPending || Player.GetPawn() != &Pawn)
     {
         return;
     }
@@ -36,27 +37,41 @@ void UDRoomProgress::RequestRespawn(APlayerController& Player, APawn& Pawn)
         {
             if (APlayerController* Current = Controller.Get())
             {
-                Players.FindChecked(Current).bRespawnPending = false;
-                if (APawn* OldPawn = Previous.Get(); OldPawn && Current->GetPawn() == OldPawn)
+                FDPlayerProgress& State = Players.FindChecked(Current);
+                if (!Previous.IsValid() || Current->GetPawn() != Previous.Get())
                 {
-                    Respawn(*Current, *OldPawn);
+                    State.bRespawnPending = false;
+                    return;
+                }
+                if (GetWorld()->GetNetMode() == NM_Standalone && UDMenu::OpenDeath(*Current, State.Checkpoint.IsSet()))
+                {
+                    return;
+                }
+                // Worlds without a local menu keep the existing automatic recovery.
+                if (!Retry(*Current))
+                {
+                    Players.FindChecked(Current).bRespawnPending = false;
                 }
             }
         }));
 }
 
-void UDRoomProgress::Respawn(APlayerController& Player, APawn& PreviousPawn)
+bool UDRoomProgress::Retry(APlayerController& Player)
 {
+    FDPlayerProgress* Progress = Players.Find(&Player);
+    APawn* PreviousPawn = Player.GetPawn();
     AGameModeBase* Mode = GetWorld()->GetAuthGameMode();
-    if (!Mode)
+    if (!Progress || !Progress->bRespawnPending || !PreviousPawn || !Mode)
     {
-        return;
+        return false;
     }
-    const FDPlayerProgress& Progress = Players.FindChecked(&Player);
+    // The previous capsule can still occupy the start if the player died there.
+    const bool bWasCollidable = PreviousPawn->GetActorEnableCollision();
+    PreviousPawn->SetActorEnableCollision(false);
     APawn* Replacement = nullptr;
-    if (Progress.Checkpoint.IsSet())
+    if (Progress->Checkpoint.IsSet())
     {
-        Replacement = Mode->SpawnDefaultPawnAtTransform(&Player, Progress.Checkpoint.GetValue());
+        Replacement = Mode->SpawnDefaultPawnAtTransform(&Player, Progress->Checkpoint.GetValue());
     }
     if (!Replacement)
     {
@@ -65,18 +80,21 @@ void UDRoomProgress::Respawn(APlayerController& Player, APawn& PreviousPawn)
             Replacement = Mode->SpawnDefaultPawnFor(&Player, Start);
         }
     }
-    if (Replacement)
+    if (!Replacement)
     {
-        Player.Possess(Replacement);
-        if (Player.GetPawn() == Replacement)
-        {
-            PreviousPawn.Destroy();
-        }
-        else
-        {
-            Replacement->Destroy();
-        }
+        PreviousPawn->SetActorEnableCollision(bWasCollidable);
+        return false;
     }
+    Player.Possess(Replacement);
+    if (Player.GetPawn() != Replacement)
+    {
+        Replacement->Destroy();
+        PreviousPawn->SetActorEnableCollision(bWasCollidable);
+        return false;
+    }
+    PreviousPawn->Destroy();
+    Players.FindChecked(&Player).bRespawnPending = false;
+    return true;
 }
 
 bool UDRoomProgress::CompleteRoom(APlayerController& Player)

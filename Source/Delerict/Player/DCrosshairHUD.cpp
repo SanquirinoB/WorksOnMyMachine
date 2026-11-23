@@ -2,6 +2,7 @@
 
 #include "DPawn.h"
 #include "Engine/Canvas.h"
+#include "Kismet/GameplayStatics.h"
 
 void ADCrosshairHUD::DrawHUD()
 {
@@ -9,7 +10,7 @@ void ADCrosshairHUD::DrawHUD()
 
     const auto* Pawn = Cast<ADPawn>(GetOwningPawn());
     FVector2D Position;
-    if (!Canvas || !Pawn || !Pawn->GetCrosshairPosition(Position))
+    if (!Canvas || !Pawn || UGameplayStatics::IsGamePaused(this) || !Pawn->GetCrosshairPosition(Position))
     {
         return;
     }

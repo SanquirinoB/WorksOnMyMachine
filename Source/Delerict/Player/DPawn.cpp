@@ -1,4 +1,5 @@
 #include "DPawn.h"
+#include "../LevelDesign/DRoomProgress.h"
 
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -115,6 +116,28 @@ void ADPawn::UnPossessed()
     ClearInput();
     RestoreAimCursor();
     Super::UnPossessed();
+}
+
+void ADPawn::Die()
+{
+    APlayerController* Player = Cast<APlayerController>(GetController());
+    if (Player && HasAuthority())
+    {
+        if (auto* Progress = GetWorld()->GetSubsystem<UDRoomProgress>())
+        {
+            Progress->RequestRespawn(*Player, *this);
+        }
+    }
+}
+
+void ADPawn::FellOutOfWorld(const UDamageType& DamageType)
+{
+    if (HasAuthority() && IsPlayerControlled() && GetWorld()->GetSubsystem<UDRoomProgress>())
+    {
+        Die();
+        return;
+    }
+    Super::FellOutOfWorld(DamageType);
 }
 
 FVector ADPawn::GetVelocity() const

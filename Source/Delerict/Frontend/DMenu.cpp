@@ -1,6 +1,10 @@
 #include "DMenu.h"
 #include "DMenuStyle.h"
 #include "DSettings.h"
+#include "../LevelDesign/DRoomProgress.h"
+#include "Components/NativeWidgetHost.h"
+#include "Rendering/DrawElementTypes.h"
+#include "Widgets/SLeafWidget.h"
 
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Blueprint/WidgetTree.h"
@@ -32,6 +36,24 @@ using namespace DelerictUI;
 
 namespace
 {
+class SDeathPulse final : public SLeafWidget
+{
+public:
+    SLATE_BEGIN_ARGS(SDeathPulse) {}
+    SLATE_END_ARGS()
+    void Construct(const FArguments&) { SetVisibility(EVisibility::HitTestInvisible); }
+    FVector2D ComputeDesiredSize(float) const override { return FVector2D(0, 32); }
+    int32 OnPaint(const FPaintArgs&, const FGeometry& Geometry, const FSlateRect&,
+        FSlateWindowElementList& Elements, int32 Layer, const FWidgetStyle&, bool) const override
+    {
+        TArray<FVector2f> Points = {{0, 14}, {45, 14}, {50, 24}, {56, 4}, {62, 30},
+            {69, 14}, {static_cast<float>(Geometry.GetLocalSize().X), 14}};
+        FSlateDrawElement::MakeLines(Elements, Layer, Geometry.ToPaintGeometry(), MoveTemp(Points),
+            ESlateDrawEffect::None, Accent, true, 2.5f);
+        return Layer;
+    }
+};
+
 void SetPrimary(UButton& Button, bool bPrimary)
 {
     auto* Row = CastChecked<UHorizontalBox>(Button.GetContent());
@@ -62,10 +84,11 @@ TSharedRef<SWidget> UDMenu::RebuildWidget()
     WidgetTree->RootWidget = Overlay;
     Actions = WidgetTree->ConstructWidget<UVerticalBox>();
     MenuPanel = Actions;
-    if (bPause)
+    const bool bOverlay = Screen != EScreen::Title;
+    if (bOverlay)
     {
         auto* Shade = WidgetTree->ConstructWidget<UBorder>();
-        Shade->SetBrushColor(FLinearColor(.005f, .009f, .013f, .55f));
+        Shade->SetBrushColor(FLinearColor(.005f, .009f, .013f, Screen == EScreen::Death ? .67f : .55f));
         Fill(*Overlay, *Shade);
         auto* Frame = Surface(*WidgetTree, Panel, FMargin(42, 30, 42, 42), 1.f);
         Frame->SetContent(Actions);
@@ -85,7 +108,13 @@ TSharedRef<SWidget> UDMenu::RebuildWidget()
     UOverlaySlot* Placement = Overlay->AddChildToOverlay(MenuPanel);
     Placement->SetHorizontalAlignment(HAlign_Left);
     Placement->SetVerticalAlignment(VAlign_Center);
-    Placement->SetPadding(FMargin(112.f, 0.f, 24.f, bPause ? 0.f : 42.f));
+    Placement->SetPadding(FMargin(112.f, 0.f, 24.f, bOverlay ? 0.f : 42.f));
+    if (Screen == EScreen::Death)
+    {
+        BuildDeathCard();
+        return Super::RebuildWidget();
+    }
+    const bool bPause = Screen == EScreen::Pause;
     auto* Heading = Label(*WidgetTree, bPause ? LOCTEXT("Paused", "Paused") : LOCTEXT("Title", "DERELICT"),
         bPause ? 57 : 143, Family::Display, bPause ? 700 : 800, Ink, bPause ? .015f : .04f);
     Heading->SetShadowColorAndOpacity(Hex(0x000000, .35f));
@@ -117,6 +146,19 @@ TSharedRef<SWidget> UDMenu::RebuildWidget()
     return Super::RebuildWidget();
 }
 
+void UDMenu::BuildDeathCard()
+{
+    auto* Pulse = WidgetTree->ConstructWidget<UNativeWidgetHost>();
+    Pulse->SetContent(SNew(SDeathPulse));
+    Actions->AddChildToVerticalBox(Pulse)->SetPadding(FMargin(0, 8, 0, 14));
+    Actions->AddChildToVerticalBox(Label(*WidgetTree, LOCTEXT("Died", "You Died"), 65, Family::Display, 700));
+    Feedback = Label(*WidgetTree, bHasCheckpoint ? LOCTEXT("RetryCheckpoint", "Return to your last checkpoint.")
+        : LOCTEXT("RetryStart", "Return to the level start."), 23);
+    Actions->AddChildToVerticalBox(Feedback)->SetPadding(FMargin(0, 8, 0, 34));
+    PrimaryButton = AddAction(*Actions, TEXT("Retry"), LOCTEXT("Retry", "Retry"), GET_FUNCTION_NAME_CHECKED(ThisClass, Retry));
+    SetPrimary(*PrimaryButton, true);
+}
+
 UButton* UDMenu::AddAction(UVerticalBox& Column, FName Name, const FText& Text, FName Handler)
 {
     auto* Row = WidgetTree->ConstructWidget<UHorizontalBox>();
@@ -136,7 +178,7 @@ UButton* UDMenu::AddAction(UVerticalBox& Column, FName Name, const FText& Text, 
     ArrowSlot->SetPadding(FMargin(0, 0, 22, 0));
     auto* Action = Button(*WidgetTree, *this, Name, Handler, Row);
     SetPrimary(*Action, false);
-    auto* Placement = Column.AddChildToVerticalBox(Box(*WidgetTree, Action, bPause ? 450.f : 505.f, 71.f));
+    auto* Placement = Column.AddChildToVerticalBox(Box(*WidgetTree, Action, Screen == EScreen::Title ? 505.f : 450.f, 71.f));
     Placement->SetHorizontalAlignment(HAlign_Left);
     Placement->SetPadding(FMargin(0, 0, 0, 8));
     return Action;
@@ -183,7 +225,7 @@ void UDMenu::BuildPrompt()
 void UDMenu::NativeConstruct()
 {
     Super::NativeConstruct();
-    if (!bPause && GetFrontend())
+    if (Screen == EScreen::Title && GetFrontend())
     {
         GetFrontend()->OnChanged.AddUniqueDynamic(this, &ThisClass::RefreshTitle);
         RefreshTitle();
@@ -228,15 +270,26 @@ void UDMenu::RefreshTitle()
 
 bool UDMenu::OpenPause(APlayerController& Player)
 {
+    const auto* Frontend = Player.GetGameInstance()->GetSubsystem<UCoreKitFrontendSubsystem>();
+    return Frontend && Frontend->GetState() == ECoreKitFrontendState::Gameplay && OpenOverlay(Player, EScreen::Pause, false);
+}
+
+bool UDMenu::OpenDeath(APlayerController& Player, bool bCheckpoint)
+{
+    return OpenOverlay(Player, EScreen::Death, bCheckpoint);
+}
+
+bool UDMenu::OpenOverlay(APlayerController& Player, EScreen InScreen, bool bCheckpoint)
+{
     auto* Local = Player.GetLocalPlayer();
-    auto* Frontend = Player.GetGameInstance()->GetSubsystem<UCoreKitFrontendSubsystem>();
-    if (!Local || !Frontend || Frontend->GetState() != ECoreKitFrontendState::Gameplay ||
-        UGameplayStatics::IsGamePaused(&Player))
+    if (!Local || UGameplayStatics::IsGamePaused(&Player))
     {
         return false;
     }
     auto* Menu = CreateWidget<UDMenu>(&Player);
-    Menu->bPause = true;
+    if (!Menu) { return false; }
+    Menu->Screen = InScreen;
+    Menu->bHasCheckpoint = bCheckpoint;
     Menu->bPreviousCursor = Player.ShouldShowMouseCursor();
     Menu->PreviousCursorShape = Player.CurrentMouseCursor;
     if (!UGameplayStatics::SetGamePaused(&Player, true))
@@ -256,13 +309,15 @@ bool UDMenu::OpenPause(APlayerController& Player)
     return true;
 }
 
-void UDMenu::ClosePause()
+void UDMenu::CloseOverlay()
 {
     APlayerController* Player = GetOwningPlayer();
+    ReleaseFocus(PauseFocus);
     Player->SetShowMouseCursor(bPreviousCursor);
     Player->CurrentMouseCursor = PreviousCursorShape;
     UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(Player, nullptr, EMouseLockMode::LockInFullscreen, false, true);
     RemoveFromParent();
+    UWidgetBlueprintLibrary::SetFocusToGameViewport();
 }
 
 void UDMenu::Settings()
@@ -274,7 +329,7 @@ void UDMenu::Settings()
     Options = CreateWidget<UDSettings>(GetOwningPlayer());
     Options->ConfigureEmbeddedSettings(FSimpleDelegate::CreateUObject(this, &ThisClass::CloseSettings), FText());
     MenuPanel->SetVisibility(ESlateVisibility::Collapsed);
-    if (!bPause)
+    if (Screen == EScreen::Title)
     {
         SettingsShade = Surface(*WidgetTree, Hex(0x000000, .42f));
         Fill(*Overlay, *SettingsShade);
@@ -311,12 +366,13 @@ FReply UDMenu::NativeOnKeyDown(const FGeometry& Geometry, const FKeyEvent& Event
     const FKey Key = Event.GetKey();
     if (!Options && (Key == EKeys::Escape || Key == EKeys::Gamepad_FaceButton_Right || Key == EKeys::Gamepad_Special_Right))
     {
+        if (Screen == EScreen::Death) { return FReply::Handled(); }
         if (Prompt->GetVisibility() == ESlateVisibility::Visible)
         {
             CancelPrompt();
             return FReply::Handled();
         }
-        if (bPause)
+        if (Screen == EScreen::Pause)
         {
             Resume();
             return FReply::Handled();
@@ -355,7 +411,7 @@ void UDMenu::ConfirmPrompt()
     case EPrompt::Return:
         if (UGameplayStatics::SetGamePaused(this, false))
         {
-            ClosePause();
+            CloseOverlay();
             GetFrontend()->ReturnToMainMenu();
         }
         break;
@@ -382,9 +438,22 @@ void UDMenu::Resume()
 {
     if (UGameplayStatics::SetGamePaused(this, false))
     {
-        ClosePause();
+        CloseOverlay();
     }
 }
+void UDMenu::Retry()
+{
+    APlayerController* Player = GetOwningPlayer();
+    auto* Progress = GetWorld()->GetSubsystem<UDRoomProgress>();
+    if (!Player || !Progress || !Progress->Retry(*Player))
+    {
+        Feedback->SetText(LOCTEXT("RetryFailed", "Could not respawn. Try again."));
+        return;
+    }
+    UGameplayStatics::SetGamePaused(this, false);
+    CloseOverlay();
+}
+
 void UDMenu::ReturnToTitle()
 {
     OpenPrompt(EPrompt::Return, LOCTEXT("ConfirmReturn", "Return to Main Menu?"),

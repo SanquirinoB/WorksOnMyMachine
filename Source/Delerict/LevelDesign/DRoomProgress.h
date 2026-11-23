@@ -16,6 +16,7 @@ public:
     bool DoesSupportWorldType(EWorldType::Type WorldType) const override;
     bool SetCheckpoint(APlayerController& Player, const FTransform& Transform);
     void RequestRespawn(APlayerController& Player, APawn& Pawn);
+    bool Retry(APlayerController& Player);
     bool CompleteRoom(APlayerController& Player);
     bool HasCompletedRoom(const APlayerController& Player) const;
 
@@ -28,5 +29,4 @@ private:
     };
 
     TMap<TWeakObjectPtr<const APlayerController>, FDPlayerProgress> Players;
-    void Respawn(APlayerController& Player, APawn& PreviousPawn);
 };

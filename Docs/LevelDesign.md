@@ -7,7 +7,7 @@ Para armar tu propia sala, crea un nivel o duplica el laboratorio desde el Conte
 - **Suelo, plataforma y pared.** `Dimensions` controla ancho (X), profundidad (Y) y altura (Z) en centímetros. `Finish` cambia el acabado. El pivote está en el centro de la base.
 - **Inicio.** Colócalo unos 100 cm sobre la superficie transitable. Su Y fija el carril de Mover.
 - **Punto de acople.** Arrastra `BP_DDockingPoint` desde `Content/Delerict/LevelDesign/Prefabs`. Orienta el eje X hacia la aproximación y ajusta `Docking Offset` y `Approach Radius`. El punto expone la pose al sistema de movimiento cuando el Pawn está al alcance y `Docking Enabled` está activo.
-- **Peligro.** `Dimensions` define el volumen. Al tocarlo vuelves al checkpoint activo o al inicio.
+- **Peligro.** `Dimensions` define el volumen. Al tocarlo aparece **You Died**. Pulsa **Retry** para volver al checkpoint activo o al inicio del nivel. Para probar la pantalla en cualquier sala, ejecuta `Die` en la consola durante Play.
 - **Checkpoint.** `Respawn Offset` define dónde reapareces respecto de la base. Ponlo sobre un suelo seguro y comprueba que quepa la cápsula.
 - **Salida.** `Destination` permite asignar el siguiente mapa. En el laboratorio ese campo está vacío y la salida marca la sala como completada.
 
