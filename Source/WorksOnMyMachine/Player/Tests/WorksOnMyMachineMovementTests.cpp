@@ -1,6 +1,7 @@
 #if WITH_DEV_AUTOMATION_TESTS
 
 #include "../WorksOnMyMachinePawn.h"
+#include "Camera/PlayerCameraManager.h"
 #include "DefaultMovementSet/CharacterMoverComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
@@ -30,12 +31,13 @@ namespace
             APlayerController* Player = World ? GEngine->GetFirstLocalPlayerController(World) : nullptr;
             AWorksOnMyMachinePawn* Pawn = Player ? Cast<AWorksOnMyMachinePawn>(Player->GetPawn()) : nullptr;
             UCharacterMoverComponent* Mover = Pawn ? Pawn->FindComponentByClass<UCharacterMoverComponent>() : nullptr;
-            if (!Mover)
+            if (!Mover || !Player->PlayerCameraManager)
             {
                 return false;
             }
 
             const FVector Position = Pawn->GetActorLocation();
+            const FMinimalViewInfo& View = Player->PlayerCameraManager->GetCameraCacheView();
             const double Now = World->GetTimeSeconds();
             const double Elapsed = Now - PhaseStarted;
             const auto Advance = [this, Now](EMovementPhase Next)
@@ -53,6 +55,18 @@ namespace
             case EMovementPhase::Spawn:
                 if (!Mover->IsOnGround()) { return false; }
                 StartPosition = Position;
+                StartView = View;
+                {
+                    int32 Width = 0;
+                    int32 Height = 0;
+                    Player->GetViewportSize(Width, Height);
+                    FVector2D Screen;
+                    const FVector Target = View.Location + View.Rotation.Vector() * 1500.;
+                    Test.TestTrue(TEXT("The camera view has a centered projection"),
+                        Width > 0 && Height > 0 && Player->ProjectWorldLocationToScreen(Target, Screen)
+                        && Screen.Equals(FVector2D(Width * .5, Height * .5), 3.));
+                }
+                Player->SetControlRotation(FRotator(-12., 153., 0.));
                 Test.TestTrue(TEXT("Mover uses 80 percent of world gravity"),
                     FMath::IsNearlyEqual(Mover->GetGravityAcceleration().Z, World->GetGravityZ() * .8, 1.));
                 SendKey(EKeys::D, IE_Pressed);
@@ -63,6 +77,11 @@ namespace
                 if (Elapsed < .45) { return false; }
                 Test.TestTrue(TEXT("D moves right along the lane"), Position.X > StartPosition.X + 60.
                     && FMath::IsNearlyEqual(Position.Y, StartPosition.Y, .5) && Mover->IsOnGround());
+                Test.TestTrue(TEXT("The camera follows X and preserves its lateral framing"),
+                    View.Location.X > StartView.Location.X + 30. && View.Location.Y > Position.Y
+                    && FMath::IsNearlyEqual(View.Rotation.Yaw, -90., .1)
+                    && View.Rotation.Equals(StartView.Rotation, .1)
+                    && View.ProjectionMode == StartView.ProjectionMode);
                 SendKey(EKeys::D, IE_Released);
                 Advance(EMovementPhase::Brake);
                 break;
@@ -107,6 +126,8 @@ namespace
                 if (Elapsed < .5) { return false; }
                 Test.TestTrue(TEXT("A moves left along the lane"), Position.X < WallX - 60.
                     && FMath::IsNearlyEqual(Position.Y, StartPosition.Y, .5));
+                Test.TestTrue(TEXT("Changing direction preserves the camera angle"),
+                    View.Rotation.Equals(StartView.Rotation, .1) && View.ProjectionMode == StartView.ProjectionMode);
                 SendKey(EKeys::A, IE_Released);
                 return true;
             }
@@ -119,6 +140,7 @@ namespace
         EMovementPhase Phase = EMovementPhase::Spawn;
         double PhaseStarted = 0.;
         FVector StartPosition = FVector::ZeroVector;
+        FMinimalViewInfo StartView;
         double TakeoffHeight = 0.;
         double JumpHeight = 0.;
         double WallX = 0.;

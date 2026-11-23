@@ -1,14 +1,15 @@
 #include "WorksOnMyMachinePawn.h"
 
-#include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Core/CameraAsset.h"
 #include "DefaultMovementSet/Settings/CommonLegacyMovementSettings.h"
 #include "WorksOnMyMachineMoverComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/StaticMesh.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "GameFramework/GameplayCameraComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "InputAction.h"
 #include "InputMappingContext.h"
@@ -39,11 +40,13 @@ AWorksOnMyMachinePawn::AWorksOnMyMachinePawn()
 
     Mover = CreateDefaultSubobject<UWorksOnMyMachineMoverComponent>(TEXT("Mover"));
 
-    Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-    Camera->SetupAttachment(Capsule);
-    Camera->SetAbsolute(true, true, false);
-    Camera->SetWorldRotation(FRotator(-5., -90., 0.));
-    Camera->SetFieldOfView(60.f);
+    GameplayCamera = CreateDefaultSubobject<UGameplayCameraComponent>(TEXT("GameplayCamera"));
+    GameplayCamera->SetupAttachment(Capsule);
+    GameplayCamera->SetUsingAbsoluteRotation(true);
+    GameplayCamera->SetAutoActivate(false);
+    static ConstructorHelpers::FObjectFinder<UCameraAsset> SideScrollCamera(
+        TEXT("/Game/WorksOnMyMachine/Cameras/CA_DelerictSideScroll.CA_DelerictSideScroll"));
+    GameplayCamera->CameraReference.SetCameraAsset(SideScrollCamera.Object);
 }
 
 void AWorksOnMyMachinePawn::BeginPlay()
@@ -62,8 +65,7 @@ void AWorksOnMyMachinePawn::BeginPlay()
     Constraint.PlaneConstraintNormal = FVector::RightVector;
     Constraint.PlaneConstraintOrigin = GetActorLocation();
     Mover->SetPlanarConstraint(Constraint);
-    Camera->SetWorldLocation(GetActorLocation() + FVector(0., 700., 65.));
-    Mover->OnPostFinalize.AddUniqueDynamic(this, &ThisClass::UpdateCameraPosition);
+    Mover->OnPostFinalize.AddUniqueDynamic(this, &ThisClass::UpdateCameraLead);
 }
 
 void AWorksOnMyMachinePawn::EndPlay(const EEndPlayReason::Type Reason)
@@ -72,8 +74,19 @@ void AWorksOnMyMachinePawn::EndPlay(const EEndPlayReason::Type Reason)
     Super::EndPlay(Reason);
 }
 
+void AWorksOnMyMachinePawn::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+    if (APlayerController* Player = Cast<APlayerController>(NewController);
+        Player && Player->IsLocalController() && GameplayCamera->CameraReference.IsValid())
+    {
+        GameplayCamera->ActivateCameraForPlayerController(Player);
+    }
+}
+
 void AWorksOnMyMachinePawn::UnPossessed()
 {
+    GameplayCamera->Deactivate();
     ClearInput();
     Super::UnPossessed();
 }
@@ -95,9 +108,11 @@ void AWorksOnMyMachinePawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMo
     bJumpRequested = false;
 }
 
-void AWorksOnMyMachinePawn::UpdateCameraPosition(const FMoverSyncState& /*SyncState*/, const FMoverAuxStateContext& /*AuxState*/)
+void AWorksOnMyMachinePawn::UpdateCameraLead(const FMoverSyncState& /*SyncState*/, const FMoverAuxStateContext& /*AuxState*/)
 {
-    Camera->SetWorldLocation(GetActorLocation() + FVector(0., 700., 65.));
+    const double MaxLead = CameraMaxLookAhead;
+    const double Lead = FMath::Clamp(GetVelocity().X * CameraLookAheadTime, -MaxLead, MaxLead);
+    GameplayCamera->SetWorldLocation(GetActorLocation() + FVector(Lead, 0., 0.));
 }
 
 void AWorksOnMyMachinePawn::CreateInputMappings()

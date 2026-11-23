@@ -7,7 +7,7 @@ public class WorksOnMyMachine : ModuleRules
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         PrivateDependencyModuleNames.AddRange(new[]
         {
-            "Core", "CoreUObject", "Engine", "EnhancedInput", "InputCore", "Mover"
+            "Core", "CoreUObject", "Engine", "EnhancedInput", "GameplayCameras", "InputCore", "Mover"
         });
     }
 }

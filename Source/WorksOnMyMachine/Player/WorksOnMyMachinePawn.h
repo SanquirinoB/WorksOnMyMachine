@@ -4,10 +4,10 @@
 #include "MoverSimulationTypes.h"
 #include "WorksOnMyMachinePawn.generated.h"
 
-class UCameraComponent;
 class UCapsuleComponent;
 class UCharacterMoverComponent;
 class UEnhancedInputLocalPlayerSubsystem;
+class UGameplayCameraComponent;
 class UInputAction;
 class UInputMappingContext;
 class UStaticMeshComponent;
@@ -27,6 +27,7 @@ public:
 protected:
     void BeginPlay() override;
     void EndPlay(const EEndPlayReason::Type Reason) override;
+    void PossessedBy(AController* NewController) override;
     void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
     void UnPossessed() override;
 
@@ -40,7 +41,13 @@ protected:
     TObjectPtr<UCharacterMoverComponent> Mover;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
-    TObjectPtr<UCameraComponent> Camera;
+    TObjectPtr<UGameplayCameraComponent> GameplayCamera;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Camera", meta = (ClampMin = "0", Units = "s"))
+    float CameraLookAheadTime = .18f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Camera", meta = (ClampMin = "0", Units = "cm"))
+    float CameraMaxLookAhead = 90.f;
 
     UPROPERTY(EditDefaultsOnly, Category = "Movement", meta = (ClampMin = "1", Units = "cm/s"))
     float MaxGroundSpeed = 500.f;
@@ -68,5 +75,5 @@ private:
     void StopJump();
 
     UFUNCTION()
-    void UpdateCameraPosition(const FMoverSyncState& SyncState, const FMoverAuxStateContext& AuxState);
+    void UpdateCameraLead(const FMoverSyncState& SyncState, const FMoverAuxStateContext& AuxState);
 };
