@@ -59,8 +59,8 @@ public:
     FName GetSelectedThrowableType() const;
     float GetThrowCharge() const;
 
-    /** Queue a world-space impulse in kg*cm/s using the effective mass at the time of the event. */
-    void QueueImpulse(const FVector& WorldImpulse);
+    /** Queue a world-space impulse in kg*cm/s. A directed launch keeps only velocity along the impulse. */
+    void QueueImpulse(const FVector& WorldImpulse, bool bAlignVelocity = false);
 
     FDChargeAction OnJumpCharge;
     FDChargeAction OnThrowCharge;
@@ -140,6 +140,7 @@ private:
     {
         FVector WorldImpulse;
         float Mass;
+        bool bAlignVelocity;
     };
     TArray<FQueuedImpulse, TInlineAllocator<4>> PendingImpulses;
     struct FThrowCharge

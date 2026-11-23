@@ -421,7 +421,7 @@ void UDMagneticSurfaceMode::HandleJumpCharge(EDChargePhase Phase, const FVector&
     }
 
     bJumpDeparturePending = true;
-    Pawn->QueueImpulse(Direction * Magnitude);
+    Pawn->QueueImpulse(Direction * Magnitude, /*bAlignVelocity=*/true);
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     using namespace DGameplayDebug;
     if (IsEnabled(Pawn->GetWorld(), EChannel::Jump))

@@ -183,7 +183,7 @@ const UDPlayerTuning& ADPawn::GetTuning() const
     return PlayerTuning ? *PlayerTuning : *GetDefault<UDPlayerTuning>();
 }
 
-void ADPawn::QueueImpulse(const FVector& WorldImpulse)
+void ADPawn::QueueImpulse(const FVector& WorldImpulse, bool bAlignVelocity)
 {
     check(IsInGameThread());
     if (WorldImpulse.ContainsNaN())
@@ -192,7 +192,7 @@ void ADPawn::QueueImpulse(const FVector& WorldImpulse)
     }
 
     // Snapshot the mass here so later inventory events cannot change the effect of an earlier impulse.
-    PendingImpulses.Add({ WorldImpulse, GetEffectiveMass() });
+    PendingImpulses.Add({ WorldImpulse, GetEffectiveMass(), bAlignVelocity });
 }
 
 FVector ADPawn::GetQueuedVelocityChange(FVector* TotalImpulse) const
@@ -201,7 +201,15 @@ FVector ADPawn::GetQueuedVelocityChange(FVector* TotalImpulse) const
     const FPlanarConstraint& Plane = Mover->GetPlanarConstraint();
     for (const FQueuedImpulse& Impulse : PendingImpulses)
     {
-        const FVector InPlane = UPlanarConstraintUtils::ConstrainDirectionToPlane(Plane, Impulse.WorldImpulse);
+        FVector InPlane = UPlanarConstraintUtils::ConstrainDirectionToPlane(Plane, Impulse.WorldImpulse);
+        if (Impulse.bAlignVelocity && !InPlane.IsNearlyZero())
+        {
+            const FVector Direction = InPlane.GetSafeNormal();
+            const FVector CurrentVelocity = UPlanarConstraintUtils::ConstrainDirectionToPlane(Plane, GetVelocity())
+                + VelocityChange;
+            const double ForwardSpeed = FMath::Max(0., FVector::DotProduct(CurrentVelocity, Direction));
+            InPlane += (Direction * ForwardSpeed - CurrentVelocity) * Impulse.Mass;
+        }
         VelocityChange += InPlane / Impulse.Mass;
         if (TotalImpulse)
         {

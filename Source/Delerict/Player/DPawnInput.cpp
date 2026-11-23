@@ -280,8 +280,8 @@ void ADPawn::UpdateAim()
     FVector RayStart;
     FVector RayDirection;
     TOptional<FVector> Intersection;
-    const bool bHasRay = bHasMouse && !bGamepadAim
-        && Player->DeprojectScreenPositionToWorld(Mouse.X, Mouse.Y, RayStart, RayDirection);
+    const bool bHasRay = !bGamepadAim && LastMousePosition
+        && Player->DeprojectScreenPositionToWorld(LastMousePosition->X, LastMousePosition->Y, RayStart, RayDirection);
     if (bHasRay)
     {
         const FPlanarConstraint& Plane = Mover->GetPlanarConstraint();
