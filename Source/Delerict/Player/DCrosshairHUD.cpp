@@ -30,4 +30,12 @@ void ADCrosshairHUD::DrawHUD()
             DrawLine(Start.X, Start.Y, End.X, End.Y, FLinearColor::White, 1.5f);
         }
     }
+
+    if (const float Charge = Pawn->GetThrowCharge(); Charge > 0.f)
+    {
+        const double Top = FMath::Max(4., Position.Y - 16.);
+        const double Center = FMath::Clamp(Position.X, 14., FMath::Max(14., Canvas->ClipX - 14.));
+        DrawLine(Center - 14., Top, Center + 14., Top, FLinearColor::Black, 4.f);
+        DrawLine(Center - 14., Top, Center - 14. + 28. * Charge, Top, FLinearColor::White, 2.f);
+    }
 }

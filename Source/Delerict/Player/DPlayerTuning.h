@@ -65,9 +65,9 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Aim")
     FVector InitialAimDirection = FVector::ForwardVector;
 
-    /** Buttons that grab a reachable throwable when the grabbed-item slot is empty. An empty list leaves Grab unbound. */
+    /** Interact buttons that grab a reachable throwable when the grabbed-item slot is empty. An empty list leaves Interact unbound. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
-    TArray<FKey> GrabKeys = { EKeys::E, EKeys::Gamepad_LeftShoulder };
+    TArray<FKey> GrabKeys = { EKeys::F, EKeys::Gamepad_LeftShoulder };
 
     /** Maximum gap in cm from the player capsule to a throwable that the player can grab. Zero requires contact. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Throws", meta = (ClampMin = "0", Units = "cm"))
@@ -75,7 +75,11 @@ public:
 
     /** Buttons that cycle through throwable selections. An empty list leaves selection cycling unbound. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
-    TArray<FKey> SelectThrowableKeys = { EKeys::Q, EKeys::Gamepad_DPad_Up };
+    TArray<FKey> SelectThrowableKeys = { EKeys::Tab, EKeys::Gamepad_DPad_Up };
+
+    /** Buttons that activate the most recently deployed item that supports remote activation. An empty list leaves activation unbound. */
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
+    TArray<FKey> ActivateThrowableKeys = { EKeys::Q };
 
     /** Buttons held to charge the selected item and released to throw it. An empty list leaves Throw unbound. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
@@ -101,13 +105,19 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapons")
     TObjectPtr<UDWeaponImpulseTuning> WeaponImpulseTuning = nullptr;
 
-    /** Character mass in kg before adding plates or a grabbed item. Use a positive value. */
+    /** Character mass in kg with an empty inventory. Use a positive value. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Mass", meta = (ClampMin = "0.01", Units = "kg"))
-    float PlayerMass = 80.f;
+    float PlayerMass = 90.f;
 
     /** Mass in kg by throwable type. Give every throwable used in a level a positive entry. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Mass")
-    TMap<FName, float> ThrowableMassByType = { { TEXT("WeightedPlate"), 2.f }, { TEXT("Heavy"), 8.f } };
+    TMap<FName, float> ThrowableMassByType = {
+        { TEXT("WeightedPlate"), 5.f },
+        { TEXT("GrapplingHook"), 1.f },
+        { TEXT("RemoteGrenade"), .5f },
+        { TEXT("PortableBlackHoleDevice"), 2.f },
+        { TEXT("Heavy"), 8.f },
+    };
 
     /** Throwable type used for the starting plate stack. Its mass comes from Throwable Mass by Type. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Throws")

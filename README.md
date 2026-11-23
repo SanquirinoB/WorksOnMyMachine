@@ -22,7 +22,10 @@ from the title or pause menu to adjust video and audio or view the controls.
 Use **WASD**, the **arrow keys**, or the **left stick** for directional input.
 Aim with the mouse or right stick. Hold and release **Space** or the bottom
 gamepad face button for the jump charge. Free flight retains velocity after an
-impulse. Open `L_DTestLane` for the movement and camera test fixtures.
+impulse. Hold **Right Mouse Button** to charge a throw and release it to launch
+the selected item. Press **F** to grab a nearby item and **Tab** to cycle
+between available throwables. Open `L_DTestLane` to try the plate, heavy item,
+and throw switch.
 The workshop has steam, sparks, and an ambient loop. The source soundtrack is
 under `Art/Music/`.
 

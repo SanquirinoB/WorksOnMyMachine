@@ -6,6 +6,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "DefaultMovementSet/CharacterMoverComponent.h"
+#include "Engine/StaticMesh.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "Misc/AutomationTest.h"
@@ -51,11 +52,18 @@ namespace
                             Body && Body->GetSkeletalMeshAsset() && Body->IsPlaying() && !It->IsHidden());
                         ++Bodoques;
                     }
-                    if (It->GetClass()->GetFName() == TEXT("BP_DCompleto_C"))
+                    if (It->ActorHasTag(TEXT("Delerict.CompletoTween")))
                     {
-                        const auto* Prop = It->FindComponentByClass<UStaticMeshComponent>();
-                        Test.TestTrue(TEXT("The Completo is visible and passable"),
-                            Prop && Prop->GetStaticMesh() && Prop->IsVisible() && Prop->GetCollisionEnabled() == ECollisionEnabled::NoCollision);
+                        TArray<AActor*> AttachedProps;
+                        It->GetAttachedActors(AttachedProps);
+                        const AActor* Prop = AttachedProps.Num() == 1 ? AttachedProps[0] : nullptr;
+                        const auto* Visual = Prop ? Prop->FindComponentByClass<UStaticMeshComponent>() : nullptr;
+                        const UStaticMesh* Mesh = Visual ? Visual->GetStaticMesh() : nullptr;
+                        Test.TestTrue(TEXT("A floating Completo is visible and passable"),
+                            Mesh && Mesh->GetFName() == TEXT("SM_DCompleto") && Visual->IsVisible()
+                            && !Prop->IsHidden() && Visual->GetCollisionEnabled() == ECollisionEnabled::NoCollision);
+                        Test.TestTrue(TEXT("A floating Completo shares the player lane"),
+                            FMath::IsNearlyEqual(It->GetActorLocation().Y, Position.Y, 1.));
                         ++Completos;
                     }
                     if (It->ActorHasTag(TEXT("Delerict.RouteEnd")))
@@ -68,7 +76,7 @@ namespace
                     }
                 }
                 Test.TestEqual(TEXT("One Bodoque in the hangar"), Bodoques, 1);
-                Test.TestEqual(TEXT("One Completo in the hangar"), Completos, 1);
+                Test.TestEqual(TEXT("Seven floating Completos in the hangar"), Completos, 7);
                 if (!Test.TestTrue(TEXT("Spawn is inside the start room, near its closed end"),
                     StartWallX.IsSet() && Position.X > StartWallX.GetValue() && Position.X - StartWallX.GetValue() < 800.)
                     || !Test.TestTrue(TEXT("The route continues beyond the room"), EndX.IsSet() && EndX.GetValue() > Position.X + 2000.))
