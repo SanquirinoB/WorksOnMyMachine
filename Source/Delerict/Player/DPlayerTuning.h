@@ -14,6 +14,8 @@ class DELERICT_API UDPlayerTuning : public UDataAsset
     GENERATED_BODY()
 
 public:
+    UDPlayerTuning(const FObjectInitializer& ObjectInitializer);
+
     /** Ordered variations played with the boots moving along a magnetic face. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Boots")
     TArray<TObjectPtr<USoundBase>> BootSteps;
