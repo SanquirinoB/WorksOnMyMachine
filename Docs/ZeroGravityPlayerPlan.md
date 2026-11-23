@@ -77,7 +77,7 @@ The pawn stays attached when the player releases **E**. Walking and running stop
 | Item | Mass | Behavior |
 | --- | --- | --- |
 | Weighted Plate | 5 kg | A reusable metal disc used to redirect drift and hit switches. |
-| Grappling Hook | 1 kg | A tethered hook that can attach to eligible fixed objects or enemies. Q retrieves a free hook. When the hook is anchored, the first Q pulls the player toward it and the next Q releases the anchor and recalls the hook. |
+| Grappling Hook | 1 kg | A tethered hook that can attach to eligible fixed objects or enemies. Q retrieves a free hook. When the hook is anchored, the first Q pulls the player toward it and the next Q releases the anchor and recalls the hook while preserving the player's velocity. |
 | Remote Grenade | 0.5 kg | Q detonates a deployed grenade once. The burst applies area damage without spawning shrapnel. |
 | Portable Black Hole Device | 2 kg | Q toggles attraction after deployment. The active device pulls nearby objects, including the player. It consumes an object that reaches its core and then ruptures in a large burst. An owned device returns to the inventory after the rupture. |
 

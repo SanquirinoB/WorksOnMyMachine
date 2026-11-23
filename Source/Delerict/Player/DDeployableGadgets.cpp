@@ -6,6 +6,7 @@
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "DPawn.h"
+#include "DPlayerTuning.h"
 #include "Engine/DamageEvents.h"
 #include "Engine/OverlapResult.h"
 #include "Engine/PointLight.h"
@@ -19,6 +20,7 @@
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Materials/MaterialInterface.h"
+#include "Sound/SoundBase.h"
 #include "UObject/ConstructorHelpers.h"
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
@@ -455,9 +457,10 @@ bool ADGrapplingHook::UpdateRecall(ADPawn& Pawn, float DeltaSeconds)
     if (Distance <= CatchDistance + UE_KINDA_SMALL_NUMBER)
     {
         bReelingIn = false;
-        Movement->Velocity = Pawn.GetVelocity();
-        if (Pawn.TryGrabThrowable(*this))
+        // Reeling the hook back in keeps the pawn's existing drift.
+        if (TryReturnToOwner())
         {
+            Pawn.PlayFoley(Pawn.GetTuning().ItemGrabSound);
             return true;
         }
         Movement->StopMovementImmediately();
