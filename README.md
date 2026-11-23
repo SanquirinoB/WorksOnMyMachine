@@ -36,6 +36,20 @@ Open `L_DLevelDesignLab` to try the platforming kit. The
 [level-design guide](Docs/LevelDesign.md) covers the Place Actors palette and
 building a room with hazards, checkpoints, and exits.
 
+## Package for Windows
+
+Run this command from the repository root.
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\Scripts\Build-Win64Shipping.ps1
+```
+
+The default archive is `Saved/Builds/Win64Shipping/Windows/`. Open
+`Delerict.exe` from that directory to play the packaged game.
+
+[Vault CI setup](Scripts/VaultCI/README.md) covers automated Shipping builds
+and downloading the latest verified archive.
+
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,
 and `Saved/`.
