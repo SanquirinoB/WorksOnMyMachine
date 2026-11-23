@@ -15,6 +15,7 @@ public:
     bool CanSupport(const UCapsuleComponent& Capsule) const;
     bool ContainsProjection(const FVector& Point, double Tolerance = 0.) const;
     FVector ClosestPoint(const FVector& Point) const;
+    FVector LimitTravel(const FVector& Point, const FVector& Delta) const;
 
     /** Half width and depth in local X and Y, in cm. Local +Z points out of the face. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Steel Face", meta = (ClampMin = "0.1", Units = "cm"))

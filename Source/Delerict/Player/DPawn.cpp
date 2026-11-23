@@ -233,7 +233,8 @@ void ADPawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdCont
 #endif
     PendingImpulses.Reset();
 
-    if (!VelocityChange.IsNearlyZero())
+    bHasMovementImpulse = !VelocityChange.IsNearlyZero();
+    if (bHasMovementImpulse)
     {
         auto Effect = MakeShared<FApplyVelocityEffect>();
         Effect->VelocityToApply = VelocityChange;

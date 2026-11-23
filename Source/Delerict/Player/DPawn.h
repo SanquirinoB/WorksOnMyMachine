@@ -36,6 +36,7 @@ public:
     FVector2D GetMoveIntent() const { return MoveIntent; }
     bool IsRunHeld() const { return bRunHeld; }
     bool IsMagnetHeld() const { return bMagnetHeld; }
+    bool HasMovementImpulse() const { return bHasMovementImpulse; }
     float GetEffectiveMass() const;
     int32 GetPlateCount() const { return PlateCount; }
 
@@ -152,6 +153,7 @@ private:
     bool bGamepadAim = false;
     bool bRunHeld = false;
     bool bMagnetHeld = false;
+    bool bHasMovementImpulse = false;
     bool bJumpCharging = false;
     bool bThrowCharging = false;
 

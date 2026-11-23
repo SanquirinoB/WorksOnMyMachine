@@ -144,7 +144,7 @@ bool UDMagneticSurfaceMode::TryCapture(const FSimulationTickParams& Params, FMov
         DepartedFace.Reset();
         return false;
     }
-    if (LastDepartureTimeMs == Params.TimeStep.BaseSimTimeMs)
+    if (Pawn->HasMovementImpulse() || LastDepartureTimeMs == Params.TimeStep.BaseSimTimeMs)
     {
         return false;
     }
@@ -204,8 +204,7 @@ bool UDMagneticSurfaceMode::TryCapture(const FSimulationTickParams& Params, FMov
             ? FVector::DotProduct(Pawn->GetAimDirection(), SurfaceTangent) : RelativeSpeed;
         FacingSign = Facing < 0. ? -1.f : 1.f;
         LastCarryVelocity = FVector::ZeroVector;
-        LastWorldVelocity = SurfaceTangent * RelativeSpeed;
-        WriteSyncState(Params, OutputState, LastWorldVelocity);
+        WriteSyncState(Params, OutputState, SurfaceTangent * RelativeSpeed);
         OutputState.MovementEndState.NextModeName = ModeName;
         OutputState.MovementEndState.RemainingMs = Params.TimeStep.StepMs;
         return true;
@@ -242,14 +241,14 @@ void UDMagneticSurfaceMode::GenerateMove_Implementation(const FMoverSimContext& 
 }
 
 void UDMagneticSurfaceMode::Depart(const FSimulationTickParams& Params, FMoverTickEndData& OutputState,
-    const FVector& Velocity, const TCHAR* Reason, bool bRefundTime)
+    const FVector& Velocity, const TCHAR* Reason)
 {
     DepartedFace = Surface;
     Surface.Reset();
     LastDepartureTimeMs = Params.TimeStep.BaseSimTimeMs;
     WriteSyncState(Params, OutputState, Velocity);
     OutputState.MovementEndState.NextModeName = DefaultModeNames::Flying;
-    OutputState.MovementEndState.RemainingMs = bRefundTime ? Params.TimeStep.StepMs : 0.f;
+    OutputState.MovementEndState.RemainingMs = Params.TimeStep.StepMs;
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     using namespace DGameplayDebug;
@@ -300,14 +299,19 @@ void UDMagneticSurfaceMode::SimulationTick_Implementation(const FSimulationTickP
         Depart(Params, OutputState, StartVelocity, TEXT("Jump released"));
         return;
     }
-    // Input and platform carry are applied below. A change in the incoming velocity is an external impulse.
-    if (!(StartVelocity - LastWorldVelocity).IsNearlyZero())
+    if (Pawn->HasMovementImpulse())
     {
         Depart(Params, OutputState, StartVelocity, TEXT("Impulse broke contact"));
         return;
     }
 
     const double Seconds = Params.TimeStep.StepMs * .001;
+    if (Seconds <= UE_SMALL_NUMBER)
+    {
+        WriteSyncState(Params, OutputState, StartVelocity);
+        return;
+    }
+
     const FVector BeforeCarry = Capsule->GetComponentLocation();
     const FVector Target = UPlanarConstraintUtils::ConstrainLocationToPlane(Plane,
         Contact.Point + Contact.Normal * (Contact.CapsuleSupport + Tuning.ContactClearance));
@@ -320,17 +324,25 @@ void UDMagneticSurfaceMode::SimulationTick_Implementation(const FSimulationTickP
     LastCarryVelocity = (AfterCarry - BeforeCarry) / Seconds;
 
     const FVector Delta = Contact.Tangent * FVector::DotProduct(Params.ProposedMove.LinearVelocity, Contact.Tangent) * Seconds;
-    FHitResult Hit;
-    Capsule->MoveComponent(Delta, Capsule->GetComponentQuat(), true, &Hit);
+    const FVector Travel = Face->LimitTravel(Contact.Point, Delta);
+    if (!Travel.IsNearlyZero())
+    {
+        FScopedMovementUpdate Move(Capsule, EScopedUpdate::DeferredUpdates);
+        Capsule->MoveComponent(Travel, Capsule->GetComponentQuat(), true);
+        FContact WalkContact;
+        if (SampleFace(*Face, *Capsule, Plane, Capsule->GetComponentLocation(), WalkContact)
+            && FMath::Abs(WalkContact.Gap - Tuning.ContactClearance) <= ContactTolerance)
+        {
+            Contact = WalkContact;
+        }
+        else
+        {
+            Move.RevertMove();
+        }
+    }
+
     const FVector Location = Capsule->GetComponentLocation();
     RelativeSpeed = FVector::DotProduct(Location - AfterCarry, Contact.Tangent) / Seconds;
-    LastWorldVelocity = LastCarryVelocity + Contact.Tangent * RelativeSpeed;
-    if (!SampleFace(*Face, *Capsule, Plane, Location, Contact) ||
-        FMath::Abs(Contact.Gap - Tuning.ContactClearance) > ContactTolerance)
-    {
-        Depart(Params, OutputState, LastWorldVelocity, TEXT("Left steel face edge"), false);
-        return;
-    }
 
     ContactLocal = FaceTransform.InverseTransformPosition(Contact.Point);
     SurfaceNormal = Contact.Normal;
@@ -339,7 +351,7 @@ void UDMagneticSurfaceMode::SimulationTick_Implementation(const FSimulationTickP
     {
         FacingSign = FMath::Sign(RelativeSpeed);
     }
-    WriteSyncState(Params, OutputState, LastWorldVelocity);
+    WriteSyncState(Params, OutputState, LastCarryVelocity + Contact.Tangent * RelativeSpeed);
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     using namespace DGameplayDebug;

@@ -57,7 +57,7 @@ private:
 
     ADPawn* GetPawn() const;
     void Depart(const FSimulationTickParams& Params, FMoverTickEndData& OutputState, const FVector& Velocity,
-        const TCHAR* Reason, bool bRefundTime = true);
+        const TCHAR* Reason);
     void RearmFace(const UCapsuleComponent& Capsule, double RecaptureDistance);
 
     TWeakObjectPtr<UDSteelSurfaceComponent> Surface;
@@ -66,7 +66,6 @@ private:
     FVector SurfaceNormal = FVector::UpVector;
     FVector SurfaceTangent = FVector::ForwardVector;
     FVector LastCarryVelocity = FVector::ZeroVector;
-    FVector LastWorldVelocity = FVector::ZeroVector;
     double LastDepartureTimeMs = -1.;
     float RelativeSpeed = 0.f;
     float FacingSign = 1.f;

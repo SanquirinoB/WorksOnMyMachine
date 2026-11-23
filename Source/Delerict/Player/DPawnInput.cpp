@@ -3,18 +3,59 @@
 
 #include "DMoverComponent.h"
 #include "DPlayerTuning.h"
+#include "Engine/GameViewportClient.h"
 #include "Engine/LocalPlayer.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Framework/Application/SlateApplication.h"
 #include "GameFramework/PlayerController.h"
 #include "InputAction.h"
 #include "InputMappingContext.h"
 #include "InputModifiers.h"
 #include "MoveLibrary/ConstrainedMoveUtils.h"
+#include "UnrealClient.h"
+#include "Widgets/SViewport.h"
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
 #include "../Debug/DGameplayDebug.h"
 #endif
+
+namespace
+{
+    bool ReadViewportMousePosition(const APlayerController& Player, FVector2D& Position)
+    {
+        const ULocalPlayer* LocalPlayer = Player.GetLocalPlayer();
+        const UGameViewportClient* ViewportClient = LocalPlayer ? LocalPlayer->ViewportClient : nullptr;
+        const FViewport* Viewport = ViewportClient ? ViewportClient->Viewport : nullptr;
+        if (!Viewport || !FSlateApplication::IsInitialized() || !FSlateApplication::Get().IsActive())
+        {
+            return false;
+        }
+
+        const TSharedPtr<SViewport> Widget = ViewportClient->GetGameViewportWidget();
+        if (!Widget)
+        {
+            return false;
+        }
+
+        // The viewport's last pointer event can go stale during capture or focus changes.
+        // Read the live Slate cursor and convert its desktop position to render pixels.
+        const FGeometry& Geometry = Widget->GetTickSpaceGeometry();
+        const FVector2D LocalSize = Geometry.GetLocalSize();
+        const FIntPoint PixelSize = Viewport->GetSizeXY();
+        if (LocalSize.X <= 0. || LocalSize.Y <= 0. || PixelSize.X <= 0 || PixelSize.Y <= 0.)
+        {
+            return false;
+        }
+        const FVector2D LocalMouse = Geometry.AbsoluteToLocal(FSlateApplication::Get().GetCursorPos());
+        if (LocalMouse.X < 0. || LocalMouse.Y < 0. || LocalMouse.X >= LocalSize.X || LocalMouse.Y >= LocalSize.Y)
+        {
+            return false;
+        }
+        Position = LocalMouse / LocalSize * FVector2D(PixelSize);
+        return true;
+    }
+}
 
 void ADPawn::CreateInputMappings()
 {
@@ -100,6 +141,7 @@ void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     }
 
     ClearInput();
+    SetUpAimCursor(*Player);
     if (!InputContext)
     {
         CreateInputMappings();
@@ -224,7 +266,7 @@ void ADPawn::UpdateAim()
     }
 
     FVector2D Mouse;
-    const bool bHasMouse = Player->GetMousePosition(Mouse.X, Mouse.Y);
+    const bool bHasMouse = ReadViewportMousePosition(*Player, Mouse);
     if (bHasMouse)
     {
         if (LastMousePosition && !LastMousePosition->Equals(Mouse, .5))
@@ -284,10 +326,17 @@ bool ADPawn::GetCrosshairPosition(FVector2D& Position) const
     {
         return false;
     }
-    if (!bGamepadAim && LastMousePosition)
+    if (!bGamepadAim)
     {
-        Position = *LastMousePosition;
-        return true;
+        if (ReadViewportMousePosition(*Player, Position))
+        {
+            return true;
+        }
+        if (LastMousePosition)
+        {
+            Position = *LastMousePosition;
+            return true;
+        }
     }
     return Player->ProjectWorldLocationToScreen(GetActorLocation() + AimDirection * 240., Position, true);
 }
