@@ -19,6 +19,8 @@ Delerict is an Unreal Engine 5.8.4 project for Windows in the WorksOnMyMachine r
 Press **Play** in the startup map, `L_DHangar`. Move with **A/D**, the
 **left/right arrows**, or the **left stick**. Jump with **Space** or the **bottom
 gamepad face button**. Open `L_DTestLane` for the movement and camera test fixtures.
+The workshop has steam, sparks, and an ambient loop. The source soundtrack is
+under `Art/Music/`.
 
 CoreKit is included in [Plugins/CoreKit](Plugins/CoreKit). Its
 [quick start](Plugins/CoreKit/Docs/QuickStart.md) covers the reusable systems.
