@@ -1,12 +1,12 @@
 using UnrealBuildTool;
 
-public class WorksOnMyMachineEditorTarget : TargetRules
+public class DelerictEditorTarget : TargetRules
 {
-    public WorksOnMyMachineEditorTarget(TargetInfo Target) : base(Target)
+    public DelerictEditorTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Editor;
         DefaultBuildSettings = BuildSettingsVersion.V7;
         IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8;
-        ExtraModuleNames.Add("WorksOnMyMachine");
+        ExtraModuleNames.Add("Delerict");
     }
 }

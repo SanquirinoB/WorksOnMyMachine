@@ -2,24 +2,26 @@
 
 #include "GameFramework/Pawn.h"
 #include "MoverSimulationTypes.h"
-#include "WorksOnMyMachinePawn.generated.h"
+#include "DPawn.generated.h"
 
+class UAnimSequence;
 class UCapsuleComponent;
 class UCharacterMoverComponent;
 class UEnhancedInputLocalPlayerSubsystem;
 class UGameplayCameraComponent;
 class UInputAction;
 class UInputMappingContext;
+class USkeletalMeshComponent;
 class UStaticMeshComponent;
 struct FInputActionValue;
 
 UCLASS(Blueprintable)
-class AWorksOnMyMachinePawn : public APawn, public IMoverInputProducerInterface
+class ADPawn : public APawn, public IMoverInputProducerInterface
 {
     GENERATED_BODY()
 
 public:
-    AWorksOnMyMachinePawn();
+    ADPawn();
 
     FVector GetVelocity() const override;
     void ProduceInput_Implementation(int32 SimTimeMs, FMoverInputCmdContext& InputCmd) override;
@@ -36,6 +38,9 @@ protected:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player")
     TObjectPtr<UStaticMeshComponent> PlaceholderMesh;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player")
+    TObjectPtr<USkeletalMeshComponent> Mesh;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player")
     TObjectPtr<UCharacterMoverComponent> Mover;
@@ -58,7 +63,21 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "Movement", meta = (ClampMin = "0.1"))
     float GravityScale = .8f;
 
+    UPROPERTY(EditDefaultsOnly, Category = "Animation")
+    TObjectPtr<UAnimSequence> IdleAnimation;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Animation")
+    TObjectPtr<UAnimSequence> WalkAnimation;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Animation")
+    TObjectPtr<UAnimSequence> RunAnimation;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Animation")
+    TObjectPtr<UAnimSequence> AirborneAnimation;
+
 private:
+    friend struct FDLocomotionProxy;
+
     UPROPERTY(Transient) TObjectPtr<UInputMappingContext> InputContext;
     UPROPERTY(Transient) TObjectPtr<UInputAction> MoveAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> JumpAction;

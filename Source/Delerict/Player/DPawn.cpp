@@ -1,10 +1,12 @@
-#include "WorksOnMyMachinePawn.h"
+#include "DPawn.h"
 
 #include "Components/CapsuleComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Core/CameraAsset.h"
 #include "DefaultMovementSet/Settings/CommonLegacyMovementSettings.h"
-#include "WorksOnMyMachineMoverComponent.h"
+#include "DLocomotionAnimInstance.h"
+#include "DMoverComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/StaticMesh.h"
 #include "EnhancedInputComponent.h"
@@ -18,7 +20,7 @@
 #include "MoverDataModelTypes.h"
 #include "UObject/ConstructorHelpers.h"
 
-AWorksOnMyMachinePawn::AWorksOnMyMachinePawn()
+ADPawn::ADPawn()
 {
     bReplicates = false;
     bUseControllerRotationPitch = false;
@@ -38,20 +40,27 @@ AWorksOnMyMachinePawn::AWorksOnMyMachinePawn()
     static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
     PlaceholderMesh->SetStaticMesh(Cube.Object);
 
-    Mover = CreateDefaultSubobject<UWorksOnMyMachineMoverComponent>(TEXT("Mover"));
+    Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
+    Mesh->SetupAttachment(Capsule);
+    Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    Mesh->SetCanEverAffectNavigation(false);
+    Mesh->SetAnimInstanceClass(UDLocomotionAnimInstance::StaticClass());
+
+    Mover = CreateDefaultSubobject<UDMoverComponent>(TEXT("Mover"));
 
     GameplayCamera = CreateDefaultSubobject<UGameplayCameraComponent>(TEXT("GameplayCamera"));
     GameplayCamera->SetupAttachment(Capsule);
     GameplayCamera->SetUsingAbsoluteRotation(true);
     GameplayCamera->SetAutoActivate(false);
     static ConstructorHelpers::FObjectFinder<UCameraAsset> SideScrollCamera(
-        TEXT("/Game/WorksOnMyMachine/Cameras/CA_DelerictSideScroll.CA_DelerictSideScroll"));
+        TEXT("/Game/Delerict/Cameras/CA_DSideScroll.CA_DSideScroll"));
     GameplayCamera->CameraReference.SetCameraAsset(SideScrollCamera.Object);
 }
 
-void AWorksOnMyMachinePawn::BeginPlay()
+void ADPawn::BeginPlay()
 {
     Super::BeginPlay();
+    PlaceholderMesh->SetVisibility(!Mesh->GetSkeletalMeshAsset());
 
     if (UCommonLegacyMovementSettings* Settings = Mover->FindSharedSettings_Mutable<UCommonLegacyMovementSettings>())
     {
@@ -68,13 +77,13 @@ void AWorksOnMyMachinePawn::BeginPlay()
     Mover->OnPostFinalize.AddUniqueDynamic(this, &ThisClass::UpdateCameraLead);
 }
 
-void AWorksOnMyMachinePawn::EndPlay(const EEndPlayReason::Type Reason)
+void ADPawn::EndPlay(const EEndPlayReason::Type Reason)
 {
     ClearInput();
     Super::EndPlay(Reason);
 }
 
-void AWorksOnMyMachinePawn::PossessedBy(AController* NewController)
+void ADPawn::PossessedBy(AController* NewController)
 {
     Super::PossessedBy(NewController);
     if (APlayerController* Player = Cast<APlayerController>(NewController);
@@ -84,19 +93,19 @@ void AWorksOnMyMachinePawn::PossessedBy(AController* NewController)
     }
 }
 
-void AWorksOnMyMachinePawn::UnPossessed()
+void ADPawn::UnPossessed()
 {
     GameplayCamera->Deactivate();
     ClearInput();
     Super::UnPossessed();
 }
 
-FVector AWorksOnMyMachinePawn::GetVelocity() const
+FVector ADPawn::GetVelocity() const
 {
     return Mover ? Mover->GetVelocity() : FVector::ZeroVector;
 }
 
-void AWorksOnMyMachinePawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdContext& InputCmd)
+void ADPawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdContext& InputCmd)
 {
     FCharacterDefaultInputs& Inputs = InputCmd.InputCollection.FindOrAddMutableDataByType<FCharacterDefaultInputs>();
     const FVector Direction = FVector::ForwardVector * FMath::Clamp(HorizontalIntent, -1.f, 1.f);
@@ -108,14 +117,14 @@ void AWorksOnMyMachinePawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMo
     bJumpRequested = false;
 }
 
-void AWorksOnMyMachinePawn::UpdateCameraLead(const FMoverSyncState& /*SyncState*/, const FMoverAuxStateContext& /*AuxState*/)
+void ADPawn::UpdateCameraLead(const FMoverSyncState& /*SyncState*/, const FMoverAuxStateContext& /*AuxState*/)
 {
     const double MaxLead = CameraMaxLookAhead;
     const double Lead = FMath::Clamp(GetVelocity().X * CameraLookAheadTime, -MaxLead, MaxLead);
     GameplayCamera->SetWorldLocation(GetActorLocation() + FVector(Lead, 0., 0.));
 }
 
-void AWorksOnMyMachinePawn::CreateInputMappings()
+void ADPawn::CreateInputMappings()
 {
     InputContext = NewObject<UInputMappingContext>(this);
     MoveAction = NewObject<UInputAction>(this);
@@ -132,7 +141,7 @@ void AWorksOnMyMachinePawn::CreateInputMappings()
     InputContext->MapKey(JumpAction, EKeys::Gamepad_FaceButton_Bottom);
 }
 
-void AWorksOnMyMachinePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
 
@@ -162,7 +171,7 @@ void AWorksOnMyMachinePawn::SetupPlayerInputComponent(UInputComponent* PlayerInp
     Input->BindAction(JumpAction, ETriggerEvent::Canceled, this, &ThisClass::StopJump);
 }
 
-void AWorksOnMyMachinePawn::ClearInput()
+void ADPawn::ClearInput()
 {
     if (InputSubsystem.IsValid() && InputContext)
     {
@@ -174,13 +183,13 @@ void AWorksOnMyMachinePawn::ClearInput()
     bJumpRequested = false;
 }
 
-void AWorksOnMyMachinePawn::Move(const FInputActionValue& Value) { HorizontalIntent = Value.Get<float>(); }
-void AWorksOnMyMachinePawn::StopMoving() { HorizontalIntent = 0.f; }
+void ADPawn::Move(const FInputActionValue& Value) { HorizontalIntent = Value.Get<float>(); }
+void ADPawn::StopMoving() { HorizontalIntent = 0.f; }
 
-void AWorksOnMyMachinePawn::StartJump()
+void ADPawn::StartJump()
 {
     bJumpPressed = true;
     bJumpRequested = true;
 }
 
-void AWorksOnMyMachinePawn::StopJump() { bJumpPressed = false; }
+void ADPawn::StopJump() { bJumpPressed = false; }

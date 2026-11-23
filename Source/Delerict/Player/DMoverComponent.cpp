@@ -1,13 +1,13 @@
-#include "WorksOnMyMachineMoverComponent.h"
+#include "DMoverComponent.h"
 
 #include "Backends/MoverStandaloneLiaison.h"
 
-UWorksOnMyMachineMoverComponent::UWorksOnMyMachineMoverComponent()
+UDMoverComponent::UDMoverComponent()
 {
     BackendClass = UMoverStandaloneLiaisonComponent::StaticClass();
 }
 
-void UWorksOnMyMachineMoverComponent::PostInitProperties()
+void UDMoverComponent::PostInitProperties()
 {
     Super::PostInitProperties();
     if (IsTemplate())

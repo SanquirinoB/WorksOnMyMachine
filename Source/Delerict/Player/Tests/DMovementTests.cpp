@@ -1,7 +1,9 @@
 #if WITH_DEV_AUTOMATION_TESTS
 
-#include "../WorksOnMyMachinePawn.h"
+#include "../DPawn.h"
+#include "../DLocomotionAnimInstance.h"
 #include "Camera/PlayerCameraManager.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "DefaultMovementSet/CharacterMoverComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
@@ -12,12 +14,12 @@
 
 namespace
 {
-    enum class EMovementPhase { Spawn, Move, Brake, Jump, Wall, Reverse };
+    enum class EDMovementPhase { Spawn, Move, Brake, Jump, Wall, Reverse };
 
-    class FCheckLaneMovement final : public IAutomationLatentCommand
+    class FDCheckLaneMovement final : public IAutomationLatentCommand
     {
     public:
-        explicit FCheckLaneMovement(FAutomationTestBase& InTest) : Test(InTest) {}
+        explicit FDCheckLaneMovement(FAutomationTestBase& InTest) : Test(InTest) {}
 
         bool Update() override
         {
@@ -29,7 +31,7 @@ namespace
 
             UWorld* World = AutomationCommon::GetAnyGameWorld();
             APlayerController* Player = World ? GEngine->GetFirstLocalPlayerController(World) : nullptr;
-            AWorksOnMyMachinePawn* Pawn = Player ? Cast<AWorksOnMyMachinePawn>(Player->GetPawn()) : nullptr;
+            ADPawn* Pawn = Player ? Cast<ADPawn>(Player->GetPawn()) : nullptr;
             UCharacterMoverComponent* Mover = Pawn ? Pawn->FindComponentByClass<UCharacterMoverComponent>() : nullptr;
             if (!Mover || !Player->PlayerCameraManager)
             {
@@ -40,7 +42,7 @@ namespace
             const FMinimalViewInfo& View = Player->PlayerCameraManager->GetCameraCacheView();
             const double Now = World->GetTimeSeconds();
             const double Elapsed = Now - PhaseStarted;
-            const auto Advance = [this, Now](EMovementPhase Next)
+            const auto Advance = [this, Now](EDMovementPhase Next)
             {
                 Phase = Next;
                 PhaseStarted = Now;
@@ -52,8 +54,15 @@ namespace
 
             switch (Phase)
             {
-            case EMovementPhase::Spawn:
+            case EDMovementPhase::Spawn:
                 if (!Mover->IsOnGround()) { return false; }
+                {
+                    const USkeletalMeshComponent* Mesh = Pawn->FindComponentByClass<USkeletalMeshComponent>();
+                    Test.TestTrue(TEXT("The pawn has the imported mesh and native locomotion instance"),
+                        Mesh && Mesh->GetSkeletalMeshAsset()
+                        && Mesh->GetSkeletalMeshAsset()->GetFName() == TEXT("SK_DPlayer")
+                        && Cast<UDLocomotionAnimInstance>(Mesh->GetAnimInstance()));
+                }
                 StartPosition = Position;
                 StartView = View;
                 {
@@ -70,10 +79,10 @@ namespace
                 Test.TestTrue(TEXT("Mover uses 80 percent of world gravity"),
                     FMath::IsNearlyEqual(Mover->GetGravityAcceleration().Z, World->GetGravityZ() * .8, 1.));
                 SendKey(EKeys::D, IE_Pressed);
-                Advance(EMovementPhase::Move);
+                Advance(EDMovementPhase::Move);
                 break;
 
-            case EMovementPhase::Move:
+            case EDMovementPhase::Move:
                 if (Elapsed < .45) { return false; }
                 Test.TestTrue(TEXT("D moves right along the lane"), Position.X > StartPosition.X + 60.
                     && FMath::IsNearlyEqual(Position.Y, StartPosition.Y, .5) && Mover->IsOnGround());
@@ -83,18 +92,18 @@ namespace
                     && View.Rotation.Equals(StartView.Rotation, .1)
                     && View.ProjectionMode == StartView.ProjectionMode);
                 SendKey(EKeys::D, IE_Released);
-                Advance(EMovementPhase::Brake);
+                Advance(EDMovementPhase::Brake);
                 break;
 
-            case EMovementPhase::Brake:
+            case EDMovementPhase::Brake:
                 if (Elapsed < .35) { return false; }
                 Test.TestTrue(TEXT("Releasing D stops the pawn"), Pawn->GetVelocity().Size2D() < 1.);
                 TakeoffHeight = Position.Z;
                 SendKey(EKeys::SpaceBar, IE_Pressed);
-                Advance(EMovementPhase::Jump);
+                Advance(EDMovementPhase::Jump);
                 break;
 
-            case EMovementPhase::Jump:
+            case EDMovementPhase::Jump:
             {
                 JumpHeight = FMath::Max(JumpHeight, Position.Z - TakeoffHeight);
                 if (Mover->IsAirborne() && !bBecameAirborne)
@@ -108,21 +117,21 @@ namespace
                 Test.TestTrue(FString::Printf(TEXT("Space jumps and returns to the floor (apex %.1f cm, floor %.1f to %.1f cm)"),
                     JumpHeight, TakeoffHeight, Position.Z), bLanded && JumpHeight > 150.);
                 SendKey(EKeys::D, IE_Pressed);
-                Advance(EMovementPhase::Wall);
+                Advance(EDMovementPhase::Wall);
                 break;
             }
 
-            case EMovementPhase::Wall:
+            case EDMovementPhase::Wall:
                 if (Elapsed < 1.25) { return false; }
                 Test.TestTrue(FString::Printf(TEXT("Capsule stops at the wall (X %.1f cm)"), Position.X),
                     Position.X > 425. && Position.X < 460.);
                 WallX = Position.X;
                 SendKey(EKeys::D, IE_Released);
                 SendKey(EKeys::A, IE_Pressed);
-                Advance(EMovementPhase::Reverse);
+                Advance(EDMovementPhase::Reverse);
                 break;
 
-            case EMovementPhase::Reverse:
+            case EDMovementPhase::Reverse:
                 if (Elapsed < .5) { return false; }
                 Test.TestTrue(TEXT("A moves left along the lane"), Position.X < WallX - 60.
                     && FMath::IsNearlyEqual(Position.Y, StartPosition.Y, .5));
@@ -137,7 +146,7 @@ namespace
     private:
         FAutomationTestBase& Test;
         const double StartTime = FPlatformTime::Seconds();
-        EMovementPhase Phase = EMovementPhase::Spawn;
+        EDMovementPhase Phase = EDMovementPhase::Spawn;
         double PhaseStarted = 0.;
         FVector StartPosition = FVector::ZeroVector;
         FMinimalViewInfo StartView;
@@ -148,17 +157,17 @@ namespace
     };
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWorksOnMyMachineGroundMovementTest, "WorksOnMyMachine.Player.GroundMovement",
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FDGroundMovementTest, "Delerict.Player.GroundMovement",
     EAutomationTestFlags::ClientContext | EAutomationTestFlags::ProductFilter)
 
-bool FWorksOnMyMachineGroundMovementTest::RunTest(const FString& Parameters)
+bool FDGroundMovementTest::RunTest(const FString& Parameters)
 {
-    if (!AutomationOpenMap(TEXT("/Game/Maps/L_WorksOnMyMachine")))
+    if (!AutomationOpenMap(TEXT("/Game/Maps/L_DTestLane")))
     {
         AddError(TEXT("Could not open the movement test lane."));
         return false;
     }
-    ADD_LATENT_AUTOMATION_COMMAND(FCheckLaneMovement(*this));
+    ADD_LATENT_AUTOMATION_COMMAND(FDCheckLaneMovement(*this));
     return true;
 }
 
