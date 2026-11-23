@@ -1,8 +1,37 @@
 #include "DCrosshairHUD.h"
 
 #include "DPawn.h"
+#include "../Frontend/DInventoryHUD.h"
 #include "Engine/Canvas.h"
+#include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
+
+void ADCrosshairHUD::PostRender()
+{
+    Super::PostRender();
+    const auto* Pawn = Cast<ADPawn>(GetOwningPawn());
+    const bool bVisible = Pawn && bShowHUD && !bShowDebugInfo && !UGameplayStatics::IsGamePaused(this);
+    if (bVisible && !Inventory)
+    {
+        if (auto* Player = GetOwningPlayerController(); Player && Player->GetLocalPlayer())
+        {
+            auto* Widget = CreateWidget<UDInventoryHUD>(Player);
+            if (Widget && Widget->AddToPlayerScreen()) { Inventory = Widget; }
+        }
+    }
+    if (Inventory)
+    {
+        const auto Visibility = bVisible ? ESlateVisibility::HitTestInvisible : ESlateVisibility::Collapsed;
+        if (Inventory->GetVisibility() != Visibility) { Inventory->SetVisibility(Visibility); }
+        if (bVisible) { Inventory->Refresh(*Pawn); }
+    }
+}
+
+void ADCrosshairHUD::EndPlay(const EEndPlayReason::Type Reason)
+{
+    if (Inventory) { Inventory->RemoveFromParent(); }
+    Super::EndPlay(Reason);
+}
 
 void ADCrosshairHUD::DrawHUD()
 {
