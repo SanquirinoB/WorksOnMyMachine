@@ -1,0 +1,2912 @@
+{
+  "date_local": "2026-11-18",
+  "engine": "5.8.4",
+  "platform": "Win64 Development",
+  "editor_build": "passed",
+  "game_build": "passed",
+  "cook_stage_pak_iostore_archive": "passed",
+  "automation": {
+    "passed": 9,
+    "failed": 0,
+    "warnings": 0
+  },
+  "packaged_smoke": {
+    "passed": true,
+    "card_commits": 1
+  },
+  "assets": 491,
+  "asset_bytes": 27236326,
+  "existing_corekit_source_files_preserved": 114,
+  "files": [
+    {
+      "path": "Source/CoreKitBasicUI/CoreKitBasicUI.Build.cs",
+      "bytes": 830,
+      "sha256": "07aadc99ca2a384393cc091ebaebee4ba418988eb691a7358e25f31fcca65ec0"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/CoreKitBasicUILibrary.cpp",
+      "bytes": 1528,
+      "sha256": "b64eadc23bdedc2f2e6bd1ba80087906abd35247baf956d712ad0f52dbfe853b"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/CoreKitBasicUIModule.cpp",
+      "bytes": 90,
+      "sha256": "b36c4ffdf0907d01934737a92caa92bf56c86870cef55fa57229fa0ac4cdcf41"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/CoreKitBasicUILibrary.h",
+      "bytes": 1223,
+      "sha256": "61dcf455b6ab7a079589717610d696df0e10bbe8c6cebf0671052f199cd41dfd"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Context/CoreKitBasicUIContextSubsystem.h",
+      "bytes": 4555,
+      "sha256": "81aa980b2a52a65f0ab263a12786a697b730e8743b5fa9a44da05e366b3cc1fb"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Effects/CoreKitBasicUIScreenEffectsComponent.h",
+      "bytes": 4720,
+      "sha256": "55b3463bdd55b2d1e78408249bb5daf8a9087325deb68639610ba2d2fa228f7c"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Events/CoreKitBasicUIEvents.h",
+      "bytes": 6794,
+      "sha256": "0b272d39eb3e55a806fc040b76a8b8839406acd10e24936bcb71c25864ab949e"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/FloatingText/CoreKitBasicUIFloatingTextSubsystem.h",
+      "bytes": 3779,
+      "sha256": "ba2692bc24943634f01a78cc58a6888754aaca8e9061cb77f56c5ad53f7d97fe"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/FloatingText/CoreKitBasicUIFloatingTextTypes.h",
+      "bytes": 3139,
+      "sha256": "6cd782e2040c1223fcc89cba4e72783e11f68cedab0f34b030454897a4f4e6b3"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/FloatingText/CoreKitBasicUIFloatingTextWidget.h",
+      "bytes": 1530,
+      "sha256": "6ba92ea233c9628324988ea93a8e1ba4e6690b4c181f36d99f4aa1505a80663f"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Flow/CoreKitBasicUIHUD.h",
+      "bytes": 1846,
+      "sha256": "e14f945ae0088bd8bb2f0446eb12c8738b5b4db64fd7e49e5d6d6151cc04a7a4"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Flow/CoreKitBasicUIScreenRouter.h",
+      "bytes": 4045,
+      "sha256": "35fbaee9dbd76bfbaa17ef189393b334bf69c383884bfa30bd78f01dc6ace6c6"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/FrontEnd/CoreKitBasicUIMenuGameMode.h",
+      "bytes": 3858,
+      "sha256": "5a6503c9bd03c6495b7f3aecba7c84c944847faa8b121578d25d62b077943b63"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Presenters/CoreKitBasicUIPresenter.h",
+      "bytes": 1560,
+      "sha256": "40ef97750c44037e925ff80d5704be2e0c8f38c44aa419be7615d90c51fbd2d1"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Settings/CoreKitBasicUISettings.h",
+      "bytes": 3209,
+      "sha256": "e2501be12cd4ac5ddeb193a63e3484988350433294dc6688ac77d7dafa5a13ba"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Settings/CoreKitBasicUIUserSettings.h",
+      "bytes": 5280,
+      "sha256": "cd0a2eed8840594739d27f1511ede5afe2577b241a5ed13cd169c563e5c1404b"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Style/CoreKitBasicUIMotion.h",
+      "bytes": 3156,
+      "sha256": "0266da26cd96b6258ff2a219226894a69e8940841b0c9f41bef4fbf957a0e16e"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Style/CoreKitBasicUIStyle.h",
+      "bytes": 5009,
+      "sha256": "944b799065396b698495b87e6598386398776ff4fb83be84a9d0b8d7c05e9299"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/ViewModels/CoreKitBasicUITypes.h",
+      "bytes": 5848,
+      "sha256": "8f3f76457f72622d2ba94fa483dce128ccca71cc5eff73c1dc34caffab8872ae"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/ViewModels/CoreKitBasicUIViewModels.h",
+      "bytes": 32846,
+      "sha256": "e07c23fa35f0ec4d02cf4ba07f01a874779ed412e4c6eb6648ad88aeb41a58cd"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Common/CoreKitBasicUIArcWidget.h",
+      "bytes": 2189,
+      "sha256": "65988843c323998b88c95dbab54802c7c7f70dd687d871f90519a5e47496f668"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Common/CoreKitBasicUICardWidget.h",
+      "bytes": 5975,
+      "sha256": "5ab93d6e9686b642f983f8eea98a7d908fe0b5e3d7b6e52b6197d2281b1dd679"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Common/CoreKitBasicUICommonWidgets.h",
+      "bytes": 4585,
+      "sha256": "5c19a64b7631e10138790736060db582ae9e8f897f9823992feff2c84c1d0ca6"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Common/CoreKitBasicUISafeDraw.h",
+      "bytes": 1681,
+      "sha256": "5458252696969de73777bfd62ae0b40697a94feacc65c45511497e1ea8ae7fc2"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Common/CoreKitBasicUIUserWidget.h",
+      "bytes": 2370,
+      "sha256": "a6169df3989ef8fbdf819a932bb6887e3079b45112ad6e7922e9ecd2a95f9b77"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Common/CoreKitBasicUIWidgetBuild.h",
+      "bytes": 4697,
+      "sha256": "963fdc45a5e93109f5edfdfe8c396eaeae173375a8b2dcbed67ecb51a346ec97"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/FrontEnd/CoreKitBasicUIFrontEndMenus.h",
+      "bytes": 16616,
+      "sha256": "4608de9e682b4a91bb1f340c91571d97a688bd506be2abd19b9f5f36bcd05d7d"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/HUD/CoreKitBasicUIHudBlocks.h",
+      "bytes": 7980,
+      "sha256": "cbbb081e912a90d970f444a2c639915dc0e091ec14ac0de5122361685c8e2c87"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/HUD/CoreKitBasicUIHudBuild.h",
+      "bytes": 2911,
+      "sha256": "bdf4cf107923bd8988a83501770790db992089681b227e7ec5ba2a43403dd7b9"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/HUD/CoreKitBasicUIHudEvents.h",
+      "bytes": 9707,
+      "sha256": "eec85d1be53b39d8350d117dbfc1a8100da8966ce6edcb1877108c7b0e85527f"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/HUD/CoreKitBasicUIHudLogic.h",
+      "bytes": 8432,
+      "sha256": "d6c540b90152201996f0bc3f8c2e997c02e1e8f67d69b72d433b62206a922263"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/HUD/CoreKitBasicUIHudRoot.h",
+      "bytes": 5942,
+      "sha256": "7f78d57d6f8c249919f1f97234d85dfe16d63f3db627d76079c0e3df6d77d9fc"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/HUD/CoreKitBasicUIHudWidgets.h",
+      "bytes": 5846,
+      "sha256": "d2268d91afc1fd31130c6fc0ea1ddf1871fa43d5b24b9142fa4757e0142c75b9"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Overlays/CoreKitBasicUICardDrawMenu.h",
+      "bytes": 5888,
+      "sha256": "461e044158d31aae833598618105fe04d57b569141a70aa6de6a60eecdaf341c"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Overlays/CoreKitBasicUIConfirmPrompt.h",
+      "bytes": 3429,
+      "sha256": "ee9cab47eaa80c2442a745a7b059e24bbc9fd54a65e9b35a6bd41422ad33aa80"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Overlays/CoreKitBasicUIEndScreens.h",
+      "bytes": 6807,
+      "sha256": "1d42a43198a6659392001966b319b1d64a75aedac2e4d63d20dfa37a28ff87db"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Overlays/CoreKitBasicUIOverlayCommon.h",
+      "bytes": 5629,
+      "sha256": "7578db89c50c9052480f1f9648a0fc56530f9c5f6626820e99706dd28535896f"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/Overlays/CoreKitBasicUIPauseMenu.h",
+      "bytes": 3296,
+      "sha256": "f4bf30f4971d798bb5935585b98d030c6f861d4e36a5fd584a4653000ce7c5eb"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/World/CoreKitBasicUIArenaMinimapDefinition.h",
+      "bytes": 2768,
+      "sha256": "39c9c2542a79c552354410f9d56ece17a9dadb09081e5d3e32b446b0cf24b726"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/World/CoreKitBasicUIEnemySignalComponent.h",
+      "bytes": 1842,
+      "sha256": "4cd2de04034cb8f0392aac600e88c55eacbf40059b9567d68b71f2fdeecde7db"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/World/CoreKitBasicUIWorldSignalLayer.h",
+      "bytes": 3223,
+      "sha256": "f9e611b0acd61d65a5ec5c05a0ea21f416cbf6aff1129fbab4c598333df0addd"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/World/CoreKitBasicUIWorldSignalSubsystem.h",
+      "bytes": 1264,
+      "sha256": "637b24d12e0f4b2a80240c4b2ab2e043205ead3704f6879c5553bc6eca1751a4"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Public/CoreKitBasicUI/Widgets/World/CoreKitBasicUIWorldSignalTypes.h",
+      "bytes": 5251,
+      "sha256": "3d246987961621c1c8ba51ead1faafe423bc21098b87d58cd1b77cd1bb5b20d2"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Context/CoreKitBasicUIContextSubsystem.cpp",
+      "bytes": 8296,
+      "sha256": "e5d62e95e9a0cd95663e30d9bc3832167927eb53fef56d0277355291b5fd3481"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Effects/CoreKitBasicUIScreenEffectsComponent.cpp",
+      "bytes": 7510,
+      "sha256": "4293b681d9e92621e4dc55efbc564604c412b0c97f27ee228ddb70687f84647a"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Events/CoreKitBasicUIEvents.cpp",
+      "bytes": 2083,
+      "sha256": "29c38bd07deb26cae653a8636153f770cbd3dc9d6e12ee300931069c4f032629"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/FloatingText/CoreKitBasicUIFloatingTextSubsystem.cpp",
+      "bytes": 7455,
+      "sha256": "1235b66595c1d61aa0f333377a7a4504e5006f4f2e088b5dfc1bb86da55c093f"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/FloatingText/CoreKitBasicUIFloatingTextTypes.cpp",
+      "bytes": 2144,
+      "sha256": "15050904a83d766b13843abb9c7603fe70065b893e32b4999ffa9c394287007d"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/FloatingText/CoreKitBasicUIFloatingTextWidget.cpp",
+      "bytes": 4144,
+      "sha256": "54a9325c0bdb1bf4ea237ff9a72e344a683e297dcc8337cf349801a2ccc909c4"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Flow/CoreKitBasicUIHUD.cpp",
+      "bytes": 2568,
+      "sha256": "760f1b6960b82075d141653a6977b6fec5a387d0f31bbcbf540802e8249ccb92"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Flow/CoreKitBasicUIScreenRouter.cpp",
+      "bytes": 9315,
+      "sha256": "aafd900bc87784f134626a36b1aa175611749d6f9f65f7dd5ef05fa545de5717"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/FrontEnd/CoreKitBasicUIMenuGameMode.cpp",
+      "bytes": 12784,
+      "sha256": "31895f79335539c05195b01ad2beab6193d75a6915e2122b327a80e84686bd91"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Presenters/CoreKitBasicUIPresenter.cpp",
+      "bytes": 835,
+      "sha256": "55133de1eb72f8659e35a8a4fc7d14ccfbdba4423a873ab8f343fc09d96c8a5c"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Settings/CoreKitBasicUISettings.cpp",
+      "bytes": 521,
+      "sha256": "7cd0be480194bb8abd0cc093c219c1f3d0cf6db2c1dd776e0efe187d41206940"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Settings/CoreKitBasicUIUserSettings.cpp",
+      "bytes": 10008,
+      "sha256": "f2c6c829352b6c36e1bb048d47fa87d4993245d1661d0fa7f5acede18cab2f84"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Style/CoreKitBasicUIMotion.cpp",
+      "bytes": 3410,
+      "sha256": "c7b91fe2e2b079bea33bb02ab43f212bc4f7eef6390c2e15c07578d8d285f5a3"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Style/CoreKitBasicUIStyle.cpp",
+      "bytes": 7756,
+      "sha256": "b97f6d07c1bc612fcdea039c418e78580d7a28f55f861bd971aaff25fcfe0294"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Common/CoreKitBasicUIArcWidget.cpp",
+      "bytes": 4643,
+      "sha256": "9a43be2ad191b4b765a87ead29020f4ae3669c373e8f6cb2a450c4c6ea68432b"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Common/CoreKitBasicUICardWidget.cpp",
+      "bytes": 31567,
+      "sha256": "ba4ded4da9d4b2d0bb9c7d3e72ea824d2423451319e3b6a2189ed3109609b958"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Common/CoreKitBasicUICommonWidgets.cpp",
+      "bytes": 12746,
+      "sha256": "68c18300aab1b85e3238da3947266db2b9b543c239bb81b320173b8e04135dae"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Common/CoreKitBasicUIUserWidget.cpp",
+      "bytes": 3444,
+      "sha256": "b5aeaccd444db4e8afda2cc80b44653786e8cfcb52f77020f3d4645fcb80676e"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Common/CoreKitBasicUIWidgetBuild.cpp",
+      "bytes": 5298,
+      "sha256": "52363c27639d6a5bf57dcc83960b30f1706e476a9d0b53c4f9f8797b1d3d6ea1"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUICreditsMenu.cpp",
+      "bytes": 13349,
+      "sha256": "b3054e9c864e33df0201955f948db3bdf1c1e4f8ca484637b64d11b2ddc360f1"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUIFrontEndCommon.cpp",
+      "bytes": 21208,
+      "sha256": "6ddd93bddc800d3a4e4400971a689bb34fee202faa8ce271013c03e5223f3b82"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUIFrontEndCommon.h",
+      "bytes": 3147,
+      "sha256": "1779fff0524eef4d7afbc668922370d5ee94adac1583b66effba21205b449d13"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUIFrontEndHost.h",
+      "bytes": 930,
+      "sha256": "2963dc4fb5986c2e21ee9eb222f79a80c61872ae8f67ca62cf585290e04b0b72"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUIHowToPlayMenu.cpp",
+      "bytes": 20498,
+      "sha256": "4d82e29e603f8392764acacdca0cea933d1821f6208d5deb68e5f6574d7f83dc"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUIMainMenu.cpp",
+      "bytes": 27299,
+      "sha256": "6cb59088ba7eb47dc6144e8a78478f3b1a555d79bd3c55f3b56c08c4e98852ac"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/FrontEnd/CoreKitBasicUISettingsMenu.cpp",
+      "bytes": 69289,
+      "sha256": "083352766b2b6ed9294b7c952cd01855002b4fa30d1cb6c051688819d24cf4cb"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudBlocks.cpp",
+      "bytes": 43698,
+      "sha256": "b4c9e80729eaa4cc085e5f76e3751c677221b5379a143ee8242d492e7817740a"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudBuild.cpp",
+      "bytes": 14496,
+      "sha256": "4031518d293f853f3e03109b26cbadd22e6cab342b365053e666fb765cce0e53"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudCommon.h",
+      "bytes": 5550,
+      "sha256": "4e2af88e1ac782c8567816fb36f9fa413dc7cee7f9445eff8d21f4a4aff1fd05"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudDraw.h",
+      "bytes": 4740,
+      "sha256": "5df7123dce6a673be6c841a2c12b8656f7d9af8968c21f120ced76a1dc192817"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudEvents.cpp",
+      "bytes": 46515,
+      "sha256": "1ec0531a34d7cb6c6b864a3b6b8c9aff036b299823bbb5448c25596a0a7cfe1d"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudLogic.cpp",
+      "bytes": 7688,
+      "sha256": "f48566c94b5256e55b579b9ec1ce580e234be3594374f8df00c8d2693e18e6f8"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudRoot.cpp",
+      "bytes": 17165,
+      "sha256": "313e2aa3ca8e3b3482646c507d51524eeb9f848116fed13eb4418db030f27f4a"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/HUD/CoreKitBasicUIHudWidgets.cpp",
+      "bytes": 16685,
+      "sha256": "d1930fac46579f98f0e1770f109b399865af9b7491098d2c361517ba41c57336"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Overlays/CoreKitBasicUICardDrawMenu.cpp",
+      "bytes": 33647,
+      "sha256": "156caaf0534578f77290cd24a4776eb904860dafded355504c852227a6805b39"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Overlays/CoreKitBasicUIConfirmPrompt.cpp",
+      "bytes": 13342,
+      "sha256": "9fe2681e9e56489b91a1d9cdf645c77d2956cf4d35179bed3fc9f360dd5143c5"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Overlays/CoreKitBasicUIEndScreens.cpp",
+      "bytes": 40075,
+      "sha256": "e3a301414fbfb90fbfb437c3c01425b28d83942c4235023aa045b2177afc5e65"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Overlays/CoreKitBasicUIOverlayCommon.cpp",
+      "bytes": 11682,
+      "sha256": "ab27dd1904095b99ec1c0318437199607baa7bf20364cfade9ab4bca1950f099"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/Overlays/CoreKitBasicUIPauseMenu.cpp",
+      "bytes": 23119,
+      "sha256": "f29c1d71d45516f168287d5695219339b3de27aed844f29fe1ca8593844191a2"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/World/CoreKitBasicUIArenaMinimapDefinition.cpp",
+      "bytes": 1484,
+      "sha256": "e3a7c557a4b98cf5113ce801feef5de5c013ff7e61274c346f9637114b2a7ee6"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/World/CoreKitBasicUIEnemySignalComponent.cpp",
+      "bytes": 1926,
+      "sha256": "7b1a7dbb747480ef9b6e21821e717c2954a7d4e8bef6b4ce491db3719cd4cae0"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/World/CoreKitBasicUIWorldSignalLayer.cpp",
+      "bytes": 15724,
+      "sha256": "ab4dc707494b62237c619ac9a0a826c223d5188484a3bdbe0b9895282a6c1a23"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/World/CoreKitBasicUIWorldSignalSubsystem.cpp",
+      "bytes": 2209,
+      "sha256": "4d5db4414ddffaa1345a1a0e23bf066e97b77c7fd89b0b78fc8e8899bb387df6"
+    },
+    {
+      "path": "Source/CoreKitBasicUI/Private/Widgets/World/CoreKitBasicUIWorldSignalTypes.cpp",
+      "bytes": 3943,
+      "sha256": "e41429de595f3d5fcec67a0021dc4ae07e98caf21254474c21191e616e8e7232"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Boss_InboundAlarm.uasset",
+      "bytes": 20398,
+      "sha256": "2e7be1c1585a3652a78cecb7a5a4f93b20a7fb6c1f478c4465a7537e65ae5354"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Cards_Deal_1.uasset",
+      "bytes": 49677,
+      "sha256": "a458729c59125c45c9e9d90cf3eb08dcb5061eb61ae886762313f91a8ec46ea3"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Cards_Deal_2.uasset",
+      "bytes": 53659,
+      "sha256": "d025ed9333ec51dc4d48614154f266d82c27fe99979a72fce378e0b9b9ba0527"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Cards_Deal_3.uasset",
+      "bytes": 56078,
+      "sha256": "d9e344c3f8aea6fd23be0678ae8ca0e94e8bd5740424165edf63186bf4bc6cfa"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Cards_Hover.uasset",
+      "bytes": 86706,
+      "sha256": "8bba7389aaec5e7e9ef5a32be8f2231211d0bf930308c45a4bafdcab64de104e"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Cards_Land.uasset",
+      "bytes": 87066,
+      "sha256": "9704a147524f9d6a94ab98f94e3ef8b3acc5d093c2b63ffbc2ee79910754574d"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_Cards_Pick.uasset",
+      "bytes": 59659,
+      "sha256": "a13cc9c1f0262a252b23bf08f2b712c2f19fdf3820d38c72e53ff622f76330da"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_End_DefeatFlatline.uasset",
+      "bytes": 46855,
+      "sha256": "f0ae805be4eed6bcd77ce44244f056b11f9d95714998d2ea1d23d93676275dec"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_End_DefeatJingle.uasset",
+      "bytes": 38149,
+      "sha256": "d6363a2b17a9b3f0972fe34f4ad0e5d19b6e74d799321947ab012c1b3073e64a"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_End_Glitch.uasset",
+      "bytes": 4943,
+      "sha256": "0ed8b9b93f0f730b24012e8e7641d56a84807842147294702c714edfe14efbcb"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_End_VictoryJingle.uasset",
+      "bytes": 104894,
+      "sha256": "4f72fdb6fc711d6fe961b647e98063d1deb4f9722df46be003e689ebfa29586b"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_DamageTaken_1.uasset",
+      "bytes": 28847,
+      "sha256": "5fdd9729a02093ea35a3c9f95742ca434e55ad1964aeec29ad8a7210fa75c1e0"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_DamageTaken_2.uasset",
+      "bytes": 27481,
+      "sha256": "43835ced2aa257de97327646b8c6766cc26d6dd16b8078d4b795b56105e55ca0"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_DashReady.uasset",
+      "bytes": 30651,
+      "sha256": "8fa540790e5d68d77fac834a38d9280848fa280d1fc75c0e8dbc91a6482c62b2"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_Hit_1.uasset",
+      "bytes": 4064,
+      "sha256": "369a7bfd1ffacf3cbd12cacdd510d98c283a87e018f6a16a7184d0e941f33ff4"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_Hit_2.uasset",
+      "bytes": 4370,
+      "sha256": "74d17a8f3f84eb9f96ff7ef88e8dca68a901e5757de1c62a86abdcc10f263282"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_Kill_1.uasset",
+      "bytes": 27800,
+      "sha256": "5fad626da57ef8ff861fba5bae25ff8ac53bf32369cebaa43cc97f3f490db2b9"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_Kill_2.uasset",
+      "bytes": 26507,
+      "sha256": "9246f047681c6b8145597956a8ca8186ff2d32c9b731f4659436a81621f0bf53"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_LevelUp.uasset",
+      "bytes": 49982,
+      "sha256": "38713f3de5374a2b7b40f0997db20edffdd350c53e5ea841a7e92092287cc679"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_LevelUpHit.uasset",
+      "bytes": 33794,
+      "sha256": "f2dbe179253a9279db90a9ccb85b3e84bf71aa36574bd7803c51190ab86491cc"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_LowHealthHeartbeat.uasset",
+      "bytes": 16437,
+      "sha256": "51b231f7245e126f3224ee8fb388b01ecb0d68d39cb9b9bddf89d3d027e91d8f"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_PickupHeal.uasset",
+      "bytes": 34146,
+      "sha256": "8e38682219dd48ea17cd492a77312d9e78655cdd1454ad988b3a8297486448fa"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_HUD_StageChange.uasset",
+      "bytes": 64804,
+      "sha256": "d657a3668a4653c5931ddecb1dc63ee981cc4360fb656bd1fa41ddad453c99f7"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Back.uasset",
+      "bytes": 4892,
+      "sha256": "0cd74aaced4187ada8f1cc3ec5572c9f082397e0d76147108a23fb31fdd3ef49"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Close.uasset",
+      "bytes": 15112,
+      "sha256": "616dbfbd65ff675af1d497737742b0df2573855f4379888b51524c02842cb306"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Confirm.uasset",
+      "bytes": 16735,
+      "sha256": "caff3aa517f312adc9a122df9ee1a83e08f76663f9b5d0765f1ba83bbd9ec7e1"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Error.uasset",
+      "bytes": 20587,
+      "sha256": "e70517555cb8b7dba58b5f027ee269da144205db99d85499afb1dbf2d7cf6e4b"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Hover.uasset",
+      "bytes": 29140,
+      "sha256": "f0c5a52c64f32c4528286e19dea8451575804cda2518acff5e228c6ede49ce1c"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Open.uasset",
+      "bytes": 14896,
+      "sha256": "a246888c705073629e190c945510b59c6073be52c084c5ec4bf7ef380e925e1d"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Select.uasset",
+      "bytes": 7564,
+      "sha256": "a9e9708a8d099b0eb6656a97de5bda03feb9cfed4c6b7bec1d7740881c829a70"
+    },
+    {
+      "path": "Content/BasicUI/Audio/UI_UI_Toggle.uasset",
+      "bytes": 9541,
+      "sha256": "a350440b749c41b61f8869be97288497c6f582da1b1ca8c64e07a4a9a5c41383"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_DamageReduction_Effect.uasset",
+      "bytes": 166581,
+      "sha256": "b4d9e87a7934bf7d82619ebc0b7653fa82b75767e207437f334465078800dfe7"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_DamageReduction_Scene.uasset",
+      "bytes": 615003,
+      "sha256": "03d4d7979c0ef597eb9ae1fecbb72fe6c02a9a9ab8844ade6b5baf670b8d4f4e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ElectricBlade_Effect.uasset",
+      "bytes": 135954,
+      "sha256": "39524efcf9519739c6234842df7fc344eddb31303c46563f854a0a39adb5a5d5"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ElectricBlade_Scene.uasset",
+      "bytes": 635400,
+      "sha256": "045d2f466554ef1c5d9f0f57d791b99058b51acd4822d6ef5536d7f307d0290f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ExtendedMagazine_Effect.uasset",
+      "bytes": 73948,
+      "sha256": "0fe81b5c04ac5b3da83b0a11f41a127975aa4598a694a48547fa842a7bcf51bb"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ExtendedMagazine_Scene.uasset",
+      "bytes": 635603,
+      "sha256": "dfe3e62fdca636b0c8d95d5f413546678a9959885d8700ff4beec3d940282c48"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Firepower_Effect.uasset",
+      "bytes": 259368,
+      "sha256": "0ee19ea9021a121270ef20fdd8247f43e218da4fd0868fbcc78c6b8801846934"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Firepower_Scene.uasset",
+      "bytes": 633294,
+      "sha256": "ec15c77989b93a7da96f2b535e282e891e9f91b3660247efe3a153bd09e7b378"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_HealingEfficiency_Effect.uasset",
+      "bytes": 302124,
+      "sha256": "7099eabf040e7568455eff5ede5902b002c8844e780d316bbbd8b4499bb4bf66"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_HealingEfficiency_Scene.uasset",
+      "bytes": 628554,
+      "sha256": "7a9e1e1dc3c44f9900bf8d824f20bb45f0239aed454db07bea9268aea757e0e0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Magnet_Effect.uasset",
+      "bytes": 57310,
+      "sha256": "708ff9f9e5992a180f6b7b8763ec7e54b1efbcb98cb19e70bc78ce6c4dc9654b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Magnet_Scene.uasset",
+      "bytes": 662753,
+      "sha256": "eaba596433f8e169b8b9b6033beb6c5c03759b927c07cdecf174540174c5543b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_MoveSpeed_Effect.uasset",
+      "bytes": 157071,
+      "sha256": "345081e08d61f79ae5fac279ef946099e7cb8e4d79c929bb7589cf8bce05c92c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_MoveSpeed_Scene.uasset",
+      "bytes": 209746,
+      "sha256": "684c4c61cc65d4ce4fb3ccbba2c6ee27f34e523a3c701522d981a8af30f0fa76"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_PiercingRounds_Effect.uasset",
+      "bytes": 142139,
+      "sha256": "cbc3435ab923ef15a32e01df80681cbe815772e39549c5deea7b674613e99a5b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_PiercingRounds_Scene.uasset",
+      "bytes": 605047,
+      "sha256": "138579556351029d15fce47c7bd8307af38d6b5617453fb8d6dd29367adef10a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Precision_Effect.uasset",
+      "bytes": 116742,
+      "sha256": "a6787806f589ce58ed0b54e77e036a445e9246dd295094d78acc5ee25e3ac6f4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Precision_Scene.uasset",
+      "bytes": 590284,
+      "sha256": "38cf43b721b2b7b50806516454a048634603e9b006fa18e0dadcf376689f4ad4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_QuickDash_Effect.uasset",
+      "bytes": 212513,
+      "sha256": "82e04ea1e9b829a296b4cd0161180c1235916a51f7c2e3eb4a68f5a1cbb16b47"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_QuickDash_Scene.uasset",
+      "bytes": 197916,
+      "sha256": "99e6643ab7e30a9c6f07d04335d6f0eb957b9114fd2a554f61ccb7fa3b798da2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_RapidFire_Effect.uasset",
+      "bytes": 119083,
+      "sha256": "b4d95e115d8a26f9f2e0c8a6d2a8828412c92174d6d3eb02682dda37fab896e0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_RapidFire_Scene.uasset",
+      "bytes": 665910,
+      "sha256": "c67c016ed23411358af3f429f752d859e3ad79a8b47b397ad5427861e97a1fa1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ReinforcedArmor_Effect.uasset",
+      "bytes": 477275,
+      "sha256": "b2afeece7448850da43762b6535623aa70399424a0b13d9292e7c46b78f024bb"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ReinforcedArmor_Scene.uasset",
+      "bytes": 656238,
+      "sha256": "5a72d5db146fd6962990f46963ce28b6ea177abe58e695c0285c4ea33076f8f5"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ReloadSpeed_Effect.uasset",
+      "bytes": 364819,
+      "sha256": "dad037f22012d91da9b8f375b30c43d2e2fd43caea8f49ba24ea406115157733"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_ReloadSpeed_Scene.uasset",
+      "bytes": 647828,
+      "sha256": "c1a9f94e0e74e6f17e5e1985203ebf9b6af6970754bd20061b557f2218a483e1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Ricochet_Effect.uasset",
+      "bytes": 71570,
+      "sha256": "0bf1dd359b413649aecd9ab83991b17a3538c950362c871f0622086da34a8b0a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Ricochet_Scene.uasset",
+      "bytes": 629833,
+      "sha256": "07f6246ef542f4d0e8631bc1ed62af588da7021930d539ae524003689daae827"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_SharpEdge_Effect.uasset",
+      "bytes": 177657,
+      "sha256": "46ec11405bd0fa1db37668a190d554096bf654a3d775b09378dd72a4eb6e0e38"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_SharpEdge_Scene.uasset",
+      "bytes": 606761,
+      "sha256": "25681c0b09a416f01fcec0f9505d51b9a4579f5062885e073a5be5fb01700004"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Shockwave_Effect.uasset",
+      "bytes": 266952,
+      "sha256": "a417dcf1635798cc14dbd138e0129a3d3bbd91042aecfa1b2ce6a9b91e4a0d1f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_Shockwave_Scene.uasset",
+      "bytes": 609195,
+      "sha256": "ab94e0a6ee92844229d22dc10a56678cb8a9db4d4a21dd848a647fb18621ff97"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_StaticDash_Effect.uasset",
+      "bytes": 155643,
+      "sha256": "e73bb07851e3e89acdbca76fcd293ca0e8ff3ded17f4e5af61b7cfb313b667ca"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_StaticDash_Scene.uasset",
+      "bytes": 220212,
+      "sha256": "9cae5d33264747a860e644478ceb99b785e50393a11dcca809dde4d9551f1672"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_SwiftBlade_Effect.uasset",
+      "bytes": 131716,
+      "sha256": "e22c1b223b453268795d9b9951de1301d8cda11a5374ab456e8a767f599ee7d9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/T_CardArt_SwiftBlade_Scene.uasset",
+      "bytes": 591084,
+      "sha256": "a40801ee77f88f258ae2d4737776e71bebd1b79c37fbca865504fd100204a10e"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/DA_DamageNumbers.uasset",
+      "bytes": 1981,
+      "sha256": "3aba9bd9b36863f2da501a6b660e8abf5fded3ce09068ce4d543ca4d1de4bb99"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/DT_DamageNumberStyles.uasset",
+      "bytes": 62037,
+      "sha256": "b9bc8106df02c8d3dce336c9faecb8ef8bf44ad70a84056912fdcbd82b6512f4"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/BarlowSemiCondensed-Bold.uasset",
+      "bytes": 113438,
+      "sha256": "d5a21facfff949f1899a1c67d50aaedf34b8da62b4319ccb2886f7e4daa461ab"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/BarlowSemiCondensed-Medium.uasset",
+      "bytes": 107238,
+      "sha256": "de7fff20802738524726d4ae5aa994d4c25c8349ee52cbc922088b75fcbf1df7"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/BarlowSemiCondensed-Regular.uasset",
+      "bytes": 107460,
+      "sha256": "341d55c9fe01ab419174e0dcf0b2334452f444c0229d1007859aeb067719fe16"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/BarlowSemiCondensed-SemiBold.uasset",
+      "bytes": 111462,
+      "sha256": "89f5262b1309f660b08268b5b4c74bc9eed763c005ccd779f8725e7e7a892797"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/JetBrainsMono-Bold.uasset",
+      "bytes": 275726,
+      "sha256": "35d0492ee2d0bf8c6ac8a9d5be64e6ad5af9be1d6dc0d7c521d995d5e303b1e7"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/JetBrainsMono-Medium.uasset",
+      "bytes": 271958,
+      "sha256": "f299ab1b7e636c44259342f26b75c4f3e5965ce515d3c975b74016bf9a72f26a"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/JetBrainsMono-Regular.uasset",
+      "bytes": 271872,
+      "sha256": "1bf396b49ec2bebae1b35676fdc40130aa83da8384d7af04e690ca73551033ff"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/SairaCondensed-Bold.uasset",
+      "bytes": 98064,
+      "sha256": "ba25acc9d283c5a919c43af2818ff4db188c029ee592865007359c7d0caf572d"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/SairaCondensed-ExtraBold.uasset",
+      "bytes": 98246,
+      "sha256": "f37df1e09a461753b0ea5c25233f4740dc876c2ec924cd86d9fc8b03b7090515"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/SairaCondensed-Medium.uasset",
+      "bytes": 97888,
+      "sha256": "73baa377e49fb741edc2032263c9eddda08a8c6dd24309dfd5cd16e15e6af5ab"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/SairaCondensed-Regular.uasset",
+      "bytes": 96722,
+      "sha256": "0fe01cff405778183fe85ddc696db09e38dc018ceff44ae10968dc8c14d74174"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/SairaCondensed-SemiBold.uasset",
+      "bytes": 97688,
+      "sha256": "ebab128f8880b82723a067d504680eb88337e44a3fc5e47237753d167d284152"
+    },
+    {
+      "path": "Content/BasicUI/Fonts/SairaStencilOne-Regular.uasset",
+      "bytes": 111604,
+      "sha256": "2d6b5aacd594fca0ba80b0c7dbee7dc21fea6d8262d69424abec788d16938729"
+    },
+    {
+      "path": "Content/BasicUI/Input/DA_InputIcons_KBM.uasset",
+      "bytes": 9813,
+      "sha256": "9b45e0da79989e8bbc8738996b23c66d0836cfb5554af293d25b30be86dc882d"
+    },
+    {
+      "path": "Content/BasicUI/Input/DA_InputIcons_PlayStation.uasset",
+      "bytes": 8361,
+      "sha256": "81232c6e486bcd3f302abe7511cf7427d06d932cec2f1865ad7a56f76d5b1531"
+    },
+    {
+      "path": "Content/BasicUI/Input/DA_InputIcons_Xbox.uasset",
+      "bytes": 7829,
+      "sha256": "b827036103e29826055f3d49b48b305bf0a3463b47b91ec4ae743f71a86f3f84"
+    },
+    {
+      "path": "Content/BasicUI/Minimap/DA_Minimap_Example.uasset",
+      "bytes": 2359,
+      "sha256": "f20bf0cd60614a3ff441ad83ecd835a891442fe9f85d56c1abca5b22eedc1783"
+    },
+    {
+      "path": "Content/BasicUI/Minimap/T_Minimap_Arena.uasset",
+      "bytes": 25999,
+      "sha256": "a6829a0275db5db2ce9b2c937a8e00b7e0fda186cf019c56c500e38563cfd634"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Caret.uasset",
+      "bytes": 11982,
+      "sha256": "f45b9e5b19e0ccf3a1430a2fbbdb38efb2bd0c5df4602ccb4d1d725037576769"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Chevrons.uasset",
+      "bytes": 12161,
+      "sha256": "47038a6dabb1c28d35fd6328ffb6dd30c69c034d749ff520d253c12819ea80e3"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Cross.uasset",
+      "bytes": 11612,
+      "sha256": "aa047320f796764974cd828faf0e8f596759494b7399614a15b6e8cd14d9f655"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Diamond.uasset",
+      "bytes": 11612,
+      "sha256": "5beae33883ec89d9097bd9a4fa545765921c728fd46aa724b3c15fe6d76a3daf"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Edge.uasset",
+      "bytes": 12353,
+      "sha256": "17aed651301c01d1eb5c9cd9b7e90ca4495bd7b74de1304fa5f7f21b670b867e"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Katana.uasset",
+      "bytes": 12137,
+      "sha256": "0eeac8e19797864df5d1ae3be11804e7298801e992f254250e88262be6bf64d6"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_MapCircle.uasset",
+      "bytes": 13088,
+      "sha256": "15460c7953a269a725c1e3311ca1b5a5f4598f3263d5d509c55a65a46aff5968"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_MapSquare.uasset",
+      "bytes": 11278,
+      "sha256": "2069404e0f9f8a213259dd60643575f1a2c47799ae07adba3a24394460fab8fe"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_MapTriangle.uasset",
+      "bytes": 12449,
+      "sha256": "0452a0ccdef4f2a728e8857a1796fe5686302ba089b9378442191fd5f47bfdb1"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Mech.uasset",
+      "bytes": 12833,
+      "sha256": "4bbd00075c50bad0ce033ae5149da4e43aa0c495a06dceb6835c4332b7a21d61"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Plate.uasset",
+      "bytes": 13559,
+      "sha256": "61a1e88d0bb7fbfd8ad327f555fb22f31bd536bb80c972b1adb22465d50b0ec5"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_PlayerArrow.uasset",
+      "bytes": 12676,
+      "sha256": "3224a6b7cf35408118c16d569262e29b0e6375c9678122b08d4301ec4e8e0991"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Rifle.uasset",
+      "bytes": 11596,
+      "sha256": "29d1a43393a05c36aa74966f23d5e7abea60ddf1772952c8229d8293e4e1b841"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Sight.uasset",
+      "bytes": 13091,
+      "sha256": "e8a73d9a51bdbb1c49dbd9cfe16c3770688555941e564aca43592da76026ae61"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Skull.uasset",
+      "bytes": 13172,
+      "sha256": "4bad74371ea6759a5a0cc3e57e3c368a2ae9cf47f7480cb4528c7cc7ddc0e73e"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Star.uasset",
+      "bytes": 13320,
+      "sha256": "bd37273057c8af05bffce1af86903b5bf3a3f03a80563d8bb81831d05a3089ca"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Triangle.uasset",
+      "bytes": 11646,
+      "sha256": "da990cfedbab254bf3d5fbe29f48518b7d58e4b96336691d76c46dd08a4e5d6e"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_Vector.uasset",
+      "bytes": 12753,
+      "sha256": "6144cfba9ee58b8259169510d03c986d9850c5c5953298d9670924dcba810d1f"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_Icon_ViewCone.uasset",
+      "bytes": 12884,
+      "sha256": "9ddd34f235b99045753b2b64b5875dae1e6f8c9d51687816a6ab116884112a06"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer10.uasset",
+      "bytes": 11173,
+      "sha256": "8239e2f1cd17d9969a398104149e941284cb3dc64fb0c8093a0d0754fc4b3f64"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer11.uasset",
+      "bytes": 11173,
+      "sha256": "40c75d4de938681bd80bbc619b09e1d9cda5107fb3bebd599af4d40555083585"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer12.uasset",
+      "bytes": 11174,
+      "sha256": "2df5a53e15b958f2b27375d672cccb5f5a749199e13cda170f03c8aa594a424f"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer14.uasset",
+      "bytes": 11174,
+      "sha256": "8eb98fe0fad94874f3bec2ae6f865549830892da3b7eee42ffb7ca6a1252c34d"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer16.uasset",
+      "bytes": 11174,
+      "sha256": "71e7e15b52edc194ff7f805d4123834749738321c823340ed46c083b19d92a73"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer18.uasset",
+      "bytes": 11175,
+      "sha256": "956d6e85896de256e9f3768851d85ea3e6120a28fdfce7aec195541b54b11674"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer20.uasset",
+      "bytes": 11175,
+      "sha256": "91e8f1e854c7ca454751b1f5e727079be58a4df955ae5ebbe454708224068642"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer22.uasset",
+      "bytes": 11175,
+      "sha256": "4912744a161ba7caea6396d9700fdeb0d00efdc9c981556ef53acf8dc110a228"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer24.uasset",
+      "bytes": 11175,
+      "sha256": "662e02875cc478772d30ac89b88b064b9a540857c3b0e9da3f02774d36741dca"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer6.uasset",
+      "bytes": 11146,
+      "sha256": "359b7588c330d0deaa8909304dfdd27acf1e85a1bfb03d294c42091cf548ec6f"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer7.uasset",
+      "bytes": 11142,
+      "sha256": "1d4bfa53f9e82be40b63346e119768fbcd04b58df5a6919c8044a64e7c44cc22"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Chamfer8.uasset",
+      "bytes": 11148,
+      "sha256": "18f7c18146551a6dd54968bdf5902d1874121128d5d22d68e4b09fdb05b3f6ee"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_ChamferBR26.uasset",
+      "bytes": 11188,
+      "sha256": "9bb42243cecb682ffd15726b2d54cecd82c8d5da3f565df1c5bd36db22a2cd3d"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Circle.uasset",
+      "bytes": 13987,
+      "sha256": "547f529452478dad4ca5977e6f97c69f7e3d941efccb9fd2bd6b584c009ac105"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_EdgeVignette.uasset",
+      "bytes": 12663,
+      "sha256": "9397471790fd331954c2e5a00dba1291011bf38f54e325d3dad17e2e6899b874"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Glow.uasset",
+      "bytes": 25683,
+      "sha256": "0a413f10df12aefac5428b643596fc856c53d3341de18c54b95a9a8812808d88"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_GradH.uasset",
+      "bytes": 10995,
+      "sha256": "ef1b3e778b063d54f871947e0b5f156c07ba5f3ee0ffc4bd0fc56d135577d1d4"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_GradV.uasset",
+      "bytes": 10973,
+      "sha256": "f6d68c3e3867e751294520f6b927b1dd13856aaee6395f5db333bccf5726b6df"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_RadialFalloff.uasset",
+      "bytes": 17734,
+      "sha256": "4d0366cb471eaf9342f222f044c99e765e3d2c52b6a9edb41a0d80a8ca6c20a0"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Ring2.uasset",
+      "bytes": 14860,
+      "sha256": "4feb48b200123525e314ccad4caf9e943b0c39c09fcadb642f15ee25b0384fbc"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Ring4.uasset",
+      "bytes": 15638,
+      "sha256": "2d68616f41f56e1787eec1e8cfaeb77a560ae6acbaa0368f49bdc9d346d2f80b"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Scanlines.uasset",
+      "bytes": 10873,
+      "sha256": "90248003a10d18bc95826f2f70f75b962d14ce9bf6870242084f59848190d47a"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape10.uasset",
+      "bytes": 10983,
+      "sha256": "984ca8bfb99506409ea33965eb4e812ad32b7de2c19ef593fddfd2881af6bb06"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape12.uasset",
+      "bytes": 11027,
+      "sha256": "d0f6f9875bc7319fd61069992bec02b4f32df840828376015824018ec673ccb1"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape14.uasset",
+      "bytes": 11016,
+      "sha256": "13992e60fa9e6537bbd895d551a49fc7de7f4ca5b051606daff33b74442e3381"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape16.uasset",
+      "bytes": 11005,
+      "sha256": "b16909163d953d61a10bb4e3d56efbd51fe71dad21a788bda1ff5bf34994d62a"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape5.uasset",
+      "bytes": 10962,
+      "sha256": "4b66d9bab977e2ed47db3fb332811a4c47e9436524fedff50da4c2d0cdc6c5fa"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape6.uasset",
+      "bytes": 10977,
+      "sha256": "00d6e47e96d19b4c905b1706290dff45d9931181a298239b8847e14c61f8db3d"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_Tape8.uasset",
+      "bytes": 10987,
+      "sha256": "1b5e7e0c0f0a34abc2e4af8b270e7017b9b6ac88e150b25c9fc95bae5ad6a154"
+    },
+    {
+      "path": "Content/BasicUI/Textures/T_UI_White.uasset",
+      "bytes": 11171,
+      "sha256": "bbc05cc21e86c9cd0eda18cfbba1c34cba547f4b4c4999c6daa4b2c9d8cacb6a"
+    },
+    {
+      "path": "Content/BasicUI/World/Materials/MI_WorldRepairKit.uasset",
+      "bytes": 4033,
+      "sha256": "e88f5362008cd52a3053c47dcf4267a0e855c78e45f35e690a6c8785f3657009"
+    },
+    {
+      "path": "Content/BasicUI/World/Materials/MI_WorldRepairKitRim.uasset",
+      "bytes": 3541,
+      "sha256": "19aca8dbfbc54f0aae215d3c5fc314205a24d55796bf358f0c2947b9995ef7d3"
+    },
+    {
+      "path": "Content/BasicUI/World/Materials/M_WorldSignalGlow.uasset",
+      "bytes": 7943,
+      "sha256": "97bf390aafb864f3eeb7cc8849b823c1b4542f8a72783f423b29fe732f5b8599"
+    },
+    {
+      "path": "Content/BasicUI/World/Materials/M_WorldSignalRim.uasset",
+      "bytes": 7507,
+      "sha256": "420b0db650997bd8d3a57cc4d41fcc6b9ef40d98004e672f096905c321cb0ec8"
+    },
+    {
+      "path": "Content/BasicUI/World/Materials/M_WorldSlamRing.uasset",
+      "bytes": 12041,
+      "sha256": "86674b692afd0568d3472563d8c1bb4b33d76db32bc98f8ddbf0f7f82c246b9b"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Down.uasset",
+      "bytes": 12296,
+      "sha256": "93364399f63a2e7834de0993126930bbf5df8150cef5b237759b9c59b37cc118"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Left.uasset",
+      "bytes": 12351,
+      "sha256": "4166b29381af077bb1fe7de4b5733af03d95d0287ad4e9a9d2bf816f63323854"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Right.uasset",
+      "bytes": 12330,
+      "sha256": "94d577944c1e7c7235bd824dc79c055be1d1b18e8aa508877387d8ef7409b05a"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Up.uasset",
+      "bytes": 12282,
+      "sha256": "3e32d3327b48fc360eccedbad2c82de50533740c02d709782a91d5e0d21a909d"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Bottom.uasset",
+      "bytes": 13029,
+      "sha256": "ac37d34b19d78ac98c8bb1d91e23e07f5fc2a9173982875208055c3485b29d46"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Left.uasset",
+      "bytes": 12723,
+      "sha256": "a250699025a5073b76360759968c346849a1e7875579c73c33456451211065d3"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Right.uasset",
+      "bytes": 13327,
+      "sha256": "c509ba7532b9fe726c704e8d12823c3d0533db22417456afb6d9682e4d0bb6aa"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Top.uasset",
+      "bytes": 13080,
+      "sha256": "9652ae8f9b45fa8d71dbf5c1e74a07b097002237768d71a3616e77c325c1a3d7"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Left2D.uasset",
+      "bytes": 13468,
+      "sha256": "5dc2df6bf558a560a1a300e9279ba8f4cb41aa777dce8b75e98a7b129dfcae36"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftShoulder.uasset",
+      "bytes": 12382,
+      "sha256": "496f74826fe7f43663020ef4c83175372bbc66f9bf13240b46f24e6147f12051"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftThumbstick.uasset",
+      "bytes": 13018,
+      "sha256": "0c87184a908d48d098912cebe412c60bca7eaba370738a0d023a2432768b152d"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftTrigger.uasset",
+      "bytes": 12545,
+      "sha256": "5dc06ec1531d6a7edb3dc685b692500eca53e32eeded052b36345baaa8acce36"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftTriggerAxis.uasset",
+      "bytes": 12629,
+      "sha256": "fd497b2aa7387f8de2a6b995158c2aa7dc780492fd6ffe03e9fac24932233b33"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftX.uasset",
+      "bytes": 13500,
+      "sha256": "e306f85a44aa8f79c3aa12f7a91181881969bd5b3c9ad4d7d47c4ea70fae6976"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftY.uasset",
+      "bytes": 13670,
+      "sha256": "42b4dca95b5d39fc40bd3c0fc387c54345ba44e4b9abf3f24ab0d328d80f6e0d"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Right2D.uasset",
+      "bytes": 13637,
+      "sha256": "8dc5864928630ea13eb39ea0e742073b5aedcaf5338e2db020c0a3d94a3d1d20"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightShoulder.uasset",
+      "bytes": 12580,
+      "sha256": "b6817d10b12ba9583824d9779eb750926248e36558b54f9905b3f1b494d22b53"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightThumbstick.uasset",
+      "bytes": 13178,
+      "sha256": "37d439f05e8922c313320e1228021016becc4e015905310ace30264b5efa9343"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightTrigger.uasset",
+      "bytes": 12722,
+      "sha256": "62694b939f2d23fa5607d77fc3e2be8f77fd655ec85662cbd020bc85e5bb4afc"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightTriggerAxis.uasset",
+      "bytes": 12806,
+      "sha256": "1327284a13597845152a84016eab3c834f858288aa38963d17ab177927c34a7b"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightX.uasset",
+      "bytes": 13672,
+      "sha256": "52ea1f15e70447a68f086a71356717cb13c569456a3470c4422c85fef35c90ba"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightY.uasset",
+      "bytes": 13827,
+      "sha256": "2934c8a784dd6db2a33e5fd7c7fd014f2e36db103945ffec1eda1ee0297fba5d"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Special_Left.uasset",
+      "bytes": 12437,
+      "sha256": "f41f88e08959a57788c8e78d2bbe594caa3e99579c30665e828d3868c5b54ef7"
+    },
+    {
+      "path": "Content/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Special_Right.uasset",
+      "bytes": 12293,
+      "sha256": "9f20ec337afb8918a522c96e488cf83df8f76969f487cf08bb48a46c730319fa"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Down.uasset",
+      "bytes": 11746,
+      "sha256": "8ccf39512e20064057ccbbad39deead099d3e336e16ef5afebb963d558847e0f"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Left.uasset",
+      "bytes": 11778,
+      "sha256": "e2a7b78b0db7f1cae2fe3f9876cb819a931778f7a7af68044d82aae0d27b4f11"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Right.uasset",
+      "bytes": 11797,
+      "sha256": "fc15bdaf0befefca27bf4f7d89abd9f3b1901e53fe66f2eec978fbbe10f0836f"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Up.uasset",
+      "bytes": 11726,
+      "sha256": "14d5bd05217453f98c480d72c3f4333e35601ddd3aa78cdae891c2ca166f6a32"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Bottom.uasset",
+      "bytes": 12758,
+      "sha256": "a338862e9bf0a04476333b06c939eb38a8a8d9635550250a408394b62c25e2d2"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Left.uasset",
+      "bytes": 12989,
+      "sha256": "abe0e725ea90865038e660ef9f37398ccfe80c7d1e13e0abdcc57da0e198edd2"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Right.uasset",
+      "bytes": 12696,
+      "sha256": "c3931f1843131492c9cdb7c305f962c3599c7694a4d26e00816a9b930c584018"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Top.uasset",
+      "bytes": 12722,
+      "sha256": "fdbfc04e24c9cc1e4cec92d9eb069dcaf67cd2c8b8feb0e6cdb43e02e97e7b55"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_Left2D.uasset",
+      "bytes": 13223,
+      "sha256": "ae69f1e2f32efee4198c5a099bf070bc7afc4e7bb57bb06ddaa56a15382d08e4"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftShoulder.uasset",
+      "bytes": 12145,
+      "sha256": "6ea44d8f14685011efd41d03bd2bc231847477159f476266598e2356fac8a1eb"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftThumbstick.uasset",
+      "bytes": 13526,
+      "sha256": "a167a05daca1fca2182b87b8d6248378494c54d070f7e75eea4c39864428b8e6"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftTrigger.uasset",
+      "bytes": 12003,
+      "sha256": "4128a9665943144a036e4bfc4e8902fd819be7e955fe51310381f21211e85637"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftTriggerAxis.uasset",
+      "bytes": 12087,
+      "sha256": "c5385f2cab9fe6f9e6ee335d5d98819269ab20e487d2b272234f25ebd1c433bf"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftX.uasset",
+      "bytes": 13255,
+      "sha256": "e81373276dd8e04cd0a92b9b82f519eff29331f7b38abcb086be3747d9aa321e"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftY.uasset",
+      "bytes": 13425,
+      "sha256": "4089fddc5a75e18d481ec6c8089b40177adbfa8bf4f1cd1390c76cf7052c630f"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_Right2D.uasset",
+      "bytes": 13392,
+      "sha256": "0787c1b01a6a41515510b563c3fdd37e7df2050492151397a13e9e7c19827411"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_RightShoulder.uasset",
+      "bytes": 12278,
+      "sha256": "f3ba1268ba99f93ebd69178a2804974fd70dcb9f6630b806ad5e2193e4efbab0"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_RightThumbstick.uasset",
+      "bytes": 13691,
+      "sha256": "e18d0e540060658de03541c38cf849853c704d2e4efa1fde480a0cfcff7c6602"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_RightTrigger.uasset",
+      "bytes": 12216,
+      "sha256": "0fae9fb331e000200f8d8dc37b6a4904f48ccc46f7f497b4433df474d10f5c1f"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_RightTriggerAxis.uasset",
+      "bytes": 12300,
+      "sha256": "6aea2d31b05667667cb072901f4dbec4282a6a023e29b50294c6a1e3eeab6dc6"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_RightX.uasset",
+      "bytes": 13427,
+      "sha256": "746f01aab7c9374349ebaae61b3a6c2a25cb65d8c895a00f75b37da7283b0855"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_RightY.uasset",
+      "bytes": 13582,
+      "sha256": "5bccc3447dbff8016a556d58374e71cbebb8f09c5b13e0b7142bd3a0b8a4801d"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_Special_Left.uasset",
+      "bytes": 12492,
+      "sha256": "4d9f43b58baa97cc6a168a9fc3dcba6788b2cbf25242a049cbd6046f9b15c1ae"
+    },
+    {
+      "path": "Content/BasicUI/Input/Xbox/T_Glyph_Xbox_Special_Right.uasset",
+      "bytes": 12453,
+      "sha256": "e44dd283452a7a90682e9ddd514ebab7bd640818d0a6d22ea0fd7d5f76966eea"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Fonts/F_DDSairaCondensed.uasset",
+      "bytes": 4493,
+      "sha256": "8d979e6f1891c3dcb855495e1552490dcd0edd6a47ddd5c2792c77096e9bda8a"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Fatal.uasset",
+      "bytes": 906274,
+      "sha256": "8d7bbeed58b70272ccacc27f4267998e789df59860f4fc27b4bafa78bffb0558"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Fire.uasset",
+      "bytes": 773009,
+      "sha256": "f75092b11072ce8f5da18d9144bc68ac5bec11f7a2fc108f998b1f965334f61b"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Healing.uasset",
+      "bytes": 954074,
+      "sha256": "49429c87cdfb7aec00313c9b2a2a45bad8ce060009e933db8a7b3ae38f2bd4c0"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Heart.uasset",
+      "bytes": 985795,
+      "sha256": "1983678e26d864752dcf95731b06e7bf7a38b967ea4ef541b0e8ad2906361dc1"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Ice.uasset",
+      "bytes": 1178691,
+      "sha256": "8e308ab8ffd7f42645e34cbb6ad37b379a58874caf5b24c764200ec9b9c2a021"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Overload.uasset",
+      "bytes": 1093628,
+      "sha256": "6b5ae6e9d4bdd1962ca732075d354b5aa945fbc5e5b7dfe9db820d995c7a84b9"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Reticle.uasset",
+      "bytes": 669957,
+      "sha256": "d6ecbfa6c0296a44663fdfefbb7e089914c4bc63b04ff6c77c7b1b1a546ac1ce"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Textures/T_FTCyber_Shock.uasset",
+      "bytes": 908784,
+      "sha256": "a51758fba2095aaa3b9024284303df1ec96d2fc2363af1d489503dd497697ba3"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/DD/FC_DD_Opacity.uasset",
+      "bytes": 1705,
+      "sha256": "82ef8825ea2af77d2cff8b13be20893dd26146beeae490f96822e49c094fda70"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/DD/FC_DD_Scale.uasset",
+      "bytes": 1697,
+      "sha256": "ab4f7224f4b61645b30eb89d9c609b8683a4a8f86e2c238ae5f1953250479ff5"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/DD/VC_DD_LabelAbove.uasset",
+      "bytes": 2080,
+      "sha256": "c628ad22cbed9bb03ac8641693751b79716553a07d8afecf10908c02d5c7b834"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/DD/VC_DD_LabelBelow.uasset",
+      "bytes": 2080,
+      "sha256": "14ab829652e409e5659b0568c586d34816900702a25b42fdce5d215b90abedf5"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/DD/VC_DD_Rise.uasset",
+      "bytes": 2056,
+      "sha256": "bd2b9a51ea0963437af1a5c48bb4771cc7075b590db249f682289010a9e7b686"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Fall/FC_RenderOpacity_Fall.uasset",
+      "bytes": 1741,
+      "sha256": "c57015d2d8824199ce3dc0953d1a17e17e982444cc16d5ed8196363124a935df"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Fall/FC_RenderScale_Fall.uasset",
+      "bytes": 1679,
+      "sha256": "f6294af815f7b1b9e830561a3de4033c51289bffc509431c5096034dbbbfe774"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Fall/VC_RenderTranslation_Fall.uasset",
+      "bytes": 1940,
+      "sha256": "ff2f91961c7ad4da331019f909ebb0b679d25edac403fb5b41d0fa220e6aa087"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Fast/FC_RenderOpacity_Fast.uasset",
+      "bytes": 1714,
+      "sha256": "2c91f5711473e98e605870bba4fbf4aeb140cf41db5c105f620eb8bc1db4da00"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Fast/FC_RenderScale_Fast.uasset",
+      "bytes": 1706,
+      "sha256": "129933675a2b900e92c5e024db5a46f7322e98a1c5c6fe36803ade9c7a5ceb54"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Fast/VC_RenderTranslation_Fast.uasset",
+      "bytes": 1737,
+      "sha256": "5101982e302aa5f5c3fec4a3c76e6310e6879f343d52c8ab06d6d5bd9b3ace48"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Mid/FC_RenderOpacity_Mid.uasset",
+      "bytes": 1708,
+      "sha256": "1a1b4f311f9e3d2f13666a410947240c17e8954c04cdb08de14a66386e8b8e94"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Mid/FC_RenderScale_Mid.uasset",
+      "bytes": 1700,
+      "sha256": "f507bc527989807b0d2827a0fc2d4ce79c04eb29bea723c783a47150f577334f"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Mid/VC_RenderTranslation_Mid.uasset",
+      "bytes": 1731,
+      "sha256": "f4728db997c060dd173994f169f164e6cf9046fdba4895d12eb496cb594fd321"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Slow/FC_RenderOpacity_Slow.uasset",
+      "bytes": 1714,
+      "sha256": "50aaa843a2a5949c01d4706aa2421c6f6ca35c11a493fa385d80419f7d8f7144"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Slow/FC_RenderScale_Slow.uasset",
+      "bytes": 1679,
+      "sha256": "507a71b1044d018c1c25dcbed4a4c2b3f33599f4ebee36cc368f96da9fae4cc4"
+    },
+    {
+      "path": "Content/BasicUI/FloatingText/Curves/Slow/VC_RenderTranslation_Slow.uasset",
+      "bytes": 1737,
+      "sha256": "f081f10a9985b01ce9d2ffebcf2d6ff0c03f3976832e3b0ff7acc1ff5d9d7067"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/M_CardFX.uasset",
+      "bytes": 25309,
+      "sha256": "d152cfafb528f6731e5ba3b2aa6d0f330f562b4cd48c862307ff418debb5e4bc"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_00.uasset",
+      "bytes": 7341,
+      "sha256": "2fff2a6106de38a569776af8b92256a18ca6c5ba309538b91113fd4163c4b12b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_01.uasset",
+      "bytes": 7341,
+      "sha256": "13d2a7daeac3b9bbef62b867ae1ce6b1cc20794bf91a986d2b75e61dbab6040b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_02.uasset",
+      "bytes": 7341,
+      "sha256": "25940fae6bb9468a2a2c6b2c44cbdb7e3b82933fa7772c944b255896197ee40b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_03.uasset",
+      "bytes": 7341,
+      "sha256": "4bf49a82c7016c06b134be15e75b4adacbf8af8fd85bf4440a7666d9f9e51256"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_04.uasset",
+      "bytes": 7341,
+      "sha256": "70b6c9c1f2aa3182f0ebd3638bd22b2c4ae7b77bd25ba09d394d6ab89927779f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_05.uasset",
+      "bytes": 7341,
+      "sha256": "62ad8b9ff666c0a66d1b05e1ba884c024ba4ca03254f981251cf1d9b327e6e54"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_06.uasset",
+      "bytes": 7341,
+      "sha256": "c4e0965870061dedc8854ba4ebac78b4f702041aaba2dbcfbaaba29bf07896e7"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_07.uasset",
+      "bytes": 7341,
+      "sha256": "2f119a4f83670216c51d685c927e756d574fc9679bb85dd8ad7f9cfbb7bdb0ef"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_08.uasset",
+      "bytes": 7341,
+      "sha256": "13be9d0f0c87701c160c2f08cb87611c86708f84ddc20563e0ccb38637d7a069"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_09.uasset",
+      "bytes": 7341,
+      "sha256": "2b8a71861ee84b3f6e7e0b6435f1937bfb7c33d0fb26a6e3f6fdad8787049a39"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_10.uasset",
+      "bytes": 7335,
+      "sha256": "37ae03d61ee341d8b9413fec0ca376e4b0885cac063a2541a0d91305711ec878"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_11.uasset",
+      "bytes": 7335,
+      "sha256": "8eb57e45116f8a7c54e69c51ed7ae5dc3b5fb8468700d192ef16f34a89e729f3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_12.uasset",
+      "bytes": 7335,
+      "sha256": "5fced022cda282ddcf782f27338c7c47fb865cc4beb77b9d65ec20f74768dfd3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_13.uasset",
+      "bytes": 7335,
+      "sha256": "93525abc003ad939d425d28c95fdeb750c45c6050a0b818b7d4b5970f64e7174"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_14.uasset",
+      "bytes": 7335,
+      "sha256": "2a6381b7732c14244e6e0fdda31957dd88e4e394ea492fc427171f1a5fdecf89"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_15.uasset",
+      "bytes": 7335,
+      "sha256": "17de4aeaee3d78a708902815bacac7aa09a09f71905dc8c0b9c1d2eaa6fdb5cd"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_16.uasset",
+      "bytes": 7335,
+      "sha256": "ecee114b341ebbf6c84d82e8972c5ec92c88db0d492a74e70661769bf0f44813"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_17.uasset",
+      "bytes": 7335,
+      "sha256": "ced19210a3676966acae321821b1a7ed8715631bc2b6df2f2f0f61d549dc7c6e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_18.uasset",
+      "bytes": 7335,
+      "sha256": "fafca5d28b9aa7635ef056c316cceecd80ea20288cda3342c3d0bb64c8b033a2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_19.uasset",
+      "bytes": 7335,
+      "sha256": "816d6b979367a47c86b5ec7f68c98d6482410678d1df03e42665f1c4ebdef557"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_20.uasset",
+      "bytes": 7335,
+      "sha256": "d1f6a23bca4985dd7af97414fb41177f51db3cca9ed04b604752e1ef071a50b3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_21.uasset",
+      "bytes": 7335,
+      "sha256": "9743fe185f872378fe02591fd8393249cf2d7eb8297db8a189673de0491990fa"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_22.uasset",
+      "bytes": 7335,
+      "sha256": "7486bc412fd8b98cd1ce64ac7e9bdc6cfe23658110d756bb76b88fd901d42dfe"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_23.uasset",
+      "bytes": 7335,
+      "sha256": "a4dcbc73727883850f4ee75889420d84c8e9ca0ef9084ad1314e6477f15d8080"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_24.uasset",
+      "bytes": 7335,
+      "sha256": "d295f0159fa215af2ef625b204cc60e7d91f46d87ff4b76350d4875a37ec82a9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_25.uasset",
+      "bytes": 7335,
+      "sha256": "2612f3c4693b563c4bd26eb6f6f1592c7d760d58871c4fd50d12ba3ad6dc1caf"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_26.uasset",
+      "bytes": 7335,
+      "sha256": "e1fab1e291f5c793b5eb632f93609adfa812a280ccb62dfbe96cb6c59e02b811"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_27.uasset",
+      "bytes": 7335,
+      "sha256": "b0e92ddf4157ad6c686d2b083eab61ff019720cf6ae3c1a0941da2674e35491b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_28.uasset",
+      "bytes": 7335,
+      "sha256": "503f4ef1b838cb623d4ddb22e8ac54b5fee865f41e89e9096cdef1b043a9ded8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_29.uasset",
+      "bytes": 7335,
+      "sha256": "fc7eb805a669fda98cf3eaeddeef44a112dbb9beccb59d4bf7c452632f6a84ba"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_30.uasset",
+      "bytes": 7335,
+      "sha256": "5b116117db98b1589981c715016e9114d3bd293b4a8ad051f752d683ac65351d"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_31.uasset",
+      "bytes": 7335,
+      "sha256": "97427b40cf87f0fb7b7338dc25f7e99a02c81081473a505bb0618c5785422952"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_32.uasset",
+      "bytes": 7335,
+      "sha256": "a04f34e1ef501f3a62196ed437506d4aefea66fef9d7dbb112e3f03acd4bb9c4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_33.uasset",
+      "bytes": 7335,
+      "sha256": "ffd67eeb063643e8a003decdb88d45b5ac4088a485b56aeba5a3d78ceeab24b4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_34.uasset",
+      "bytes": 7335,
+      "sha256": "df2912a519e2c3ed2b4de0dd282595277833a8ee5a4b1ba2f1cf7ac5b74f244b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_35.uasset",
+      "bytes": 7335,
+      "sha256": "357ef82d001ace56742a607ec6ecaa5cc492ba5d00332c470a26fd160512b991"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_36.uasset",
+      "bytes": 7335,
+      "sha256": "9369a494b715d690b61a7dbe0093c9c5cce6c56bb85efb6b14afcde4aa2002e8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_37.uasset",
+      "bytes": 7335,
+      "sha256": "99b5292ab95545dd302a42d3561857f88b0f34df1758a09b4c5577be135d5460"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_38.uasset",
+      "bytes": 7335,
+      "sha256": "c42cc799f6d99e32683130b1f91cd31dbb7e9cc65b1739a43bb513ef2bc7d6e1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_39.uasset",
+      "bytes": 7335,
+      "sha256": "858e1dd756eff53e440046b1cf315c9fb690009d37ee28f41b99542f5337a0b4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_40.uasset",
+      "bytes": 6048,
+      "sha256": "448d4f36693a47931b81064323012c1bb9862c17d0698f1e768149d40d324b4b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_41.uasset",
+      "bytes": 7335,
+      "sha256": "cfe4bc33d29f660d4fd96506f351662dddd7fe82a93e57fce4f10d531f276bb4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_42.uasset",
+      "bytes": 7335,
+      "sha256": "6c2ff5b9fd0735aaef716b3f4560d0dc4aeee75d54f6f40e0f7c17c2b549724f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_43.uasset",
+      "bytes": 7335,
+      "sha256": "8960b80a5def7255dda275bf32060bf6ba616c27002c554a8318b1c861baf84a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_44.uasset",
+      "bytes": 7335,
+      "sha256": "2572586c2f91383be3a55198ec590c747263a1984ced4b7222286ae95c1c541a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_45.uasset",
+      "bytes": 6048,
+      "sha256": "0166cf427ada54577f18181b6556ae3d87b7235df9b03cb3783995622e92d950"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_46.uasset",
+      "bytes": 7335,
+      "sha256": "e67f54b2086207558913cedb81c423d08d727ff96a0065f291be599bd18e6728"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_47.uasset",
+      "bytes": 7335,
+      "sha256": "78590da9c85099a9953dba76b6ff8863af93738b8bdbc0cbeff5a9f3a12dcdda"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_48.uasset",
+      "bytes": 7335,
+      "sha256": "653e8495137c6f285270ef5efb77c0b36c5dc2be54c605b9dd165357da3b91d8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_49.uasset",
+      "bytes": 7335,
+      "sha256": "a7fdd16cd5ae4326b80053e6051931f6ea21e0d0953fa32fc3181d19c95ae022"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_00.uasset",
+      "bytes": 7331,
+      "sha256": "f207e75209c30a27e2af6eb03a6b398ed67e23ddccc5966df603d0d711a584fa"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_01.uasset",
+      "bytes": 7331,
+      "sha256": "d68c428af8c4e5d118206f2d53501c63c20f675c05ed50ef6e1df85be284a538"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_02.uasset",
+      "bytes": 6044,
+      "sha256": "bf56dbc21298b66d0de16b745f6994efa736c4edd94abeed88c1e118c0274bcb"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_03.uasset",
+      "bytes": 6044,
+      "sha256": "16be54006cc6c1f09ef7b0d57eb5157a1e0a361b1ee3975826c91fc94de3b00a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_04.uasset",
+      "bytes": 6044,
+      "sha256": "7f7f00794ba23a0441131215881d8c353dd947fcf9c62a651d81ab0f05ac7756"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_05.uasset",
+      "bytes": 7331,
+      "sha256": "7616d46ff6549afdaf93f241487b728c9675b76107332ef6d45e0515c0c1ad17"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_06.uasset",
+      "bytes": 7331,
+      "sha256": "0b103e88ce550e13aaf9ce4eccdcb9000e84237cd16f8d738577b21a783983f2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_07.uasset",
+      "bytes": 7331,
+      "sha256": "6df0dc14cb54d930df47f296a416132272e29a5bdf96bfb4909a391f8e11984f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_08.uasset",
+      "bytes": 7331,
+      "sha256": "b68b2f84243ba5047990a387b24cb28d36a791b1157aa9085e246c28b51547ad"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_09.uasset",
+      "bytes": 7331,
+      "sha256": "03c2922b3f7b913c9184c72364a582db16420dd8637b137fc5a98802279cef13"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_10.uasset",
+      "bytes": 7325,
+      "sha256": "a1c635d535e62460738a7c6e4905bf1ad5603381f12bddde95938a644c91330f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_11.uasset",
+      "bytes": 7325,
+      "sha256": "ed3435e3b3190a381b6af48386a26d802653cf3f04270fe72f5b02c4817c848b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_12.uasset",
+      "bytes": 7325,
+      "sha256": "ac617e0cb6267c44b13d91afa3050a24e98ec379d92d27830c887212c44a406b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_13.uasset",
+      "bytes": 7325,
+      "sha256": "d289f42a452aa82d0e2e31f46b6edd6474497ddab39a59a19ddecbab5e321c0e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_14.uasset",
+      "bytes": 7325,
+      "sha256": "c0495b6950f1e1949dca77f8217137c91c90d9cbec0485d0bc24130cecb0f50a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_15.uasset",
+      "bytes": 7325,
+      "sha256": "f3a20839948513369edaa58d46806ef841ac0f3b4d8521e8deda5210ecee20a4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_16.uasset",
+      "bytes": 7325,
+      "sha256": "45c5032b68cab21b779e6dafb45c8b071848d0eb6cfb7e219c45983ba00b3c60"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_17.uasset",
+      "bytes": 7325,
+      "sha256": "0244b441daf9c20ab52a804d9ebcb5795ff9ebb04197506dbf32076dda56078b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_18.uasset",
+      "bytes": 7325,
+      "sha256": "b30dc7871e77c75ff1d974606c09ccc9b3a38a868fb78420bc88dd3f44f3dc7a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_19.uasset",
+      "bytes": 7325,
+      "sha256": "4e3a225f43a681cef97f94b07b952820eee84b1fde3786c87be846d6d6ed7ffd"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_20.uasset",
+      "bytes": 7325,
+      "sha256": "afa82903d6ce6f072e53f85147e753b01a4b0d915ea0198b368715ea1f0eaffb"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ExtendedMagazine_00.uasset",
+      "bytes": 6059,
+      "sha256": "b2761a8d29659979fc56e97c0f2229b46e07dd5502ebb7ed88328fd76e00597c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ExtendedMagazine_01.uasset",
+      "bytes": 5631,
+      "sha256": "381921467b2feaaf9e22722d28d6c6d724eaa161d1d2ace0ad7aead1b745dd9b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_00.uasset",
+      "bytes": 7311,
+      "sha256": "3080d85e38e1ffe6dc581d2a30ede2efabbbe2c38427963f7af014e099c000dc"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_01.uasset",
+      "bytes": 7311,
+      "sha256": "7d96e9d0624bbbf6a0e3eb2da490451da173e9c98bfbbd9de2036c6741f91f84"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_02.uasset",
+      "bytes": 7311,
+      "sha256": "d6e2505788bef7d22565cff66aef9ebefd67f3b6931b0241cd04ad7a4bf9ca85"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_03.uasset",
+      "bytes": 6024,
+      "sha256": "401920891006b3c32cb990f849b23ea05b9051ede0c883632941a97e26c94812"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_04.uasset",
+      "bytes": 6880,
+      "sha256": "5ef2e9d56f303e09285c3b3dfab9b7f0d32e0d9bff02e373f860baa87b00aad9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_05.uasset",
+      "bytes": 7311,
+      "sha256": "e4b118889b89bfb6bff46428e7e5cc6a7b4473bd39a56768f7c295db79c1fbf8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_06.uasset",
+      "bytes": 7311,
+      "sha256": "7ba30f7ae08e68629b277e962446c5a0ea68a81c84c3b9ac2de597f9f5a16a0a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_07.uasset",
+      "bytes": 7311,
+      "sha256": "45c8289f56b0e9bb602f7b26757c621e68e0d5f04fa3623615a3165a727a7645"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_08.uasset",
+      "bytes": 7311,
+      "sha256": "943ed91a2657c909b4268eb99927f2285055bbe7244ba93d03b0f6bd18f94e87"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_09.uasset",
+      "bytes": 7311,
+      "sha256": "57073d0e5881da8e96aa920bae4158860cd48400cc3c963288c3f21b1add255f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_10.uasset",
+      "bytes": 7305,
+      "sha256": "de31cf69c4ea64b08235288ad1eaf14139d2539f1cf8fb6ba186b1dd722642fc"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_11.uasset",
+      "bytes": 7305,
+      "sha256": "92f9b4d246e2722b0bb07da19efe7e12a71a89e6e4a22e52ea601c4982baa11a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_12.uasset",
+      "bytes": 7305,
+      "sha256": "097b0168004498274ff599b393bda66da348c570fee7bf03aa48c6dc8602be5b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_13.uasset",
+      "bytes": 7305,
+      "sha256": "50fc469faf631d26cf487b5e7324d46cb279a50504f26baeece1cbb1345198c3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_14.uasset",
+      "bytes": 7305,
+      "sha256": "846d5841d878ccc3356ae11dc4b9f7f26c751045eb928d082fa6b7a98bd66c74"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_15.uasset",
+      "bytes": 7305,
+      "sha256": "8e18eb34ddf338a4a6336f1969cb5f1864f994ca0daaa7fed3f77c75b98b0e1c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_16.uasset",
+      "bytes": 7305,
+      "sha256": "1225788a30a39551aba4436f9ff4b5ade8291ed7a593ebf0f3fe49e55109f70b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_17.uasset",
+      "bytes": 7305,
+      "sha256": "33c6c06c992b00b61f9354c57918398b87aad6527d87c074cd06e9d074817f21"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_18.uasset",
+      "bytes": 7305,
+      "sha256": "cd19a24a8b98de37f002165e6b750b8f21c4ea2ddcd90e02ed2f5eba3d3aa630"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_00.uasset",
+      "bytes": 6064,
+      "sha256": "bdb48be8e4e2802d841f225d22f2d44499b2e05420e83bee0c9237edd059ac3a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_01.uasset",
+      "bytes": 6920,
+      "sha256": "8987b120b70434c7f2b34f0503325b923837ee987a419b15f8856f7a2bbd6cd1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_02.uasset",
+      "bytes": 5636,
+      "sha256": "0f187aa720859d758a0045f428081008aa18b604c3e6998680bbdb4654cb30c6"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_03.uasset",
+      "bytes": 5636,
+      "sha256": "a4cd949012d1f5c023b0985ff341cf0fb3bb881f74b8d8872d8af9bf9e5fa1da"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_04.uasset",
+      "bytes": 5636,
+      "sha256": "b81efdcb8220114ec2e1fc8b04405843d82dc056c401d9b0c43f39b608b2311a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_05.uasset",
+      "bytes": 5636,
+      "sha256": "1ccb530a2adc327db5cef8bef49121c1fac77373a4f9aa3668af69e710b24b40"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_00.uasset",
+      "bytes": 6865,
+      "sha256": "ea0be62e62568203451b63ed3baa842148841274712525252371cf9b0d8236b8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_01.uasset",
+      "bytes": 7296,
+      "sha256": "5464f4f52b984ec24d763abb1f151efbf22c359573b5d86376253a9cb5033d8b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_02.uasset",
+      "bytes": 7296,
+      "sha256": "519cbb360f4b96d44b14dd9e93ee494b9e4716f21b5a2fa94901029edb381449"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_03.uasset",
+      "bytes": 7296,
+      "sha256": "7b33bbd03bd09f6d545b2f5c5ba69b3273db6e12bcd7f7555f094e5a0334612b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_04.uasset",
+      "bytes": 7296,
+      "sha256": "9696b4f1dce129eb0a51027fb8e333af6be056ff23764438437090264c9fa8d8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_05.uasset",
+      "bytes": 7296,
+      "sha256": "eddee443c248e24c42e73636f88ec17e89740a6448579d58e727cec6beb2d9b8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_06.uasset",
+      "bytes": 7296,
+      "sha256": "5b1ff1294d73d9aba9a672245fb969b464e8943dbed2ad28ad305c30702d2756"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_00.uasset",
+      "bytes": 7311,
+      "sha256": "ba436a058319d0f7a703cd8ad275146b77c0755f2d55d4d2611820cd6720b019"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_01.uasset",
+      "bytes": 7311,
+      "sha256": "6e9cfcdb95cfb5aacedec292759a2263eeb48f0df8a73052933388f9f76642af"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_02.uasset",
+      "bytes": 7311,
+      "sha256": "8711e1473be3c15c41eb8e92c080b00ad107261faf8ad1905df989ca6936840d"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_03.uasset",
+      "bytes": 7311,
+      "sha256": "0ad97ae6088d193ace89a6c96da821d9bd63e6a372c80d990867cef47f8e0fec"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_04.uasset",
+      "bytes": 7311,
+      "sha256": "fe04f1b1ba871183d286422afea69f84f814908c2d94a1d7d57537bd2585b90e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_05.uasset",
+      "bytes": 7311,
+      "sha256": "e3456a31241e3da985de21eb7c77a6c9098958bd212670b09da45005e6cf9753"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_06.uasset",
+      "bytes": 7311,
+      "sha256": "d2d96ebe9c22f848ce36ea84460c8c67232c184d3bea51cdd7c3b661060e6751"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_07.uasset",
+      "bytes": 7311,
+      "sha256": "140419de43b240f27a9bb6de032826011b5dcdbcd9d6a993172ae5c646a1244f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_08.uasset",
+      "bytes": 7311,
+      "sha256": "a53bca3b3a88b99389ee2c45bd8154b3dd06725bb34b0ae5f7cbfc371cbbc020"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_09.uasset",
+      "bytes": 5596,
+      "sha256": "d2d6acfd85555a20c82efd9bf2506d4708bcc9134a8b819af383dbb1b6f43f54"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_00.uasset",
+      "bytes": 7336,
+      "sha256": "d6f7a3a5324f6cc94558b075964aaeca09b877e380e902f69c9625b6ca0bcb47"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_01.uasset",
+      "bytes": 6049,
+      "sha256": "3db2f600fd97c92cd0b34810d906bcc7b523337508d81dbbe8578afa8a6267af"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_02.uasset",
+      "bytes": 6905,
+      "sha256": "041ed8893f76fd63fedab5c33d8d2bb5c963a8c59e0b5c2745b12c09c8dcb9e8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_03.uasset",
+      "bytes": 7336,
+      "sha256": "0eb4ddc56dfcd2efca1f7078ef09257464354b50ba35a4a89105dce97bea903a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_04.uasset",
+      "bytes": 7336,
+      "sha256": "9332779110e6f6c52cebca4c4a32acdf67a0fb7aef1fa55b4cff9744eddbae8e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_05.uasset",
+      "bytes": 7336,
+      "sha256": "ea32f684c8f1309e0b478042d116db489751d321bc004d8c2f153416874f6a8a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_06.uasset",
+      "bytes": 7336,
+      "sha256": "15767cae559dac509e9bd8fb55d13aa70b802c3154fea915f97bed29adfc3738"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_07.uasset",
+      "bytes": 6049,
+      "sha256": "0641b91bda4c1128bad0fefc44e28ff38c0595c26492b45e09fdb55d4400bea7"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_08.uasset",
+      "bytes": 6905,
+      "sha256": "e88c90a27eb54743ec944bc1ee209b5de02c68c7c22956fbb6cc1cb804e59b83"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_09.uasset",
+      "bytes": 7336,
+      "sha256": "86e9f001c88086bcc5b932588d1e299724097386293205615e638166d0fea34d"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_10.uasset",
+      "bytes": 7330,
+      "sha256": "843ecaec70f151c56dd79b4e9adf3d23a92dd6fe92c7f381f900cf0ec37a8539"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_11.uasset",
+      "bytes": 7330,
+      "sha256": "aa8f9fac2f187f29c328645723082797f3895d06afc12e31bb14634415a11c2e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_12.uasset",
+      "bytes": 7330,
+      "sha256": "944cede423276e8aeb2a77840015fb6afa1cc610f89296a720169186e523dd82"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_00.uasset",
+      "bytes": 7311,
+      "sha256": "6a590e08de319adbeb572e50de3420c484915e5a4430a81de4c1244a0de9eafa"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_01.uasset",
+      "bytes": 7311,
+      "sha256": "dfc2c8a688de7cab8f6b8c902f003dfead5a2553986db48335f61f40c0977bc3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_02.uasset",
+      "bytes": 7311,
+      "sha256": "2c33f57729b86cb62b46943f3e0c4292ec855e62f387e4059b6f9abc28ea5cec"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_03.uasset",
+      "bytes": 7311,
+      "sha256": "816098cce558ed16e414627e6b1a70596d00d1d29a2740801002c9058d6818cc"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_04.uasset",
+      "bytes": 6880,
+      "sha256": "217838f28dce316d76f91791e8f862bc81cf464e330e54627ae05ddef2918e90"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_05.uasset",
+      "bytes": 6880,
+      "sha256": "491c8e9299d347df883ed0497805ea59950e0d467a47ec33c8e0f73262f6a062"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Precision_06.uasset",
+      "bytes": 6024,
+      "sha256": "e61c64fb32c7b79bc67edbfcc93f005c87709e32c069be081a541c395c6757a1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_QuickDash_00.uasset",
+      "bytes": 6883,
+      "sha256": "bd4671d9aa68f489e9a7d6292e222ae0a2c3c09697bb645b54207a089a7da11b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_QuickDash_01.uasset",
+      "bytes": 6883,
+      "sha256": "45411a507a0b10039cec4486fe6087eb0dccb5938af26fe5946d14f8228264b4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_QuickDash_02.uasset",
+      "bytes": 5596,
+      "sha256": "11992e9dbb7e61f6723407e262afbbe8b5530ad33c184c991e1c7657ebbc659d"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_00.uasset",
+      "bytes": 7311,
+      "sha256": "1acd072a306bcb6e09da41fb4f2c6f872e40f27e7a9ef1aec24a33068fab0bb0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_01.uasset",
+      "bytes": 7311,
+      "sha256": "26f5d5451460ae206c49d68fd5ed7b0c470e1844a76b59feb4fa669c30bfe4ef"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_02.uasset",
+      "bytes": 7311,
+      "sha256": "16289c637d5e7d2a9526727f23f9e1c4cc08835de1d16d0e7051b3133f4df10f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_03.uasset",
+      "bytes": 7311,
+      "sha256": "e52999febd7fa226f38c271bf5c98a14234ec82a37b8884537903cb96d4a0d4e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_04.uasset",
+      "bytes": 6024,
+      "sha256": "d789b806e1d50f439d82a5dd2e44142eb5a308eb4183c01bbeea5bab08eac9ae"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReinforcedArmor_00.uasset",
+      "bytes": 6482,
+      "sha256": "bcc0ec12b3ac67c723379d053708b820a737f7cd58bb838ddcfd2d83c0e9257e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReinforcedArmor_01.uasset",
+      "bytes": 6054,
+      "sha256": "7ddf26f71436859c0a87442bf4f1dc8755e35cd2b6ee045f2f1d81deee0a6a8f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReinforcedArmor_02.uasset",
+      "bytes": 6910,
+      "sha256": "b42633aa70b43dca1725c93e45f281865c58c39894eecc68a6b11345907ed086"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_00.uasset",
+      "bytes": 6890,
+      "sha256": "c2db050f879f65d847721e7bd212639f237af78c569f3b6f611f509df6b26ec8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_01.uasset",
+      "bytes": 6890,
+      "sha256": "ff5ab40767766c8acb433c4f3ea8eff8c36e11e06fe9820f559d9e0db1792a76"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_02.uasset",
+      "bytes": 7321,
+      "sha256": "ed0eb5e3a8213b413eae7ceb19611725a4e2fcfdc4e312c614ca049cbe089b73"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_03.uasset",
+      "bytes": 7321,
+      "sha256": "cff76733975b7230f35782ecf8705dab83464f76834c5d97d14b887eaec66985"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_04.uasset",
+      "bytes": 7321,
+      "sha256": "53a7cc7203d7447edef5fb5d257ddbf82d9fe4d185e8c1f5db6acb0c8275b76b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_00.uasset",
+      "bytes": 7306,
+      "sha256": "80446bbbdd864bcce11ecc1d9cf77f3b58fed49ca5ff501ece7993028e06b199"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_01.uasset",
+      "bytes": 7306,
+      "sha256": "35d3bb26418161a0e2c30884e2ec037ad8e47a6d107207c8fed9f1fc3e629377"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_02.uasset",
+      "bytes": 7306,
+      "sha256": "7397c650b124955569df0343edab12982d68f7785535f2fc6e2d9b31bd6e6456"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_03.uasset",
+      "bytes": 6019,
+      "sha256": "7e3d6e2fa32361415547241653042e0bff95b04032a88dcb86c8b7d306e79428"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_04.uasset",
+      "bytes": 7306,
+      "sha256": "81d92e4c8bd899da112755f871bbb949ecb15fd6e226f751c45eae4a6892a4ae"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_05.uasset",
+      "bytes": 7306,
+      "sha256": "7540f310960eec7f5a36be1b44830f61a0e36769ae2720e2247fd4e675a10131"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_06.uasset",
+      "bytes": 7306,
+      "sha256": "b0092199ea0f9ce97561749f0f3528265a83467c2b1fd8450867d2d4600bf18e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_07.uasset",
+      "bytes": 7306,
+      "sha256": "0b48e0e4e7854f57a9c5a278f8a2fa609f4753b0c863e745994d130dc89c2649"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_08.uasset",
+      "bytes": 6019,
+      "sha256": "847bccb05239182ca9919715a00b811140d28d2e80d7a8015fc34727585b5162"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_09.uasset",
+      "bytes": 7306,
+      "sha256": "33eb8e636a802c7c5ea29dcc295eb03bc346abfcfc46955c8aed6e4ba3807336"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_10.uasset",
+      "bytes": 7300,
+      "sha256": "79a961e9eb2f5e216cb76b59de132a2a1caf1ae13e1ef527589437319e64edd7"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_11.uasset",
+      "bytes": 7300,
+      "sha256": "b2b3f4607abf5e5f82997329a5256868fdb49d81ff0de278ef7ffcfccd48d08f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_12.uasset",
+      "bytes": 7300,
+      "sha256": "29f249cec906972faeabea61076996bcee0c5fb2fcd33bcbc29bf56525986dee"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_00.uasset",
+      "bytes": 7311,
+      "sha256": "2b9450e49056a0cdcc38f7ded6b1e094b013f44fc91dd294f0e33d4fbc7a32d9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_01.uasset",
+      "bytes": 7311,
+      "sha256": "64843f74acd605f7c073e6fc19b97024940bed25dc47a970e7fc764bef10eca8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_02.uasset",
+      "bytes": 7311,
+      "sha256": "e4ff0645847aa6cee9a943143cebb3ad9f151e33116ed07dfb555fae414b3f5d"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_03.uasset",
+      "bytes": 7311,
+      "sha256": "29a645f9e9761a30f6c53bf0f137d188d4e0b4989699cff969d9038bf40a1d0c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_04.uasset",
+      "bytes": 7311,
+      "sha256": "68ce6bb931a0055420250b27ef193a609f6fc61586f6ee7ea7299598bcaba1d3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_05.uasset",
+      "bytes": 7311,
+      "sha256": "efb7a18738c46f2ba49053eac1d7a6de1e6724279086e72518b5bef18c41ed03"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_06.uasset",
+      "bytes": 7311,
+      "sha256": "7754f88bf22cf609d298624345f40363a988e08e20b7106973d5083843be1eae"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_07.uasset",
+      "bytes": 7311,
+      "sha256": "520cd3b93cdc4352425b39c988b693f6afb6ee73814fc7cf3425529904e86371"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_08.uasset",
+      "bytes": 7311,
+      "sha256": "70ee67f81aece0bfaf2b19ff9e3d7f1f61cf718c81944a017a3668df42ae0b5c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_09.uasset",
+      "bytes": 7311,
+      "sha256": "b2c6b9d9ba20ad4e72d0385d12133c104af698740bc6a4a69fb033f88c0bcbe8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_10.uasset",
+      "bytes": 7305,
+      "sha256": "212e6499da44d5a87508f582a357e02bdc8f1aced80ea83c975cb1c4dbe9777e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_11.uasset",
+      "bytes": 7305,
+      "sha256": "23805d42e7f9c086740fd71c7ff915052912417aab0ef61861ee02662f5016ad"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_12.uasset",
+      "bytes": 7305,
+      "sha256": "8e7bf9f092457be0b3d3ec5f3fb903fac4a7f6c769d6f090a131bf4e1134b15a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_13.uasset",
+      "bytes": 7305,
+      "sha256": "eb600595eaef9712fddd9a59fbb11094c91ba42103ce1bcb93b7aefb7e8c0106"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_14.uasset",
+      "bytes": 7305,
+      "sha256": "3133e0d82550aa118a59344691957aa09bdb161f29a0f8328013e72eedcd78e2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_15.uasset",
+      "bytes": 7305,
+      "sha256": "c241584c82504828deebaa8e28fe75c03674ab2191b79abee8398369cb430e51"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_16.uasset",
+      "bytes": 7305,
+      "sha256": "afd689036c3d010e57a91c1b0ba765b617ad054a186c3c180a3ece8b90218f35"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_17.uasset",
+      "bytes": 7305,
+      "sha256": "ba23d34de2f5a21499bc87961b4bc72022f1fc8116e4dde9cbf6904344de7da9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_18.uasset",
+      "bytes": 7305,
+      "sha256": "e44d4d9d239d73cd5af6bb40fca34fcde268770ef93588d22f02fda60a94109e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_19.uasset",
+      "bytes": 7305,
+      "sha256": "4e02411e2d801c6aa278437df24ceeb825800eaa559e8243555c5fcad2043ef3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_20.uasset",
+      "bytes": 7305,
+      "sha256": "5e07a9fb2384b9ef3aea08ea6e30358bd1ae15e1e6cd03c4a9e979ca1d4456de"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_21.uasset",
+      "bytes": 7305,
+      "sha256": "59eb19268f9bce5e3b47b8f718ce229bb0a6cecae934481dd1c8c6160c65dc64"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_22.uasset",
+      "bytes": 7305,
+      "sha256": "a2340c93bb3c4858786cc45d9f5331abaa50c80638b72042f4265241ea651059"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_23.uasset",
+      "bytes": 7305,
+      "sha256": "9a93dd487427d5751691244d930f4feed95736c84c1d60d3b904a65eb94fb72c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_24.uasset",
+      "bytes": 7305,
+      "sha256": "033ab1eea90cbbbd3d87f2c249cd148d7aee7e06914598b1bed2d04cb1bcd922"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_25.uasset",
+      "bytes": 7305,
+      "sha256": "352af39d9c2a895f94e0e182734d198e84846fb7fa83d89a70790cb69203ec6b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_26.uasset",
+      "bytes": 7305,
+      "sha256": "561b3aa6702c26a04e0e0cde409d8ffa214509c57dee6d1a4c8508f542058106"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_27.uasset",
+      "bytes": 7305,
+      "sha256": "fb4a5ed3d9991075530d1a9ab6ffaf6060807fc64167f8a5e3043ab4dcbb523d"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_28.uasset",
+      "bytes": 7305,
+      "sha256": "19ebacf2ddc084bb0315f84b2d47f65bdb3f837bea3b93ef3b5fd8e1b6cd1de2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_29.uasset",
+      "bytes": 7305,
+      "sha256": "c587827aaeca1e44855e9ff0b90c96c745290ea2d09e7e700a8b5d5815e6d352"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_30.uasset",
+      "bytes": 7305,
+      "sha256": "99980740d555b187f7235cd2e5ac88063f1007d1d18bff53ddfa27b691dd3df0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_31.uasset",
+      "bytes": 7305,
+      "sha256": "2f52692ff52357ceddb59d8f4c84e031941d885357c760fa5c08b473eb7ba313"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_32.uasset",
+      "bytes": 7305,
+      "sha256": "2e167848c887cbe66f8198df4efc0c86ae78934c8b6c4bf5a9de3d9c6a6981c3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_33.uasset",
+      "bytes": 7305,
+      "sha256": "5c9309d0fe1c45c71e37473873d9c9950039a4812e7b34b4e1c783e1548d32b6"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_34.uasset",
+      "bytes": 7305,
+      "sha256": "6ab1b961aad3c1aa8ecdd169e9240d73d309d4f2253c167f36696a99810decae"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_35.uasset",
+      "bytes": 7305,
+      "sha256": "c5f37bcfd15e4c6cddf3341e7afc084ec9050d744221f464946c5a4723e8d57c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_00.uasset",
+      "bytes": 6880,
+      "sha256": "df06b1fc9dfb19083aacc9caaf6bec4f7734e7b613f820d1a745c3fe0c5c656e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_01.uasset",
+      "bytes": 6880,
+      "sha256": "043075e254f2d08b1f6244d8e77d55a238fe195f79d9478007c668bbf3a8cf31"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_02.uasset",
+      "bytes": 6880,
+      "sha256": "2f941e69bcc640c9aa79fc665f8283b797ddb769c930a677f6e7b45d79ec1a05"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_03.uasset",
+      "bytes": 6024,
+      "sha256": "7669cb6e48750a6848ffeb7c4b46d6590696b8afc3cf694879e08195212864bc"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_04.uasset",
+      "bytes": 7311,
+      "sha256": "7907343a001340564c6a41828e07cf8c40cf81f6a5f13164e18146fc711b5ce0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_05.uasset",
+      "bytes": 7311,
+      "sha256": "811fa4ad22bd8c63533f0921372f89b6bd602ec75ac713d85dd15dfc3c35b773"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_06.uasset",
+      "bytes": 7311,
+      "sha256": "5267fd3745508ac1deda71c775c87fead6233918b402febb07b82ee3fc701aac"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_07.uasset",
+      "bytes": 7311,
+      "sha256": "147af74b8981ac9162e79dcbd41ed754623282c544af6d11a9da5f8586c1eae9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_08.uasset",
+      "bytes": 7311,
+      "sha256": "9b2c80035ce9779ff0f476249ad6caeb2c2096b08711e90c6527ec76b68456be"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_09.uasset",
+      "bytes": 7311,
+      "sha256": "3f878201c32b6542668dca23958c148827a378971d4208a41a54253c31d199fa"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_10.uasset",
+      "bytes": 7305,
+      "sha256": "4e2b23af84fdf7ff7d8ed4a52d23f6a05e9d5b32ed870ca5ef7b1f9775f43bd4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_11.uasset",
+      "bytes": 7305,
+      "sha256": "5004b984f75e26678af105787292a16863620c3e45ff5d96ca4f8649217df6e1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_12.uasset",
+      "bytes": 7305,
+      "sha256": "942d3f54b4fe19024c865485496739c0554e7deb5c124b2046c6e0ef9e940ef3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_13.uasset",
+      "bytes": 7305,
+      "sha256": "6b6978ba67f4dddfe3616569c9abadf56ad8058748f7fa70cd664f165f637cdf"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_14.uasset",
+      "bytes": 7305,
+      "sha256": "618992bfcb1eb5b75059dd58ddaa0fb689a19f6eb58cf8f233c15765b20ef155"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_15.uasset",
+      "bytes": 7305,
+      "sha256": "32e61a45fe25dbafe95508d29b52fe17c39ad10ec7722147d0617d9af4c1b523"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_16.uasset",
+      "bytes": 7305,
+      "sha256": "9d00237ca4034fd7772e0d79fbc9c97c7cc765c4c1993476fb17c56e0a989695"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_17.uasset",
+      "bytes": 7305,
+      "sha256": "9c231981b0451706a1e1d9f852b22eb620d74888f1a125273a6101bd2f3f32cd"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_18.uasset",
+      "bytes": 7305,
+      "sha256": "5e3c3671158accfb5bee4e3b63629b2453e60d82b1c63346843797af7373ffa4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_19.uasset",
+      "bytes": 7305,
+      "sha256": "d554204ff2dcd028b0b3b9193012433e0e663fe9df16c926431fd4fcc77a719c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_00.uasset",
+      "bytes": 6885,
+      "sha256": "7f9e2383c63a920e0ad533a82ab9c53c0f3036f9783042eea316db90981f0fdd"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_01.uasset",
+      "bytes": 7316,
+      "sha256": "3a821c5f09540aa758eea95a180e694ef26172743ac5307761313101c9bfb214"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_02.uasset",
+      "bytes": 7316,
+      "sha256": "3fac8f4895792c6b64e3d36ab9113e0f46f190da31d72486ae17cce28acf5a75"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_03.uasset",
+      "bytes": 7316,
+      "sha256": "bb87f89a91e080bbd024f2a196d49daf08f65cd7b905f03390228deb6929e8f0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_00.uasset",
+      "bytes": 7316,
+      "sha256": "3a78c0fb0c2966619a246349d70aae203c8214144ce11846b3dd0e618ddd7fb1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_01.uasset",
+      "bytes": 7316,
+      "sha256": "27116444b655092be46a0f2a7c07115a174e91430e08a4b6cb1f9426ff9e048a"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_02.uasset",
+      "bytes": 7316,
+      "sha256": "51fa5b1bd1276e27b77934c69e03ef3f8f15b3da7338d10a8651ae13451fe042"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_03.uasset",
+      "bytes": 7316,
+      "sha256": "0249ff537e9459dfb876fb3a3266996b78514d128905d01d66cbb4459a51436c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_04.uasset",
+      "bytes": 7316,
+      "sha256": "25383dc268fb775a972f234e17548a16f7ccad87b1113a7ebbe3f4c45d142e12"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_05.uasset",
+      "bytes": 7316,
+      "sha256": "4b891caee4cbeaab19c5ec3f08ca6fb327bfb5b816a3367a583b2aa480d6c04f"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_06.uasset",
+      "bytes": 7316,
+      "sha256": "01682c7fa2830cb5cefbc1c6dfb808ab79c5ba49c0b8be76ed7655abcce185d1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_07.uasset",
+      "bytes": 7316,
+      "sha256": "5a26941c6fd2c0d04d6d8123879d0d6da6a6e3dd928019be16baacbec82ba779"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_08.uasset",
+      "bytes": 7316,
+      "sha256": "23d24b88b212606cc43ace1a39f4d2b0a3212818d5e2a453eaf80c109d69ac82"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_09.uasset",
+      "bytes": 7316,
+      "sha256": "0bbbe2eeadea5e63f5095766b814e063ae57b0afa0243ae97b2e3f2835bf33be"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_10.uasset",
+      "bytes": 7310,
+      "sha256": "b10e496b45969051206d2e67bd9a321977384105493d04272e51188c17360d6b"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_11.uasset",
+      "bytes": 7310,
+      "sha256": "bed3a2707aa8806489a257343b4ef3acb5d3acd955f7aad150162a1efd484d62"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_12.uasset",
+      "bytes": 7310,
+      "sha256": "b02656c2d8aaaaa3bd86a2fdf6cdc1a65a39952d9a02d6028d0998562d253b32"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_13.uasset",
+      "bytes": 7310,
+      "sha256": "370106ddd6b1440e60ab7847569d6dce5dcff53433ae9c31314f83f57af6f228"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_14.uasset",
+      "bytes": 7310,
+      "sha256": "8db1fd170e7a99d456e625729687f7151eb78a44658bf179b3e3a09e349831e3"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_15.uasset",
+      "bytes": 7310,
+      "sha256": "8dbe92c387ebd78ac3dde99df3cef445e86b0e6dabe17dc4c554b8915b8f7426"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_16.uasset",
+      "bytes": 7310,
+      "sha256": "357e0872b0a2eeb052b7fc9dfddd98f13bbaf9336e242b2660090477c158cae4"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_17.uasset",
+      "bytes": 7310,
+      "sha256": "f4ae93daf48a6b65c27d43f2b15bd239a780261ab48726e9aa152317489eb2f9"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_18.uasset",
+      "bytes": 7310,
+      "sha256": "25d556f6bcb855abc806fa418ccde56aa40839d0e618f43dfeb416e89e831fd8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_19.uasset",
+      "bytes": 7310,
+      "sha256": "c7c5594cbf798c9caba7444da9c983c3e712369515af051aff9a9a94645470ee"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_20.uasset",
+      "bytes": 7310,
+      "sha256": "14d96fd292738dd6a463d357f1c78c81161719a7d788ee3b1086ccd60a0ffbbc"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_21.uasset",
+      "bytes": 7310,
+      "sha256": "763178e933bb3d3019efa50f81d283465b9a21a916b7633c0fbfb9c399eb9348"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_22.uasset",
+      "bytes": 7310,
+      "sha256": "a3a7e02984858c770e6829d5d4efae4a8fde2ba9124a32a4468c5c7a9631afbb"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_23.uasset",
+      "bytes": 7310,
+      "sha256": "160acee2c2582f4b2d9dada2b41503919e84e0cb8b441d37f06a63cc3f8f4d88"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_24.uasset",
+      "bytes": 7310,
+      "sha256": "7b63407b55430d0e755404aa4f830a9edff5e729c1aaac680c4732c7fd386174"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_25.uasset",
+      "bytes": 7310,
+      "sha256": "16cc5997d7843364df000e944f2238a617203c0f35febbdb5b63d5a14093200e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_26.uasset",
+      "bytes": 7310,
+      "sha256": "284fe84bac8c18cde72925d2d71ac0ff1550cff7ea652d180963f3e787374382"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_27.uasset",
+      "bytes": 7310,
+      "sha256": "116c0f8978192271722e24d3a16b283eb94456dc7f9bdcfb5163bdf8413196b2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_28.uasset",
+      "bytes": 7310,
+      "sha256": "bace6fe460a624e5cad52341e5db90cc9ad7487df66a4b83b2e57b9ed833d00e"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_29.uasset",
+      "bytes": 7310,
+      "sha256": "9010f8f0e642e981bd5b4b41d1d69eac211d7ae9b95469aabbd2f9c72945c2d8"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_30.uasset",
+      "bytes": 7310,
+      "sha256": "737ee7373ae78cb8bdcb846ab5fec352cf9f106265abc2a3a91a69b57886f6d6"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_31.uasset",
+      "bytes": 7310,
+      "sha256": "39fa88d4bc09cbd1017505ed04b89819d32a7944473ae48dc5f9bba17392e0b1"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_32.uasset",
+      "bytes": 7310,
+      "sha256": "ef9c6cbc8149754d0bf946c16e2a69f96934a2d295786b9f1b2d07867c51b375"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_33.uasset",
+      "bytes": 7310,
+      "sha256": "b6796739c90f1393533dbc6741989f62bf90277bec6570a52af859aa8b6394d0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_34.uasset",
+      "bytes": 7310,
+      "sha256": "0aac40233204b9f9bdded6f96f9a683aa32b35e9675285bd5ad6d1d55ca377c2"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_35.uasset",
+      "bytes": 7310,
+      "sha256": "79b293fe68794268541a637849894ae967b107cead0520cbe5d75b4c14ac33d5"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_36.uasset",
+      "bytes": 7310,
+      "sha256": "b5ec22b4556a6a1f6f44ae347f1b520b490eb04465bd30b6c5f5d0e4ab3396d0"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_37.uasset",
+      "bytes": 7310,
+      "sha256": "c6dea7752241cc7e419839c5aa2b8fdfc31e7ad7432de879f136dc4784017b30"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_38.uasset",
+      "bytes": 7310,
+      "sha256": "775fd1d5f3ad8c12d4ce74b4fadd3294b37d31a4f85a78f5974a969dbcdf36d6"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_39.uasset",
+      "bytes": 7310,
+      "sha256": "215bec9be6cc740fe6963c18c77d8d44b4ecbe3aad04199cfa37d37327534982"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_40.uasset",
+      "bytes": 7310,
+      "sha256": "71005765e2f03b42ce867b2dff7f0eaac8fe870d12f622dfc813b1ab806f6266"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_41.uasset",
+      "bytes": 7310,
+      "sha256": "d7f2a013f9d8428538227db3686a821d9e2232249434410a418daaf864c365a7"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_42.uasset",
+      "bytes": 7310,
+      "sha256": "397d9d1027f66e3e4b8e7876c5b0e75f3dd617adc6c7785b5abfbdc5b999dd5c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_43.uasset",
+      "bytes": 7310,
+      "sha256": "3217dedb2e586374ed324a388be570c8ddd4196abac2c28f35aca108e5491eac"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_44.uasset",
+      "bytes": 7310,
+      "sha256": "7222e99b3053d4ab75a78a8e996690f6dfc7902155c3763f2eb3238eb9dec583"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_45.uasset",
+      "bytes": 7310,
+      "sha256": "2571a1d18391047cd47808c0381abb7ced45cbb9bf1d0776fbb8c0fca35fa7dd"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_46.uasset",
+      "bytes": 7310,
+      "sha256": "3b6aa4924357c51296afc7241b5f4f9b477fb077b35d85a63918cfa9252c7c99"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_47.uasset",
+      "bytes": 7310,
+      "sha256": "7234a1292dad63da0cfcad0ac483f14ccc0a4afa229cd4cd4fd5c0dd812111bb"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_48.uasset",
+      "bytes": 7310,
+      "sha256": "47872662188d27d875f137fe964a567c67d23f44be056e368e9b58962bab408c"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_49.uasset",
+      "bytes": 7310,
+      "sha256": "62beb6320fc86c41b6c716ab12248c2beb3cae2a982c1e1fd1f15c78fafec789"
+    },
+    {
+      "path": "Content/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_50.uasset",
+      "bytes": 7310,
+      "sha256": "aa2d77ab033ae014d3b8cff891bc27cc8df8137a00ac56d783061da8b20f06d2"
+    }
+  ]
+}

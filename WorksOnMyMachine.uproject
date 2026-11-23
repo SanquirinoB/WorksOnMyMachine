@@ -12,6 +12,10 @@
 	],
 	"Plugins": [
 		{
+			"Name": "CoreKit",
+			"Enabled": true
+		},
+		{
 			"Name": "Mover",
 			"Enabled": true
 		},

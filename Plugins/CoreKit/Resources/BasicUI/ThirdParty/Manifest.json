@@ -1,0 +1,541 @@
+{
+ "schema": 1,
+ "policy": "UI third-party assets must be CC0-1.0 (audio, images) or OFL-1.1 (fonts) with license verified on the source page and inside the archive.",
+ "retrieved": "2026-11-15",
+ "packs": [
+  {
+   "pack": "InputPrompts",
+   "page": "https://kenney.nl/assets/input-prompts",
+   "file": "ArtSource/ThirdParty/Kenney/InputPrompts/kenney_input-prompts_1.5.zip",
+   "bytes": 5070075,
+   "sha256": "ac2fcf599080b0f3ba2d174c9474db6df1a0e96ff0662580e2da79a122ab78a1",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "InterfaceSounds",
+   "page": "https://kenney.nl/assets/interface-sounds",
+   "file": "ArtSource/ThirdParty/Kenney/InterfaceSounds/kenney_interface-sounds.zip",
+   "bytes": 834536,
+   "sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "UIAudio",
+   "page": "https://kenney.nl/assets/ui-audio",
+   "file": "ArtSource/ThirdParty/Kenney/UIAudio/kenney_ui-audio.zip",
+   "bytes": 411949,
+   "sha256": "946fc23a63d535d693eb31b2eabb80c8c28d6351e2186b344ceb71b2cb1d5eb6",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "DigitalAudio",
+   "page": "https://kenney.nl/assets/digital-audio",
+   "file": "ArtSource/ThirdParty/Kenney/DigitalAudio/kenney_digital-audio.zip",
+   "bytes": 990367,
+   "sha256": "24e6ce28b76a6d8c89cff4d331e0965ff5c3de8a73c612028e9d363cc64e4f06",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "ImpactSounds",
+   "page": "https://kenney.nl/assets/impact-sounds",
+   "file": "ArtSource/ThirdParty/Kenney/ImpactSounds/kenney_impact-sounds.zip",
+   "bytes": 800850,
+   "sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "SciFiSounds",
+   "page": "https://kenney.nl/assets/sci-fi-sounds",
+   "file": "ArtSource/ThirdParty/Kenney/SciFiSounds/kenney_sci-fi-sounds.zip",
+   "bytes": 5875104,
+   "sha256": "119340f351a5098ad814f78719438c0da355a9ce8a4c8a3af6a8d48aa3d49e04",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "CasinoAudio",
+   "page": "https://kenney.nl/assets/casino-audio",
+   "file": "ArtSource/ThirdParty/Kenney/CasinoAudio/kenney_casino-audio.zip",
+   "bytes": 876839,
+   "sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  },
+  {
+   "pack": "MusicJingles",
+   "page": "https://kenney.nl/assets/music-jingles",
+   "file": "ArtSource/ThirdParty/Kenney/MusicJingles/kenney_music-jingles.zip",
+   "bytes": 1239525,
+   "sha256": "b729ba57959bd58793d2c5cafa348aaf2655d354f3da35ec4729e03ec77197b8",
+   "page_cc0": true,
+   "zip_license_file": "License.txt",
+   "zip_cc0": true,
+   "license": "CC0-1.0",
+   "provider": "Kenney"
+  }
+ ],
+ "fonts": [
+  {
+   "family": "SairaCondensed",
+   "source": "https://github.com/google/fonts/tree/main/ofl/sairacondensed",
+   "files": [
+    "SairaCondensed-Regular.ttf",
+    "SairaCondensed-Medium.ttf",
+    "SairaCondensed-SemiBold.ttf",
+    "SairaCondensed-Bold.ttf",
+    "SairaCondensed-ExtraBold.ttf",
+    "OFL.txt"
+   ],
+   "ofl_verified": true,
+   "license": "OFL-1.1"
+  },
+  {
+   "family": "SairaStencilOne",
+   "source": "https://github.com/google/fonts/tree/main/ofl/sairastencilone",
+   "files": [
+    "SairaStencilOne-Regular.ttf",
+    "OFL.txt"
+   ],
+   "ofl_verified": true,
+   "license": "OFL-1.1"
+  },
+  {
+   "family": "BarlowSemiCondensed",
+   "source": "https://github.com/google/fonts/tree/main/ofl/barlowsemicondensed",
+   "files": [
+    "BarlowSemiCondensed-Regular.ttf",
+    "BarlowSemiCondensed-Medium.ttf",
+    "BarlowSemiCondensed-SemiBold.ttf",
+    "BarlowSemiCondensed-Bold.ttf",
+    "OFL.txt"
+   ],
+   "ofl_verified": true,
+   "license": "OFL-1.1"
+  },
+  {
+   "family": "JetBrainsMono",
+   "source": "https://github.com/JetBrains/JetBrainsMono/tree/master/fonts/ttf",
+   "files": [
+    "JetBrainsMono-Regular.ttf",
+    "JetBrainsMono-Medium.ttf",
+    "JetBrainsMono-Bold.ttf",
+    "OFL.txt"
+   ],
+   "ofl_verified": true,
+   "license": "OFL-1.1"
+  }
+ ],
+ "audio_cues": [
+  {
+   "cue": "UI.Hover",
+   "spec": "Button hover/focus",
+   "pack": "UIAudio",
+   "files": [
+    "Audio/rollover1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "UI.Confirm",
+   "spec": "Button click / confirm",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/confirmation_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "UI.Select",
+   "spec": "Tab / option change",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/select_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "UI.Back",
+   "spec": "Back / cancel",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/back_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "UI.Error",
+   "spec": "Invalid action",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/error_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "UI.Toggle",
+   "spec": "Settings toggle",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/toggle_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "UI.Open",
+   "spec": "Pause / modal open",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/open_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": "Low-pass mix snapshot is applied in addition (no asset)."
+  },
+  {
+   "cue": "UI.Close",
+   "spec": "Pause / modal close",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/close_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "HUD.Hit",
+   "spec": "Hit marker tick",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/tick_001.ogg",
+    "Audio/tick_002.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": "Randomised pair."
+  },
+  {
+   "cue": "HUD.Kill",
+   "spec": "Kill confirm thunk",
+   "pack": "ImpactSounds",
+   "files": [
+    "Audio/impactPunch_heavy_000.ogg",
+    "Audio/impactPunch_heavy_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "HUD.DamageTaken",
+   "spec": "Damage taken impact",
+   "pack": "ImpactSounds",
+   "files": [
+    "Audio/impactPlate_heavy_000.ogg",
+    "Audio/impactPlate_heavy_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "HUD.PickupXP",
+   "spec": "XP pickup chime",
+   "pack": "DigitalAudio",
+   "files": [
+    "Audio/pepSound1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "superseded-by-gameplay",
+   "note": "Gameplay already plays /Game/DeadDraw/Audio/SFX/Cues/SC_Pickups_XP; the UI must not duplicate it."
+  },
+  {
+   "cue": "HUD.PickupHeal",
+   "spec": "Heal pickup hum",
+   "pack": "SciFiSounds",
+   "files": [
+    "Audio/forceField_000.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "HUD.ReloadUI",
+   "spec": "Reload UI clack (weapon audio stays in CombatKit)",
+   "pack": "ImpactSounds",
+   "files": [
+    "Audio/impactMetal_light_000.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "superseded-by-gameplay",
+   "note": "Gameplay already plays CombatKit weapon audio; the UI must not duplicate it."
+  },
+  {
+   "cue": "HUD.WeaponSwap",
+   "spec": "Weapon swap draw/sheath",
+   "pack": "ImpactSounds",
+   "files": [
+    "Audio/impactMetal_medium_000.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "superseded-by-gameplay",
+   "note": "Gameplay already plays /Game/DeadDraw/Audio/SFX/Cues/SC_Weapons_PistolDraw; the UI must not duplicate it."
+  },
+  {
+   "cue": "HUD.Dash",
+   "spec": "Dash whoosh",
+   "pack": "SciFiSounds",
+   "files": [
+    "Audio/thrusterFire_000.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "superseded-by-gameplay",
+   "note": "Gameplay already plays /Game/DeadDraw/Audio/SFX/Cues/SC_Player_Dash; the UI must not duplicate it."
+  },
+  {
+   "cue": "HUD.DashReady",
+   "spec": "Dash ready chime",
+   "pack": "DigitalAudio",
+   "files": [
+    "Audio/twoTone1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "HUD.StageChange",
+   "spec": "Stage change stinger",
+   "pack": "MusicJingles",
+   "files": [
+    "Audio/Steel jingles/jingles_STEEL00.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "HUD.LevelUp",
+   "spec": "Level up riser + hit",
+   "pack": "DigitalAudio",
+   "files": [
+    "Audio/powerUp1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "replaced",
+   "note": "Replaced by LevelUpAlternatives v01 option C (PowerSurge); layers and licences in ArtSource/Audio/LevelUpAlternatives/v01/Manifest.json."
+  },
+  {
+   "cue": "HUD.LevelUpHit",
+   "spec": "Level up title slam",
+   "pack": "MusicJingles",
+   "files": [
+    "Audio/Hit jingles/jingles_HIT00.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "replaced",
+   "note": "Replaced by LevelUpAlternatives v01 option C (PowerSurge); layers and licences in ArtSource/Audio/LevelUpAlternatives/v01/Manifest.json."
+  },
+  {
+   "cue": "Cards.Deal",
+   "spec": "Cards dealt (staggered)",
+   "pack": "CasinoAudio",
+   "files": [
+    "Audio/card-slide-1.ogg",
+    "Audio/card-slide-2.ogg",
+    "Audio/card-slide-3.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "Cards.Hover",
+   "spec": "Card hover",
+   "pack": "CasinoAudio",
+   "files": [
+    "Audio/card-fan-1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "Cards.Pick",
+   "spec": "Card chosen",
+   "pack": "CasinoAudio",
+   "files": [
+    "Audio/card-place-1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "Cards.Land",
+   "spec": "Card lands in hand (NEW)",
+   "pack": "CasinoAudio",
+   "files": [
+    "Audio/card-shove-1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "Boss.Telegraph",
+   "spec": "Boss attack warning",
+   "pack": "DigitalAudio",
+   "files": [
+    "Audio/phaserUp1.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "superseded-by-gameplay",
+   "note": "Gameplay already plays /Game/DeadDraw/Audio/SFX/Cues/SC_Boss_Telegraph; the UI must not duplicate it."
+  },
+  {
+   "cue": "End.VictoryBoom",
+   "spec": "Boss bar shatters",
+   "pack": "SciFiSounds",
+   "files": [
+    "Audio/explosionCrunch_000.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "superseded-by-gameplay",
+   "note": "Gameplay already plays /Game/DeadDraw/Audio/SFX/Cues/SC_Boss_Death; the UI must not duplicate it."
+  },
+  {
+   "cue": "End.VictoryJingle",
+   "spec": "MECH DOWN fanfare",
+   "pack": "MusicJingles",
+   "files": [
+    "Audio/Steel jingles/jingles_STEEL01.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "End.DefeatJingle",
+   "spec": "DEAD. sting",
+   "pack": "MusicJingles",
+   "files": [
+    "Audio/Pizzicato jingles/jingles_PIZZI00.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  },
+  {
+   "cue": "End.Glitch",
+   "spec": "Death glitch burst",
+   "pack": "InterfaceSounds",
+   "files": [
+    "Audio/glitch_001.ogg"
+   ],
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": ""
+  }
+ ],
+ "input_glyphs": [
+  {
+   "set": "Xbox Series",
+   "pack": "InputPrompts",
+   "folder": "Xbox Series/Double",
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": "128 px variants; tinted at runtime in UMG."
+  },
+  {
+   "set": "PlayStation Series",
+   "pack": "InputPrompts",
+   "folder": "PlayStation Series/Double",
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": "playstation5_* and shared face/shoulder buttons."
+  },
+  {
+   "set": "Keyboard & Mouse",
+   "pack": "InputPrompts",
+   "folder": "Keyboard & Mouse/Double",
+   "license": "CC0-1.0",
+   "status": "proposed",
+   "note": "Only keys used by IMC_Combat and UI actions."
+  }
+ ],
+ "audio_generated": [
+  {
+   "cue": "HUD.LowHealthHeartbeat",
+   "spec": "Low HP heartbeat loop",
+   "file": "ArtSource/Audio/UI/Generated/UI_LowHealth_Heartbeat_Loop.wav",
+   "seconds": 1.0,
+   "loop": true,
+   "sha256": "e1d42ee40a2be0eec1fae79cd29e8313ac3c4a7bee302dfbb2b2932efd519581",
+   "license": "Original work of the DeadDraw project",
+   "generator": "Tools/Audio/SynthesizeUICues.py",
+   "status": "proposed"
+  },
+  {
+   "cue": "Boss.InboundAlarm",
+   "spec": "Boss inbound alarm (09:50)",
+   "file": "ArtSource/Audio/UI/Generated/UI_Boss_Inbound_Alarm_Loop.wav",
+   "seconds": 1.0,
+   "loop": true,
+   "sha256": "40dda9489071b2f4a80b2d67f5ffeaffab8b0d0735949e64c73a0f907f4a0b62",
+   "license": "Original work of the DeadDraw project",
+   "generator": "Tools/Audio/SynthesizeUICues.py",
+   "status": "proposed"
+  },
+  {
+   "cue": "End.DefeatFlatline",
+   "spec": "Death flatline",
+   "file": "ArtSource/Audio/UI/Generated/UI_Death_Flatline.wav",
+   "seconds": 3.6,
+   "loop": false,
+   "sha256": "84ac5c160e7ddedbbf0c9a82010b0c7d6129c5401a7ad809214f739b7a92c938",
+   "license": "Original work of the DeadDraw project",
+   "generator": "Tools/Audio/SynthesizeUICues.py",
+   "status": "proposed"
+  }
+ ]
+}

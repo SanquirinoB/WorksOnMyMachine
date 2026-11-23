@@ -1,0 +1,1382 @@
+[
+  {
+    "key": "CoreKitBasicUICardWidget.SuitSight",
+    "default": "SIGHT · RIFLE"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.SuitEdge",
+    "default": "EDGE · KATANA"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.SuitVector",
+    "default": "VECTOR · DASH"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.SuitPlate",
+    "default": "PLATE · ARMOR"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.FootSpecial",
+    "default": "UNIQUE  ·  LEAVES THE POOL"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.FootStat",
+    "default": "STACKS  ·  EVERY COPY ADDS"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.ChipSpecial",
+    "default": "SPECIAL · UNIQUE"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.ChipStat",
+    "default": "STAT · STACKS"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.New",
+    "default": "NEW"
+  },
+  {
+    "key": "CoreKitBasicUICardWidget.NewSmall",
+    "default": "NEW"
+  },
+  {
+    "key": "CoreKitBasicUICredits.Kicker",
+    "default": "PERSONNEL FILE"
+  },
+  {
+    "key": "CoreKitBasicUICredits.Title",
+    "default": "Credits"
+  },
+  {
+    "key": "CoreKitBasicUICredits.Back",
+    "default": "BACK"
+  },
+  {
+    "key": "CoreKitBasicUICredits.JamTeam",
+    "default": "Team"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ThirdParty",
+    "default": "Third-party"
+  },
+  {
+    "key": "CoreKitBasicUICredits.Kenney",
+    "default": "KENNEY"
+  },
+  {
+    "key": "CoreKitBasicUICredits.KenneyLicense",
+    "default": "CC0 1.0 · KENNEY.NL"
+  },
+  {
+    "key": "CoreKitBasicUICredits.KenneyNote",
+    "default": "Gamepad glyphs and interface sounds. Public domain: credit is not required, it is given with thanks."
+  },
+  {
+    "key": "CoreKitBasicUICredits.Fonts",
+    "default": "FONTS"
+  },
+  {
+    "key": "CoreKitBasicUICredits.OFL",
+    "default": "SIL OPEN FONT LICENSE 1.1"
+  },
+  {
+    "key": "CoreKitBasicUICredits.OFLNote",
+    "default": "Font licence notices accompany the game."
+  },
+  {
+    "key": "CoreKitBasicUICredits.Tools",
+    "default": "Tools"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolUE",
+    "default": "Unreal Engine 5.8"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolUEBy",
+    "default": "EPIC GAMES"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolInput",
+    "default": "Enhanced Input · UMG · Niagara"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolInputBy",
+    "default": "UNREAL ENGINE"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolCoreKit",
+    "default": "CoreKit"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolCoreKitBy",
+    "default": "PROJECT PLUGINS"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolParagon",
+    "default": "Paragon: Crunch animations"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolParagonBy",
+    "default": "EPIC GAMES · UE EULA"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolElevenLabs",
+    "default": "ElevenLabs: music"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolElevenLabsBy",
+    "default": "ELEVENLABS"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolBlender",
+    "default": "Blender"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolBlenderBy",
+    "default": "BLENDER FOUNDATION"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolPython",
+    "default": "Python"
+  },
+  {
+    "key": "CoreKitBasicUICredits.ToolPythonBy",
+    "default": "PYTHON SOFTWARE FOUNDATION"
+  },
+  {
+    "key": "CoreKitBasicUICredits.Thanks",
+    "default": "THANKS FOR PLAYING"
+  },
+  {
+    "key": "CoreKitBasicUIFrontEnd.BuildVersion",
+    "default": "BUILD {0} // UNREAL ENGINE {1}"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Controls",
+    "default": "Controls"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Move",
+    "default": "Move"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Look",
+    "default": "Look"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Jump",
+    "default": "Jump"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Plus",
+    "default": "+"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Dir",
+    "default": "DIR"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Dash",
+    "default": "Dash"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Attack",
+    "default": "Attack"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Reload",
+    "default": "Reload"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Weapons",
+    "default": "Rifle / Katana"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Swap",
+    "default": "Swap weapon"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Inspect",
+    "default": "Inspect build"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Pause",
+    "default": "Pause"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.TheLoop",
+    "default": "The loop"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Fight",
+    "default": "FIGHT"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.FightBody",
+    "default": "Rifle at range, katana up close. Switch any time."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Collect",
+    "default": "COLLECT"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.CollectBody",
+    "default": "XP orbs and heals stay on the floor. Go in and take them."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Draw",
+    "default": "DRAW"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.DrawBody",
+    "default": "Fill the XP bar and time stops. Pick one of three cards."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Survive",
+    "default": "SURVIVE"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.SurviveBody",
+    "default": "At {0} Heavy Mech drops in. Destroy it to win the run."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Rifle",
+    "default": "ASSAULT RIFLE"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.RifleBody",
+    "default": "Medium range. Full auto. Watch your magazine."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Katana",
+    "default": "ENERGY KATANA"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.KatanaBody",
+    "default": "Close range. Heavy damage. Never reloads."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.ReadTheGlow",
+    "default": "Read the glow"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.XP",
+    "default": "LIME · XP ORB"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.XPBody",
+    "default": "Dropped by every kill. Fills your next draw."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Repair",
+    "default": "MINT · REPAIR KIT"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.RepairBody",
+    "default": "Sometimes dropped. Restores {0} HP."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Incoming",
+    "default": "ORANGE · INCOMING"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.IncomingBody",
+    "default": "Charging shots, slam zones. Move or dash."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.You",
+    "default": "MAGENTA · YOU"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.YouBody",
+    "default": "Your blade, your dash, your next card."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Suits",
+    "default": "Card suits"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.SuitRifle",
+    "default": "RIFLE"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.SuitBlade",
+    "default": "BLADE"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.SuitDash",
+    "default": "DASH"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.SuitArmor",
+    "default": "ARMOR"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Kicker",
+    "default": "FIELD MANUAL"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Title",
+    "default": "How to play"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.Back",
+    "default": "BACK"
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.DashNoteBack",
+    "default": "Dash with no direction pressed goes backward. You can attack while dashing."
+  },
+  {
+    "key": "CoreKitBasicUIHowToPlay.DashNoteForward",
+    "default": "Dash with no direction pressed goes forward. You can attack while dashing."
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.SuitLabel",
+    "default": "{0} · {1}"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.UniqueFooter",
+    "default": "UNIQUE · LEAVES THE POOL"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.StackFooter",
+    "default": "STACKS · EVERY COPY ADDS"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Play",
+    "default": "PLAY"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.HowToPlay",
+    "default": "HOW TO PLAY"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Settings",
+    "default": "SETTINGS"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Credits",
+    "default": "CREDITS"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Quit",
+    "default": "QUIT"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Kicker",
+    "default": "FPS · ARENA SURVIVAL · ROGUELITE"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.PlaySub",
+    "default": "NEW RUN"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.HowSub",
+    "default": "CONTROLS · LOOP"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.SettingsSub",
+    "default": "INPUT · AUDIO · VIDEO"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.CreditsSub",
+    "default": "JAM TEAM"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.QuitSub",
+    "default": "DESKTOP"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Unit",
+    "default": "ARENA UNIT 10"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Firepower",
+    "default": "FIREPOWER"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.FirepowerPre",
+    "default": ""
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.FirepowerKey",
+    "default": "+15%"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.FirepowerPost",
+    "default": " rifle damage."
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Armor",
+    "default": "REINFORCED ARMOR"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.ArmorPre",
+    "default": ""
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.ArmorKey",
+    "default": "+25"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.ArmorPost",
+    "default": " max health."
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Electric",
+    "default": "ELECTRIC BLADE"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.ElectricPre",
+    "default": "Katana hits deal bonus "
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.ElectricKey",
+    "default": "electric"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.ElectricPost",
+    "default": " damage."
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.BriefTitle",
+    "default": "MISSION BRIEF"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.BriefBody",
+    "default": "Hold the arena for <m>{0}</>. Collect what the machines drop. Every level, draw one of three cards. When the clock hits zero, <o>Heavy Mech</> arrives."
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Navigate",
+    "default": "NAVIGATE"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.Select",
+    "default": "SELECT"
+  },
+  {
+    "key": "CoreKitBasicUIMainMenu.QuitBody",
+    "default": "The session closes. Settings and key bindings are already saved."
+  },
+  {
+    "key": "CoreKitBasicUISettings.RebindBody",
+    "default": "Press any key or mouse button to assign. A key already in use swaps with this action. Escape cancels."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Sensitivity",
+    "default": "Mouse sensitivity"
+  },
+  {
+    "key": "CoreKitBasicUISettings.SensitivityBody",
+    "default": "How fast the camera turns. Lower values make long rifle tracking steadier; higher values make it easier to turn on drones behind you."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Invert",
+    "default": "Invert look Y"
+  },
+  {
+    "key": "CoreKitBasicUISettings.InvertBody",
+    "default": "Flips vertical look: pushing the mouse or stick forward looks down. Leave it off unless your hands already expect flight controls."
+  },
+  {
+    "key": "CoreKitBasicUISettings.FOV",
+    "default": "Field of view"
+  },
+  {
+    "key": "CoreKitBasicUISettings.FOVBody",
+    "default": "How much of the arena fits on screen. Wider shows drones closing in from the sides; narrower makes far targets bigger for the rifle."
+  },
+  {
+    "key": "CoreKitBasicUISettings.DashNoInput",
+    "default": "Dash with no input"
+  },
+  {
+    "key": "CoreKitBasicUISettings.DashNoInputBody",
+    "default": "Where Dash goes when no direction is held. Forward closes the gap for the katana; backward pulls you out of a slam ring."
+  },
+  {
+    "key": "CoreKitBasicUISettings.DamageNumbers",
+    "default": "Damage numbers"
+  },
+  {
+    "key": "CoreKitBasicUISettings.DamageNumbersBody",
+    "default": "Shows the damage of every hit above the target. Off keeps the screen clean; hit markers and kill confirms stay."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Shake",
+    "default": "Screen shake"
+  },
+  {
+    "key": "CoreKitBasicUISettings.ShakeBody",
+    "default": "Camera shake from hits taken, Dash and the Heavy Mech's slam. Zero turns it off; Reduced motion turns it off too."
+  },
+  {
+    "key": "CoreKitBasicUISettings.HudScale",
+    "default": "HUD scale"
+  },
+  {
+    "key": "CoreKitBasicUISettings.HudScaleBody",
+    "default": "Size of every HUD block. The HUD stays inside the safe area at any scale."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Crosshair",
+    "default": "Crosshair colour"
+  },
+  {
+    "key": "CoreKitBasicUISettings.CrosshairBody",
+    "default": "Colour of the crosshair dot and ticks. Pick the one that reads best against the arena; hit markers keep the colour of the active weapon."
+  },
+  {
+    "key": "CoreKitBasicUISettings.ReducedMotion",
+    "default": "Reduced motion"
+  },
+  {
+    "key": "CoreKitBasicUISettings.ReducedMotionBody",
+    "default": "Turns off screen shake, glitch, the FOV kick, speed lines and card parallax. Fades and colour changes stay, so nothing is lost."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Glyphs",
+    "default": "Gamepad glyphs"
+  },
+  {
+    "key": "CoreKitBasicUISettings.GlyphsBody",
+    "default": "Which button icons a gamepad shows. AUTO follows the connected pad; pick XBOX or PLAYSTATION when your pad is shown wrong."
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindDash",
+    "default": "Dash"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindJump",
+    "default": "Jump"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindReload",
+    "default": "Reload"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindRifle",
+    "default": "Equip rifle"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindKatana",
+    "default": "Equip katana"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindSwap",
+    "default": "Swap weapon"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindAttack",
+    "default": "Attack"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindAim",
+    "default": "Aim"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindInteract",
+    "default": "Interact"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindInspect",
+    "default": "Inspect build"
+  },
+  {
+    "key": "CoreKitBasicUISettings.BindPause",
+    "default": "Pause"
+  },
+  {
+    "key": "CoreKitBasicUISettings.PauseBody",
+    "default": "Pause stays on Escape (Menu on a gamepad) so you can always stop the run. It cannot be rebound."
+  },
+  {
+    "key": "CoreKitBasicUISettings.DisplayMode",
+    "default": "Display mode"
+  },
+  {
+    "key": "CoreKitBasicUISettings.DisplayModeBody",
+    "default": "Fullscreen gives the lowest input latency. Motion blur ships off: projectiles stay readable during dashes."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Resolution",
+    "default": "Resolution"
+  },
+  {
+    "key": "CoreKitBasicUISettings.ResolutionBody",
+    "default": "Rendering size. Your monitor's native resolution keeps text, keycaps and the crosshair sharp. Changes wait for APPLY."
+  },
+  {
+    "key": "CoreKitBasicUISettings.FrameRate",
+    "default": "Frame rate limit"
+  },
+  {
+    "key": "CoreKitBasicUISettings.FrameRateBody",
+    "default": "Caps the frame rate. Match your monitor's refresh rate for the steadiest aim; Unlimited lets the GPU run free."
+  },
+  {
+    "key": "CoreKitBasicUISettings.VSync",
+    "default": "V-Sync"
+  },
+  {
+    "key": "CoreKitBasicUISettings.VSyncBody",
+    "default": "Removes screen tearing at the cost of some input latency. With a frame rate limit you can usually leave it off."
+  },
+  {
+    "key": "CoreKitBasicUISettings.MotionBlur",
+    "default": "Motion blur"
+  },
+  {
+    "key": "CoreKitBasicUISettings.MotionBlurBody",
+    "default": "Blurs fast turns and dashes. It ships off so drones and their shots stay readable at speed."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Master",
+    "default": "Master volume"
+  },
+  {
+    "key": "CoreKitBasicUISettings.MasterBody",
+    "default": "Scales every channel. Enemy charge-up and boss telegraph sounds are never ducked by music."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Music",
+    "default": "Music"
+  },
+  {
+    "key": "CoreKitBasicUISettings.MusicBody",
+    "default": "The soundtrack. The title screen plays the combat track behind a low-pass filter; the run opens it up."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Effects",
+    "default": "Effects"
+  },
+  {
+    "key": "CoreKitBasicUISettings.EffectsBody",
+    "default": "Weapons, drones, pickups and interface sounds. Warnings stay audible at any music level."
+  },
+  {
+    "key": "CoreKitBasicUISettings.Heartbeat",
+    "default": "Low-health heartbeat"
+  },
+  {
+    "key": "CoreKitBasicUISettings.HeartbeatBody",
+    "default": "Plays a heartbeat loop while your health is under 30%. With it off, the red pulse around the screen still warns you."
+  },
+  {
+    "key": "CoreKitBasicUISettings.TabGameplay",
+    "default": "GAMEPLAY"
+  },
+  {
+    "key": "CoreKitBasicUISettings.TabControls",
+    "default": "CONTROLS"
+  },
+  {
+    "key": "CoreKitBasicUISettings.TabVideo",
+    "default": "VIDEO"
+  },
+  {
+    "key": "CoreKitBasicUISettings.TabAudio",
+    "default": "AUDIO"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Kicker",
+    "default": "SYSTEM CONFIG"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Title",
+    "default": "Settings"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Selected",
+    "default": "SELECTED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Preview",
+    "default": "PREVIEW"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Back",
+    "default": "BACK"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Reset",
+    "default": "RESET TO DEFAULTS"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Apply",
+    "default": "APPLY"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Unbound",
+    "default": "—"
+  },
+  {
+    "key": "CoreKitBasicUISettings.PressKey",
+    "default": "PRESS A KEY…"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Off",
+    "default": "OFF"
+  },
+  {
+    "key": "CoreKitBasicUISettings.On",
+    "default": "ON"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Forward",
+    "default": "FORWARD"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Backward",
+    "default": "BACKWARD"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Auto",
+    "default": "AUTO"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Xbox",
+    "default": "XBOX"
+  },
+  {
+    "key": "CoreKitBasicUISettings.PlayStation",
+    "default": "PLAYSTATION"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Fullscreen",
+    "default": "FULLSCREEN"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Borderless",
+    "default": "BORDERLESS"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Windowed",
+    "default": "WINDOWED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.ResolutionValue",
+    "default": "{0} × {1}"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Unlimited",
+    "default": "UNLIMITED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Locked",
+    "default": "LOCKED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Degrees",
+    "default": "{0}°"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Percent",
+    "default": "{0}%"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Rebinding",
+    "default": "REBINDING"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Selected",
+    "default": "SELECTED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.RebindHint",
+    "default": "ENTER REBIND · BKSP RESET ROW · T RESET ALL"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Applied",
+    "default": "SETTINGS APPLIED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.NothingToApply",
+    "default": "NOTHING TO APPLY"
+  },
+  {
+    "key": "CoreKitBasicUISettings.ResetBody",
+    "default": "Every setting on every tab goes back to its default and every key binding is restored now. APPLY keeps the new values."
+  },
+  {
+    "key": "CoreKitBasicUISettings.ResetDone",
+    "default": "DEFAULTS RESTORED · APPLY TO KEEP"
+  },
+  {
+    "key": "CoreKitBasicUISettings.DiscardBody",
+    "default": "Some changes are not applied yet. Leave and put the previous values back?"
+  },
+  {
+    "key": "CoreKitBasicUISettings.NoUserSettings",
+    "default": "REBINDING IS OFF: ENHANCED INPUT USER SETTINGS ARE DISABLED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.NotMappable",
+    "default": "THIS ACTION IS NOT PLAYER-MAPPABLE YET"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Cancelled",
+    "default": "CANCELLED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Reserved",
+    "default": "THAT BUTTON IS RESERVED FOR PAUSE"
+  },
+  {
+    "key": "CoreKitBasicUISettings.NoPadSlot",
+    "default": "THIS ACTION HAS NO GAMEPAD BINDING"
+  },
+  {
+    "key": "CoreKitBasicUISettings.NoKeySlot",
+    "default": "THIS ACTION HAS NO KEYBOARD BINDING"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Bound",
+    "default": "{0} BOUND TO {1}"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Swapped",
+    "default": "{0} BOUND TO {1} · SWAPPED WITH {2}"
+  },
+  {
+    "key": "CoreKitBasicUISettings.InUse",
+    "default": "{0} IS USED BY {1} ACTIONS · NOT CHANGED"
+  },
+  {
+    "key": "CoreKitBasicUISettings.Rejected",
+    "default": "THAT KEY CANNOT BE USED HERE"
+  },
+  {
+    "key": "CoreKitBasicUISettings.RowReset",
+    "default": "{0} RESET TO DEFAULT"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Kills",
+    "default": "KILLS"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Survived",
+    "default": "{0} SURVIVED"
+  },
+  {
+    "key": "CoreKitBasicUIHud.ToMech",
+    "default": "TO MECH"
+  },
+  {
+    "key": "CoreKitBasicUIHud.HeavyMech",
+    "default": "HEAVY MECH"
+  },
+  {
+    "key": "CoreKitBasicUIHud.BossSub",
+    "default": "SIEGE UNIT · FINAL TARGET"
+  },
+  {
+    "key": "CoreKitBasicUIHud.BossA11y",
+    "default": "Heavy Mech health {0} percent"
+  },
+  {
+    "key": "CoreKitBasicUIHud.HullCritical",
+    "default": "HULL CRITICAL"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Level",
+    "default": "LV {0}"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Low",
+    "default": "LOW"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Rifle",
+    "default": "RIFLE"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Katana",
+    "default": "KATANA"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Rifle",
+    "default": "RIFLE"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Arena",
+    "default": "ARENA"
+  },
+  {
+    "key": "CoreKitBasicUIHud.MechAdds",
+    "default": "MECH + {0}"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Optional",
+    "default": "OPTIONAL"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Arena",
+    "default": "ARENA"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Special",
+    "default": "SPECIAL"
+  },
+  {
+    "key": "CoreKitBasicUIHud.BuildCount",
+    "default": "BUILD · {0} CARDS"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Reloading",
+    "default": "RELOADING"
+  },
+  {
+    "key": "CoreKitBasicUIHud.LowAmmo",
+    "default": "LOW AMMO"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Warning",
+    "default": "WARNING"
+  },
+  {
+    "key": "CoreKitBasicUIHud.MechInbound",
+    "default": "HEAVY MECH INBOUND"
+  },
+  {
+    "key": "CoreKitBasicUIHud.StageA11y",
+    "default": "Stage {0} {1}"
+  },
+  {
+    "key": "CoreKitBasicUIHud.InboundA11y",
+    "default": "Warning, Heavy Mech inbound"
+  },
+  {
+    "key": "CoreKitBasicUIHud.MechAttack",
+    "default": "MECH ATTACK"
+  },
+  {
+    "key": "CoreKitBasicUIHud.GetClear",
+    "default": "GET CLEAR"
+  },
+  {
+    "key": "CoreKitBasicUIHud.WarningA11y",
+    "default": "Alert: {0}. {1}"
+  },
+  {
+    "key": "CoreKitBasicUIHud.LockingOn",
+    "default": "LOCKING ON"
+  },
+  {
+    "key": "CoreKitBasicUIHud.EnergyKatana",
+    "default": "ENERGY KATANA"
+  },
+  {
+    "key": "CoreKitBasicUIHud.AssaultRifle",
+    "default": "ASSAULT RIFLE"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Equipped",
+    "default": "{0} · EQUIPPED"
+  },
+  {
+    "key": "CoreKitBasicUIHud.FeedHeal",
+    "default": "+{0} HP"
+  },
+  {
+    "key": "CoreKitBasicUIHud.FeedXP",
+    "default": "+{0} XP"
+  },
+  {
+    "key": "CoreKitBasicUIHud.TimerA11y",
+    "default": "Stage {0}, {1} minutes {2} seconds remaining"
+  },
+  {
+    "key": "CoreKitBasicUIHud.StageLabel",
+    "default": "STAGE {0}"
+  },
+  {
+    "key": "CoreKitBasicUIHud.OneDrone",
+    "default": "1 DRONE"
+  },
+  {
+    "key": "CoreKitBasicUIHud.Drones",
+    "default": "{0} DRONES"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.LevelUp",
+    "default": "LEVEL UP "
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.Draw",
+    "default": "· DRAW"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.TimeFrozen",
+    "default": "TIME FROZEN"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.DrawWord",
+    "default": "DRAW "
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.OneWord",
+    "default": "ONE"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.YourBuild",
+    "default": "YOUR BUILD"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.Hint",
+    "default": "HOVER A CARD · IT TILTS TOWARD THE CURSOR"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.DrawKey",
+    "default": "DRAW"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.LevelN",
+    "default": "LEVEL {0}"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.Queued",
+    "default": "+{0} DRAW QUEUED"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.Drawn",
+    "default": "{0} DRAWN · RESUMING"
+  },
+  {
+    "key": "CoreKitBasicUICardDraw.Click",
+    "default": "CLICK A CARD TO DRAW IT"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.Confirm",
+    "default": "CONFIRM"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.PadB",
+    "default": "B"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.Esc",
+    "default": "ESC"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.PadA",
+    "default": "A"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.Enter",
+    "default": "ENTER"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.RestartTitle",
+    "default": "Restart run?"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.RestartAction",
+    "default": "RESTART"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.QuitMenuTitle",
+    "default": "Quit to menu?"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.QuitAction",
+    "default": "QUIT"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.QuitDesktopTitle",
+    "default": "Quit to desktop?"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.QuitDesktopAction",
+    "default": "QUIT"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.ResetTitle",
+    "default": "Reset to defaults?"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.ResetAction",
+    "default": "RESET"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.DiscardTitle",
+    "default": "Discard changes?"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.DiscardAction",
+    "default": "DISCARD"
+  },
+  {
+    "key": "CoreKitBasicUIConfirmPrompt.Cancel",
+    "default": "CANCEL"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.MainMenu",
+    "default": "MAIN MENU"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Esc",
+    "default": "ESC"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.RunComplete",
+    "default": "RUN COMPLETE"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.MechDestroyed",
+    "default": "HEAVY MECH DESTROYED"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Mech",
+    "default": "MECH "
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Down",
+    "default": "DOWN"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Outdrew",
+    "default": "You outdrew the machine."
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.TotalTime",
+    "default": "TOTAL TIME"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Kills",
+    "default": "KILLS"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.FinalLevel",
+    "default": "FINAL LEVEL"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Dashes",
+    "default": "DASHES"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.RunAgain",
+    "default": "RUN AGAIN"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Enter",
+    "default": "ENTER"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.BossPlus",
+    "default": "BOSS +{0}"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Cards",
+    "default": "{0} {0}|plural(one=CARD,other=CARDS)"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.FinalBuild",
+    "default": "FINAL BUILD · {0}"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.FinalBuildArch",
+    "default": "FINAL BUILD · {0} · {1}"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.TipRanged",
+    "default": "An orange ring around a drone means it is about to fire. Dash sideways as the ring closes."
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.SignalLost",
+    "default": "SIGNAL LOST"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Hull0",
+    "default": "HULL INTEGRITY 0%"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Dead",
+    "default": "DEAD."
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Dead",
+    "default": "DEAD."
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Dead",
+    "default": "DEAD."
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.DrewFirst",
+    "default": "The machine drew first."
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.MechAt",
+    "default": "{0} · HEAVY MECH"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Survived",
+    "default": "SURVIVED"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.ShortBy",
+    "default": "SHORT BY"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Kills",
+    "default": "KILLS"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Level",
+    "default": "LEVEL"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.Retry",
+    "default": "RETRY"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.EnterNewRun",
+    "default": "ENTER · NEW RUN"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.DownAt",
+    "default": "DOWN AT {0} · STAGE {1}"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.BuildAtDeath",
+    "default": "BUILD AT DEATH · {0} {0}|plural(one=CARD,other=CARDS)"
+  },
+  {
+    "key": "CoreKitBasicUIEndScreens.FinalBlow",
+    "default": "FINAL BLOW · {0}"
+  },
+  {
+    "key": "CoreKitBasicUIOverlay.RestartBody",
+    "default": "Your build and {0} of progress will be lost. A fresh run starts at 00:00."
+  },
+  {
+    "key": "CoreKitBasicUIOverlay.QuitBody",
+    "default": "You will lose this run: {0} survived, level {1} and {2} {2}|plural(one=card,other=cards)."
+  },
+  {
+    "key": "CoreKitBasicUIOverlay.Intro",
+    "default": "INTRO"
+  },
+  {
+    "key": "CoreKitBasicUIOverlay.Pressure",
+    "default": "PRESSURE"
+  },
+  {
+    "key": "CoreKitBasicUIOverlay.Survival",
+    "default": "SURVIVAL"
+  },
+  {
+    "key": "CoreKitBasicUIOverlay.Chaos",
+    "default": "CHAOS"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Halted",
+    "default": "SIMULATION HALTED"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Paused",
+    "default": "PAUSED"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Resume",
+    "default": "RESUME"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.ResumeKey",
+    "default": "ESC"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.HowToPlay",
+    "default": "HOW TO PLAY"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.HowToPlaySub",
+    "default": "CONTROLS"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Settings",
+    "default": "SETTINGS"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.SettingsSub",
+    "default": "INPUT · AUDIO · VIDEO"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Restart",
+    "default": "RESTART RUN"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.RestartSub",
+    "default": "START OVER"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Quit",
+    "default": "QUIT TO MENU"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.QuitSub",
+    "default": "RUN IS LOST"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.RunStatusHeader",
+    "default": "RUN STATUS"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Time",
+    "default": "TIME"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Stage",
+    "default": "STAGE"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Level",
+    "default": "LEVEL"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Kills",
+    "default": "KILLS"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Navigate",
+    "default": "NAVIGATE"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Select",
+    "default": "SELECT"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Frozen",
+    "default": "TIMER, SPAWNS AND ENEMIES FROZEN"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.ToNext",
+    "default": "{0}% TO NEXT"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Hull",
+    "default": "HULL {0} / {1}"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.BuildHeader",
+    "default": "YOUR BUILD · {0} {0}|plural(one=CARD,other=CARDS)"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.NoCards",
+    "default": "NO CARDS YET · LEVEL UP TO DRAW"
+  },
+  {
+    "key": "CoreKitBasicUIPauseMenu.Special",
+    "default": "SPECIAL"
+  },
+  {
+    "key": "CoreKitBasicUIWorldSignals.Charging",
+    "default": "CHARGING"
+  },
+  {
+    "key": "CoreKitBasicUIWorldSignals.LockingOn",
+    "default": "LOCKING ON"
+  }
+]

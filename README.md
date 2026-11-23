@@ -19,6 +19,9 @@ WorksOnMyMachine is an Unreal Engine 5.8.4 project for Windows.
 Press **Play** in the startup map. Move with **A/D**, the **left/right arrows**, or
 the **left stick**. Jump with **Space** or the **bottom gamepad face button**.
 
+CoreKit is included in [Plugins/CoreKit](Plugins/CoreKit). Its
+[quick start](Plugins/CoreKit/Docs/QuickStart.md) covers the reusable systems.
+
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,
 and `Saved/`.

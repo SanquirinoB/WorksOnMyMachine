@@ -1,0 +1,2898 @@
+[
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Boss_InboundAlarm",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Cards_Deal_1",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Cards_Deal_2",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Cards_Deal_3",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Cards_Hover",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Cards_Land",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_Cards_Pick",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_End_DefeatFlatline",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_End_DefeatJingle",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_End_Glitch",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_End_VictoryJingle",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_DamageTaken_1",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_DamageTaken_2",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_DashReady",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_Hit_1",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_Hit_2",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_Kill_1",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_Kill_2",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_LevelUp",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_LevelUpHit",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_LowHealthHeartbeat",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_PickupHeal",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_HUD_StageChange",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Back",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Close",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Confirm",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Error",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Hover",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Open",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Select",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Audio/UI_UI_Toggle",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_DamageReduction_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_DamageReduction_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ElectricBlade_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ElectricBlade_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ExtendedMagazine_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ExtendedMagazine_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Firepower_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Firepower_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_HealingEfficiency_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_HealingEfficiency_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Magnet_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Magnet_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_MoveSpeed_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_MoveSpeed_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_PiercingRounds_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_PiercingRounds_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Precision_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Precision_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_QuickDash_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_QuickDash_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_RapidFire_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_RapidFire_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ReinforcedArmor_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ReinforcedArmor_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ReloadSpeed_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_ReloadSpeed_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Ricochet_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Ricochet_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_SharpEdge_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_SharpEdge_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Shockwave_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_Shockwave_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_StaticDash_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_StaticDash_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_SwiftBlade_Effect",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/T_CardArt_SwiftBlade_Scene",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/M_CardFX",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_13",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_14",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_15",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_16",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_17",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_18",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_19",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_20",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_21",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_22",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_23",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_24",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_25",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_26",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_27",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_28",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_29",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_30",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_31",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_32",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_33",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_34",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_35",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_36",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_37",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_38",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_39",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_40",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_41",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_42",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_43",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_44",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_45",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_46",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_47",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_48",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_DamageReduction_49",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_13",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_14",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_15",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_16",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_17",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_18",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_19",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ElectricBlade_20",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ExtendedMagazine_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ExtendedMagazine_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_13",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_14",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_15",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_16",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_17",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Firepower_18",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_HealingEfficiency_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Magnet_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_MoveSpeed_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_PiercingRounds_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Precision_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_QuickDash_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_QuickDash_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_QuickDash_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_RapidFire_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReinforcedArmor_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReinforcedArmor_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReinforcedArmor_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_ReloadSpeed_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Ricochet_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_13",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_14",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_15",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_16",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_17",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_18",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_19",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_20",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_21",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_22",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_23",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_24",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_25",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_26",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_27",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_28",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_29",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_30",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_31",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_32",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_33",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_34",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SharpEdge_35",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_13",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_14",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_15",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_16",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_17",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_18",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_Shockwave_19",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_StaticDash_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_00",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_01",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_02",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_03",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_04",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_05",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_06",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_07",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_08",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_09",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_10",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_11",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_12",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_13",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_14",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_15",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_16",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_17",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_18",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_19",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_20",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_21",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_22",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_23",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_24",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_25",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_26",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_27",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_28",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_29",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_30",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_31",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_32",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_33",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_34",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_35",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_36",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_37",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_38",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_39",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_40",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_41",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_42",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_43",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_44",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_45",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_46",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_47",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_48",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_49",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/CardArt/Materials/FX/MI_FX_SwiftBlade_50",
+    "dependencies": [
+      "/CoreKit/BasicUI/CardArt/Materials/M_CardFX"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/DD/FC_DD_Opacity",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/DD/FC_DD_Scale",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/DD/VC_DD_LabelAbove",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/DD/VC_DD_LabelBelow",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/DD/VC_DD_Rise",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Fall/FC_RenderOpacity_Fall",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Fall/FC_RenderScale_Fall",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Fall/VC_RenderTranslation_Fall",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Fast/FC_RenderOpacity_Fast",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Fast/FC_RenderScale_Fast",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Fast/VC_RenderTranslation_Fast",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Mid/FC_RenderOpacity_Mid",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Mid/FC_RenderScale_Mid",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Mid/VC_RenderTranslation_Mid",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Slow/FC_RenderOpacity_Slow",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Slow/FC_RenderScale_Slow",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Curves/Slow/VC_RenderTranslation_Slow",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/SairaCondensed-Bold",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/SairaCondensed-ExtraBold",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/SairaCondensed-Medium",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/SairaCondensed-Regular",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/SairaCondensed-SemiBold",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Fonts/F_DDSairaCondensed",
+    "dependencies": [
+      "/CoreKit/BasicUI/Fonts/SairaCondensed-Bold",
+      "/CoreKit/BasicUI/Fonts/SairaCondensed-ExtraBold",
+      "/CoreKit/BasicUI/Fonts/SairaCondensed-Medium",
+      "/CoreKit/BasicUI/Fonts/SairaCondensed-Regular",
+      "/CoreKit/BasicUI/Fonts/SairaCondensed-SemiBold"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Fatal",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Fire",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Healing",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Heart",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Ice",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Overload",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Reticle",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Shock",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/BarlowSemiCondensed-Bold",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/BarlowSemiCondensed-Medium",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/BarlowSemiCondensed-Regular",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/BarlowSemiCondensed-SemiBold",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/JetBrainsMono-Bold",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/JetBrainsMono-Medium",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/JetBrainsMono-Regular",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Fonts/SairaStencilOne-Regular",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/DA_InputIcons_KBM",
+    "dependencies": [
+      "/Script/CoreKitNavigation"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/DA_InputIcons_PlayStation",
+    "dependencies": [
+      "/Script/CoreKitNavigation",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Down",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Left",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Right",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Up",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Bottom",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Left",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Right",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Top",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Left2D",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftShoulder",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftThumbstick",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftTrigger",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftTriggerAxis",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftX",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftY",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Right2D",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightShoulder",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightThumbstick",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightTrigger",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightTriggerAxis",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightX",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightY",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Special_Left",
+      "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Special_Right"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/DA_InputIcons_Xbox",
+    "dependencies": [
+      "/Script/CoreKitNavigation",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Down",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Left",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Right",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Up",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Bottom",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Left",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Right",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Top",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Left2D",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftShoulder",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftThumbstick",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftTrigger",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftTriggerAxis",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftX",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftY",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Right2D",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightShoulder",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightThumbstick",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightTrigger",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightTriggerAxis",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightX",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightY",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Special_Left",
+      "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Special_Right"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Down",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Left",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Right",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_DPad_Up",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Bottom",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Left",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Right",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_FaceButton_Top",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Left2D",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftShoulder",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftThumbstick",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftTrigger",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftTriggerAxis",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftX",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_LeftY",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Right2D",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightShoulder",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightThumbstick",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightTrigger",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightTriggerAxis",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightX",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_RightY",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Special_Left",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/PlayStation/T_Glyph_PlayStation_Special_Right",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Down",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Left",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Right",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_DPad_Up",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Bottom",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Left",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Right",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_FaceButton_Top",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Left2D",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftShoulder",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftThumbstick",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftTrigger",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftTriggerAxis",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftX",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_LeftY",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Right2D",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightShoulder",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightThumbstick",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightTrigger",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightTriggerAxis",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightX",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_RightY",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Special_Left",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Input/Xbox/T_Glyph_Xbox_Special_Right",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Minimap/T_Minimap_Arena",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Caret",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Chevrons",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Cross",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Diamond",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Edge",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Katana",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_MapCircle",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_MapSquare",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_MapTriangle",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Mech",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Plate",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_PlayerArrow",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Rifle",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Sight",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Skull",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Star",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Triangle",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_Vector",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_Icon_ViewCone",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer10",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer11",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer12",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer14",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer16",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer18",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer20",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer22",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer24",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer6",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer7",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Chamfer8",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_ChamferBR26",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Circle",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_EdgeVignette",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Glow",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_GradH",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_GradV",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_RadialFalloff",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Ring2",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Ring4",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Scanlines",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape10",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape12",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape14",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape16",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape5",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape6",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_Tape8",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Textures/T_UI_White",
+    "dependencies": [
+      "/Script/InterchangeEngine"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/World/Materials/M_WorldSignalGlow",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/World/Materials/MI_WorldRepairKit",
+    "dependencies": [
+      "/CoreKit/BasicUI/World/Materials/M_WorldSignalGlow"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/World/Materials/M_WorldSignalRim",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/World/Materials/MI_WorldRepairKitRim",
+    "dependencies": [
+      "/CoreKit/BasicUI/World/Materials/M_WorldSignalRim"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/World/Materials/M_WorldSlamRing",
+    "dependencies": []
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/DT_DamageNumberStyles",
+    "dependencies": [
+      "/Script/CoreKitBasicUI",
+      "/Engine/EngineFonts/Roboto",
+      "/CoreKit/BasicUI/FloatingText/Fonts/F_DDSairaCondensed",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Fatal",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Fire",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Healing",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Heart",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Ice",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Overload",
+      "/CoreKit/BasicUI/FloatingText/Textures/T_FTCyber_Shock",
+      "/CoreKit/BasicUI/FloatingText/Curves/DD/FC_DD_Opacity",
+      "/CoreKit/BasicUI/FloatingText/Curves/DD/FC_DD_Scale",
+      "/CoreKit/BasicUI/FloatingText/Curves/DD/VC_DD_LabelAbove",
+      "/CoreKit/BasicUI/FloatingText/Curves/DD/VC_DD_LabelBelow",
+      "/CoreKit/BasicUI/FloatingText/Curves/DD/VC_DD_Rise",
+      "/CoreKit/BasicUI/FloatingText/Curves/Fall/FC_RenderOpacity_Fall",
+      "/CoreKit/BasicUI/FloatingText/Curves/Fall/FC_RenderScale_Fall",
+      "/CoreKit/BasicUI/FloatingText/Curves/Fall/VC_RenderTranslation_Fall",
+      "/CoreKit/BasicUI/FloatingText/Curves/Fast/FC_RenderOpacity_Fast",
+      "/CoreKit/BasicUI/FloatingText/Curves/Fast/FC_RenderScale_Fast",
+      "/CoreKit/BasicUI/FloatingText/Curves/Fast/VC_RenderTranslation_Fast",
+      "/CoreKit/BasicUI/FloatingText/Curves/Mid/FC_RenderOpacity_Mid",
+      "/CoreKit/BasicUI/FloatingText/Curves/Mid/FC_RenderScale_Mid",
+      "/CoreKit/BasicUI/FloatingText/Curves/Mid/VC_RenderTranslation_Mid",
+      "/CoreKit/BasicUI/FloatingText/Curves/Slow/FC_RenderOpacity_Slow",
+      "/CoreKit/BasicUI/FloatingText/Curves/Slow/FC_RenderScale_Slow",
+      "/CoreKit/BasicUI/FloatingText/Curves/Slow/VC_RenderTranslation_Slow"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/FloatingText/DA_DamageNumbers",
+    "dependencies": [
+      "/Script/CoreKitBasicUI",
+      "/CoreKit/BasicUI/FloatingText/DT_DamageNumberStyles"
+    ]
+  },
+  {
+    "package": "/CoreKit/BasicUI/Minimap/DA_Minimap_Example",
+    "dependencies": [
+      "/Script/CoreKitBasicUI",
+      "/CoreKit/BasicUI/Minimap/T_Minimap_Arena"
+    ]
+  }
+]

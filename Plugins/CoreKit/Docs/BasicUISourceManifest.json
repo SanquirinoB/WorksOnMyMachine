@@ -1,0 +1,330 @@
+[
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\DeadDrawUIModule.cpp",
+    "sha256": "abe4800c2016086990d1caac58fbe8d976bc7681b01384892671bb5ed0dece66"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Context\\DDUIContextSubsystem.h",
+    "sha256": "ac182c164746a592c5478644c4e56ef4e04270a96a9cb3f8be3cc38963cee29d"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Effects\\DDScreenEffectsComponent.h",
+    "sha256": "029cc9e480826770dad62afe1c00da985f49d35db22c8056bd3b5e3c9d7ebdef"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Events\\DDUIEvents.h",
+    "sha256": "180972d7a3a9e333208b1e828b41a01321324351aace74e63b641c3c467021e3"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Flow\\DDScreenRouter.h",
+    "sha256": "03a038099be34f2a3bce66c807a117231b488a6b6db84ab3d868905f57ee5c15"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Flow\\DDUIHUD.h",
+    "sha256": "420dd49e152d3a478729abe88ab207624db7c4b31a585786445aff101ceaab20"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\FrontEnd\\DDMenuGameMode.h",
+    "sha256": "9b4b36ea9297509582b18d6ad998d4de95bf8d2c9ce9524bce3de8ed6da45517"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Presenters\\DDPresenter.h",
+    "sha256": "8b2173004c9f115877906ec1ae323d764d3490b32dbd449ad3cbed171431f639"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Settings\\DDUserSettings.h",
+    "sha256": "f5e5dbc4acfbceda3a423ded4a275e3bc07c1920b46cbfc09fd3d2c4187f867d"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Style\\DDMotion.h",
+    "sha256": "782c37d76acf168f08b2223da773a6768904e165550020670c3beb7a06e13987"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Style\\DDUIStyle.h",
+    "sha256": "b31878eeb76b00d983c05b3842e2242909fe2ac0bc89021b4eaea9a0d2b0a9dd"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\ViewModels\\DDUITypes.h",
+    "sha256": "426891436d1b1e85056fb9cb7fea2dc2d2d2279e9bcb6648db9ab76ff61dcf24"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\ViewModels\\DDViewModels.h",
+    "sha256": "28df94074b1ee6e4944a2c072dfda1bb71da91b1001da9c18fbf0677ebb6bfc8"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Common\\DDArcWidget.h",
+    "sha256": "d5f9d1b9c9984c774ad26d33d3d26682e20c39c3822629e7325943821d2d031d"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Common\\DDCardWidget.h",
+    "sha256": "07f7e015532415562b42bb21a9eb4be0ac394cf262a773d684871084170561d9"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Common\\DDCommonWidgets.h",
+    "sha256": "f12312e0b8e6d6aebfff4c027edcd2911623c195c9a6ed547ad947a86e79ff10"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Common\\DDSafeDraw.h",
+    "sha256": "310eeed67884e270d3d782691b6f1ba6eceef8e7e39256a08232ddbf365464ff"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Common\\DDUserWidget.h",
+    "sha256": "8ce797ef299c9f84be23c55d57dbd25286c52fc094b9e2bc391763fc81d94997"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Common\\DDWidgetBuild.h",
+    "sha256": "b357660216538d865fc9ba49c8a25372954bc06d55dc3284b139e9de8377680a"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\FrontEnd\\DDFrontEndMenus.h",
+    "sha256": "123a57ddbfbefc483972875d994f0b2c9b380ab8715316ad2cd1d6bb523e878f"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\HUD\\DDHudBlocks.h",
+    "sha256": "9c71db8faea5e4e46af2a182ac6f6a91f6be9de69a3c48467c62cbde469ba0c4"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\HUD\\DDHudBuild.h",
+    "sha256": "6485c486f02f2cb1381272d9a94132f0c13f0de7713ab98c3fcab5cfd028dc14"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\HUD\\DDHudEvents.h",
+    "sha256": "2793b329fa6cab7f0208edcdf2a864a5950dba78471978f46d52d44eb4fd19d9"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\HUD\\DDHudLogic.h",
+    "sha256": "121f564f275b7d1573fb8da1fa454620a37687070dd78e5966d6f26c4cf6fb9f"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\HUD\\DDHudRoot.h",
+    "sha256": "e27b457f2e54d282c87d2313f84bbb4de183c5b75b99c70e5359eadd50b9753c"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\HUD\\DDHudWidgets.h",
+    "sha256": "586d43f1cfbc47f90f4e48fcf4f5be43bdec968adb21ff08a0c931dfc75c4d0b"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Overlays\\DDCardDrawMenu.h",
+    "sha256": "2288f407b79736e4adb4404b74ceca2f87d8f9c18130d095e0523763199201f3"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Overlays\\DDConfirmPrompt.h",
+    "sha256": "7b27e7401730cf47a437d0d84dc77cb03088bb050b2aa21b75ca64c9670d9e8e"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Overlays\\DDEndScreens.h",
+    "sha256": "70d8fa7119b5936fb8ff7062640aa48406fea77dd0edb552142f06dd8b62a552"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Overlays\\DDOverlayCommon.h",
+    "sha256": "e168db417f3ad0b1e9592bd08e34cdf7b3bd2c68e454947a729909a17bd98e8c"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\Overlays\\DDPauseMenu.h",
+    "sha256": "77af2c8ab2f702b9b1de50ed8f5f2e0a246a988254ab640852372d7c92526f76"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\World\\DDArenaMinimapDefinition.h",
+    "sha256": "47337640d24762aecf1ce4677c42deb232841133d6b43483b83c26ba50584177"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\World\\DDEnemySignalComponent.h",
+    "sha256": "d4aa8eac3d977c43c17a744a1429595e6ad1367ccdae66fe82a5bae20064e240"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\World\\DDWorldSignalLayer.h",
+    "sha256": "2a754df7b530725b7e59a59b9e76a40d272d5077f54dbc2ded204979bd4fad4c"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\World\\DDWorldSignalSubsystem.h",
+    "sha256": "dad4c8784c5a9fc13ec87d9fa645af654d91671841697ed82f14fbb170cd747d"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Public\\Widgets\\World\\DDWorldSignalTypes.h",
+    "sha256": "7e46a9d9e608954fcbe8b15c2cf2a8b9ea8f392462cef6fac7def4f4be448bc2"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Context\\DDUIContextSubsystem.cpp",
+    "sha256": "923b5cf3b6145cb79eb7d3a3c87309d4b64456171afb67be8149f5a3d1b442a1"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Effects\\DDScreenEffectsComponent.cpp",
+    "sha256": "499eb5fc1e4262b8ff87f783fb244609a81dcfdc8afe110a05eda089fa288f69"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Events\\DDUIEvents.cpp",
+    "sha256": "8053f0c83c7cad3965625f0c0bcfcbfdfe5150f5f5faed0d4f953180947078a3"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Flow\\DDScreenRouter.cpp",
+    "sha256": "555614cfa20883f1abcd6822bf015446b92053fb74407adaab899a8df3e48765"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Flow\\DDUIHUD.cpp",
+    "sha256": "b57a912ac85b4ef43f8fe5aaee8e3c582065bfb8b1caf4171bcb8ecb030fae67"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\FrontEnd\\DDMenuGameMode.cpp",
+    "sha256": "823bf6b6b2a0aeb4ca53a0ac64fefdb1577ffb6c362ec64566e272cd08ae078f"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Presenters\\DDPresenter.cpp",
+    "sha256": "79c6504e6d70f1a814ea682be916174b2914f93b6bf5cb5022a7c5b00564acae"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Settings\\DDUserSettings.cpp",
+    "sha256": "65120ddc806296b33e16e4d825b4a84d501b53bfab1dcfe8339851804851ff39"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Style\\DDMotion.cpp",
+    "sha256": "c979e52d20fce8f687e962e2c6835525c8f8810c886d3492050313306f79a1ec"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Style\\DDUIStyle.cpp",
+    "sha256": "e56ac5d27cd0294cce644b7e0377067a35f52f7652bf60e2d43ccd83712de57f"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Common\\DDArcWidget.cpp",
+    "sha256": "a07affd0af0fc5cfc682ba15869ec33a605660370b7e3fd2f89a6fcc225b3496"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Common\\DDCardWidget.cpp",
+    "sha256": "0704faf7d55273948733afc23a62637f6a23e33730ee8e25e8cf6f3926923b55"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Common\\DDCommonWidgets.cpp",
+    "sha256": "9b590e818d9444aaa950e6ffb44dcac19e13640aa45ae5d21e7cc7b0862e1930"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Common\\DDUserWidget.cpp",
+    "sha256": "603754c960beb4a9e9be319c2f60b579daa21573e9dcf53616c853d8fc146e0a"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Common\\DDWidgetBuild.cpp",
+    "sha256": "285c046bf529ea8274dbb1c567b27957ab78e5f48858f99c287f45801abc3abb"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDCreditsMenu.cpp",
+    "sha256": "d9132667ab05f252b8529efe069f628683cd7256f544c6e49709c71af0785416"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDFrontEndCommon.cpp",
+    "sha256": "0007912b78bad669a6b89334a15fd536084ca0792e5d4e58945715f8490e4f1a"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDFrontEndCommon.h",
+    "sha256": "d6c0e5d5c700317e62e4bcfb5c0da896ab3a8cf774cb5e16c6fc7f430482b69b"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDFrontEndHost.h",
+    "sha256": "e0dabe09fd78d879a8fec5085085f46d9933bb3c01d6cd08f570d93481352b48"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDHowToPlayMenu.cpp",
+    "sha256": "bedc0a7e3dcd17d52a5247becacd4efa887e3a369a0a70f06cf1efd5ead33410"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDMainMenu.cpp",
+    "sha256": "e75a9daf55b00b9d584df9a9a6d4f4c3612504bbad23f348bdc0fe3b4511e315"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\FrontEnd\\DDSettingsMenu.cpp",
+    "sha256": "64845d6d0a91cdf84ca487486485cc6eaef249216b8f4215ab2a7c155c82b66f"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudBlocks.cpp",
+    "sha256": "f51d1e047f6f1548f7d35a4e97dab6bda4c20d1c07c9a13867db6c572d0cbdb1"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudBuild.cpp",
+    "sha256": "b76ff251f6bb4232b5620e14ac90a9bdd719ffbd09225b08d1b2373ac154c0f5"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudCommon.h",
+    "sha256": "fc201a103e8ddfd133a66d0e1b05d204ea7c5b6d61163bfe06f7cf6513abde60"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudDraw.h",
+    "sha256": "6b0e3336f7bc7cc8bf1d5bf5d835d0ed0aa99cfcc7e07521635ae7b130352421"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudEvents.cpp",
+    "sha256": "27875e2a391e36fd97b82301cde92ab25339bf319dc5af994e0ad0ae2b5acfa6"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudLogic.cpp",
+    "sha256": "0ac6594319f6ef38d34fb46924a7a9d1eff375203cdc661e45e36ec50ac1037c"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudRoot.cpp",
+    "sha256": "1a233ba05fcec94703b78aa94216b1c874996cf0b407d48320d32d245fc79344"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\HUD\\DDHudWidgets.cpp",
+    "sha256": "704801c24c509575a5013d609cd78e82d7848eb4eddfae21c8ae5bc3ec69c9fd"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Overlays\\DDCardDrawMenu.cpp",
+    "sha256": "0b4f2ecbc587bfdf45407d8ed7f02e6bb1a2e53cc97489154693aabdf0752add"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Overlays\\DDConfirmPrompt.cpp",
+    "sha256": "90310f1aa7019904474fba8ecf1991a2c7f8516cb1c83315fc3cabdc0b2522a9"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Overlays\\DDEndScreens.cpp",
+    "sha256": "680665edc0d9b3c8705bf905873db106cfb688205d74b5164b4ca60699e60a86"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Overlays\\DDOverlayCommon.cpp",
+    "sha256": "a90c38e993b2af862db05f797c167a0f0e7a920c4e4c5a41f7c6b67fb990ad86"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\Overlays\\DDPauseMenu.cpp",
+    "sha256": "732833c8a904e1d47f6b5a323cea5767ceb2b5431864ee1cf3ad238e684d59ea"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\World\\DDArenaMinimapDefinition.cpp",
+    "sha256": "35344a1150686e1df6f7698c9b41202e7d6cd62ec5b8f7d5b794a288695a8d54"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\World\\DDEnemySignalComponent.cpp",
+    "sha256": "1235199d907448086c7eb8117b95a7e4746110f695850f542a27f16f87a7c441"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\World\\DDWorldSignalLayer.cpp",
+    "sha256": "b1cbe8207bf0a1939bc350c65508c3b773ff1deda463191d098150d61083ed7c"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\World\\DDWorldSignalSubsystem.cpp",
+    "sha256": "996875714b2f831754b4fcf4cb2da8a84a0df1024de72165864ed5dc6c658172"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Source\\DeadDrawUI\\Private\\Widgets\\World\\DDWorldSignalTypes.cpp",
+    "sha256": "2fdc001434edf84454b4f6cbef7685f2b84807e4bd7303abfa671601ef185378"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Plugins\\CombatKit\\Source\\CombatKitPresentation\\Public\\FloatingText\\CombatFloatingTextSubsystem.h",
+    "sha256": "8edb8cc188df650e9225954e13bed8c20e64719121b09771d3554843e6f94c60"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Plugins\\CombatKit\\Source\\CombatKitPresentation\\Public\\FloatingText\\CombatFloatingTextTypes.h",
+    "sha256": "ac01f096d2454d0a69297c778beeb8642ea15c8a41bed513ce8db41790506ebf"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Plugins\\CombatKit\\Source\\CombatKitPresentation\\Public\\FloatingText\\CombatFloatingTextWidget.h",
+    "sha256": "2304804940d054ade43916eb53bab808d32dd742e35141ac3ca3303804b39575"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Plugins\\CombatKit\\Source\\CombatKitPresentation\\Private\\FloatingText\\CombatFloatingTextSubsystem.cpp",
+    "sha256": "726054e4a0eb96dcf00e3de9ad983d74814ac4e58de9b420983e9d8693970f98"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Plugins\\CombatKit\\Source\\CombatKitPresentation\\Private\\FloatingText\\CombatFloatingTextTypes.cpp",
+    "sha256": "99b0d0605a8bf20a71b2b389a42b0f5c622ef8882689d2b2323a2ad7bfecf785"
+  },
+  {
+    "source": "C:\\Users\\Deltalo\\Desktop\\Source_Proyectos\\DEADDRAW\\Plugins\\CombatKit\\Source\\CombatKitPresentation\\Private\\FloatingText\\CombatFloatingTextWidget.cpp",
+    "sha256": "68a15e2975cf002bebc18a310b3b94772b3d0e1d022f69b8cc417e91bcff6456"
+  }
+]
