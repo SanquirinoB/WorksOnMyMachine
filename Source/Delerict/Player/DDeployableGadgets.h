@@ -27,14 +27,20 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Grapple", meta = (ClampMin = "0", Units = "cm/s"))
     float PullSpeed = 560.f;
 
+    /** Speed of the free hook when reeling it in, in cm/s. Zero disables recall. */
+    UPROPERTY(EditAnywhere, Category = "Grapple", meta = (ClampMin = "0", Units = "cm/s"))
+    float RecallSpeed = 1200.f;
+
 private:
     UPROPERTY(VisibleAnywhere, Category = "Grapple")
     TObjectPtr<UStaticMeshComponent> Tether;
 
     TWeakObjectPtr<UPrimitiveComponent> Anchor;
     bool bAttachedToAnchor = false;
+    bool bReelingIn = false;
 
     void ClearAnchor();
+    bool UpdateRecall(ADPawn& Pawn, float DeltaSeconds);
 };
 
 UCLASS(Blueprintable)
@@ -71,6 +77,7 @@ public:
     void Tick(float DeltaSeconds) override;
 
 protected:
+    void BeginPlay() override;
     void ResetDeployment() override;
     void OnRemoteActivationRequested(ADPawn& Pawn) override;
 
@@ -99,6 +106,15 @@ protected:
     float RupturePushSpeed = 380.f;
 
 private:
+    UPROPERTY(VisibleAnywhere, Category = "Black Hole")
+    TObjectPtr<UStaticMeshComponent> FieldCore;
+
+    UPROPERTY(VisibleAnywhere, Category = "Black Hole")
+    TObjectPtr<UStaticMeshComponent> FieldOrbit;
+
+    UPROPERTY(VisibleAnywhere, Category = "Black Hole")
+    TObjectPtr<UStaticMeshComponent> FieldOrbitOpposite;
+
     UPROPERTY(VisibleAnywhere, Category = "Black Hole")
     TObjectPtr<UPointLightComponent> FieldLight;
 

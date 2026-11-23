@@ -21,7 +21,7 @@ public:
     FName GetThrowableType() const { return ThrowableType; }
     void SetThrowableType(FName Type) { ThrowableType = Type; }
     float GetCollisionRadius() const;
-    bool CanGrab() const;
+    virtual bool CanGrab() const;
     bool TryHold(ADPawn& Pawn);
     void Launch(const FVector& Location, const FVector& Velocity, const FVector& PlaneNormal, ADPawn* Thrower);
     bool TryActivate(ADPawn& Pawn);

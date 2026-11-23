@@ -117,6 +117,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Mass")
     TMap<FName, float> ThrowableMassByType = {
         { TEXT("WeightedPlate"), 5.f },
+        { TEXT("CompletoItaliano"), .1f },
         { TEXT("GrapplingHook"), 1.f },
         { TEXT("RemoteGrenade"), .5f },
         { TEXT("PortableBlackHoleDevice"), 2.f },

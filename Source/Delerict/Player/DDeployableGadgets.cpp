@@ -11,10 +11,14 @@
 #include "Engine/PointLight.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
+#include "EngineUtils.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/DamageType.h"
 #include "GameFramework/PawnMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
@@ -34,7 +38,29 @@ namespace
         FVector Offset;
     };
 
-    TArray<FDGadgetTarget> FindGadgetTargets(const AActor& Source, float Radius, const AActor* Ignored = nullptr)
+    enum class EDGadgetQuery
+    {
+        GrenadeBurst,
+        BlackHoleBurst,
+        BlackHoleField
+    };
+
+    USceneComponent* GetMovableRoot(const AActor& Actor)
+    {
+        USceneComponent* Root = Actor.GetRootComponent();
+        return IsValid(Root) && Root->Mobility == EComponentMobility::Movable ? Root : nullptr;
+    }
+
+    bool HasGadgetSight(const UWorld& World, const FVector& Origin, const FVector& TargetPoint,
+        const AActor& Target, const FCollisionQueryParams& Query)
+    {
+        FCollisionQueryParams Sight = Query;
+        Sight.AddIgnoredActor(&Target);
+        return !World.LineTraceTestByChannel(Origin, TargetPoint, ECC_Visibility, Sight);
+    }
+
+    TArray<FDGadgetTarget> FindGadgetTargets(const AActor& Source, float Radius, EDGadgetQuery Mode,
+        const AActor* Ignored = nullptr)
     {
         TArray<FDGadgetTarget> Targets;
         UWorld* World = Source.GetWorld();
@@ -45,10 +71,15 @@ namespace
 
         const FVector Origin = Source.GetActorLocation();
         const double RadiusSquared = FMath::Square(static_cast<double>(Radius));
-        FCollisionObjectQueryParams DynamicObjects;
-        DynamicObjects.AddObjectTypesToQuery(ECC_WorldDynamic);
-        DynamicObjects.AddObjectTypesToQuery(ECC_Pawn);
-        DynamicObjects.AddObjectTypesToQuery(ECC_PhysicsBody);
+        const bool bBlackHole = Mode != EDGadgetQuery::GrenadeBurst;
+        FCollisionObjectQueryParams DynamicObjects(FCollisionObjectQueryParams::AllDynamicObjects);
+        if (!bBlackHole)
+        {
+            DynamicObjects = FCollisionObjectQueryParams();
+            DynamicObjects.AddObjectTypesToQuery(ECC_WorldDynamic);
+            DynamicObjects.AddObjectTypesToQuery(ECC_Pawn);
+            DynamicObjects.AddObjectTypesToQuery(ECC_PhysicsBody);
+        }
         FCollisionQueryParams Query(SCENE_QUERY_STAT(DelerictGadgetTargets), false, &Source);
         if (Ignored)
         {
@@ -69,8 +100,11 @@ namespace
             }
 
             const ADThrowable* Throwable = Cast<ADThrowable>(Actor);
+            const bool bAuthoredTarget = Actor->ActorHasTag(GadgetTargetTag) && (!bBlackHole || GetMovableRoot(*Actor));
+            const bool bProjectile = bBlackHole && GetMovableRoot(*Actor)
+                && Actor->FindComponentByClass<UProjectileMovementComponent>();
             if (Throwable ? !Throwable->CanGrab()
-                : !Actor->IsA<APawn>() && !Primitive->IsSimulatingPhysics() && !Actor->ActorHasTag(GadgetTargetTag))
+                : !Actor->IsA<APawn>() && !Primitive->IsSimulatingPhysics() && !bAuthoredTarget && !bProjectile)
             {
                 continue;
             }
@@ -79,6 +113,30 @@ namespace
             if (!Candidate || Primitive->IsSimulatingPhysics())
             {
                 Candidate = Primitive;
+            }
+        }
+
+        if (bBlackHole)
+        {
+            // Explicitly opted-in props may have query-disabled or custom collision.
+            for (TActorIterator<AActor> It(World); It; ++It)
+            {
+                AActor* Actor = *It;
+                if (Actor == &Source || Actor == Ignored || Actor->IsActorBeingDestroyed()
+                    || FVector::DistSquared(Origin, Actor->GetActorLocation()) > RadiusSquared
+                    || !Actor->ActorHasTag(GadgetTargetTag) || !GetMovableRoot(*Actor) || Candidates.Contains(Actor))
+                {
+                    continue;
+                }
+                const auto* Throwable = Cast<ADThrowable>(Actor);
+                if (Throwable && !Throwable->CanGrab())
+                {
+                    continue;
+                }
+                if (UPrimitiveComponent* Primitive = Actor->FindComponentByClass<UPrimitiveComponent>())
+                {
+                    Candidates.Add(Actor, Primitive);
+                }
             }
         }
 
@@ -92,14 +150,47 @@ namespace
                 continue;
             }
 
-            FCollisionQueryParams Sight = Query;
-            Sight.AddIgnoredActor(Candidate.Key);
-            if (!World->LineTraceTestByChannel(Origin, Center, ECC_Visibility, Sight))
+            // The field reaches through walls. Movement sweeps and the core's sight check still respect them.
+            if (Mode == EDGadgetQuery::BlackHoleField || HasGadgetSight(*World, Origin, Center, *Candidate.Key, Query))
             {
                 Targets.Add({ Candidate.Key, Candidate.Value, Offset });
             }
         }
         return Targets;
+    }
+
+    void AddPropVelocity(AActor& Actor, const FVector& DeltaVelocity)
+    {
+        USceneComponent* Root = GetMovableRoot(Actor);
+        if (!Root)
+        {
+            return;
+        }
+
+        auto* Movement = Actor.FindComponentByClass<UProjectileMovementComponent>();
+        if (!Movement)
+        {
+            // Give an authored loose prop inertial motion that persists after the field shuts down.
+            const FVector PreviousVelocity = Actor.GetVelocity();
+            Movement = NewObject<UProjectileMovementComponent>(&Actor);
+            Movement->bAutoActivate = false;
+            Movement->bInitialVelocityInLocalSpace = false;
+            Movement->ProjectileGravityScale = 0.f;
+            Movement->bShouldBounce = true;
+            Movement->Bounciness = .35f;
+            Movement->Velocity = PreviousVelocity;
+            Actor.AddInstanceComponent(Movement);
+            Movement->SetUpdatedComponent(Root);
+            Movement->RegisterComponent();
+        }
+        else if (!Movement->UpdatedComponent)
+        {
+            Movement->SetUpdatedComponent(Root);
+        }
+
+        Movement->Velocity += Movement->ConstrainDirectionToPlane(DeltaVelocity);
+        Movement->UpdateComponentVelocity();
+        Movement->Activate();
     }
 
     void AddGadgetVelocity(const FDGadgetTarget& Target, const FVector& DeltaVelocity, const FVector& PlaneNormal)
@@ -120,17 +211,24 @@ namespace
         {
             Target.Primitive->AddImpulse(DeltaVelocity, NAME_None, true);
         }
-        else if (auto* OtherPawn = Cast<APawn>(Target.Actor))
+        else if (auto* Character = Cast<ACharacter>(Target.Actor))
         {
-            if (UPawnMovementComponent* Movement = OtherPawn->GetMovementComponent())
-            {
-                Movement->Velocity += DeltaVelocity;
-            }
+            Character->GetCharacterMovement()->AddImpulse(DeltaVelocity, true);
+        }
+        else if (auto* OtherPawn = Cast<APawn>(Target.Actor); OtherPawn && OtherPawn->GetMovementComponent())
+        {
+            UPawnMovementComponent* Movement = OtherPawn->GetMovementComponent();
+            Movement->Velocity += Movement->ConstrainDirectionToPlane(DeltaVelocity);
+        }
+        else
+        {
+            AddPropVelocity(*Target.Actor, DeltaVelocity);
         }
     }
 
     void Burst(ADThrowable& Source, const ADPawn* Deployer, float Damage, float Radius,
-        float PushSpeed, const FVector& PlaneNormal, const FLinearColor& Color, const AActor* Ignored = nullptr)
+        float PushSpeed, const FVector& PlaneNormal, const FLinearColor& Color, EDGadgetQuery Mode,
+        const AActor* Ignored = nullptr)
     {
         UWorld* World = Source.GetWorld();
         if (!World || !World->IsGameWorld())
@@ -139,7 +237,7 @@ namespace
         }
         const FVector Origin = Source.GetActorLocation();
         AController* Instigator = Deployer ? Deployer->GetController() : nullptr;
-        for (const FDGadgetTarget& Target : FindGadgetTargets(Source, Radius, Ignored))
+        for (const FDGadgetTarget& Target : FindGadgetTargets(Source, Radius, Mode, Ignored))
         {
             if (!IsValid(Target.Actor) || Target.Actor->IsActorBeingDestroyed() || !IsValid(Target.Primitive))
             {
@@ -165,10 +263,11 @@ namespace
             UPointLightComponent* Light = Flash->PointLightComponent;
             Light->SetMobility(EComponentMobility::Movable);
             Light->SetCastShadows(false);
-            Light->SetIntensity(8500.f);
+            const bool bRupture = Mode == EDGadgetQuery::BlackHoleBurst;
+            Light->SetIntensity(bRupture ? 32000.f : 8500.f);
             Light->SetLightColor(Color);
             Light->SetAttenuationRadius(FMath::Max(150.f, Radius));
-            Flash->SetLifeSpan(.18f);
+            Flash->SetLifeSpan(bRupture ? .32f : .18f);
         }
 #if DELERICT_WITH_GAMEPLAY_DEBUG
         if (DGameplayDebug::IsEnabled(World, DGameplayDebug::EChannel::Throws) && Radius > 0.f)
@@ -184,18 +283,14 @@ namespace
         {
             return true;
         }
-        if (Target.Primitive->IsSimulatingPhysics())
-        {
-            FVector ClosestPoint;
-            const float Distance = Target.Primitive->GetClosestPointOnCollision(Origin, ClosestPoint);
-            return Distance >= 0.f && Distance <= Radius;
-        }
-        return false;
+        FVector ClosestPoint;
+        const float Distance = Target.Primitive->GetClosestPointOnCollision(Origin, ClosestPoint);
+        return Distance >= 0.f && Distance <= Radius;
     }
 
     bool ConsumeActor(AActor& Actor)
     {
-        if (auto* Pawn = Cast<ADPawn>(&Actor))
+        if (auto* Pawn = Cast<APawn>(&Actor))
         {
             if (auto* Player = Pawn->GetController<APlayerController>())
             {
@@ -243,10 +338,15 @@ void ADGrapplingHook::Tick(float DeltaSeconds)
         ClearAnchor();
     }
 
-    const ADPawn* Pawn = GetDeployingPawn();
+    ADPawn* Pawn = GetDeployingPawn();
     if (!Pawn)
     {
         ResetDeployment();
+        return;
+    }
+
+    if (bReelingIn && UpdateRecall(*Pawn, DeltaSeconds))
+    {
         return;
     }
 
@@ -272,6 +372,7 @@ void ADGrapplingHook::ClearAnchor()
 void ADGrapplingHook::ResetDeployment()
 {
     ClearAnchor();
+    bReelingIn = false;
     if (ADPawn* Pawn = GetDeployingPawn())
     {
         Collision->IgnoreActorWhenMoving(Pawn, false);
@@ -295,7 +396,7 @@ void ADGrapplingHook::OnDeployedImpact(const FHitResult& Hit)
 {
     AActor* Actor = Hit.GetActor();
     UPrimitiveComponent* Component = Hit.GetComponent();
-    if (bAttachedToAnchor || !IsValid(Actor) || Actor == GetDeployingPawn() || !IsValid(Component))
+    if (bAttachedToAnchor || bReelingIn || !IsValid(Actor) || Actor == GetDeployingPawn() || !IsValid(Component))
     {
         return;
     }
@@ -310,6 +411,7 @@ void ADGrapplingHook::OnDeployedImpact(const FHitResult& Hit)
         Anchor = Component;
         bAttachedToAnchor = true;
         Movement->StopMovementImmediately();
+        Movement->Deactivate();
         SetActorEnableCollision(false);
     }
 }
@@ -318,7 +420,13 @@ void ADGrapplingHook::OnRemoteActivationRequested(ADPawn& Pawn)
 {
     if (!Anchor.IsValid())
     {
-        Pawn.TryGrabThrowable(*this);
+        if (RecallSpeed > 0.f && !bReelingIn)
+        {
+            ClearAnchor();
+            Movement->StopMovementImmediately();
+            Movement->Deactivate();
+            bReelingIn = true;
+        }
         return;
     }
 
@@ -332,9 +440,43 @@ void ADGrapplingHook::OnRemoteActivationRequested(ADPawn& Pawn)
     Pawn.QueueImpulse(DeltaVelocity * Pawn.GetEffectiveMass());
 }
 
+bool ADGrapplingHook::UpdateRecall(ADPawn& Pawn, float DeltaSeconds)
+{
+    const FVector HookLocation = GetActorLocation();
+    const FVector TowardPawn = Pawn.GetActorLocation() - HookLocation;
+    const double Distance = TowardPawn.Size();
+    const double CatchDistance = Pawn.GetSimpleCollisionRadius() + GetCollisionRadius();
+    if (Distance <= CatchDistance + UE_KINDA_SMALL_NUMBER)
+    {
+        bReelingIn = false;
+        if (Pawn.GetGrabbedThrowable())
+        {
+            return false;
+        }
+
+        Movement->Velocity = Pawn.GetVelocity();
+        if (Pawn.TryGrabThrowable(*this))
+        {
+            return true;
+        }
+        Movement->StopMovementImmediately();
+        return false;
+    }
+
+    const FVector Direction = TowardPawn / Distance;
+    const double Step = FMath::Min(static_cast<double>(RecallSpeed) * DeltaSeconds, Distance - CatchDistance);
+    FHitResult Hit;
+    SetActorLocationAndRotation(HookLocation + Direction * Step, Direction.Rotation(), true, &Hit);
+    if (Hit.bBlockingHit)
+    {
+        bReelingIn = false;
+    }
+    return false;
+}
+
 void ADGrapplingHook::AddDriftVelocity(const FVector& VelocityChange, const FVector& PlaneNormal)
 {
-    if (!bAttachedToAnchor)
+    if (!bAttachedToAnchor && !bReelingIn)
     {
         Super::AddDriftVelocity(VelocityChange, PlaneNormal);
     }
@@ -356,7 +498,7 @@ void ADRemoteGrenade::OnRemoteActivationRequested(ADPawn& Pawn)
         bDetonated = true;
         SetActorEnableCollision(false);
         Burst(*this, &Pawn, BurstDamage, BurstRadius, 0.f, Movement->GetPlaneConstraintNormal(),
-            FLinearColor(1.f, .35f, .04f));
+            FLinearColor(1.f, .35f, .04f), EDGadgetQuery::GrenadeBurst);
         Destroy();
     }
 }
@@ -371,6 +513,24 @@ ADPortableBlackHoleDevice::ADPortableBlackHoleDevice()
     Mesh->SetRelativeRotation(FRotator::ZeroRotator);
     Mesh->SetRelativeScale3D(FVector(.30));
 
+    static ConstructorHelpers::FObjectFinder<UMaterialInterface> Emissive(
+        TEXT("/Engine/EngineMaterials/EmissiveMeshMaterial.EmissiveMeshMaterial"));
+    FieldCore = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FieldCore"));
+    FieldOrbit = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FieldOrbit"));
+    FieldOrbitOpposite = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FieldOrbitOpposite"));
+    for (UStaticMeshComponent* Visual : {FieldCore.Get(), FieldOrbit.Get(), FieldOrbitOpposite.Get()})
+    {
+        Visual->SetupAttachment(Collision);
+        Visual->SetStaticMesh(Sphere.Object);
+        Visual->SetMaterial(0, Emissive.Object);
+        Visual->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        Visual->SetCastShadow(false);
+        Visual->SetCanEverAffectNavigation(false);
+        Visual->SetVisibility(false);
+    }
+    FieldOrbit->SetRelativeScale3D(FVector(.12));
+    FieldOrbitOpposite->SetRelativeScale3D(FVector(.08));
+
     FieldLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("FieldLight"));
     FieldLight->SetupAttachment(Collision);
     FieldLight->SetCastShadows(false);
@@ -381,6 +541,14 @@ ADPortableBlackHoleDevice::ADPortableBlackHoleDevice()
 
     PrimaryActorTick.bCanEverTick = true;
     PrimaryActorTick.bStartWithTickEnabled = false;
+}
+
+void ADPortableBlackHoleDevice::BeginPlay()
+{
+    Super::BeginPlay();
+    FieldCore->SetVectorParameterValueOnMaterials(TEXT("Color"), FVector(.012, .002, .025));
+    FieldOrbit->SetVectorParameterValueOnMaterials(TEXT("Color"), FVector(2.5, .26, 6.));
+    FieldOrbitOpposite->SetVectorParameterValueOnMaterials(TEXT("Color"), FVector(.9, .14, 4.));
 }
 
 void ADPortableBlackHoleDevice::ResetDeployment()
@@ -396,6 +564,9 @@ void ADPortableBlackHoleDevice::OnRemoteActivationRequested(ADPawn& /*Pawn*/)
 void ADPortableBlackHoleDevice::SetFieldActive(bool bActive)
 {
     bFieldActive = bActive;
+    FieldCore->SetVisibility(bActive);
+    FieldOrbit->SetVisibility(bActive);
+    FieldOrbitOpposite->SetVisibility(bActive);
     FieldLight->SetVisibility(bActive);
     SetActorTickEnabled(bActive);
 }
@@ -409,11 +580,21 @@ void ADPortableBlackHoleDevice::Tick(float DeltaSeconds)
         return;
     }
 
-    const TArray<FDGadgetTarget> Targets = FindGadgetTargets(*this, AttractionRadius);
+    const float VisibleCoreRadius = FMath::Max(20.f, CoreRadius);
+    FieldCore->SetRelativeScale3D(FVector(VisibleCoreRadius * .02));
+    const double Phase = GetWorld()->GetTimeSeconds() * 4.;
+    const FVector Orbit = FVector(FMath::Cos(Phase), 0., FMath::Sin(Phase)) * (VisibleCoreRadius + 12.f);
+    FieldOrbit->SetRelativeLocation(Orbit);
+    FieldOrbitOpposite->SetRelativeLocation(-Orbit);
+
+    const TArray<FDGadgetTarget> Targets = FindGadgetTargets(*this, AttractionRadius, EDGadgetQuery::BlackHoleField);
+    const FVector Origin = GetActorLocation();
+    const FCollisionQueryParams CoreSight(SCENE_QUERY_STAT(DelerictBlackHoleCore), false, this);
     const FVector PlaneNormal = Movement->GetPlaneConstraintNormal();
     for (const FDGadgetTarget& Target : Targets)
     {
-        if (CoreRadius > 0.f && ReachedCore(Target, GetActorLocation(), CoreRadius)
+        if (CoreRadius > 0.f && ReachedCore(Target, Origin, CoreRadius)
+            && HasGadgetSight(*GetWorld(), Origin, Origin + Target.Offset, *Target.Actor, CoreSight)
             && ConsumeActor(*Target.Actor))
         {
             Rupture(*Target.Actor);
@@ -442,6 +623,6 @@ void ADPortableBlackHoleDevice::Rupture(AActor& ConsumedActor)
     SetFieldActive(false);
     SetActorEnableCollision(false);
     Burst(*this, GetDeployingPawn(), RuptureDamage, RuptureRadius, RupturePushSpeed,
-        Movement->GetPlaneConstraintNormal(), FLinearColor(.65f, .25f, 1.f), &ConsumedActor);
+        Movement->GetPlaneConstraintNormal(), FLinearColor(.65f, .25f, 1.f), EDGadgetQuery::BlackHoleBurst, &ConsumedActor);
     Destroy();
 }
