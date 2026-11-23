@@ -289,9 +289,16 @@ void UDMagneticSurfaceMode::SimulationTick_Implementation(const FSimulationTickP
         Depart(Params, OutputState, StartVelocity, TEXT("Steel face left the lane"));
         return;
     }
-    if (bJumpDeparturePending || !Pawn->IsMagnetHeld())
+    if (bJumpDeparturePending)
     {
-        Depart(Params, OutputState, StartVelocity, bJumpDeparturePending ? TEXT("Jump released") : TEXT("Magnet released"));
+        Depart(Params, OutputState, StartVelocity, TEXT("Jump released"));
+        return;
+    }
+    if (!Pawn->IsMagnetHeld())
+    {
+        Depart(Params, OutputState, StartVelocity, TEXT("Magnet released"));
+        // A fresh hold can recapture this face even if the pawn has not drifted away.
+        DepartedFace.Reset();
         return;
     }
 
