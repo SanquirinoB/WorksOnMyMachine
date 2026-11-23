@@ -1,9 +1,19 @@
-/.vs/
-/Binaries/
-/DerivedDataCache/
-/Intermediate/
-/Saved/
-/Plugins/**/Binaries/
-/Plugins/**/Intermediate/
-/*.sln
-/*.sln.DotSettings.user
+# Unreal build outputs, caches, and local settings
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+**/Config/UserEngine.ini
+
+# Generated Visual Studio files
+.vs/
+*.sln
+*.slnx
+*.sln.DotSettings.user
+*.slnx.DotSettings.user
+*.suo
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.VC.db
+*.VC.opendb
