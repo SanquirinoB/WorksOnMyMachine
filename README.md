@@ -21,6 +21,8 @@ the **left stick**. Jump with **Space** or the **bottom gamepad face button**.
 
 CoreKit is included in [Plugins/CoreKit](Plugins/CoreKit). Its
 [quick start](Plugins/CoreKit/Docs/QuickStart.md) covers the reusable systems.
+The GASP animation library and its DataDriven dependency live under `Plugins/`.
+GASP assets use the `/GASP/` mount point.
 
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,

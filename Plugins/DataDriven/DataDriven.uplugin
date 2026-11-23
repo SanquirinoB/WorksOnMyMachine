@@ -1,0 +1,20 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "Data Driven",
+	"Description": "Reusable runtime data containers, fragments and asset discovery for Unreal Engine projects.",
+	"Category": "Gameplay",
+	"CreatedBy": "Deltalo",
+	"CanContainContent": false,
+	"EnabledByDefault": true,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "DataDriven",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
