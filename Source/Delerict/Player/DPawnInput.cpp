@@ -30,6 +30,7 @@ void ADPawn::CreateInputMappings()
     GrabAction = NewObject<UInputAction>(this);
     SelectThrowableAction = NewObject<UInputAction>(this);
     ThrowAction = NewObject<UInputAction>(this);
+    ActivateThrowableAction = NewObject<UInputAction>(this);
 
     const auto MapDirection = [this](const TArray<FKey>& Keys, bool bNegative, bool bVertical)
     {
@@ -73,6 +74,7 @@ void ADPawn::CreateInputMappings()
     MapButtons(GrabAction, Tuning.GrabKeys);
     MapButtons(SelectThrowableAction, Tuning.SelectThrowableKeys);
     MapButtons(ThrowAction, Tuning.ThrowKeys);
+    MapButtons(ActivateThrowableAction, Tuning.ActivateThrowableKeys);
 }
 
 void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -114,6 +116,7 @@ void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     Input->BindAction(ThrowAction, ETriggerEvent::Started, this, &ThisClass::StartThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Completed, this, &ThisClass::ReleaseThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Canceled, this, &ThisClass::CancelThrowCharge);
+    Input->BindAction(ActivateThrowableAction, ETriggerEvent::Started, this, &ThisClass::ActivateThrownItem);
     PlayerInputComponent->BindKey(EKeys::Escape, IE_Pressed, this, &ThisClass::PauseGame);
     PlayerInputComponent->BindKey(EKeys::Gamepad_Special_Right, IE_Pressed, this, &ThisClass::PauseGame);
 }
@@ -299,8 +302,17 @@ void ADPawn::StopMoving() { MoveIntent = FVector2D::ZeroVector; }
 void ADPawn::ClearAimStick() { LastAimStick = FVector2D::ZeroVector; }
 void ADPawn::StartRun() { bRunHeld = true; }
 void ADPawn::StopRun() { bRunHeld = false; }
-void ADPawn::RequestGrab() { OnGrabRequested.Broadcast(); }
-void ADPawn::RequestThrowableSelection() { OnSelectThrowableRequested.Broadcast(); }
+void ADPawn::RequestGrab()
+{
+    GrabNearbyThrowable();
+    OnGrabRequested.Broadcast();
+}
+
+void ADPawn::RequestThrowableSelection()
+{
+    CycleSelectedThrowable();
+    OnSelectThrowableRequested.Broadcast();
+}
 
 void ADPawn::UpdateCharge(bool& bCharging, FDChargeAction& Action, EDChargePhase Phase)
 {

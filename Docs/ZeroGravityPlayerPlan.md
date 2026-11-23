@@ -6,20 +6,39 @@ Navigation puzzles include turning corners without touching a surface, grabbing 
 
 The setting uses dim lighting and advanced technology that is damaged, largely inoperative, and abandoned. Open hull breaches and gaps between torn sections expose the void and leave ample room for free-flight traversal. Use Metroid Dread as a reference for 2.5D environment composition, side-on framing, and the character's on-screen scale.
 
-The project in this repository starts in `/Game/Maps/L_DHangar` and spawns `BP_DPlayer` through `BP_DGameMode`. The native pawn, `ADPawn`, currently sends horizontal movement and jump input to standalone Mover. `L_DTestLane` holds the movement and camera test fixtures. The Delerict handoff in `MachineVault/VaultIndex/Delerict.md` describes the foundation for that setup. [Pawn](../Source/Delerict/Player/DPawn.cpp) · [Startup configuration](../Config/DefaultEngine.ini) · [Project README](../README.md)
+The project opens at `/Game/Maps/L_MainMenu`. New Game loads `L_DHangar`, where `BP_DGameMode` spawns `BP_DPlayer`. The native pawn uses standalone Mover for inertial flight. `L_DTestLane` holds the movement, camera, and throw fixtures. [Pawn](../Source/Delerict/Player/DPawn.cpp) · [Startup configuration](../Config/DefaultEngine.ini) · [Project README](../README.md)
+
+## Controls
+
+| Input | Action |
+| --- | --- |
+| WASD | Move along a magnetic surface while walking or running. |
+| Mouse | Aim the crosshair. |
+| Space | Hold to charge a magnetic jump and release to launch. |
+| E | Hold to engage the magnetic boots and gloves. Release to disengage. |
+| F | Interact, including grabbing a reachable item into the free slot. |
+| Left Mouse Button | Fire the equipped weapon. |
+| R | Reload the equipped weapon when it uses reloadable ammunition. |
+| 1, 2, 3 | Equip the rifle, shotgun, or laser blaster, respectively. |
+| Scroll Wheel | Cycle through carried weapons. |
+| Right Mouse Button | Hold to charge the selected item and release to throw it. |
+| Tab | Cycle through available throwable selections. |
+| Q | Activate the most recently deployed item that supports remote activation. |
+
+Keep right-stick aim, the existing movement and charge mappings for gamepad, and the existing run modifier. WASD controls direction for both gaits.
 
 ## Free flight and input
 
 1. Start `UDMoverComponent` in built-in Flying mode and keep the standalone backend. Apply the initial capsule settings, rotation, zero gravity override, and spawn plane before Mover captures its initial state. Configure flight with zero acceleration and braking. Supply a zero vector as `DirectionalIntent` on every flight tick so Flying integrates the current velocity. Keep controller rotation disabled, send zero orientation intent, and disable Mover's upright correction so the collision root keeps the configured world rotation. [Mover component](../Source/Delerict/Player/DMoverComponent.cpp) · [Epic Mover input API](https://dev.epicgames.com/documentation/unreal-engine/API/Plugins/Mover/FCharacterDefaultInputs?application_version=5.8)
 2. Drive the crosshair with the mouse. Deproject its screen position through the active camera and intersect the ray with the pawn's XZ plane. Aim from the pawn toward that point, retaining the last valid direction when the intersection gives no usable aim. Use the right stick as the gamepad aim input. Read the current aim when the player releases Jump or Throw.
-3. Build the transient Enhanced Input context from the tuning asset. Map movement to its own `Axis2D` action and use it for surface travel. Bind Run, Jump, Grab, Select Throwable, and Throw separately. Track Jump and Throw press, release, and cancellation so a release commits a charge once and cancellation clears it. Retain input cleanup on unpossession and end play.
+3. Build the transient Enhanced Input context from the tuning assets. Map movement to its own `Axis2D` action and use it for surface travel. Use separate actions for movement, run, jump, magnetic hold, interact, selection, throw, remote activation, and weapon controls. Track Jump and Throw press, release, and cancellation so a release commits a charge once and cancellation clears it. Cancel charges on pause, unpossession, and end play.
 4. Keep the capsule as Mover's swept collision shape and keep mesh collision disabled. Flying sweeps and slides the capsule along blocking geometry. Keep the side camera's horizontal velocity look-ahead and move its settings into the tuning asset.
 
 ## Throws and shared impulse handling
 
-For the first playable test, give the player a finite stack of weighted plates and one slot for a grabbed item. Select between the plate stack and the grabbed item. A grab transfers an item within reach into the free slot and gives the player and item a shared velocity equal to their combined momentum divided by their total mass. Include the plates and any grabbed item in the player's carried mass.
+The player has an empty-inventory mass of **90 kg**. Add the masses of all carried items and weapons to find the effective player mass. For the first playable test, give the player a finite stack of **5 kg weighted plates** and one slot for a grabbed item. **Tab** selects between available throwables. **F** transfers a reachable item into the free slot and gives the player and item a shared velocity equal to their combined momentum divided by their total mass. A deployed item leaves the carried mass until it is recovered.
 
-Hold **Right Mouse Button** to charge the selected throw. Release it to launch that item along the current crosshair aim. Interpolate the separation speed from the tap value to the maximum over the configured charge time. A successful launch consumes one selected item and applies equal and opposite impulses. An empty selection, a canceled charge, or a change of selection during the hold clears the request. Released items remain in the level and can be recovered.
+Hold **Right Mouse Button** to charge the selected throw. Release it to launch that item along the current crosshair aim. Interpolate the separation speed from the tap value to the maximum over the configured charge time. A successful launch removes one selected item from inventory and applies equal and opposite impulses. An empty selection, blocked launch, canceled charge, or change of selection during the hold leaves the inventory intact. Released items remain in the level and can be recovered. **Q** dispatches activation to the most recently deployed activatable item while the player still controls it. Plates can hit switches through their collision.
 
 The released item starts with the shared drift velocity plus its share of the throw. The player retains that drift plus recoil. With remaining player and cargo mass `mRemaining`, released item mass `mItem`, and target separation speed `s`, the impulse magnitude is `s / (1/mRemaining + 1/mItem)`. A heavier item produces more recoil at the same separation speed for a fixed remaining mass. Use a plate, a heavier grabbable item, and a switch a thrown item can hit in the test lane.
 
@@ -27,15 +46,23 @@ Route throws, weapon hits, recoil, and magnetic jumps through one pawn impulse p
 
 ## Weapon impulse types
 
-Group weapons by their primary impulse type in a dedicated weapon tuning asset. Start with **Direct** for the pistol, rifle, and shotgun, and **Radial** for the launcher. Each group has its own direct hit strength, radial hit strength, and shot recoil strength. A radial weapon can still apply a direct impulse when its projectile hits the player.
+The playable loadout has three weapons. Add every carried weapon's mass to the player's inventory mass. Use weapon-specific recoil values for the rifle, shotgun, and laser blaster.
 
-Use CoreKit's `WeaponId` to select the group and its impact kind to select the strength. Direct impacts push along the incoming direction. Area impacts push away from the blast origin using the direction CoreKit supplies. Apply the impulse once per accepted impact. Apply recoil once per fired shot, opposite the aim used for that shot, without rotating the pawn. Both go through the same mass-based impulse path and magnetic breakaway check. [CoreKit impact types](../Plugins/CoreKit/Source/CoreKitWeapons/Public/CoreKitWeapons/CoreKitWeaponTypes.h) · [CoreKit weapon events](../Plugins/CoreKit/Source/CoreKitWeapons/Private/CoreKitWeaponsComponent.cpp)
+| Weapon | Mass | Firing and recoil |
+| --- | --- | --- |
+| Rifle | 3 kg | Accurate semi-automatic fire with light pushback in zero gravity. |
+| Shotgun | 4 kg | Pump-action fire with strong pushback in zero gravity. |
+| Laser blaster | 5 kg | Sustained energy fire with no reload and zero movement recoil. |
+
+Use the **Direct** profile for these three weapons. Keep **Radial** as an impact profile for effects with an area hit. Each profile has direct and radial impact magnitudes and a fallback shot recoil magnitude. A radial weapon can also apply a direct impulse when its projectile hits the player.
+
+Use CoreKit's `WeaponId` to select the group, carried mass, and recoil override. Use the impact kind to select the hit strength. Direct impacts push along the incoming direction. Area impacts push away from the blast origin using the direction CoreKit supplies. Apply the impulse once per accepted impact. Apply recoil once per fired shot, opposite the aim used for that shot, without rotating the pawn. Both go through the shared impulse path and magnetic breakaway check. Bind Fire, Reload, direct equip, and weapon cycling to the controls above. [CoreKit impact types](../Plugins/CoreKit/Source/CoreKitWeapons/Public/CoreKitWeapons/CoreKitWeaponTypes.h) · [CoreKit weapon events](../Plugins/CoreKit/Source/CoreKitWeapons/Private/CoreKitWeaponsComponent.cpp)
 
 Apply a block response on the player capsule for the trace channel configured in the weapon tuning asset. Match that channel to the CoreKit weapon definitions used by the loadout. The default `Pawn` profile ignores `Visibility`. [CoreKit weapon definition](../Plugins/CoreKit/Source/CoreKitWeapons/Public/CoreKitWeapons/CoreKitWeaponDefinition.h)
 
 ## Magnetic steel surfaces and charged jumps
 
-Add a platform component that marks a finite steel collision face using platform-local geometry. In free flight, look for the nearest eligible face in the player's XZ lane. Measure the gap from the capsule to the face. When the gap is within `CaptureDistance`, sweep the capsule to the face with the chosen clearance. Enter the Magnetic Surface Mover mode only when the sweep reaches the contact point.
+Add a platform component that marks a finite steel collision face using platform-local geometry. While **E** is held in free flight, look for the nearest eligible face in the player's XZ lane. Measure the gap from the capsule to the face. When the gap is within `CaptureDistance`, sweep the capsule to the face with the chosen clearance. Enter the Magnetic Surface Mover mode only when the sweep reaches the contact point.
 
 On capture, keep tangential velocity. Use the same tangent movement and swept collision for floors, walls, and ceilings. Movement defaults to walking and holding Run selects the running speed. Use the outward surface normal as the mesh's local up so the boots appear planted when the character is upright, sideways, or upside down. Drive the walk and run blend from speed relative to the face, including on vertical faces. Keep the capsule's world rotation fixed and hold the mesh orientation it had on departure throughout free flight. [Current animation instance](../Source/Delerict/Player/DLocomotionAnimInstance.cpp)
 
@@ -43,7 +70,18 @@ Store the contact point in platform-local space so a translating platform can ca
 
 Hold **Jump** while attached to charge the jump impulse from the tap value to the maximum. On release, return to Flying with the current world velocity, including any platform carry, plus the charged impulse. Measure the aim angle from the surface tangent in XZ. Use the crosshair direction when it meets the configured minimum outward angle of **20°** or more. Clamp shallower or inward aim to the nearest permitted outward angle on the aimed side. If that aim has no usable tangent, launch along the outward normal. Losing surface contact cancels a pending jump.
 
-Walking or running off the end of a face returns the player to Flying. While attached, the tangential part of throw recoil or a weapon impact changes travel speed. An outward velocity change that exceeds the breakaway threshold returns the player to Flying and applies the full in-plane change once. Give departure priority over capture in the same step and rearm the departed face once the capsule clears the recapture distance.
+Releasing **E** or walking or running off the end of a face returns the player to Flying with their current world velocity. While attached, the tangential part of throw recoil or a weapon impact changes travel speed. An outward velocity change that exceeds the breakaway threshold returns the player to Flying and applies the full in-plane change once. Give departure priority over capture in the same step and rearm the departed face once the capsule clears the recapture distance.
+
+## Deployable items
+
+| Item | Mass | Behavior |
+| --- | --- | --- |
+| Weighted Plate | 5 kg | A reusable metal disc used to redirect drift and hit switches. |
+| Grappling Hook | 1 kg | A tethered hook that can attach to eligible fixed objects or enemies. Q retrieves a free hook or pulls the player toward an attached hook. |
+| Remote Grenade | 0.5 kg | Q detonates a deployed grenade once. The burst applies area damage without spawning shrapnel. |
+| Portable Black Hole Device | 2 kg | Q toggles attraction after deployment. The active device pulls nearby objects, including the player. It destroys an object that reaches its core and then ruptures in a large burst, destroying the device. |
+
+Build these on the shared throw and remote activation paths. Clear remote control when the item is picked up or destroyed. Use the shared impulse path for forces on the player.
 
 ## Tuning data assets
 
@@ -68,17 +106,19 @@ Ship `DA_DPlayerTuning` and reference it from `BP_DPlayer`. Remove duplicate edi
 | `AimStickKey` | Right Stick 2D | Gamepad stick that sets the XZ aim direction used by jumps and throws. |
 | `AimStickDeadZone` | `0.2` | Aim-stick magnitude below which the last valid aim is retained, on a scale of 0 to 1. |
 | `InitialAimDirection` | `(1, 0, 0)` | World direction used until the player first aims. It defaults to positive X. |
-| `GrabKeys` | `E`, left shoulder button | Buttons that grab a reachable throwable when the grabbed-item slot is empty. |
+| `GrabKeys` | `F`, left shoulder button | Interact buttons that grab a reachable throwable when the grabbed-item slot is empty. |
 | `GrabDistance` | `60` cm | Maximum gap from the player capsule to a throwable that the player can grab. |
-| `SelectThrowableKeys` | `Q`, D-pad Up | Buttons that cycle between available throwable selections. |
+| `SelectThrowableKeys` | Tab, D-pad Up | Buttons that cycle between available throwable selections. |
+| `ActivateThrowableKeys` | `Q` | Buttons that activate the most recently deployed activatable item. |
 | `ThrowKeys` | Right Mouse Button, right shoulder button | Hold to charge the selected item and release to throw it. |
 | `JumpKeys` | Space, bottom gamepad face button | Hold to charge while attached and release to jump along the permitted aim direction. |
+| `MagnetHoldKeys` | `E` | Hold to engage magnetic boots and gloves. Release to disengage. |
 | `CapsuleRadius` | `34` cm | Radius used by pawn collision sweeps and magnetic distance checks. |
 | `CapsuleHalfHeight` | `88` cm | Distance from the capsule center to either end, including the rounded cap. |
 | `CapsuleCollisionProfile` | `Pawn` | Base collision profile used by the player capsule. |
 | `WeaponImpulseTuning` | `DA_DWeaponImpulseTuning` | Weapon impulse asset assigned in the player's Weapons category. |
-| `PlayerMass` | `80` kg | Character mass before adding plates or a grabbed item. Use a positive value. |
-| `ThrowableMassByType` | `WeightedPlate` = `2` kg, `Heavy` = `8` kg | Mass of each throwable type. Every throwable used in the level needs a positive entry. |
+| `PlayerMass` | `90` kg | Character mass with an empty inventory. Use a positive value. |
+| `ThrowableMassByType` | `WeightedPlate` = `5` kg, `GrapplingHook` = `1` kg, `RemoteGrenade` = `0.5` kg, `PortableBlackHoleDevice` = `2` kg, `Heavy` = `8` kg | Mass of each throwable type. `Heavy` is the test-lane fixture. Every throwable used in a level needs a positive entry. |
 | `StartingPlateType` | `WeightedPlate` | Throwable type placed in the player's starting plate stack. Looks up mass in `ThrowableMassByType`. |
 | `StartingPlateCount` | `3` | Number of plates granted at spawn. Zero starts the player without plates. |
 | `ThrowChargeTime` | `0.65` s | Hold time to reach full throw strength. Extra hold time maintains the maximum. |
@@ -106,7 +146,9 @@ Ship `DA_DWeaponImpulseTuning` with the shared trace channel, weapon group assig
 | Field | Default | Designer description |
 | --- | --- | --- |
 | `WeaponTraceChannel` | `Visibility` | Trace channel the player capsule blocks for incoming weapon hits. Match the equipped weapon definitions. |
-| `WeaponImpulseTypeById` | `Pistol`, `Rifle`, `Shotgun` → Direct. `Launcher` → Radial. | Selects an impulse profile by CoreKit weapon ID. |
+| `WeaponImpulseTypeById` | `Rifle`, `Shotgun`, `LaserBlaster` → Direct. | Selects an impulse profile by CoreKit weapon ID. |
+| `WeaponMassById` | `Rifle` = `3` kg, `Shotgun` = `4` kg, `LaserBlaster` = `5` kg | Carried mass of each weapon. |
+| `ShotRecoilImpulseByWeaponId` | Rifle light, shotgun strong, laser blaster `0` kg·cm/s | Overrides the profile's shot recoil. Tune the two nonzero values in play. |
 | `DefaultWeaponImpulseType` | Direct | Profile used when a weapon ID has no assignment. |
 | `DirectProfile` | Direct defaults below | Impact and recoil magnitudes for weapons in the Direct group. |
 | `RadialProfile` | Radial defaults below | Impact and recoil magnitudes for weapons in the Radial group. |
@@ -154,10 +196,11 @@ Each gameplay commit includes its channel instrumentation and a console check th
 | 1. Add Development-only Kismet gameplay diagnostics | Current project | Add the build flag, console command, per-world channel state, and shared Kismet drawing helpers. | Use `List` to verify the initial state, two channels enabled together, one disabled independently, and all cleared with `Off`. Verify a Shipping build omits the command. |
 | 2. Add player and weapon impulse tuning assets | 1 | Add the reflected schemas, explicit defaults and comments, both assets, and the player asset's Weapons reference. Add the `Tuning` readout. | Check asset defaults and tooltips in the editor. Confirm `Tuning` shows the resolved asset names and values. |
 | 3. Add inertial flight and the shared impulse path | 2 | Own `DPawn` and `DMoverComponent` changes. Add Flying startup, fixed collision rotation, mouse crosshair and XZ aim, camera tuning, and ordered impulse processing. Expose move, run, and charge hooks. Add `Flight`, `Aim`, and `Collision` diagnostics. | Check rest, drift while aiming, fixed rotation, lane confinement, wall sweeps, camera follow, and combined impulses. Enable all three channels together and verify a blocked sweep shows the actual contact and slide. |
-| 4. Add charged throws and switch interaction | 3 | Add a plate stack and grabbed-item slot, item selection, grab momentum, and hold-and-release throws. Add `Throws` diagnostics. | Check right mouse press and release, tap and full charge, cancellation, plate depletion, mass-dependent recoil, momentum conservation, and a switch hit. Verify `Throws` shows charge, selection, inventory, and launch results. |
-| 5. Route CoreKit weapon impulses by profile | 3 | Add the CoreKit consumer integration. Resolve weapon IDs, dispatch direct and radial hits, and apply recoil once per shot. Add `Weapons` diagnostics. | Check direct and radial directions, launcher direct hits, default profile lookup, and recoil. Verify `Weapons` shows the chosen profile and the actual impulse vector for each event. |
-| 6. Add magnetic walking, running, and charged jumps | 3 | Add the steel face component and Magnetic Surface mode, including swept capture, posture, walk and run, carry, and aimed jump release. Add `Magnet` and `Jump` diagnostics. | Check floor, wall, and ceiling travel, blocked snaps, posture, platform carry, tap and full-charge jumps, cancellation, edge release, recapture, and breakaway. Verify `Magnet` shows the capture result and `Jump` shows raw aim, clamped aim, and the 20° limit. |
-| 7. Integrate and validate the traversal prototype | 4, 5, 6 | Wire the three features into `BP_DPlayer`, finish the test lane fixtures, and update the controls, debug command examples, and level design lab route. | Build `DelerictEditor`, run the movement and lab route tests, and verify `L_DHangar` resolves both tuning assets. Play the full route with combined channels in a packaged Development game and confirm the same movement results with diagnostics enabled and disabled. |
+| 4. Add charged throws and switch interaction | 3 | Use the revised player and item masses. Add the plate stack, grabbed-item slot, F interaction, Tab selection, RMB charge, Q activation dispatch, and `Throws` diagnostics. | Check tap and full charge, cancellation, blocked launch, plate depletion, mass-dependent recoil, momentum conservation, and a switch hit. Verify `Throws` shows charge, selection, inventory, and launch results. |
+| 5. Integrate the rifle, shotgun, and laser blaster | 3 | Add the CoreKit consumer, loadout mass, fire and reload, equip and cycle controls, hit profiles, and per-weapon recoil. Add `Weapons` diagnostics. | Check direct and radial directions, profile fallback, light rifle recoil, strong shotgun recoil, laser fire without reload or recoil, and equip controls. Verify the profile and impulse for each event. |
+| 6. Add magnetic walking, running, and charged jumps | 3 | Add steel faces and Magnetic Surface mode, E hold to capture and release, posture, walk and run, carry, and aimed jump release. Add `Magnet` and `Jump` diagnostics. | Check floor, wall, and ceiling travel, E release, blocked snaps, carry, charged jumps, cancellation, edge release, recapture, and breakaway. Verify the capture result and the 20° jump limit. |
+| 7. Add remotely activated items | 4 | Implement the grappling hook, remote grenade, and portable black hole device using the throw and activation paths. | Check hook retrieval and pulling, grenade activation once, black hole toggle and rupture, loss of remote control on recovery or destruction, and inventory mass before and after deployment. |
+| 8. Integrate and validate the traversal prototype | 4, 5, 6, 7 | Wire the features into `BP_DPlayer`, finish the test lane fixtures, and update controls, debug examples, and the lab route. | Build `DelerictEditor`, run the gameplay tests, and verify `L_DHangar` resolves both tuning assets. Play the full route with combined diagnostics in a packaged Development build and compare movement with diagnostics enabled and disabled. |
 
 The shared hooks pass aim, movement, and button phases from input. Process grab, jump release, throw release, and weapon events in order using world-space impulse vectors in kg·cm/s. The movement step owns the mass conversion, plane projection, and final velocity update. [Current movement test](../Source/Delerict/Player/Tests/DMovementTests.cpp) · [Current lab route test](../Source/Delerict/LevelDesign/Tests/DLevelDesignTests.cpp) · [Level design lab](LevelDesign.md)
 
@@ -165,4 +208,5 @@ The shared hooks pass aim, movement, and button phases from input. Process grab,
 
 - **While commits 1–3 are in progress**, develop throw charge and momentum calculations, weapon profile lookup and CoreKit events, and steel face geometry with jump-angle clamp tests. Exercise each with isolated fixtures until the shared movement and debug hooks are ready. Level design can block out an open gap, a switch approach, and steel faces in floor, wall, and ceiling orientations in a separate working map.
 - **After commit 3**, develop and merge commits 4, 5, and 6 independently. They share the movement hooks, data schemas, and debug helper. Keep each feature's diagnostics and tests with its code so the core pawn, Mover, and shared assets have one owner during development.
-- **After commits 4–6 merge**, wire the production pawn and save the shared Blueprint and map packages in commit 7. Run the full route with multiple debug channels and check weapon and throw recoil while magnetically attached.
+- **After commit 4**, build the three remotely activated items in commit 7 using its shared throw and activation paths.
+- **After commits 4–7 merge**, wire the production pawn and save the shared Blueprint and map packages in commit 8. Run the full route with multiple debug channels and check weapon and throw recoil while magnetically attached.

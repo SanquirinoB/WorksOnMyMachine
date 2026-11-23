@@ -8,6 +8,7 @@
 #include "DLocomotionAnimInstance.h"
 #include "DMoverComponent.h"
 #include "DPlayerTuning.h"
+#include "DThrowable.h"
 #include "Engine/StaticMesh.h"
 #include "GameFramework/GameplayCameraComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -84,6 +85,8 @@ void ADPawn::PreInitializeComponents()
 
 void ADPawn::BeginPlay()
 {
+    PlateCount = FMath::Max(0, GetTuning().StartingPlateCount);
+    OnThrowCharge.AddUObject(this, &ThisClass::HandleThrowCharge);
     Super::BeginPlay();
     PlaceholderMesh->SetVisibility(!Mesh->GetSkeletalMeshAsset());
     Mover->OnPostFinalize.AddUniqueDynamic(this, &ThisClass::UpdateCameraLead);
@@ -93,6 +96,11 @@ void ADPawn::EndPlay(const EEndPlayReason::Type Reason)
 {
     ClearInput();
     RestoreAimCursor();
+    if (Reason == EEndPlayReason::Destroyed && IsValid(GrabbedThrowable))
+    {
+        GrabbedThrowable->Launch(GetActorLocation(), GetVelocity(),
+            Mover->GetPlanarConstraint().PlaneConstraintNormal, nullptr);
+    }
     Super::EndPlay(Reason);
 }
 
@@ -132,12 +140,6 @@ const UDPlayerTuning& ADPawn::GetTuning() const
     return PlayerTuning ? *PlayerTuning : *GetDefault<UDPlayerTuning>();
 }
 
-float ADPawn::GetEffectiveMass() const
-{
-    const float Mass = GetTuning().PlayerMass;
-    return FMath::IsFinite(Mass) ? FMath::Max(Mass, .01f) : GetDefault<UDPlayerTuning>()->PlayerMass;
-}
-
 void ADPawn::QueueImpulse(const FVector& WorldImpulse)
 {
     check(IsInGameThread());
@@ -148,6 +150,22 @@ void ADPawn::QueueImpulse(const FVector& WorldImpulse)
 
     // Snapshot the mass here so later inventory events cannot change the effect of an earlier impulse.
     PendingImpulses.Add({ WorldImpulse, GetEffectiveMass() });
+}
+
+FVector ADPawn::GetQueuedVelocityChange(FVector* TotalImpulse) const
+{
+    FVector VelocityChange = FVector::ZeroVector;
+    const FPlanarConstraint& Plane = Mover->GetPlanarConstraint();
+    for (const FQueuedImpulse& Impulse : PendingImpulses)
+    {
+        const FVector InPlane = UPlanarConstraintUtils::ConstrainDirectionToPlane(Plane, Impulse.WorldImpulse);
+        VelocityChange += InPlane / Impulse.Mass;
+        if (TotalImpulse)
+        {
+            *TotalImpulse += InPlane;
+        }
+    }
+    return VelocityChange;
 }
 
 void ADPawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdContext& InputCmd)
@@ -169,28 +187,15 @@ void ADPawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdCont
     {
         DebugSweepStart = GetActorLocation();
     }
-#endif
-
-    FVector VelocityChange = FVector::ZeroVector;
-    const FPlanarConstraint& Plane = Mover->GetPlanarConstraint();
-    for (const FQueuedImpulse& Impulse : PendingImpulses)
-    {
-        const FVector InPlane = UPlanarConstraintUtils::ConstrainDirectionToPlane(Plane, Impulse.WorldImpulse);
-        VelocityChange += InPlane / Impulse.Mass;
-#if DELERICT_WITH_GAMEPLAY_DEBUG
-        if (bDebugFlight)
-        {
-            DebugImpulse += InPlane;
-        }
-#endif
-    }
-    PendingImpulses.Reset();
-#if DELERICT_WITH_GAMEPLAY_DEBUG
+    const FVector VelocityChange = GetQueuedVelocityChange(bDebugFlight ? &DebugImpulse : nullptr);
     if (bDebugFlight)
     {
         DebugVelocityChange = VelocityChange;
     }
+#else
+    const FVector VelocityChange = GetQueuedVelocityChange();
 #endif
+    PendingImpulses.Reset();
 
     if (!VelocityChange.IsNearlyZero())
     {
@@ -211,6 +216,7 @@ void ADPawn::UpdateCameraLead(const FMoverSyncState& /*SyncState*/, const FMover
     GameplayCamera->SetWorldLocation(Location + FVector(Lead, 0., 0.));
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
+    DrawThrowDiagnostics();
     using namespace DGameplayDebug;
     UWorld* World = GetWorld();
     if (IsEnabled(World, EChannel::Flight))

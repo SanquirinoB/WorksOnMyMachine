@@ -5,6 +5,7 @@
 #include "MoverSimulationTypes.h"
 #include "DPawn.generated.h"
 
+class ADThrowable;
 class UAnimSequence;
 class UCapsuleComponent;
 class UDMoverComponent;
@@ -35,6 +36,10 @@ public:
     FVector2D GetMoveIntent() const { return MoveIntent; }
     bool IsRunHeld() const { return bRunHeld; }
     float GetEffectiveMass() const;
+    int32 GetPlateCount() const { return PlateCount; }
+    const ADThrowable* GetGrabbedThrowable() const;
+    FName GetSelectedThrowableType() const;
+    float GetThrowCharge() const;
 
     /** Queue a world-space impulse in kg*cm/s using the effective mass at the time of the event. */
     void QueueImpulse(const FVector& WorldImpulse);
@@ -97,6 +102,9 @@ private:
     UPROPERTY(Transient) TObjectPtr<UInputAction> GrabAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> SelectThrowableAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> ThrowAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> ActivateThrowableAction;
+    UPROPERTY(Transient) TObjectPtr<ADThrowable> GrabbedThrowable;
+    TWeakObjectPtr<ADThrowable> RemoteThrowable;
     TWeakObjectPtr<UEnhancedInputLocalPlayerSubsystem> InputSubsystem;
     TWeakObjectPtr<APlayerController> AimController;
     TOptional<FVector2D> LastMousePosition;
@@ -109,6 +117,9 @@ private:
         float Mass;
     };
     TArray<FQueuedImpulse, TInlineAllocator<4>> PendingImpulses;
+    TOptional<double> ThrowChargeStartedAt;
+    int32 PlateCount = 0;
+    bool bGrabbedThrowableSelected = false;
     EMouseCursor::Type PreviousMouseCursor = EMouseCursor::Default;
     bool bPreviouslyShowedMouseCursor = false;
     bool bGamepadAim = false;
@@ -131,6 +142,13 @@ private:
     void StopRun();
     void RequestGrab();
     void RequestThrowableSelection();
+    void ActivateThrownItem();
+    void GrabNearbyThrowable();
+    void CycleSelectedThrowable();
+    void HandleThrowCharge(EDChargePhase Phase, const FVector& Aim);
+    void LaunchSelectedThrowable(const FVector& Aim, float Charge);
+    float GetThrowableMass(FName Type) const;
+    FVector GetQueuedVelocityChange(FVector* TotalImpulse = nullptr) const;
     void UpdateCharge(bool& bCharging, FDChargeAction& Action, EDChargePhase Phase);
     void StartJumpCharge();
     void ReleaseJumpCharge();
@@ -146,5 +164,11 @@ private:
     FVector DebugImpulse = FVector::ZeroVector;
     FVector DebugVelocityChange = FVector::ZeroVector;
     FVector DebugSweepStart = FVector::ZeroVector;
+    FVector DebugItemVelocity = FVector::ZeroVector;
+    FVector DebugThrowRecoil = FVector::ZeroVector;
+    FString DebugThrowResult;
+    void RecordThrowResult(const TCHAR* Result, const FVector& ItemVelocity = FVector::ZeroVector,
+        const FVector& Recoil = FVector::ZeroVector);
+    void DrawThrowDiagnostics() const;
 #endif
 };

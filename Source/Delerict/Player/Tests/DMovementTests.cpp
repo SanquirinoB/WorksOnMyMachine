@@ -27,7 +27,6 @@ namespace
     struct FDFlightInputEvents
     {
         TArray<EDChargePhase> Jump;
-        TArray<EDChargePhase> Throw;
         FVector JumpReleaseAim = FVector::ZeroVector;
         int32 Grabs = 0;
         int32 Selections = 0;
@@ -87,7 +86,6 @@ namespace
                         Events->JumpReleaseAim = Aim;
                     }
                 });
-                Pawn->OnThrowCharge.AddLambda([Events = Events](EDChargePhase Charge, const FVector&) { Events->Throw.Add(Charge); });
                 Pawn->OnGrabRequested.AddLambda([Events = Events] { ++Events->Grabs; });
                 Pawn->OnSelectThrowableRequested.AddLambda([Events = Events] { ++Events->Selections; });
                 AActor* Wall = World->SpawnActor<AActor>();
@@ -111,9 +109,8 @@ namespace
                 SendKey(*Player, EKeys::W, IE_Pressed);
                 SendKey(*Player, EKeys::LeftShift, IE_Pressed);
                 SendKey(*Player, EKeys::SpaceBar, IE_Pressed);
-                SendKey(*Player, EKeys::RightMouseButton, IE_Pressed);
-                SendKey(*Player, EKeys::E, IE_Pressed);
-                SendKey(*Player, EKeys::Q, IE_Pressed);
+                SendKey(*Player, EKeys::F, IE_Pressed);
+                SendKey(*Player, EKeys::Tab, IE_Pressed);
                 Advance(EDFlightTestPhase::Controls);
                 break;
 
@@ -126,19 +123,18 @@ namespace
                 Test.TestTrue(TEXT("Grab and selection each fire once"), Events->Grabs == 1 && Events->Selections == 1);
                 SendKey(*Player, EKeys::Gamepad_RightY, IE_Axis, 1.f);
                 SendKey(*Player, EKeys::SpaceBar, IE_Released);
-                SendKey(*Player, EKeys::RightMouseButton, IE_Released);
                 SendKey(*Player, EKeys::D, IE_Released);
                 SendKey(*Player, EKeys::W, IE_Released);
                 SendKey(*Player, EKeys::LeftShift, IE_Released);
-                SendKey(*Player, EKeys::E, IE_Released);
-                SendKey(*Player, EKeys::Q, IE_Released);
+                SendKey(*Player, EKeys::F, IE_Released);
+                SendKey(*Player, EKeys::Tab, IE_Released);
 
                 const float Mass = Pawn->GetEffectiveMass();
                 Pawn->QueueImpulse(FVector(150., 500., 30.) * Mass);
                 {
                     auto& Tuning = const_cast<UDPlayerTuning&>(Pawn->GetTuning());
-                    TGuardValue<float> TemporaryMass(Tuning.PlayerMass, Mass * 2.f);
-                    Pawn->QueueImpulse(FVector(90., -200., 40.) * (Mass * 2.f));
+                    TGuardValue<float> TemporaryMass(Tuning.PlayerMass, Tuning.PlayerMass * 2.f);
+                    Pawn->QueueImpulse(FVector(90., -200., 40.) * Pawn->GetEffectiveMass());
                 }
                 Advance(EDFlightTestPhase::Drift);
                 break;
@@ -147,8 +143,7 @@ namespace
             {
                 if (Elapsed < .4) { break; }
                 const TArray<EDChargePhase> Released = { EDChargePhase::Pressed, EDChargePhase::Released };
-                Test.TestTrue(TEXT("Jump and Throw each report a single press and release"),
-                    Events->Jump == Released && Events->Throw == Released);
+                Test.TestTrue(TEXT("Jump reports a single press and release"), Events->Jump == Released);
                 Test.TestTrue(TEXT("The released jump uses the current right-stick aim"), Events->JumpReleaseAim.Z > .95);
                 Test.TestTrue(TEXT("Impulses project into the lane and apply once using the mass at each event"),
                     Velocity.Equals(FVector(240., 0., 70.), 1.) && FMath::IsNearlyEqual(Location.Y, Start.Y, .1));
