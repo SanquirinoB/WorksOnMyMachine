@@ -127,7 +127,7 @@ namespace
                 break;
 
             case EDTraversalStep::RecallHook:
-                Test.TestTrue(TEXT("The hook leaves the slot after a throw"), Pawn->GetGrabbedThrowable() == nullptr);
+                Test.TestTrue(TEXT("The hook leaves the player's hands after a throw"), Pawn->GetGrabbedThrowable() == nullptr);
                 RecallDistance = FVector::Dist(Location, Hook->GetActorLocation());
                 Key(EKeys::Q, IE_Pressed);
                 Advance(EDTraversalStep::ReelHook, .045);
@@ -147,12 +147,10 @@ namespace
                 Anchor = World->SpawnActor<ADThrowSwitch>(Location + FVector(230., 0., 0.), FRotator::ZeroRotator);
                 Anchor->Tags.Add(TEXT("Delerict.GrappleAnchor"));
                 CastChecked<UPrimitiveComponent>(Anchor->GetRootComponent())->SetMobility(EComponentMobility::Movable);
-                Key(EKeys::Tab, IE_Pressed);
                 Advance(EDTraversalStep::ChargeAnchor, .06);
                 break;
 
             case EDTraversalStep::ChargeAnchor:
-                Key(EKeys::Tab, IE_Released);
                 Key(EKeys::RightMouseButton, IE_Pressed);
                 Advance(EDTraversalStep::LaunchAnchor, .4);
                 break;

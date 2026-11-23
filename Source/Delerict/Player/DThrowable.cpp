@@ -62,9 +62,14 @@ bool ADThrowable::CanGrab() const
     return !Holder.IsValid() && !IsHidden() && !IsActorBeingDestroyed();
 }
 
+bool ADThrowable::IsHeldBy(const ADPawn& Pawn) const
+{
+    return Holder.Get() == &Pawn;
+}
+
 bool ADThrowable::TryHold(ADPawn& Pawn)
 {
-    if (!CanGrab())
+    if (!CanGrab() || (IsReusableAfterPickup() && LastThrower.IsValid() && LastThrower.Get() != &Pawn))
     {
         return false;
     }
@@ -76,6 +81,12 @@ bool ADThrowable::TryHold(ADPawn& Pawn)
     SetActorEnableCollision(false);
     SetActorHiddenInGame(true);
     return true;
+}
+
+bool ADThrowable::TryReturnToOwner()
+{
+    ADPawn* Pawn = GetDeployingPawn();
+    return IsReusableAfterPickup() && Pawn && Pawn->TryStowReusableThrowable(*this);
 }
 
 void ADThrowable::Launch(const FVector& Location, const FVector& Velocity, const FVector& PlaneNormal, ADPawn* Thrower)

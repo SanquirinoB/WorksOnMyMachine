@@ -22,7 +22,10 @@ public:
     void SetThrowableType(FName Type) { ThrowableType = Type; }
     float GetCollisionRadius() const;
     virtual bool CanGrab() const;
+    virtual bool IsReusableAfterPickup() const { return false; }
+    bool IsHeldBy(const ADPawn& Pawn) const;
     bool TryHold(ADPawn& Pawn);
+    bool TryReturnToOwner();
     void Launch(const FVector& Location, const FVector& Velocity, const FVector& PlaneNormal, ADPawn* Thrower);
     bool TryActivate(ADPawn& Pawn);
     virtual void AddDriftVelocity(const FVector& VelocityChange, const FVector& PlaneNormal);

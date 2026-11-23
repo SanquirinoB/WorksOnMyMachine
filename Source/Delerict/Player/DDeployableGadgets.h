@@ -14,6 +14,7 @@ class ADGrapplingHook : public ADThrowable
 public:
     ADGrapplingHook();
 
+    bool IsReusableAfterPickup() const override { return true; }
     void Tick(float DeltaSeconds) override;
     void AddDriftVelocity(const FVector& VelocityChange, const FVector& PlaneNormal) override;
 
@@ -74,6 +75,8 @@ class ADPortableBlackHoleDevice : public ADThrowable
 
 public:
     ADPortableBlackHoleDevice();
+
+    bool IsReusableAfterPickup() const override { return true; }
 
     void Tick(float DeltaSeconds) override;
 

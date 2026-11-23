@@ -301,6 +301,10 @@ namespace
                 }
             }
         }
+        if (auto* Throwable = Cast<ADThrowable>(&Actor); Throwable && Throwable->TryReturnToOwner())
+        {
+            return true;
+        }
         return Actor.Destroy();
     }
 }
@@ -621,5 +625,8 @@ void ADPortableBlackHoleDevice::Rupture(AActor& ConsumedActor)
     SetActorEnableCollision(false);
     Burst(*this, GetDeployingPawn(), RuptureDamage, RuptureRadius, RupturePushSpeed,
         Movement->GetPlaneConstraintNormal(), FLinearColor(.65f, .25f, 1.f), EDGadgetQuery::BlackHoleBurst, &ConsumedActor);
-    Destroy();
+    if (!TryReturnToOwner())
+    {
+        Destroy();
+    }
 }

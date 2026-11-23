@@ -42,7 +42,7 @@ public:
     float GetEffectiveMass() const;
     int32 GetPlateCount() const { return PlateCount; }
 
-    /** Number of world pickups currently carried. The starting plate stack is separate. */
+    /** Number of owned world pickups, including deployed reusable gadgets. The starting plate stack is separate. */
     UFUNCTION(BlueprintPure, Category = "Player|Inventory")
     int32 GetPickedUpThrowableCount() const;
 
@@ -53,6 +53,7 @@ public:
     /** First world pickup currently carried, if any. */
     const ADThrowable* GetGrabbedThrowable() const;
     bool TryGrabThrowable(ADThrowable& Item);
+    bool TryStowReusableThrowable(ADThrowable& Item);
 
     /** Selected type key, which can have a quantity of zero when selected via hotkey. */
     UFUNCTION(BlueprintPure, Category = "Player|Inventory")
@@ -182,12 +183,13 @@ private:
     void ActivateThrownItem();
     bool InteractWithNearbySwitch();
     void GrabNearbyThrowable();
-    bool CanCarryThrowable(FName Type) const;
+    bool CanCarryThrowable(const ADThrowable& Item) const;
     void CycleSelectedThrowable();
     void SelectThrowableType(FName Type);
     void HandleThrowCharge(EDChargePhase Phase, const FVector& Aim);
     void LaunchSelectedThrowable(const FVector& Aim, float Charge);
     float GetThrowableMass(FName Type) const;
+    float GetEffectiveMassWithout(const ADThrowable* OmittedItem) const;
     FVector GetQueuedVelocityChange(FVector* TotalImpulse = nullptr) const;
     void UpdateCharge(bool& bCharging, FDChargeAction& Action, EDChargePhase Phase);
     void StartJumpCharge();

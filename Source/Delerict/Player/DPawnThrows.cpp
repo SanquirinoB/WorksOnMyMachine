@@ -35,7 +35,10 @@ int32 ADPawn::GetThrowableCountByType(FName ThrowableType) const
 
 const ADThrowable* ADPawn::GetGrabbedThrowable() const
 {
-    const auto* Item = GrabbedThrowables.FindByPredicate([](const ADThrowable* Candidate) { return IsValid(Candidate); });
+    const auto* Item = GrabbedThrowables.FindByPredicate([this](const ADThrowable* Candidate)
+    {
+        return IsValid(Candidate) && Candidate->IsHeldBy(*this);
+    });
     return Item ? Item->Get() : nullptr;
 }
 
@@ -47,12 +50,17 @@ float ADPawn::GetThrowableMass(FName Type) const
 
 float ADPawn::GetEffectiveMass() const
 {
+    return GetEffectiveMassWithout(nullptr);
+}
+
+float ADPawn::GetEffectiveMassWithout(const ADThrowable* OmittedItem) const
+{
     const float TunedMass = GetTuning().PlayerMass;
     const float BodyMass = FMath::IsFinite(TunedMass) ? FMath::Max(TunedMass, .01f) : GetDefault<UDPlayerTuning>()->PlayerMass;
     float Mass = BodyMass + PlateCount * GetThrowableMass(GetTuning().StartingPlateType);
     for (const ADThrowable* Item : GrabbedThrowables)
     {
-        if (IsValid(Item))
+        if (Item != OmittedItem && IsValid(Item) && Item->IsHeldBy(*this))
         {
             Mass += GetThrowableMass(Item->GetThrowableType());
         }
@@ -70,8 +78,8 @@ FName ADPawn::GetSelectedThrowableType() const
     {
         return GetTuning().StartingPlateType;
     }
-    const ADThrowable* Item = GetGrabbedThrowable();
-    return Item ? Item->GetThrowableType() : NAME_None;
+    const auto* Item = GrabbedThrowables.FindByPredicate([](const ADThrowable* Candidate) { return IsValid(Candidate); });
+    return Item ? (*Item)->GetThrowableType() : NAME_None;
 }
 
 float ADPawn::GetThrowCharge() const
@@ -120,7 +128,7 @@ void ADPawn::GrabNearbyThrowable()
     for (TActorIterator<ADThrowable> It(GetWorld()); It; ++It)
     {
         ADThrowable* Item = *It;
-        if (!Item->CanGrab() || !CanCarryThrowable(Item->GetThrowableType()))
+        if (!Item->CanGrab() || !CanCarryThrowable(*Item))
         {
             continue;
         }
@@ -147,16 +155,18 @@ void ADPawn::GrabNearbyThrowable()
     }
 }
 
-bool ADPawn::CanCarryThrowable(FName Type) const
+bool ADPawn::CanCarryThrowable(const ADThrowable& Item) const
 {
+    const FName Type = Item.GetThrowableType();
     const int32* Limit = GetTuning().ThrowableCarryLimits.Find(Type);
-    return GetThrowableMass(Type) > 0.f && (!Limit || GetThrowableCountByType(Type) < *Limit);
+    return GetThrowableMass(Type) > 0.f
+        && (!Limit || GetThrowableCountByType(Type) < *Limit || GrabbedThrowables.Contains(&Item));
 }
 
 bool ADPawn::TryGrabThrowable(ADThrowable& Item)
 {
     const FName Type = Item.GetThrowableType();
-    if (Item.GetWorld() != GetWorld() || !Item.CanGrab() || !CanCarryThrowable(Type))
+    if (Item.GetWorld() != GetWorld() || !Item.CanGrab() || !CanCarryThrowable(Item))
     {
         return false;
     }
@@ -172,13 +182,26 @@ bool ADPawn::TryGrabThrowable(ADThrowable& Item)
     {
         RemoteThrowable.Reset();
     }
-    GrabbedThrowables.Add(&Item);
+    GrabbedThrowables.AddUnique(&Item);
     // With the item now counted in carried mass, this impulse gives the combined body its shared drift.
     const FVector Separation = ItemVelocity - PlayerVelocity;
     QueueImpulse(Separation * GetThrowableMass(Type));
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     RecordThrowResult(TEXT("Grabbed"));
 #endif
+    return true;
+}
+
+bool ADPawn::TryStowReusableThrowable(ADThrowable& Item)
+{
+    if (!GrabbedThrowables.Contains(&Item) || !Item.TryHold(*this))
+    {
+        return false;
+    }
+    if (RemoteThrowable.Get() == &Item)
+    {
+        RemoteThrowable.Reset();
+    }
     return true;
 }
 
@@ -295,13 +318,13 @@ void ADPawn::LaunchSelectedThrowable(const FVector& Aim, float Charge)
     }
 
     const FVector Drift = GetVelocity() + GetQueuedVelocityChange();
-    if (GrabbedIndex != INDEX_NONE)
-    {
-        GrabbedThrowables.RemoveAt(GrabbedIndex);
-    }
-    else
+    if (bUseStartingPlate)
     {
         --PlateCount;
+    }
+    else if (!Item->IsReusableAfterPickup())
+    {
+        GrabbedThrowables.RemoveAt(GrabbedIndex);
     }
     if (GetThrowableCountByType(Type) == 0)
     {
@@ -312,16 +335,16 @@ void ADPawn::LaunchSelectedThrowable(const FVector& Aim, float Charge)
     const double TapSpeed = FMath::Max(0.f, Tuning.MinThrowSeparationSpeed);
     const double FullSpeed = FMath::Max(TapSpeed, static_cast<double>(Tuning.MaxThrowSeparationSpeed));
     const double SeparationSpeed = FMath::Lerp(TapSpeed, FullSpeed, Charge);
-    const double RemainingMass = GetEffectiveMass();
+    const double RemainingMass = GetEffectiveMassWithout(Item);
     // Solve for the equal and opposite impulses that produce the requested relative speed.
     const FVector Impulse = Aim * (SeparationSpeed / (1. / RemainingMass + 1. / ItemMass));
     const FVector ItemVelocity = Drift + Impulse / ItemMass;
-    QueueImpulse(-Impulse);
     if (Item->bRemoteActivatable)
     {
         RemoteThrowable = Item;
     }
     Item->Launch(LaunchLocation, ItemVelocity, Mover->GetPlanarConstraint().PlaneConstraintNormal, this);
+    QueueImpulse(-Impulse);
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     RecordThrowResult(TEXT("Launched"), ItemVelocity, -Impulse / RemainingMass);
 #endif
