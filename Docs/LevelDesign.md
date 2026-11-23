@@ -1,6 +1,6 @@
 # Diseño de salas en Delerict
 
-La campaña se edita en `Content/Maps/L_DCampaign`. En el World Outliner, las carpetas **01 Apertura**, **02 Hangar** y **03 Sala final** reúnen los actores de cada tramo. **Conexiones** contiene los dos pasos físicos y sus checkpoints de entrada. Para jugar desde el principio, abre `L_MainMenu`, pulsa **Play** y elige **New Game**.
+La campaña se edita en `Content/Maps/L_DCampaign`. En el World Outliner, el recorrido pasa por **01 Sala inicial**, **02 Tutorial de los platos**, **03 Travesía con gancho** y **04 Sala final**. La puerta A-02 conecta el tutorial directamente con la sala 3. Para jugar desde el principio, abre `L_MainMenu`, pulsa **Play** y elige **New Game**.
 
 Abre `L_DLevelDesignLab` desde `Content/Maps` y pulsa **Play**. Toma carrera con **D** y salta con **Espacio** para cruzar el primer hueco. Pasa por el checkpoint verde y prueba el peligro rojo para volver al checkpoint. Salta sobre el peligro y alcanza la salida azul.
 
