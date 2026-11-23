@@ -68,6 +68,11 @@ void Capture(const TCHAR* Filename)
     FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / Filename, true, false);
 }
 
+bool HasVisibleMouseCursor(const APlayerController* Player, EMouseCursor::Type Shape = EMouseCursor::Default)
+{
+    return Player && Player->ShouldShowMouseCursor() && Player->CurrentMouseCursor == Shape;
+}
+
 bool Finish(bool bPassed, int32 Step)
 {
     UE_CLOG(bPassed, LogTemp, Display, TEXT("DELERICT_FRONTEND_SMOKE_PASSED"));
@@ -97,6 +102,7 @@ void RunSmoke(UWorld* World)
             {
             case 0:
                 if (!Menu || PlayingTitleTracks() != 1) { break; }
+                if (!HasVisibleMouseCursor(Player)) { return Finish(false, Step); }
                 if (bCheckContinue && Frontend->CanContinue()) { return Finish(false, Step); }
                 FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("MainMenu.png"), true, false);
                 ++Step;
@@ -231,13 +237,14 @@ void RunSmoke(UWorld* World)
                         *EntryMap.ToString(), *Current->GetName(), *Player->GetPawn()->GetClass()->GetName(), bSawLoading);
                     return Finish(false, Step);
                 }
+                if (!HasVisibleMouseCursor(Player, EMouseCursor::Crosshairs)) { return Finish(false, Step); }
                 Player->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::Escape, IE_Pressed, 1.f));
                 Player->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::Escape, IE_Released, 0.f));
                 ++Step;
                 break;
             case 21:
                 if (!UGameplayStatics::IsGamePaused(Current) || !Menu) { break; }
-                if (!Player || Player->CurrentMouseCursor != EMouseCursor::Default) { return Finish(false, Step); }
+                if (!HasVisibleMouseCursor(Player)) { return Finish(false, Step); }
                 FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("PauseMenu.png"), true, false);
                 ++Step;
                 break;
@@ -254,7 +261,7 @@ void RunSmoke(UWorld* World)
                 break;
             case 25:
                 if (UGameplayStatics::IsGamePaused(Current) || !Player) { break; }
-                if (Player->CurrentMouseCursor != EMouseCursor::None) { return Finish(false, Step); }
+                if (!HasVisibleMouseCursor(Player, EMouseCursor::Crosshairs)) { return Finish(false, Step); }
                 if (bCheckContinue && !Frontend->SaveCheckpoint(TEXT("menu-smoke"))) { return Finish(false, Step); }
                 Player->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::Gamepad_Special_Right, IE_Pressed, 1.f));
                 Player->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::Gamepad_Special_Right, IE_Released, 0.f));
@@ -274,7 +281,7 @@ void RunSmoke(UWorld* World)
                 if (Current->GetFName() == EntryMap && Frontend->GetState() == ECoreKitFrontendState::Gameplay
                     && Player && Cast<ADPawn>(Player->GetPawn()) && PlayingTitleTracks() == 0)
                 {
-                    return Finish(true, Step);
+                    return Finish(HasVisibleMouseCursor(Player, EMouseCursor::Crosshairs), Step);
                 }
                 break;
             }

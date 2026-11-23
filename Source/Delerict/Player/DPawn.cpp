@@ -98,6 +98,13 @@ void ADPawn::BeginPlay()
     Mover->OnPostFinalize.AddUniqueDynamic(this, &ThisClass::UpdateCameraLead);
 }
 
+bool ADPawn::ConsumeMagneticCaptureRequest()
+{
+    const bool bRequested = bMagnetHeld || bInitialMagneticCaptureRequested;
+    bInitialMagneticCaptureRequested = false;
+    return bRequested;
+}
+
 void ADPawn::EndPlay(const EEndPlayReason::Type Reason)
 {
     ClearInput();

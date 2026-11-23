@@ -10,4 +10,7 @@ class ADGameMode : public AGameModeBase
 
 public:
     ADGameMode();
+
+protected:
+    APawn* SpawnDefaultPawnFor_Implementation(AController* NewPlayer, AActor* StartSpot) override;
 };

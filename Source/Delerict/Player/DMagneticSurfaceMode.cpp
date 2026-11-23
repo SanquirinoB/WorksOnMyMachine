@@ -131,14 +131,14 @@ void UDMagneticSurfaceMode::RearmFace(const UCapsuleComponent& Capsule, double R
 
 bool UDMagneticSurfaceMode::TryCapture(const FSimulationTickParams& Params, FMoverTickEndData& OutputState)
 {
-    const auto* Pawn = GetPawn();
+    auto* Pawn = GetPawn();
     const auto* Capsule = Cast<UCapsuleComponent>(Params.MovingComps.UpdatedPrimitive.Get());
     if (!Pawn || !Capsule)
     {
         return false;
     }
 
-    if (!Pawn->IsMagnetHeld())
+    if (!Pawn->ConsumeMagneticCaptureRequest())
     {
         // A new hold can recapture nearby steel without waiting for the old hold to clear the face.
         DepartedFace.Reset();

@@ -80,13 +80,14 @@ namespace
         return Blueprint->Status != BS_Error && SaveAsset(*Blueprint) ? Blueprint->GeneratedClass.Get() : nullptr;
     }
 
-    UClass* BuildBlock(const TCHAR* Name, const FVector& Dimensions, UMaterialInterface* Finish)
+    UClass* BuildBlock(const TCHAR* Name, const FVector& Dimensions, UMaterialInterface* Finish, bool bMagneticTop = false)
     {
         return FindOrCreatePrefab(Name, ADLevelBlock::StaticClass(), [&](AActor& Actor)
         {
             auto& Block = *CastChecked<ADLevelBlock>(&Actor);
             Block.Dimensions = Dimensions;
             Block.Finish = Finish;
+            Block.MagneticTopFinish = bMagneticTop ? Finish : nullptr;
         });
     }
 
@@ -156,7 +157,7 @@ int32 UDLevelDesignCommandlet::Main(const FString&)
     }
 
     UClass* Floor = BuildBlock(TEXT("BP_DFloor"), FVector(600, 300, 50), Steel);
-    UClass* Platform = BuildBlock(TEXT("BP_DPlatform"), FVector(400, 300, 40), Step);
+    UClass* Platform = BuildBlock(TEXT("BP_DPlatform"), FVector(400, 300, 40), Step, true);
     UClass* Wall = BuildBlock(TEXT("BP_DWall"), FVector(50, 300, 260), Steel);
     UClass* Start = FindOrCreatePrefab(TEXT("BP_DPlayerStart"), APlayerStart::StaticClass(), [](AActor&) {});
     UClass* Hazard = BuildMarker(TEXT("BP_DHazard"), EDRoomMarkerRole::Hazard, FVector(100, 300, 35),

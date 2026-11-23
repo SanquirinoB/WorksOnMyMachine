@@ -33,9 +33,11 @@ public:
 
     FVector GetAimDirection() const { return AimDirection; }
     bool GetCrosshairPosition(FVector2D& Position) const;
+    bool IsAimingWithGamepad() const { return bGamepadAim; }
     FVector2D GetMoveIntent() const { return MoveIntent; }
     bool IsRunHeld() const { return bRunHeld; }
-    bool IsMagnetHeld() const { return bMagnetHeld; }
+    void RequestInitialMagneticCapture() { bInitialMagneticCaptureRequested = true; }
+    bool ConsumeMagneticCaptureRequest();
     bool HasMovementImpulse() const { return bHasMovementImpulse; }
     float GetEffectiveMass() const;
     int32 GetPlateCount() const { return PlateCount; }
@@ -153,6 +155,7 @@ private:
     bool bGamepadAim = false;
     bool bRunHeld = false;
     bool bMagnetHeld = false;
+    bool bInitialMagneticCaptureRequested = false;
     bool bHasMovementImpulse = false;
     bool bJumpCharging = false;
     bool bThrowCharging = false;

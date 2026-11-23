@@ -1,5 +1,6 @@
 #include "LevelDesign/DLevelBlock.h"
 
+#include "../Player/DSteelSurfaceComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -16,6 +17,11 @@ ADLevelBlock::ADLevelBlock()
     Collision->SetMobility(EComponentMobility::Static);
     Collision->SetCollisionProfileName(TEXT("BlockAll"));
     Collision->SetGenerateOverlapEvents(false);
+
+    MagneticTop = CreateDefaultSubobject<UDSteelSurfaceComponent>(TEXT("MagneticTop"));
+    MagneticTop->SetupAttachment(Collision);
+    MagneticTop->SetMobility(EComponentMobility::Static);
+    MagneticTop->bMagnetic = false;
 
     Visual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Visual"));
     Visual->SetupAttachment(Pivot);
@@ -38,4 +44,20 @@ void ADLevelBlock::OnConstruction(const FTransform& Transform)
     Visual->SetRelativeLocation(Center);
     Visual->SetRelativeScale3D(Size / 100.0);
     Visual->SetMaterial(0, Finish);
+    UpdateMagneticTop();
+}
+
+void ADLevelBlock::PostRegisterAllComponents()
+{
+    Super::PostRegisterAllComponents();
+    // Placed blocks can load their saved dimensions without running construction again.
+    UpdateMagneticTop();
+}
+
+void ADLevelBlock::UpdateMagneticTop()
+{
+    const FVector Extent = Collision->GetUnscaledBoxExtent();
+    MagneticTop->SetRelativeLocation(FVector(0., 0., Extent.Z));
+    MagneticTop->HalfExtent = FVector2D(Extent.X, Extent.Y);
+    MagneticTop->bMagnetic = MagneticTopFinish && Finish == MagneticTopFinish;
 }

@@ -223,8 +223,8 @@ void ADPawn::SetUpAimCursor(APlayerController& Player)
     AimController = &Player;
     bPreviouslyShowedMouseCursor = Player.bShowMouseCursor;
     PreviousMouseCursor = Player.CurrentMouseCursor;
-    Player.bShowMouseCursor = true;
-    Player.CurrentMouseCursor = EMouseCursor::None;
+    Player.SetShowMouseCursor(true);
+    Player.CurrentMouseCursor = EMouseCursor::Crosshairs;
 
     FInputModeGameAndUI InputMode;
     InputMode.SetHideCursorDuringCapture(false);

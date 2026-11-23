@@ -36,7 +36,8 @@ TSharedRef<SWidget> UDLoadingScreen::MakeScreen()
     const FColor Muted(187, 181, 198);
     const FLinearColor Edge(FColor(70, 54, 75));
 
-    return SNew(SBorder).BorderImage(White).BorderBackgroundColor(FLinearColor(FColor(19, 15, 25)))
+    return SNew(SBorder).Cursor(EMouseCursor::Default)
+        .BorderImage(White).BorderBackgroundColor(FLinearColor(FColor(19, 15, 25)))
         .Padding(0).HAlign(HAlign_Fill).VAlign(VAlign_Fill)
         [
             SNew(SScaleBox).Stretch(EStretch::ScaleToFit)

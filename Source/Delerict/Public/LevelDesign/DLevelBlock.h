@@ -4,6 +4,7 @@
 #include "DLevelBlock.generated.h"
 
 class UBoxComponent;
+class UDSteelSurfaceComponent;
 class USceneComponent;
 class UStaticMeshComponent;
 class UMaterialInterface;
@@ -24,12 +25,22 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Piece")
     TObjectPtr<UMaterialInterface> Finish;
 
+    /** This prefab's magnetic finish. When assigned and used, the top face supports the boots. */
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Piece")
+    TObjectPtr<UMaterialInterface> MagneticTopFinish;
+
 private:
+    void PostRegisterAllComponents() override;
+    void UpdateMagneticTop();
+
     UPROPERTY(VisibleAnywhere, Category = "Piece")
     TObjectPtr<USceneComponent> Pivot;
 
     UPROPERTY(VisibleAnywhere, Category = "Piece")
     TObjectPtr<UBoxComponent> Collision;
+
+    UPROPERTY(VisibleAnywhere, Category = "Piece")
+    TObjectPtr<UDSteelSurfaceComponent> MagneticTop;
 
     UPROPERTY(VisibleAnywhere, Category = "Piece")
     TObjectPtr<UStaticMeshComponent> Visual;
