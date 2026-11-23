@@ -32,6 +32,10 @@ Project assets use their Unreal type prefix followed by `D`, as in `BP_DPlayer`,
 `SK_DPlayer`, and `L_DTestLane`. Native types use the Unreal class prefix followed
 by `D`, as in `ADPawn` and `UDMoverComponent`.
 
+Open `L_DLevelDesignLab` to try the platforming kit. The
+[level-design guide](Docs/LevelDesign.md) covers the Place Actors palette and
+building a room with hazards, checkpoints, and exits.
+
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,
 and `Saved/`.
