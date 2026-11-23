@@ -7,6 +7,7 @@
 #include "DSteelSurfaceComponent.h"
 #include "Engine/ScopedMovementUpdate.h"
 #include "Engine/World.h"
+#include "Sound/SoundBase.h"
 #include "MoveLibrary/ConstrainedMoveUtils.h"
 #include "MoverDataModelTypes.h"
 #include "UObject/UObjectIterator.h"
@@ -422,6 +423,7 @@ void UDMagneticSurfaceMode::HandleJumpCharge(EDChargePhase Phase, const FVector&
 
     bJumpDeparturePending = true;
     Pawn->QueueImpulse(Direction * Magnitude, /*bAlignVelocity=*/true);
+    Pawn->PlayFoley(Tuning.BootJumpSound);
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     using namespace DGameplayDebug;
     if (IsEnabled(Pawn->GetWorld(), EChannel::Jump))

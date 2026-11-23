@@ -6,6 +6,7 @@
 #include "DPlayerTuning.generated.h"
 
 class UDWeaponImpulseTuning;
+class USoundBase;
 
 UCLASS(BlueprintType)
 class DELERICT_API UDPlayerTuning : public UDataAsset
@@ -13,6 +14,22 @@ class DELERICT_API UDPlayerTuning : public UDataAsset
     GENERATED_BODY()
 
 public:
+    /** Ordered variations played with the boots moving along a magnetic face. */
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Boots")
+    TArray<TObjectPtr<USoundBase>> BootSteps;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Boots")
+    TObjectPtr<USoundBase> BootLatchSound;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Boots")
+    TObjectPtr<USoundBase> BootJumpSound;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Items")
+    TObjectPtr<USoundBase> ItemGrabSound;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio|Items")
+    TObjectPtr<USoundBase> ItemThrowSound;
+
     /** Gravity acceleration reported by Mover in cm/s^2. The zero vector gives the player zero gravity. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
     FVector GravityAcceleration = FVector::ZeroVector;

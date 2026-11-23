@@ -6,6 +6,7 @@
 #include "DPawn.generated.h"
 
 class ADThrowable;
+class USoundBase;
 class UAnimSequence;
 class UCapsuleComponent;
 class UDMoverComponent;
@@ -59,6 +60,7 @@ public:
     UFUNCTION(BlueprintPure, Category = "Player|Inventory")
     FName GetSelectedThrowableType() const;
     float GetThrowCharge() const;
+    void PlayFoley(USoundBase* Sound) const;
 
     /** Queue a world-space impulse in kg*cm/s. A directed launch keeps only velocity along the impulse. */
     void QueueImpulse(const FVector& WorldImpulse, bool bAlignVelocity = false);
@@ -156,6 +158,11 @@ private:
     bool bPreviouslyShowedMouseCursor = false;
     bool bGamepadAim = false;
     bool bRunHeld = false;
+    bool bBootsWereAttached = false;
+    double LastBootAudioTime = 0.;
+    double DistanceSinceFootstep = 0.;
+    int32 NextBootStep = 0;
+    void UpdateBootAudio();
     bool bMagnetHeld = false;
     bool bInitialMagneticCaptureRequested = false;
     bool bHasMovementImpulse = false;

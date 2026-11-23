@@ -7,6 +7,7 @@
 #include "DThrowable.h"
 #include "DThrowSwitch.h"
 #include "Engine/World.h"
+#include "Sound/SoundBase.h"
 #include "EngineUtils.h"
 #include "MoveLibrary/ConstrainedMoveUtils.h"
 
@@ -183,6 +184,7 @@ bool ADPawn::TryGrabThrowable(ADThrowable& Item)
         RemoteThrowable.Reset();
     }
     GrabbedThrowables.AddUnique(&Item);
+    PlayFoley(GetTuning().ItemGrabSound);
     // With the item now counted in carried mass, this impulse gives the combined body its shared drift.
     const FVector Separation = ItemVelocity - PlayerVelocity;
     QueueImpulse(Separation * GetThrowableMass(Type));
@@ -345,6 +347,7 @@ void ADPawn::LaunchSelectedThrowable(const FVector& Aim, float Charge)
     }
     Item->Launch(LaunchLocation, ItemVelocity, Mover->GetPlanarConstraint().PlaneConstraintNormal, this);
     QueueImpulse(-Impulse);
+    PlayFoley(Tuning.ItemThrowSound);
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     RecordThrowResult(TEXT("Launched"), ItemVelocity, -Impulse / RemainingMass);
 #endif

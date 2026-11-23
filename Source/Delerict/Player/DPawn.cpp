@@ -260,6 +260,7 @@ void ADPawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdCont
 
 void ADPawn::UpdateCameraLead(const FMoverSyncState& /*SyncState*/, const FMoverAuxStateContext& /*AuxState*/)
 {
+    UpdateBootAudio();
     Mover->UpdateMagneticVisuals(*Mesh, *PlaceholderMesh);
     const FVector Location = GetActorLocation();
     const FVector Velocity = GetVelocity();
