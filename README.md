@@ -66,3 +66,8 @@ The default archive is `Saved/Builds/Win64Shipping/Windows/`. Open
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,
 and `Saved/`.
+
+## License
+
+Project-owned material is licensed under the [MIT License](LICENSE). Bundled
+third-party assets and dependencies remain subject to their respective terms.
