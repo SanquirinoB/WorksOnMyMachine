@@ -89,7 +89,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
     TArray<FKey> JumpKeys = { EKeys::SpaceBar, EKeys::Gamepad_FaceButton_Bottom };
 
-    /** Buttons held to engage magnetic boots and gloves. Releasing them disengages. An empty list leaves magnetism unbound. */
+    /** Buttons held while floating to latch onto steel. Releasing them after capture keeps the pawn attached. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
     TArray<FKey> MagnetHoldKeys = { EKeys::E };
 
@@ -184,11 +184,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Magnetic Jump", meta = (ClampMin = "20", ClampMax = "90", Units = "deg"))
     float MinJumpAngleDegrees = 20.f;
 
-    /** Outward velocity change in cm/s that an impact or throw recoil must exceed to break contact. Zero accepts any outward change. */
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Magnetic Surface", meta = (ClampMin = "0", Units = "cm/s"))
-    float BreakawayDeltaSpeed = 200.f;
-
-    /** Gap in cm the capsule must clear before a departed face can capture it again. Set it above Capture Distance. */
+    /** Gap in cm the capsule must clear before a departed face can capture it again during the same hold. Set it above Capture Distance. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Magnetic Surface", meta = (ClampMin = "0", Units = "cm"))
     float RecaptureDistance = 80.f;
 

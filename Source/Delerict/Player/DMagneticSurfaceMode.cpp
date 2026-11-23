@@ -138,12 +138,18 @@ bool UDMagneticSurfaceMode::TryCapture(const FSimulationTickParams& Params, FMov
         return false;
     }
 
-    const UDPlayerTuning& Tuning = Pawn->GetTuning();
-    RearmFace(*Capsule, FMath::Max(Tuning.RecaptureDistance, Tuning.CaptureDistance + 1.f));
-    if (!Pawn->IsMagnetHeld() || LastDepartureTimeMs == Params.TimeStep.BaseSimTimeMs)
+    if (!Pawn->IsMagnetHeld())
+    {
+        // A new hold can recapture nearby steel without waiting for the old hold to clear the face.
+        DepartedFace.Reset();
+        return false;
+    }
+    if (LastDepartureTimeMs == Params.TimeStep.BaseSimTimeMs)
     {
         return false;
     }
+    const UDPlayerTuning& Tuning = Pawn->GetTuning();
+    RearmFace(*Capsule, FMath::Max(Tuning.RecaptureDistance, Tuning.CaptureDistance + 1.f));
 
     const FPlanarConstraint& Plane = GetMoverComponentChecked<UDMoverComponent>().GetPlanarConstraint();
     const FVector Location = Capsule->GetComponentLocation();
@@ -294,15 +300,8 @@ void UDMagneticSurfaceMode::SimulationTick_Implementation(const FSimulationTickP
         Depart(Params, OutputState, StartVelocity, TEXT("Jump released"));
         return;
     }
-    if (!Pawn->IsMagnetHeld())
-    {
-        Depart(Params, OutputState, StartVelocity, TEXT("Magnet released"));
-        // A fresh hold can recapture this face even if the pawn has not drifted away.
-        DepartedFace.Reset();
-        return;
-    }
-
-    if (FVector::DotProduct(StartVelocity - LastWorldVelocity, Contact.Normal) > Tuning.BreakawayDeltaSpeed)
+    // Input and platform carry are applied below. A change in the incoming velocity is an external impulse.
+    if (!(StartVelocity - LastWorldVelocity).IsNearlyZero())
     {
         Depart(Params, OutputState, StartVelocity, TEXT("Impulse broke contact"));
         return;
@@ -366,7 +365,7 @@ void UDMagneticSurfaceMode::SimulationTick_Implementation(const FSimulationTickP
 void UDMagneticSurfaceMode::HandleJumpCharge(EDChargePhase Phase, const FVector& Aim)
 {
     ADPawn* Pawn = GetPawn();
-    if (!Pawn || !Surface.IsValid() || !Pawn->IsMagnetHeld())
+    if (!Pawn || !Surface.IsValid())
     {
         JumpStartedAt.Reset();
         return;

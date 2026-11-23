@@ -18,7 +18,7 @@ class UDFlyingMode : public UFlyingMode
     void SimulationTick_Implementation(const FSimulationTickParams& Params, FMoverTickEndData& OutputState) override;
 };
 
-/** Swept tangential travel and platform carry while the magnetic input is held. */
+/** Swept tangential travel and platform carry while latched to steel. */
 UCLASS()
 class UDMagneticSurfaceMode : public UBaseMovementMode
 {

@@ -310,15 +310,7 @@ void ADPawn::ClearAimStick() { LastAimStick = FVector2D::ZeroVector; }
 void ADPawn::StartRun() { bRunHeld = true; }
 void ADPawn::StopRun() { bRunHeld = false; }
 void ADPawn::StartMagnetHold() { bMagnetHeld = true; }
-
-void ADPawn::StopMagnetHold()
-{
-    if (bMagnetHeld)
-    {
-        bMagnetHeld = false;
-        CancelJumpCharge();
-    }
-}
+void ADPawn::StopMagnetHold() { bMagnetHeld = false; }
 
 void ADPawn::RequestGrab()
 {
