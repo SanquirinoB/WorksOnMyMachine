@@ -37,10 +37,13 @@ struct FDLocomotionProxy : FAnimInstanceProxy
         Run.SetSequence(Pawn->RunAnimation);
         Airborne.SetSequence(Pawn->AirborneAnimation);
 
-        const float Speed = Pawn->Mover->GetVelocity().Size2D();
+        const bool bAttached = Pawn->Mover->IsMagneticallyAttached();
+        const float Speed = bAttached ? Pawn->Mover->GetSurfaceTravelSpeed() : Pawn->Mover->GetVelocity().Size2D();
+        const float WalkSpeed = Pawn->GetTuning().SurfaceWalkSpeed;
         const float MoveWeight = Pawn->WalkAnimation || Pawn->RunAnimation ? FMath::Clamp(Speed / 120.f, 0.f, 1.f) : 0.f;
         const float RunWeight = Pawn->RunAnimation ? FMath::GetMappedRangeValueClamped(
-            FVector2f(160.f, FMath::Max(161.f, Pawn->GetTuning().SurfaceRunSpeed)), FVector2f(0.f, 1.f), Speed) : 0.f;
+            FVector2f(WalkSpeed, FMath::Max(WalkSpeed + 1.f, Pawn->GetTuning().SurfaceRunSpeed)),
+            FVector2f(0.f, 1.f), Speed) : 0.f;
         GroundBlend.Alpha = FMath::FInterpTo(GroundBlend.Alpha, MoveWeight, DeltaSeconds, 12.f);
         GaitBlend.Alpha = FMath::FInterpTo(GaitBlend.Alpha, RunWeight, DeltaSeconds, 12.f);
         const float AirWeight = Pawn->AirborneAnimation && Pawn->Mover->IsAirborne() ? 1.f : 0.f;

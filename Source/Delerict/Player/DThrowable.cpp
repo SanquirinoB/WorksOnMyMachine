@@ -68,6 +68,7 @@ bool ADThrowable::TryHold(ADPawn& Pawn)
     {
         return false;
     }
+    ResetDeployment();
     Holder = &Pawn;
     LastThrower.Reset();
     Movement->Deactivate();
@@ -79,6 +80,7 @@ bool ADThrowable::TryHold(ADPawn& Pawn)
 
 void ADThrowable::Launch(const FVector& Location, const FVector& Velocity, const FVector& PlaneNormal, ADPawn* Thrower)
 {
+    ResetDeployment();
     Holder.Reset();
     LastThrower = Thrower;
     SetActorLocation(Location, false, nullptr, ETeleportType::TeleportPhysics);
@@ -91,6 +93,12 @@ void ADThrowable::Launch(const FVector& Location, const FVector& Velocity, const
     SetActorHiddenInGame(false);
     SetActorEnableCollision(true);
     Movement->Activate(true);
+    OnDeployed(Thrower);
+}
+
+ADPawn* ADThrowable::GetDeployingPawn() const
+{
+    return LastThrower.Get();
 }
 
 bool ADThrowable::TryActivate(ADPawn& Pawn)
@@ -100,7 +108,33 @@ bool ADThrowable::TryActivate(ADPawn& Pawn)
         return false;
     }
     OnRemoteActivated.Broadcast();
+    if (IsValid(this) && LastThrower.Get() == &Pawn)
+    {
+        OnRemoteActivationRequested(Pawn);
+    }
     return true;
+}
+
+void ADThrowable::AddDriftVelocity(const FVector& VelocityChange, const FVector& PlaneNormal)
+{
+    if (!CanGrab() || VelocityChange.IsNearlyZero())
+    {
+        return;
+    }
+
+    if (!Movement->bConstrainToPlane)
+    {
+        Movement->SetPlaneConstraintOrigin(GetActorLocation());
+        Movement->SetPlaneConstraintNormal(PlaneNormal);
+        Movement->SetPlaneConstraintEnabled(!PlaneNormal.IsNearlyZero());
+    }
+    if (Movement->UpdatedComponent.Get() != Collision.Get())
+    {
+        Movement->SetUpdatedComponent(Collision);
+    }
+    Movement->Velocity += Movement->ConstrainDirectionToPlane(VelocityChange);
+    Movement->UpdateComponentVelocity();
+    Movement->Activate();
 }
 
 void ADThrowable::OnBounce(const FHitResult& Hit, const FVector& /*ImpactVelocity*/)
@@ -116,5 +150,9 @@ void ADThrowable::OnBounce(const FHitResult& Hit, const FVector& /*ImpactVelocit
                 FString::Printf(TEXT("%s hit %s | switch active"), *ThrowableType.ToString(), *Switch->GetName()), 1.5f);
         }
 #endif
+    }
+    if (IsValid(this) && LastThrower.IsValid())
+    {
+        OnDeployedImpact(Hit);
     }
 }

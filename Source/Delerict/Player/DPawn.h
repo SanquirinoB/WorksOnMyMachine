@@ -35,9 +35,11 @@ public:
     bool GetCrosshairPosition(FVector2D& Position) const;
     FVector2D GetMoveIntent() const { return MoveIntent; }
     bool IsRunHeld() const { return bRunHeld; }
+    bool IsMagnetHeld() const { return bMagnetHeld; }
     float GetEffectiveMass() const;
     int32 GetPlateCount() const { return PlateCount; }
     const ADThrowable* GetGrabbedThrowable() const;
+    bool TryGrabThrowable(ADThrowable& Item);
     FName GetSelectedThrowableType() const;
     float GetThrowCharge() const;
 
@@ -103,6 +105,7 @@ private:
     UPROPERTY(Transient) TObjectPtr<UInputAction> MoveAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> AimAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> RunAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> MagnetHoldAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> JumpAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> GrabAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> SelectThrowableAction;
@@ -129,6 +132,7 @@ private:
     bool bPreviouslyShowedMouseCursor = false;
     bool bGamepadAim = false;
     bool bRunHeld = false;
+    bool bMagnetHeld = false;
     bool bJumpCharging = false;
     bool bThrowCharging = false;
 
@@ -145,6 +149,8 @@ private:
     void ClearAimStick();
     void StartRun();
     void StopRun();
+    void StartMagnetHold();
+    void StopMagnetHold();
     void RequestGrab();
     void RequestThrowableSelection();
     void ActivateThrownItem();

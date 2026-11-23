@@ -89,6 +89,10 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
     TArray<FKey> JumpKeys = { EKeys::SpaceBar, EKeys::Gamepad_FaceButton_Bottom };
 
+    /** Buttons held to engage magnetic boots and gloves. Releasing them disengages. An empty list leaves magnetism unbound. */
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
+    TArray<FKey> MagnetHoldKeys = { EKeys::E };
+
     /** Radius in cm of the capsule used for collision sweeps and magnetic distance checks. Use a positive value. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collision", meta = (ClampMin = "0.1", Units = "cm"))
     float CapsuleRadius = 34.f;

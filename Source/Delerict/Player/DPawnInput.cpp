@@ -26,6 +26,7 @@ void ADPawn::CreateInputMappings()
     AimAction = NewObject<UInputAction>(this);
     AimAction->ValueType = EInputActionValueType::Axis2D;
     RunAction = NewObject<UInputAction>(this);
+    MagnetHoldAction = NewObject<UInputAction>(this);
     JumpAction = NewObject<UInputAction>(this);
     GrabAction = NewObject<UInputAction>(this);
     SelectThrowableAction = NewObject<UInputAction>(this);
@@ -70,6 +71,7 @@ void ADPawn::CreateInputMappings()
         }
     };
     MapButtons(RunAction, Tuning.RunKeys);
+    MapButtons(MagnetHoldAction, Tuning.MagnetHoldKeys);
     MapButtons(JumpAction, Tuning.JumpKeys);
     MapButtons(GrabAction, Tuning.GrabKeys);
     MapButtons(SelectThrowableAction, Tuning.SelectThrowableKeys);
@@ -108,6 +110,9 @@ void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     Input->BindAction(RunAction, ETriggerEvent::Started, this, &ThisClass::StartRun);
     Input->BindAction(RunAction, ETriggerEvent::Completed, this, &ThisClass::StopRun);
     Input->BindAction(RunAction, ETriggerEvent::Canceled, this, &ThisClass::StopRun);
+    Input->BindAction(MagnetHoldAction, ETriggerEvent::Started, this, &ThisClass::StartMagnetHold);
+    Input->BindAction(MagnetHoldAction, ETriggerEvent::Completed, this, &ThisClass::StopMagnetHold);
+    Input->BindAction(MagnetHoldAction, ETriggerEvent::Canceled, this, &ThisClass::StopMagnetHold);
     Input->BindAction(JumpAction, ETriggerEvent::Started, this, &ThisClass::StartJumpCharge);
     Input->BindAction(JumpAction, ETriggerEvent::Completed, this, &ThisClass::ReleaseJumpCharge);
     Input->BindAction(JumpAction, ETriggerEvent::Canceled, this, &ThisClass::CancelJumpCharge);
@@ -127,6 +132,7 @@ void ADPawn::PauseGame()
     {
         StopMoving();
         StopRun();
+        StopMagnetHold();
         ClearAimStick();
         CancelJumpCharge();
         CancelThrowCharge();
@@ -146,6 +152,7 @@ void ADPawn::ClearInput()
     InputSubsystem.Reset();
     StopMoving();
     StopRun();
+    StopMagnetHold();
     ClearAimStick();
     CancelJumpCharge();
     CancelThrowCharge();
@@ -302,6 +309,17 @@ void ADPawn::StopMoving() { MoveIntent = FVector2D::ZeroVector; }
 void ADPawn::ClearAimStick() { LastAimStick = FVector2D::ZeroVector; }
 void ADPawn::StartRun() { bRunHeld = true; }
 void ADPawn::StopRun() { bRunHeld = false; }
+void ADPawn::StartMagnetHold() { bMagnetHeld = true; }
+
+void ADPawn::StopMagnetHold()
+{
+    if (bMagnetHeld)
+    {
+        bMagnetHeld = false;
+        CancelJumpCharge();
+    }
+}
+
 void ADPawn::RequestGrab()
 {
     GrabNearbyThrowable();

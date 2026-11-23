@@ -25,6 +25,7 @@ public:
     bool TryHold(ADPawn& Pawn);
     void Launch(const FVector& Location, const FVector& Velocity, const FVector& PlaneNormal, ADPawn* Thrower);
     bool TryActivate(ADPawn& Pawn);
+    virtual void AddDriftVelocity(const FVector& VelocityChange, const FVector& PlaneNormal);
 
     /** Enables remote activation while this item is deployed. Weighted plates use their collision to trigger switches. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Throwable")
@@ -37,6 +38,12 @@ public:
 protected:
     void BeginPlay() override;
 
+    ADPawn* GetDeployingPawn() const;
+    virtual void ResetDeployment() {}
+    virtual void OnDeployed(ADPawn* Pawn) {}
+    virtual void OnDeployedImpact(const FHitResult& Hit) {}
+    virtual void OnRemoteActivationRequested(ADPawn& Pawn) {}
+
     /** Item type used to look up mass in the player's tuning asset. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Throwable")
     FName ThrowableType = TEXT("WeightedPlate");
@@ -47,10 +54,10 @@ protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Throwable")
     TObjectPtr<UStaticMeshComponent> Mesh;
 
-private:
     UPROPERTY(VisibleAnywhere, Category = "Throwable")
     TObjectPtr<UProjectileMovementComponent> Movement;
 
+private:
     TWeakObjectPtr<ADPawn> Holder;
     TWeakObjectPtr<ADPawn> LastThrower;
 

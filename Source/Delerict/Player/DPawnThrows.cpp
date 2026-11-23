@@ -92,18 +92,30 @@ void ADPawn::GrabNearbyThrowable()
         }
     }
 
-    if (!Nearest)
+    if (Nearest)
     {
-        return;
+        TryGrabThrowable(*Nearest);
+    }
+}
+
+bool ADPawn::TryGrabThrowable(ADThrowable& Item)
+{
+    if (GetGrabbedThrowable() || Item.GetWorld() != GetWorld() || !Item.CanGrab())
+    {
+        return false;
     }
 
-    const FVector ItemVelocity = UPlanarConstraintUtils::ConstrainDirectionToPlane(
-        Mover->GetPlanarConstraint(), Nearest->GetVelocity());
-    const FVector PlayerVelocity = GetVelocity() + GetQueuedVelocityChange();
-    const float ItemMass = GetThrowableMass(Nearest->GetThrowableType());
-    if (!Nearest->TryHold(*this))
+    const float ItemMass = GetThrowableMass(Item.GetThrowableType());
+    if (ItemMass <= 0.f)
     {
-        return;
+        return false;
+    }
+    const FVector ItemVelocity = UPlanarConstraintUtils::ConstrainDirectionToPlane(
+        Mover->GetPlanarConstraint(), Item.GetVelocity());
+    const FVector PlayerVelocity = GetVelocity() + GetQueuedVelocityChange();
+    if (!Item.TryHold(*this))
+    {
+        return false;
     }
 
     if (bGrabbedThrowableSelected || PlateCount == 0)
@@ -111,17 +123,18 @@ void ADPawn::GrabNearbyThrowable()
         CancelThrowCharge();
         bGrabbedThrowableSelected = true;
     }
-    if (RemoteThrowable.Get() == Nearest)
+    if (RemoteThrowable.Get() == &Item)
     {
         RemoteThrowable.Reset();
     }
-    GrabbedThrowable = Nearest;
+    GrabbedThrowable = &Item;
     // With the item now counted in carried mass, this impulse gives the combined body its shared drift.
     const FVector Separation = ItemVelocity - PlayerVelocity;
     QueueImpulse(Separation * ItemMass);
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     RecordThrowResult(TEXT("Grabbed"));
 #endif
+    return true;
 }
 
 void ADPawn::CycleSelectedThrowable()

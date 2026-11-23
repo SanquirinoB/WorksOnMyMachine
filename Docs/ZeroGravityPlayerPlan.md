@@ -6,7 +6,7 @@ Navigation puzzles include turning corners without touching a surface, grabbing 
 
 The setting uses dim lighting and advanced technology that is damaged, largely inoperative, and abandoned. Open hull breaches and gaps between torn sections expose the void and leave ample room for free-flight traversal. Use Metroid Dread as a reference for 2.5D environment composition, side-on framing, and the character's on-screen scale.
 
-The project opens at `/Game/Maps/L_MainMenu`. New Game loads `L_DHangar`, where `BP_DGameMode` spawns `BP_DPlayer`. The native pawn uses standalone Mover for inertial flight. `L_DTestLane` holds the movement, camera, and throw fixtures. [Pawn](../Source/Delerict/Player/DPawn.cpp) · [Startup configuration](../Config/DefaultEngine.ini) · [Project README](../README.md)
+The project opens at `/Game/Maps/L_MainMenu`. New Game loads `L_DHangar`, where `BP_DGameMode` spawns `BP_DPlayer`. The native pawn uses standalone Mover for inertial flight. `L_DTestLane` holds the movement, camera, and throw fixtures, including a steel floor, wall, and ceiling and pickups for the three remote gadgets. [Pawn](../Source/Delerict/Player/DPawn.cpp) · [Startup configuration](../Config/DefaultEngine.ini) · [Project README](../README.md)
 
 ## Controls
 
