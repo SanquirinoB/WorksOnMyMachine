@@ -56,9 +56,10 @@ TOptional<FHitResult> UDMoverComponent::TakeFlightImpact()
 void UDMoverComponent::PostInitProperties()
 {
     Super::PostInitProperties();
-    if (IsTemplate())
+    const AActor* OwnerTemplate = GetTypedOuter<AActor>();
+    if (IsTemplate() && OwnerTemplate && !OwnerTemplate->GetClass()->HasAnyClassFlags(CLASS_Native))
     {
-        // Blueprint validation checks mode settings before Mover's normal runtime initialization.
+        // Keep generated settings in the Blueprint package so cooked imports have a persistent template.
         RefreshSharedSettings();
     }
 }
