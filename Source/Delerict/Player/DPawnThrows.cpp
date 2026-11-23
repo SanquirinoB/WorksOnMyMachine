@@ -1,5 +1,6 @@
 #include "DPawn.h"
 
+#include "Algo/Count.h"
 #include "Components/CapsuleComponent.h"
 #include "DMoverComponent.h"
 #include "DPlayerTuning.h"
@@ -12,9 +13,29 @@
 #include "../Debug/DGameplayDebug.h"
 #endif
 
+int32 ADPawn::GetPickedUpThrowableCount() const
+{
+    return Algo::CountIf(GrabbedThrowables, [](const ADThrowable* Item) { return IsValid(Item); });
+}
+
+int32 ADPawn::GetThrowableCountByType(FName ThrowableType) const
+{
+    if (ThrowableType.IsNone())
+    {
+        return 0;
+    }
+
+    const int32 PickedUpCount = Algo::CountIf(GrabbedThrowables, [ThrowableType](const ADThrowable* Item)
+    {
+        return IsValid(Item) && Item->GetThrowableType() == ThrowableType;
+    });
+    return PickedUpCount + (ThrowableType == GetTuning().StartingPlateType ? PlateCount : 0);
+}
+
 const ADThrowable* ADPawn::GetGrabbedThrowable() const
 {
-    return IsValid(GrabbedThrowable) ? GrabbedThrowable.Get() : nullptr;
+    const auto* Item = GrabbedThrowables.FindByPredicate([](const ADThrowable* Candidate) { return IsValid(Candidate); });
+    return Item ? Item->Get() : nullptr;
 }
 
 float ADPawn::GetThrowableMass(FName Type) const
@@ -27,40 +48,45 @@ float ADPawn::GetEffectiveMass() const
 {
     const float TunedMass = GetTuning().PlayerMass;
     const float BodyMass = FMath::IsFinite(TunedMass) ? FMath::Max(TunedMass, .01f) : GetDefault<UDPlayerTuning>()->PlayerMass;
-    const ADThrowable* Held = GetGrabbedThrowable();
-    const float HeldMass = Held ? GetThrowableMass(Held->GetThrowableType()) : 0.f;
-    return BodyMass + PlateCount * GetThrowableMass(GetTuning().StartingPlateType) + HeldMass;
+    float Mass = BodyMass + PlateCount * GetThrowableMass(GetTuning().StartingPlateType);
+    for (const ADThrowable* Item : GrabbedThrowables)
+    {
+        if (IsValid(Item))
+        {
+            Mass += GetThrowableMass(Item->GetThrowableType());
+        }
+    }
+    return Mass;
 }
 
 FName ADPawn::GetSelectedThrowableType() const
 {
-    if (bGrabbedThrowableSelected)
+    if (!SelectedThrowableType.IsNone())
     {
-        const ADThrowable* Held = GetGrabbedThrowable();
-        return Held ? Held->GetThrowableType() : NAME_None;
+        return SelectedThrowableType;
     }
-    return PlateCount > 0 ? GetTuning().StartingPlateType : NAME_None;
+    if (PlateCount > 0)
+    {
+        return GetTuning().StartingPlateType;
+    }
+    const ADThrowable* Item = GetGrabbedThrowable();
+    return Item ? Item->GetThrowableType() : NAME_None;
 }
 
 float ADPawn::GetThrowCharge() const
 {
-    if (!ThrowChargeStartedAt)
+    if (!PendingThrow)
     {
         return 0.f;
     }
     const float ChargeTime = GetTuning().ThrowChargeTime;
     return ChargeTime > 0.f
-        ? FMath::Clamp(static_cast<float>(GetWorld()->GetTimeSeconds() - *ThrowChargeStartedAt) / ChargeTime, 0.f, 1.f)
+        ? FMath::Clamp(static_cast<float>(GetWorld()->GetTimeSeconds() - PendingThrow->StartedAt) / ChargeTime, 0.f, 1.f)
         : 1.f;
 }
 
 void ADPawn::GrabNearbyThrowable()
 {
-    if (GetGrabbedThrowable())
-    {
-        return;
-    }
-
     const FVector Center = Capsule->GetComponentLocation();
     const FVector Up = Capsule->GetUpVector();
     const double Radius = Capsule->GetScaledCapsuleRadius();
@@ -68,10 +94,11 @@ void ADPawn::GrabNearbyThrowable()
     const double MaxGap = GetTuning().GrabDistance;
     ADThrowable* Nearest = nullptr;
     double NearestGap = MaxGap;
+    const FCollisionQueryParams Query(SCENE_QUERY_STAT(DelerictGrab), false, this);
     for (TActorIterator<ADThrowable> It(GetWorld()); It; ++It)
     {
         ADThrowable* Item = *It;
-        if (!Item->CanGrab() || GetThrowableMass(Item->GetThrowableType()) <= 0.f)
+        if (!Item->CanGrab() || !CanCarryThrowable(Item->GetThrowableType()))
         {
             continue;
         }
@@ -83,9 +110,9 @@ void ADPawn::GrabNearbyThrowable()
         {
             continue;
         }
-        FCollisionQueryParams Query(SCENE_QUERY_STAT(DelerictGrab), false, this);
-        Query.AddIgnoredActor(Item);
-        if (!GetWorld()->LineTraceTestByChannel(Center, Item->GetActorLocation(), ECC_Visibility, Query))
+        FHitResult Hit;
+        if (!GetWorld()->LineTraceSingleByChannel(Hit, Center, Item->GetActorLocation(), ECC_Visibility, Query)
+            || Hit.GetActor() == Item)
         {
             Nearest = Item;
             NearestGap = Gap;
@@ -98,15 +125,16 @@ void ADPawn::GrabNearbyThrowable()
     }
 }
 
+bool ADPawn::CanCarryThrowable(FName Type) const
+{
+    const int32* Limit = GetTuning().ThrowableCarryLimits.Find(Type);
+    return GetThrowableMass(Type) > 0.f && (!Limit || GetThrowableCountByType(Type) < *Limit);
+}
+
 bool ADPawn::TryGrabThrowable(ADThrowable& Item)
 {
-    if (GetGrabbedThrowable() || Item.GetWorld() != GetWorld() || !Item.CanGrab())
-    {
-        return false;
-    }
-
-    const float ItemMass = GetThrowableMass(Item.GetThrowableType());
-    if (ItemMass <= 0.f)
+    const FName Type = Item.GetThrowableType();
+    if (Item.GetWorld() != GetWorld() || !Item.CanGrab() || !CanCarryThrowable(Type))
     {
         return false;
     }
@@ -118,19 +146,14 @@ bool ADPawn::TryGrabThrowable(ADThrowable& Item)
         return false;
     }
 
-    if (bGrabbedThrowableSelected || PlateCount == 0)
-    {
-        CancelThrowCharge();
-        bGrabbedThrowableSelected = true;
-    }
     if (RemoteThrowable.Get() == &Item)
     {
         RemoteThrowable.Reset();
     }
-    GrabbedThrowable = &Item;
+    GrabbedThrowables.Add(&Item);
     // With the item now counted in carried mass, this impulse gives the combined body its shared drift.
     const FVector Separation = ItemVelocity - PlayerVelocity;
-    QueueImpulse(Separation * ItemMass);
+    QueueImpulse(Separation * GetThrowableMass(Type));
 #if DELERICT_WITH_GAMEPLAY_DEBUG
     RecordThrowResult(TEXT("Grabbed"));
 #endif
@@ -139,39 +162,55 @@ bool ADPawn::TryGrabThrowable(ADThrowable& Item)
 
 void ADPawn::CycleSelectedThrowable()
 {
-    const bool bHasGrabbed = GetGrabbedThrowable() != nullptr;
-    const bool bHasPlates = PlateCount > 0;
-    if (!bHasGrabbed && !bHasPlates)
+    TArray<FName, TInlineAllocator<8>> AvailableTypes;
+    if (PlateCount > 0)
     {
-        return;
+        AvailableTypes.Add(GetTuning().StartingPlateType);
     }
-    const bool bSelectGrabbed = bHasGrabbed && (!bHasPlates || !bGrabbedThrowableSelected);
-    if (bSelectGrabbed != bGrabbedThrowableSelected)
+    for (const ADThrowable* Item : GrabbedThrowables)
+    {
+        if (IsValid(Item))
+        {
+            AvailableTypes.AddUnique(Item->GetThrowableType());
+        }
+    }
+    if (!AvailableTypes.IsEmpty())
+    {
+        const int32 CurrentIndex = AvailableTypes.IndexOfByKey(GetSelectedThrowableType());
+        SelectThrowableType(AvailableTypes[(CurrentIndex + 1) % AvailableTypes.Num()]);
+    }
+}
+
+void ADPawn::SelectThrowableType(FName Type)
+{
+    if (Type != GetSelectedThrowableType())
     {
         CancelThrowCharge();
-        bGrabbedThrowableSelected = bSelectGrabbed;
     }
+    SelectedThrowableType = Type;
 }
 
 void ADPawn::HandleThrowCharge(EDChargePhase Phase, const FVector& Aim)
 {
     if (Phase == EDChargePhase::Pressed)
     {
-        if (GetThrowableMass(GetSelectedThrowableType()) > 0.f)
+        const FName Type = GetSelectedThrowableType();
+        if (GetThrowableMass(Type) > 0.f && GetThrowableCountByType(Type) > 0)
         {
-            ThrowChargeStartedAt = GetWorld()->GetTimeSeconds();
+            PendingThrow = FThrowCharge{ GetWorld()->GetTimeSeconds(), Type };
         }
 #if DELERICT_WITH_GAMEPLAY_DEBUG
-        RecordThrowResult(ThrowChargeStartedAt ? TEXT("Charging") : TEXT("Selection empty"));
+        RecordThrowResult(PendingThrow ? TEXT("Charging") : TEXT("Selection empty"));
 #endif
         return;
     }
 
-    if (ThrowChargeStartedAt)
+    if (PendingThrow)
     {
         const float Charge = GetThrowCharge();
-        ThrowChargeStartedAt.Reset();
-        if (Phase == EDChargePhase::Released)
+        const FName ChargedType = PendingThrow->Type;
+        PendingThrow.Reset();
+        if (Phase == EDChargePhase::Released && ChargedType == GetSelectedThrowableType())
         {
             LaunchSelectedThrowable(Aim, Charge);
         }
@@ -193,7 +232,17 @@ void ADPawn::LaunchSelectedThrowable(const FVector& Aim, float Charge)
         return;
     }
 
-    ADThrowable* Item = bGrabbedThrowableSelected ? GrabbedThrowable.Get() : nullptr;
+    const bool bUseStartingPlate = PlateCount > 0 && Type == GetTuning().StartingPlateType;
+    const int32 GrabbedIndex = bUseStartingPlate ? INDEX_NONE : GrabbedThrowables.IndexOfByPredicate([Type](const ADThrowable* Item)
+    {
+        return IsValid(Item) && Item->GetThrowableType() == Type;
+    });
+    if (!bUseStartingPlate && GrabbedIndex == INDEX_NONE)
+    {
+        return;
+    }
+
+    ADThrowable* Item = bUseStartingPlate ? nullptr : GrabbedThrowables[GrabbedIndex].Get();
     const ADThrowable* ItemShape = Item ? Item : GetDefault<ADThrowable>();
     const double ItemRadius = ItemShape->GetCollisionRadius();
     const double CapsuleRadius = Capsule->GetScaledCapsuleRadius();
@@ -224,15 +273,17 @@ void ADPawn::LaunchSelectedThrowable(const FVector& Aim, float Charge)
     }
 
     const FVector Drift = GetVelocity() + GetQueuedVelocityChange();
-    if (bGrabbedThrowableSelected)
+    if (GrabbedIndex != INDEX_NONE)
     {
-        GrabbedThrowable = nullptr;
-        bGrabbedThrowableSelected = PlateCount == 0;
+        GrabbedThrowables.RemoveAt(GrabbedIndex);
     }
     else
     {
         --PlateCount;
-        bGrabbedThrowableSelected = PlateCount == 0 && GetGrabbedThrowable();
+    }
+    if (GetThrowableCountByType(Type) == 0)
+    {
+        SelectedThrowableType = NAME_None;
     }
 
     const UDPlayerTuning& Tuning = GetTuning();
@@ -282,11 +333,11 @@ void ADPawn::DrawThrowDiagnostics() const
     using namespace DGameplayDebug;
     if (IsEnabled(GetWorld(), EChannel::Throws))
     {
-        const ADThrowable* Held = GetGrabbedThrowable();
+        const FName SelectedType = GetSelectedThrowableType();
         const FVector Location = GetActorLocation();
         DrawLabel(GetWorld(), EChannel::Throws, Location + FVector(0., 0., 177.), FString::Printf(
-            TEXT("%s | plates %d | held %.2f kg | charge %.0f%% | %s | item velocity %s cm/s | recoil %s cm/s"),
-            *GetSelectedThrowableType().ToString(), PlateCount, Held ? GetThrowableMass(Held->GetThrowableType()) : 0.f,
+            TEXT("%s x%d | starting plates %d | pickups %d | charge %.0f%% | %s | item velocity %s cm/s | recoil %s cm/s"),
+            *SelectedType.ToString(), GetThrowableCountByType(SelectedType), PlateCount, GetPickedUpThrowableCount(),
             100.f * GetThrowCharge(), *DebugThrowResult, *DebugItemVelocity.ToCompactString(), *DebugThrowRecoil.ToCompactString()));
         DrawArrow(GetWorld(), EChannel::Throws, Location, Location + (DebugItemVelocity * .1).GetClampedToMaxSize(140.));
         DrawArrow(GetWorld(), EChannel::Throws, Location, Location + DebugThrowRecoil);

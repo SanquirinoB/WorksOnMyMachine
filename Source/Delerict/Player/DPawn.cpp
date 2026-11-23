@@ -86,7 +86,12 @@ void ADPawn::PreInitializeComponents()
 
 void ADPawn::BeginPlay()
 {
-    PlateCount = FMath::Max(0, GetTuning().StartingPlateCount);
+    const UDPlayerTuning& Tuning = GetTuning();
+    PlateCount = FMath::Max(0, Tuning.StartingPlateCount);
+    if (const int32* Limit = Tuning.ThrowableCarryLimits.Find(Tuning.StartingPlateType))
+    {
+        PlateCount = FMath::Min(PlateCount, FMath::Max(0, *Limit));
+    }
     OnThrowCharge.AddUObject(this, &ThisClass::HandleThrowCharge);
     Super::BeginPlay();
     PlaceholderMesh->SetVisibility(!Mesh->GetSkeletalMeshAsset());
@@ -97,10 +102,18 @@ void ADPawn::EndPlay(const EEndPlayReason::Type Reason)
 {
     ClearInput();
     RestoreAimCursor();
-    if (Reason == EEndPlayReason::Destroyed && IsValid(GrabbedThrowable))
+    if (Reason == EEndPlayReason::Destroyed)
     {
-        GrabbedThrowable->Launch(GetActorLocation(), GetVelocity(),
-            Mover->GetPlanarConstraint().PlaneConstraintNormal, nullptr);
+        const FVector Location = GetActorLocation();
+        const FVector Velocity = GetVelocity();
+        const FVector PlaneNormal = Mover->GetPlanarConstraint().PlaneConstraintNormal;
+        for (ADThrowable* Item : GrabbedThrowables)
+        {
+            if (IsValid(Item))
+            {
+                Item->Launch(Location, Velocity, PlaneNormal, nullptr);
+            }
+        }
     }
     Super::EndPlay(Reason);
 }

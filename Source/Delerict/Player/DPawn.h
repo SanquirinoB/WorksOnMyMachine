@@ -38,8 +38,21 @@ public:
     bool IsMagnetHeld() const { return bMagnetHeld; }
     float GetEffectiveMass() const;
     int32 GetPlateCount() const { return PlateCount; }
+
+    /** Number of world pickups currently carried. The starting plate stack is separate. */
+    UFUNCTION(BlueprintPure, Category = "Player|Inventory")
+    int32 GetPickedUpThrowableCount() const;
+
+    /** Carried quantity for a tuning type key, including any remaining starting plates of that type. */
+    UFUNCTION(BlueprintPure, Category = "Player|Inventory")
+    int32 GetThrowableCountByType(FName ThrowableType) const;
+
+    /** First world pickup currently carried, if any. */
     const ADThrowable* GetGrabbedThrowable() const;
     bool TryGrabThrowable(ADThrowable& Item);
+
+    /** Selected type key, which can have a quantity of zero when selected via hotkey. */
+    UFUNCTION(BlueprintPure, Category = "Player|Inventory")
     FName GetSelectedThrowableType() const;
     float GetThrowCharge() const;
 
@@ -109,9 +122,10 @@ private:
     UPROPERTY(Transient) TObjectPtr<UInputAction> JumpAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> GrabAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> SelectThrowableAction;
+    UPROPERTY(Transient) TMap<FName, TObjectPtr<UInputAction>> ThrowableHotkeyActions;
     UPROPERTY(Transient) TObjectPtr<UInputAction> ThrowAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> ActivateThrowableAction;
-    UPROPERTY(Transient) TObjectPtr<ADThrowable> GrabbedThrowable;
+    UPROPERTY(Transient) TArray<TObjectPtr<ADThrowable>> GrabbedThrowables;
     TWeakObjectPtr<ADThrowable> RemoteThrowable;
     TWeakObjectPtr<UEnhancedInputLocalPlayerSubsystem> InputSubsystem;
     TWeakObjectPtr<APlayerController> AimController;
@@ -125,9 +139,14 @@ private:
         float Mass;
     };
     TArray<FQueuedImpulse, TInlineAllocator<4>> PendingImpulses;
-    TOptional<double> ThrowChargeStartedAt;
+    struct FThrowCharge
+    {
+        double StartedAt;
+        FName Type;
+    };
+    TOptional<FThrowCharge> PendingThrow;
     int32 PlateCount = 0;
-    bool bGrabbedThrowableSelected = false;
+    FName SelectedThrowableType;
     EMouseCursor::Type PreviousMouseCursor = EMouseCursor::Default;
     bool bPreviouslyShowedMouseCursor = false;
     bool bGamepadAim = false;
@@ -153,9 +172,12 @@ private:
     void StopMagnetHold();
     void RequestGrab();
     void RequestThrowableSelection();
+    void RequestThrowableTypeSelection(FName Type);
     void ActivateThrownItem();
     void GrabNearbyThrowable();
+    bool CanCarryThrowable(FName Type) const;
     void CycleSelectedThrowable();
+    void SelectThrowableType(FName Type);
     void HandleThrowCharge(EDChargePhase Phase, const FVector& Aim);
     void LaunchSelectedThrowable(const FVector& Aim, float Charge);
     float GetThrowableMass(FName Type) const;

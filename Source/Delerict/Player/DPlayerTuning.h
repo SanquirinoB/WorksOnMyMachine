@@ -65,7 +65,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Aim")
     FVector InitialAimDirection = FVector::ForwardVector;
 
-    /** Interact buttons that grab a reachable throwable when the grabbed-item slot is empty. An empty list leaves Interact unbound. */
+    /** Interact buttons that grab a reachable throwable. An empty list leaves Interact unbound. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
     TArray<FKey> GrabKeys = { EKeys::F, EKeys::Gamepad_LeftShoulder };
 
@@ -76,6 +76,15 @@ public:
     /** Buttons that cycle through throwable selections. An empty list leaves selection cycling unbound. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
     TArray<FKey> SelectThrowableKeys = { EKeys::Tab, EKeys::Gamepad_DPad_Up };
+
+    /** Direct selection keys by throwable type. */
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
+    TMap<FName, FKey> ThrowableHotkeys = {
+        { TEXT("WeightedPlate"), EKeys::One },
+        { TEXT("CompletoItaliano"), EKeys::Two },
+        { TEXT("GrapplingHook"), EKeys::Three },
+        { TEXT("PortableBlackHoleDevice"), EKeys::Four },
+    };
 
     /** Buttons that activate the most recently deployed item that supports remote activation. An empty list leaves activation unbound. */
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input|Actions")
@@ -122,6 +131,13 @@ public:
         { TEXT("RemoteGrenade"), .5f },
         { TEXT("PortableBlackHoleDevice"), 2.f },
         { TEXT("Heavy"), 8.f },
+    };
+
+    /** Maximum carried quantity by type. Types without an entry can be carried in any quantity. */
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Throws", meta = (ClampMin = "0"))
+    TMap<FName, int32> ThrowableCarryLimits = {
+        { TEXT("GrapplingHook"), 1 },
+        { TEXT("PortableBlackHoleDevice"), 1 },
     };
 
     /** Throwable type used for the starting plate stack. Its mass comes from Throwable Mass by Type. */

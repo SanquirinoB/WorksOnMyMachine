@@ -449,11 +449,6 @@ bool ADGrapplingHook::UpdateRecall(ADPawn& Pawn, float DeltaSeconds)
     if (Distance <= CatchDistance + UE_KINDA_SMALL_NUMBER)
     {
         bReelingIn = false;
-        if (Pawn.GetGrabbedThrowable())
-        {
-            return false;
-        }
-
         Movement->Velocity = Pawn.GetVelocity();
         if (Pawn.TryGrabThrowable(*this))
         {

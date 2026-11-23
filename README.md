@@ -24,8 +24,10 @@ Use **WASD**, the **arrow keys**, or the **left stick** for directional input.
 Aim with the mouse or right stick. Hold and release **Space** or the bottom
 gamepad face button for the jump charge. Free flight retains velocity after an
 impulse. Hold **Right Mouse Button** to charge a throw and release it to launch
-the selected item. Press **F** to grab a nearby item and **Tab** to cycle
-between available throwables. While floating, hold **E** to latch onto steel.
+the selected item. Press **F** to grab a nearby item. Use **1** for Weighted
+Plate, **2** for Completo Italiano, **3** for Grappling Hook, and **4** for
+Portable Black Hole Device. **Tab** cycles through carried types. While
+floating, hold **E** to latch onto steel.
 You can release **E** once attached. Hold **Left Shift** to run, and use a jump or
 throw recoil to break contact. Press **Q** to activate the most recently
 deployed remote gadget. Open `L_DTestLane` to try the steel floor, wall, and

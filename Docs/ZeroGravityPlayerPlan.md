@@ -16,10 +16,10 @@ The project opens at `/Game/Maps/L_MainMenu`. New Game loads `L_DHangar`, where 
 | Mouse | Aim the crosshair. |
 | Space | Hold to charge a magnetic jump and release to launch. |
 | E | Hold while floating to latch onto steel. You can release E once attached. |
-| F | Interact, including grabbing a reachable item into the free slot. |
+| F | Interact, including grabbing a reachable item. |
 | Left Mouse Button | Fire the equipped weapon. |
 | R | Reload the equipped weapon when it uses reloadable ammunition. |
-| 1, 2, 3 | Equip the rifle, shotgun, or laser blaster, respectively. |
+| 1, 2, 3, 4 | Select Weighted Plate, Completo Italiano, Grappling Hook, or Portable Black Hole Device, respectively. |
 | Scroll Wheel | Cycle through carried weapons. |
 | Right Mouse Button | Hold to charge the selected item and release to throw it. |
 | Tab | Cycle through available throwable selections. |
@@ -36,7 +36,7 @@ Keep right-stick aim, the existing movement and charge mappings for gamepad, and
 
 ## Throws and shared impulse handling
 
-The player has an empty-inventory mass of **90 kg**. Add the masses of all carried items and weapons to find the effective player mass. For the first playable test, give the player a finite stack of **5 kg weighted plates** and one slot for a grabbed item. **Tab** selects between available throwables. **F** transfers a reachable item into the free slot and gives the player and item a shared velocity equal to their combined momentum divided by their total mass. A deployed item leaves the carried mass until it is recovered.
+The player has an empty-inventory mass of **90 kg**. Add the masses of all carried items and weapons to find the effective player mass. The player starts with a finite stack of **5 kg weighted plates**. **F** picks up a reachable item. The player can carry any number of weighted plates or Completo Italianos, one Grappling Hook, and one Portable Black Hole Device. Each pickup gives the player and item a shared velocity equal to their combined momentum divided by their total mass. **1–4** directly select their respective throwable types. **Tab** cycles through the available types. A deployed item leaves the carried mass until it is recovered. Blueprints can read the current quantity for a throwable type through Get Throwable Count by Type, which includes any remaining starting plates of that type.
 
 Hold **Right Mouse Button** to charge the selected throw. Release it to launch that item along the current crosshair aim. Interpolate the separation speed from the tap value to the maximum over the configured charge time. A successful launch removes one selected item from inventory and applies equal and opposite impulses. An empty selection, blocked launch, canceled charge, or change of selection during the hold leaves the inventory intact. Released items remain in the level and can be recovered. **Q** dispatches activation to the most recently deployed activatable item while the player still controls it. Plates can hit switches through their collision.
 
@@ -106,9 +106,10 @@ Ship `DA_DPlayerTuning` and reference it from `BP_DPlayer`. Remove duplicate edi
 | `AimStickKey` | Right Stick 2D | Gamepad stick that sets the XZ aim direction used by jumps and throws. |
 | `AimStickDeadZone` | `0.2` | Aim-stick magnitude below which the last valid aim is retained, on a scale of 0 to 1. |
 | `InitialAimDirection` | `(1, 0, 0)` | World direction used until the player first aims. It defaults to positive X. |
-| `GrabKeys` | `F`, left shoulder button | Interact buttons that grab a reachable throwable when the grabbed-item slot is empty. |
+| `GrabKeys` | `F`, left shoulder button | Interact buttons that grab a reachable throwable. |
 | `GrabDistance` | `60` cm | Maximum gap from the player capsule to a throwable that the player can grab. |
 | `SelectThrowableKeys` | Tab, D-pad Up | Buttons that cycle between available throwable selections. |
+| `ThrowableHotkeys` | 1, 2, 3, 4 | Direct selection keys by throwable type. |
 | `ActivateThrowableKeys` | `Q` | Buttons that activate the most recently deployed activatable item. |
 | `ThrowKeys` | Right Mouse Button, right shoulder button | Hold to charge the selected item and release to throw it. |
 | `JumpKeys` | Space, bottom gamepad face button | Hold to charge while attached and release to jump along the permitted aim direction. |
@@ -119,6 +120,7 @@ Ship `DA_DPlayerTuning` and reference it from `BP_DPlayer`. Remove duplicate edi
 | `WeaponImpulseTuning` | `DA_DWeaponImpulseTuning` | Weapon impulse asset assigned in the player's Weapons category. |
 | `PlayerMass` | `90` kg | Character mass with an empty inventory. Use a positive value. |
 | `ThrowableMassByType` | `WeightedPlate` = `5` kg, `GrapplingHook` = `1` kg, `RemoteGrenade` = `0.5` kg, `PortableBlackHoleDevice` = `2` kg, `Heavy` = `8` kg | Mass of each throwable type. `Heavy` is the test-lane fixture. Every throwable used in a level needs a positive entry. |
+| `ThrowableCarryLimits` | `GrapplingHook` = 1, `PortableBlackHoleDevice` = 1 | Maximum carried quantity by type. Types without entries have no cap. |
 | `StartingPlateType` | `WeightedPlate` | Throwable type placed in the player's starting plate stack. Looks up mass in `ThrowableMassByType`. |
 | `StartingPlateCount` | `3` | Number of plates granted at spawn. Zero starts the player without plates. |
 | `ThrowChargeTime` | `0.65` s | Hold time to reach full throw strength. Extra hold time maintains the maximum. |
@@ -181,7 +183,7 @@ Draw arrows, lines, capsule outlines, and short-lived labels through `UKismetSys
 | `Flight` | Mover mode, gravity, XZ velocity vector and speed, effective mass, accumulated impulse and resulting velocity change, and camera lead. |
 | `Aim` | Crosshair ray, intersection with the movement plane, resolved aim vector, and active input source. |
 | `Collision` | Player capsule, attempted sweep, blocking point and normal, and resulting slide. |
-| `Throws` | Selection, plate count, grabbed item mass, charge and launch speed, item and player recoil vectors, and switch hit result. |
+| `Throws` | Selection, quantity by type, starting plate and pickup counts, charge and launch speed, item and player recoil vectors, and switch hit result. |
 | `Weapons` | Weapon ID, resolved impulse profile and impact kind, hit origin or shot aim, impulse vector, and applied velocity change. |
 | `Magnet` | Steel face candidate, measured gap and capture distance, snap result, normal and tangent, walk or run speed, and carry or breakaway result. |
 | `Jump` | Hold time and charge, raw and clamped aim vectors, launch angle and limit, and applied impulse or cancellation reason. |
@@ -195,7 +197,7 @@ Each gameplay commit includes its channel instrumentation and a console check th
 | 1. Add Development-only Kismet gameplay diagnostics | Current project | Add the build flag, console command, per-world channel state, and shared Kismet drawing helpers. | Use `List` to verify the initial state, two channels enabled together, one disabled independently, and all cleared with `Off`. Verify a Shipping build omits the command. |
 | 2. Add player and weapon impulse tuning assets | 1 | Add the reflected schemas, explicit defaults and comments, both assets, and the player asset's Weapons reference. Add the `Tuning` readout. | Check asset defaults and tooltips in the editor. Confirm `Tuning` shows the resolved asset names and values. |
 | 3. Add inertial flight and the shared impulse path | 2 | Own `DPawn` and `DMoverComponent` changes. Add Flying startup, fixed collision rotation, mouse crosshair and XZ aim, camera tuning, and ordered impulse processing. Expose move, run, and charge hooks. Add `Flight`, `Aim`, and `Collision` diagnostics. | Check rest, drift while aiming, fixed rotation, lane confinement, wall sweeps, camera follow, and combined impulses. Enable all three channels together and verify a blocked sweep shows the actual contact and slide. |
-| 4. Add charged throws and switch interaction | 3 | Use the revised player and item masses. Add the plate stack, grabbed-item slot, F interaction, Tab selection, RMB charge, Q activation dispatch, and `Throws` diagnostics. | Check tap and full charge, cancellation, blocked launch, plate depletion, mass-dependent recoil, momentum conservation, and a switch hit. Verify `Throws` shows charge, selection, inventory, and launch results. |
+| 4. Add charged throws and switch interaction | 3 | Use the revised player and item masses. Add the plate stack, pickup inventory, F interaction, Tab selection, RMB charge, Q activation dispatch, and `Throws` diagnostics. | Check tap and full charge, cancellation, blocked launch, plate depletion, mass-dependent recoil, momentum conservation, and a switch hit. Verify `Throws` shows charge, selection, inventory, and launch results. |
 | 5. Integrate the rifle, shotgun, and laser blaster | 3 | Add the CoreKit consumer, loadout mass, fire and reload, equip and cycle controls, hit profiles, and per-weapon recoil. Add `Weapons` diagnostics. | Check direct and radial directions, profile fallback, light rifle recoil, strong shotgun recoil, laser fire without reload or recoil, and equip controls. Verify the profile and impulse for each event. |
 | 6. Add magnetic walking, running, and charged jumps | 3 | Add steel faces and Magnetic Surface mode, E hold to latch, posture, walk and run, carry, and aimed jump release. Add `Magnet` and `Jump` diagnostics. | Check floor, wall, and ceiling travel, latch after E release, blocked snaps, carry, charged jumps, cancellation, edge release, recapture, and breakaway. Verify the capture result and the 20° jump limit. |
 | 7. Add remotely activated items | 4 | Implement the grappling hook, remote grenade, and portable black hole device using the throw and activation paths. | Check hook retrieval and pulling, grenade activation once, black hole toggle and rupture, loss of remote control on recovery or destruction, and inventory mass before and after deployment. |

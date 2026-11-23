@@ -75,6 +75,15 @@ void ADPawn::CreateInputMappings()
     MapButtons(JumpAction, Tuning.JumpKeys);
     MapButtons(GrabAction, Tuning.GrabKeys);
     MapButtons(SelectThrowableAction, Tuning.SelectThrowableKeys);
+    for (const auto& Binding : Tuning.ThrowableHotkeys)
+    {
+        if (!Binding.Key.IsNone() && Binding.Value.IsValid())
+        {
+            UInputAction* Action = NewObject<UInputAction>(this);
+            ThrowableHotkeyActions.Add(Binding.Key, Action);
+            InputContext->MapKey(Action, Binding.Value);
+        }
+    }
     MapButtons(ThrowAction, Tuning.ThrowKeys);
     MapButtons(ActivateThrowableAction, Tuning.ActivateThrowableKeys);
 }
@@ -118,6 +127,10 @@ void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     Input->BindAction(JumpAction, ETriggerEvent::Canceled, this, &ThisClass::CancelJumpCharge);
     Input->BindAction(GrabAction, ETriggerEvent::Started, this, &ThisClass::RequestGrab);
     Input->BindAction(SelectThrowableAction, ETriggerEvent::Started, this, &ThisClass::RequestThrowableSelection);
+    for (const auto& Binding : ThrowableHotkeyActions)
+    {
+        Input->BindAction(Binding.Value, ETriggerEvent::Started, this, &ThisClass::RequestThrowableTypeSelection, Binding.Key);
+    }
     Input->BindAction(ThrowAction, ETriggerEvent::Started, this, &ThisClass::StartThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Completed, this, &ThisClass::ReleaseThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Canceled, this, &ThisClass::CancelThrowCharge);
@@ -321,6 +334,12 @@ void ADPawn::RequestGrab()
 void ADPawn::RequestThrowableSelection()
 {
     CycleSelectedThrowable();
+    OnSelectThrowableRequested.Broadcast();
+}
+
+void ADPawn::RequestThrowableTypeSelection(FName Type)
+{
+    SelectThrowableType(Type);
     OnSelectThrowableRequested.Broadcast();
 }
 
