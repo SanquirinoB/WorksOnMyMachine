@@ -3,6 +3,8 @@
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/World.h"
+#include "GameFramework/Pawn.h"
 #include "UObject/ConstructorHelpers.h"
 
 ADThrowSwitch::ADThrowSwitch()
@@ -30,6 +32,22 @@ ADThrowSwitch::ADThrowSwitch()
     Indicator->SetRelativeScale3D(FVector(.09, .08, .29));
     Indicator->SetStaticMesh(Cube.Object);
     Indicator->SetVisibility(false);
+}
+
+bool ADThrowSwitch::CanInteract(const APawn& Player) const
+{
+    const FVector Start = Player.GetActorLocation();
+    const FVector Target = GetActorLocation();
+    if (!HasAuthority() || bActivated || InteractionRange <= 0.f
+        || FVector::DistSquared(Start, Target) > FMath::Square(InteractionRange))
+    {
+        return false;
+    }
+
+    const FCollisionQueryParams Query(SCENE_QUERY_STAT(DelerictSwitchInteract), false, &Player);
+    FHitResult Hit;
+    return !GetWorld()->LineTraceSingleByChannel(Hit, Start, Target, ECC_Visibility, Query)
+        || Hit.GetActor() == this;
 }
 
 void ADThrowSwitch::Activate()

@@ -5,6 +5,7 @@
 #include "DMoverComponent.h"
 #include "DPlayerTuning.h"
 #include "DThrowable.h"
+#include "DThrowSwitch.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "MoveLibrary/ConstrainedMoveUtils.h"
@@ -83,6 +84,27 @@ float ADPawn::GetThrowCharge() const
     return ChargeTime > 0.f
         ? FMath::Clamp(static_cast<float>(GetWorld()->GetTimeSeconds() - PendingThrow->StartedAt) / ChargeTime, 0.f, 1.f)
         : 1.f;
+}
+
+bool ADPawn::InteractWithNearbySwitch()
+{
+    ADThrowSwitch* Nearest = nullptr;
+    double NearestDistance = TNumericLimits<double>::Max();
+    for (TActorIterator<ADThrowSwitch> It(GetWorld()); It; ++It)
+    {
+        const double Distance = FVector::DistSquared(GetActorLocation(), It->GetActorLocation());
+        if (Distance < NearestDistance && It->CanInteract(*this))
+        {
+            Nearest = *It;
+            NearestDistance = Distance;
+        }
+    }
+    if (!Nearest)
+    {
+        return false;
+    }
+    Nearest->Activate();
+    return true;
 }
 
 void ADPawn::GrabNearbyThrowable()

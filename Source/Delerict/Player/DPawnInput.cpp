@@ -376,7 +376,10 @@ void ADPawn::StopMagnetHold() { bMagnetHeld = false; }
 
 void ADPawn::RequestGrab()
 {
-    GrabNearbyThrowable();
+    if (!InteractWithNearbySwitch())
+    {
+        GrabNearbyThrowable();
+    }
     OnGrabRequested.Broadcast();
 }
 

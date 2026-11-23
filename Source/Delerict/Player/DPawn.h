@@ -180,6 +180,7 @@ private:
     void RequestThrowableSelection();
     void RequestThrowableTypeSelection(FName Type);
     void ActivateThrownItem();
+    bool InteractWithNearbySwitch();
     void GrabNearbyThrowable();
     bool CanCarryThrowable(FName Type) const;
     void CycleSelectedThrowable();
