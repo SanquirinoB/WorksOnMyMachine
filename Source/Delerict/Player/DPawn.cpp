@@ -7,6 +7,7 @@
 #include "DefaultMovementSet/Settings/CommonLegacyMovementSettings.h"
 #include "DLocomotionAnimInstance.h"
 #include "DMoverComponent.h"
+#include "DPlayerTuning.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/StaticMesh.h"
 #include "EnhancedInputComponent.h"
@@ -103,6 +104,11 @@ void ADPawn::UnPossessed()
 FVector ADPawn::GetVelocity() const
 {
     return Mover ? Mover->GetVelocity() : FVector::ZeroVector;
+}
+
+const UDPlayerTuning* ADPawn::GetPlayerTuning() const
+{
+    return PlayerTuning;
 }
 
 void ADPawn::ProduceInput_Implementation(int32 /*SimTimeMs*/, FMoverInputCmdContext& InputCmd)

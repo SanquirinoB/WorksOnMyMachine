@@ -2,12 +2,17 @@
 
 #if DELERICT_WITH_GAMEPLAY_DEBUG
 
+#include "../Player/DPawn.h"
+#include "../Player/DPlayerTuning.h"
+#include "../Player/DWeaponImpulseTuning.h"
 #include "Algo/Find.h"
 #include "Engine/World.h"
+#include "GameFramework/PlayerController.h"
 #include "HAL/IConsoleManager.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Misc/OutputDevice.h"
 #include "UObject/ObjectKey.h"
+#include "UObject/UnrealType.h"
 
 namespace DGameplayDebug
 {
@@ -88,6 +93,52 @@ namespace DGameplayDebug
             return Names.IsEmpty() ? FString(TEXT("None")) : FString::Join(Names, TEXT(", "));
         }
 
+        void WriteTuningProperties(const UStruct* Schema, const void* Container, FOutputDevice& Output,
+            const FString& Prefix = FString())
+        {
+            for (TFieldIterator<FProperty> Property(Schema, EFieldIteratorFlags::ExcludeSuper); Property; ++Property)
+            {
+                const FString Name = Prefix + Property->GetName();
+                const void* Value = Property->ContainerPtrToValuePtr<void>(Container);
+                const FStructProperty* StructProperty = CastField<FStructProperty>(*Property);
+                if (StructProperty && StructProperty->Struct == FDWeaponImpulseProfile::StaticStruct())
+                {
+                    WriteTuningProperties(StructProperty->Struct, Value, Output, Name + TEXT("."));
+                    continue;
+                }
+
+                FString ValueText;
+                Property->ExportTextItem_Direct(ValueText, Value, nullptr, nullptr, PPF_None);
+                Output.Logf(TEXT("[Tuning] %s = %s"), *Name, *ValueText);
+            }
+        }
+
+        void WriteTuningReadout(const UWorld& World, FOutputDevice& Output)
+        {
+            const APlayerController* Controller = World.GetFirstPlayerController();
+            const ADPawn* Pawn = Controller ? Cast<ADPawn>(Controller->GetPawn()) : nullptr;
+            if (!Pawn)
+            {
+                Output.Log(TEXT("[Tuning] No Delerict player pawn in this world."));
+                return;
+            }
+
+            const UDPlayerTuning* PlayerTuning = Pawn->GetPlayerTuning();
+            Output.Logf(TEXT("[Tuning] Player asset: %s"), *GetNameSafe(PlayerTuning));
+            if (!PlayerTuning)
+            {
+                return;
+            }
+            WriteTuningProperties(UDPlayerTuning::StaticClass(), PlayerTuning, Output);
+
+            const UDWeaponImpulseTuning* WeaponTuning = PlayerTuning->WeaponImpulseTuning;
+            Output.Logf(TEXT("[Tuning] Weapon asset: %s"), *GetNameSafe(WeaponTuning));
+            if (WeaponTuning)
+            {
+                WriteTuningProperties(UDWeaponImpulseTuning::StaticClass(), WeaponTuning, Output);
+            }
+        }
+
         void RunConsoleCommand(const TArray<FString>& Args, UWorld* World, FOutputDevice& Output)
         {
             if (!CanUseWorld(World))
@@ -145,6 +196,10 @@ namespace DGameplayDebug
                 ActiveChannels.Add(World, Active);
             }
             Output.Logf(TEXT("Delerict.Debug active: %s"), *DescribeChannels(Active));
+            if (bEnable && EnumHasAnyFlags(Requested, EChannel::Tuning))
+            {
+                WriteTuningReadout(*World, Output);
+            }
         }
 
         FAutoConsoleCommandWithWorldArgsAndOutputDevice ConsoleCommand(

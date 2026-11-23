@@ -7,6 +7,7 @@
 class UAnimSequence;
 class UCapsuleComponent;
 class UCharacterMoverComponent;
+class UDPlayerTuning;
 class UEnhancedInputLocalPlayerSubsystem;
 class UGameplayCameraComponent;
 class UInputAction;
@@ -22,6 +23,7 @@ class ADPawn : public APawn, public IMoverInputProducerInterface
 
 public:
     ADPawn();
+    const UDPlayerTuning* GetPlayerTuning() const;
 
     FVector GetVelocity() const override;
     void ProduceInput_Implementation(int32 SimTimeMs, FMoverInputCmdContext& InputCmd) override;
@@ -47,6 +49,10 @@ protected:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
     TObjectPtr<UGameplayCameraComponent> GameplayCamera;
+
+    /** Traversal tuning asset assigned in the playable pawn Blueprint. */
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player")
+    TObjectPtr<UDPlayerTuning> PlayerTuning = nullptr;
 
     UPROPERTY(EditDefaultsOnly, Category = "Camera", meta = (ClampMin = "0", Units = "s"))
     float CameraLookAheadTime = .18f;
