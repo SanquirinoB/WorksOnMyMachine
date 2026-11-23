@@ -16,6 +16,9 @@ WorksOnMyMachine is an Unreal Engine 5.8.4 project for Windows.
 
 4. Open [WorksOnMyMachine.uproject](WorksOnMyMachine.uproject) in Unreal Editor.
 
+Press **Play** in the startup map. Move with **A/D**, the **left/right arrows**, or
+the **left stick**. Jump with **Space** or the **bottom gamepad face button**.
+
 Git LFS tracks Unreal packages and imported binary source assets. Unreal generates
 local build output and caches in `Binaries/`, `DerivedDataCache/`, `Intermediate/`,
 and `Saved/`.

@@ -12,6 +12,14 @@
 	],
 	"Plugins": [
 		{
+			"Name": "Mover",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
 			"Name": "ModelingToolsEditorMode",
 			"Enabled": true,
 			"TargetAllowList": [
