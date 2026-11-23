@@ -118,6 +118,7 @@ private:
 
     void CreateInputMappings();
     void ClearInput();
+    void PauseGame();
     void SetUpAimCursor(APlayerController& Player);
     void RestoreAimCursor();
     void UpdateAim();

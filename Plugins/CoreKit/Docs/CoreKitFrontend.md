@@ -100,6 +100,8 @@ The frontend applies volume preferences at startup and travel. It stores them un
 
 ## Customize the menu
 
+Native consumers can embed the built-in options in a custom title or pause screen. Create a separate `UCoreKitFrontendMenu`, call `ConfigureEmbeddedSettings` with a close delegate before attaching, and focus `GetInitialFocus()` after attaching. An optional help text shows the project's controls alongside any configured editable bindings. The host owns the input mode, focus restoration and world pause.
+
 Use **Loading Widget Class** for a custom loading screen. Its job is presentation. The frontend and Loading own the request lifetime.
 
 For a custom title screen, derive a Widget Blueprint from **Core Kit Frontend Menu**, add a Designer root, and assign it to **Menu Widget Class**. Use **Get Frontend** to connect the buttons to **New Game**, **Continue Game**, **Open Settings** and **Close Settings**. In **On Frontend Updated**, use **Get State**, **Can Continue** and **Get Status** to change pages, enable controls and show errors. Override **Get Initial Focus** to return a focusable button for the current page. A custom Designer root supplies its own options controls and presentation. The built-in options screen is part of the default layout.

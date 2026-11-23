@@ -16,9 +16,13 @@ Delerict is an Unreal Engine 5.8.4 project for Windows in the WorksOnMyMachine r
 
 4. Open [Delerict.uproject](Delerict.uproject) in Unreal Editor.
 
-Press **Play** in the startup map, `L_DHangar`. Move with **A/D**, the
-**left/right arrows**, or the **left stick**. Jump with **Space** or the **bottom
-gamepad face button**. Open `L_DTestLane` for the movement and camera test fixtures.
+Start **Standalone Game** in `L_MainMenu` and choose **New Game** to enter the
+hangar. Press **Esc** or the gamepad **Menu** button to pause. Open **Settings**
+from the title or pause menu to adjust video and audio or view the controls.
+Use **WASD**, the **arrow keys**, or the **left stick** for directional input.
+Aim with the mouse or right stick. Hold and release **Space** or the bottom
+gamepad face button for the jump charge. Free flight retains velocity after an
+impulse. Open `L_DTestLane` for the movement and camera test fixtures.
 The workshop has steam, sparks, and an ambient loop. The source soundtrack is
 under `Art/Music/`.
 

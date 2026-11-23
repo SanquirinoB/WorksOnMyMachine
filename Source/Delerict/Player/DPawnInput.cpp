@@ -1,4 +1,5 @@
 #include "DPawn.h"
+#include "../Frontend/DMenu.h"
 
 #include "DMoverComponent.h"
 #include "DPlayerTuning.h"
@@ -113,6 +114,20 @@ void ADPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     Input->BindAction(ThrowAction, ETriggerEvent::Started, this, &ThisClass::StartThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Completed, this, &ThisClass::ReleaseThrowCharge);
     Input->BindAction(ThrowAction, ETriggerEvent::Canceled, this, &ThisClass::CancelThrowCharge);
+    PlayerInputComponent->BindKey(EKeys::Escape, IE_Pressed, this, &ThisClass::PauseGame);
+    PlayerInputComponent->BindKey(EKeys::Gamepad_Special_Right, IE_Pressed, this, &ThisClass::PauseGame);
+}
+
+void ADPawn::PauseGame()
+{
+    if (auto* Player = Cast<APlayerController>(GetController()); Player && UDMenu::OpenPause(*Player))
+    {
+        StopMoving();
+        StopRun();
+        ClearAimStick();
+        CancelJumpCharge();
+        CancelThrowCharge();
+    }
 }
 
 void ADPawn::ClearInput()

@@ -4,6 +4,8 @@
 #include "Blueprint/WidgetTree.h"
 #include "Components/Border.h"
 #include "Components/Button.h"
+#include "Components/HorizontalBox.h"
+#include "Components/HorizontalBoxSlot.h"
 #include "Components/ScrollBox.h"
 #include "Components/SizeBox.h"
 #include "Components/TextBlock.h"
@@ -72,6 +74,13 @@ UCoreKitFrontendSubsystem* UCoreKitFrontendMenu::GetFrontend() const
 	return Game ? Game->GetSubsystem<UCoreKitFrontendSubsystem>() : nullptr;
 }
 
+void UCoreKitFrontendMenu::ConfigureEmbeddedSettings(FSimpleDelegate InClose, const FText& InControlsHelp)
+{
+	check(!WidgetTree->RootWidget && InClose.IsBound());
+	EmbeddedClose = MoveTemp(InClose);
+	ControlsHelp = InControlsHelp;
+}
+
 TSharedRef<SWidget> UCoreKitFrontendMenu::RebuildWidget()
 {
 	if (!WidgetTree->RootWidget)
@@ -87,6 +96,20 @@ TSharedRef<SWidget> UCoreKitFrontendMenu::RebuildWidget()
 		Background->SetContent(Width);
 		auto* Column = WidgetTree->ConstructWidget<UVerticalBox>();
 		Width->SetContent(Column);
+		if (EmbeddedClose.IsBound())
+		{
+			Width->SetMinDesiredWidth(560.f);
+			Column->AddChildToVerticalBox(MakeLabel(*WidgetTree, LOCTEXT("SettingsTitle", "Settings"), 40))
+				->SetPadding(FMargin(0, 0, 0, 12));
+			EmbeddedTabs = WidgetTree->ConstructWidget<UHorizontalBox>();
+			Column->AddChildToVerticalBox(EmbeddedTabs);
+			EmbeddedSections = WidgetTree->ConstructWidget<UWidgetSwitcher>();
+			Column->AddChildToVerticalBox(EmbeddedSections);
+			BuildSettings(*Column);
+			StatusLabel = MakeLabel(*WidgetTree, FText::GetEmpty(), 15);
+			Column->AddChildToVerticalBox(StatusLabel);
+			return Super::RebuildWidget();
+		}
 		Column->AddChildToVerticalBox(MakeLabel(*WidgetTree, LOCTEXT("Title", "MAIN MENU"), 27))->SetPadding(FMargin(0, 0, 0, 12));
 		Pages = WidgetTree->ConstructWidget<UWidgetSwitcher>();
 		Column->AddChildToVerticalBox(Pages);
@@ -121,43 +144,73 @@ UButton* UCoreKitFrontendMenu::AddButton(UVerticalBox& Page, FName Name, const F
 	return Button;
 }
 
+UVerticalBox& UCoreKitFrontendMenu::AddOptionsSection(UVerticalBox& Page, const FText& Label, FName Callback)
+{
+	if (!EmbeddedSections)
+	{
+		Page.AddChildToVerticalBox(MakeLabel(*WidgetTree, Label, 19))->SetPadding(FMargin(0, 6, 0, 0));
+		return Page;
+	}
+	UButton* Tab = AddButton(Page, Callback, Label, Callback);
+	Tab->RemoveFromParent();
+	EmbeddedTabs->AddChildToHorizontalBox(Tab)->SetPadding(FMargin(0, 0, 6, 8));
+	if (!VideoTab)
+	{
+		VideoTab = Tab;
+	}
+	auto* Section = WidgetTree->ConstructWidget<UVerticalBox>();
+	EmbeddedSections->AddChild(Section);
+	return *Section;
+}
+
+void UCoreKitFrontendMenu::SelectVideo() { EmbeddedSections->SetActiveWidgetIndex(0); }
+void UCoreKitFrontendMenu::SelectAudio() { EmbeddedSections->SetActiveWidgetIndex(1); }
+void UCoreKitFrontendMenu::SelectControls() { EmbeddedSections->SetActiveWidgetIndex(EmbeddedSections->GetChildrenCount() - 1); }
+
 void UCoreKitFrontendMenu::BuildSettings(UVerticalBox& Page)
 {
-	Page.AddChildToVerticalBox(MakeLabel(*WidgetTree, LOCTEXT("Video", "Video"), 19));
+	auto& Video = AddOptionsSection(Page, LOCTEXT("Video", "Video"), GET_FUNCTION_NAME_CHECKED(ThisClass, SelectVideo));
 	OptionButtons = {
-		AddButton(Page, TEXT("WindowMode"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleWindowMode)),
-		AddButton(Page, TEXT("Resolution"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleResolution)),
-		AddButton(Page, TEXT("Quality"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleQuality)),
-		AddButton(Page, TEXT("FrameRate"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleFrameRate)),
-		AddButton(Page, TEXT("VSync"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, ToggleVSync))
+		AddButton(Video, TEXT("WindowMode"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleWindowMode)),
+		AddButton(Video, TEXT("Resolution"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleResolution)),
+		AddButton(Video, TEXT("Quality"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleQuality)),
+		AddButton(Video, TEXT("FrameRate"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleFrameRate)),
+		AddButton(Video, TEXT("VSync"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, ToggleVSync))
 	};
 
 	const auto& Settings = Config();
 	if (Settings.UserVolumeMix && (Settings.MasterSoundClass || Settings.MusicSoundClass || Settings.EffectsSoundClass))
 	{
-		Page.AddChildToVerticalBox(MakeLabel(*WidgetTree, LOCTEXT("Audio", "Audio"), 19))->SetPadding(FMargin(0, 8, 0, 0));
+		auto& Audio = AddOptionsSection(Page, LOCTEXT("Audio", "Audio"), GET_FUNCTION_NAME_CHECKED(ThisClass, SelectAudio));
 		AudioButtons.SetNum(3);
 		if (Settings.MasterSoundClass)
 		{
-			AudioButtons[0] = AddButton(Page, TEXT("MasterVolume"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleMaster));
+			AudioButtons[0] = AddButton(Audio, TEXT("MasterVolume"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleMaster));
 		}
 		if (Settings.MusicSoundClass)
 		{
-			AudioButtons[1] = AddButton(Page, TEXT("MusicVolume"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleMusic));
+			AudioButtons[1] = AddButton(Audio, TEXT("MusicVolume"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleMusic));
 		}
 		if (Settings.EffectsSoundClass)
 		{
-			AudioButtons[2] = AddButton(Page, TEXT("EffectsVolume"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleEffects));
+			AudioButtons[2] = AddButton(Audio, TEXT("EffectsVolume"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, CycleEffects));
 		}
 	}
-	if (!Settings.EditableBindings.IsEmpty())
+	if (!Settings.EditableBindings.IsEmpty() || !ControlsHelp.IsEmpty())
 	{
-		Page.AddChildToVerticalBox(MakeLabel(*WidgetTree, LOCTEXT("Controls", "Controls"), 19))->SetPadding(FMargin(0, 8, 0, 0));
-		ControlButtons = {
-			AddButton(Page, TEXT("SelectedBinding"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, SelectBinding)),
-			AddButton(Page, TEXT("Rebind"), LOCTEXT("Rebind", "Rebind selected action"), GET_FUNCTION_NAME_CHECKED(ThisClass, CaptureBinding)),
-			AddButton(Page, TEXT("ResetBinding"), LOCTEXT("ResetBinding", "Reset selected action on all devices"), GET_FUNCTION_NAME_CHECKED(ThisClass, ResetBindings))
-		};
+		auto& Controls = AddOptionsSection(Page, LOCTEXT("Controls", "Controls"), GET_FUNCTION_NAME_CHECKED(ThisClass, SelectControls));
+		if (!ControlsHelp.IsEmpty())
+		{
+			Controls.AddChildToVerticalBox(MakeLabel(*WidgetTree, ControlsHelp, 19));
+		}
+		if (!Settings.EditableBindings.IsEmpty())
+		{
+			ControlButtons = {
+				AddButton(Controls, TEXT("SelectedBinding"), {}, GET_FUNCTION_NAME_CHECKED(ThisClass, SelectBinding)),
+				AddButton(Controls, TEXT("Rebind"), LOCTEXT("Rebind", "Rebind selected action"), GET_FUNCTION_NAME_CHECKED(ThisClass, CaptureBinding)),
+				AddButton(Controls, TEXT("ResetBinding"), LOCTEXT("ResetBinding", "Reset selected action on all devices"), GET_FUNCTION_NAME_CHECKED(ThisClass, ResetBindings))
+			};
+		}
 	}
 	ApplyButton = AddButton(Page, TEXT("Apply"), LOCTEXT("Apply", "Apply"), GET_FUNCTION_NAME_CHECKED(ThisClass, Apply));
 	DiscardButton = AddButton(Page, TEXT("Discard"), LOCTEXT("Discard", "Discard"), GET_FUNCTION_NAME_CHECKED(ThisClass, Discard));
@@ -167,7 +220,12 @@ void UCoreKitFrontendMenu::BuildSettings(UVerticalBox& Page)
 void UCoreKitFrontendMenu::NativeConstruct()
 {
 	Super::NativeConstruct();
-	if (auto* Frontend = GetFrontend())
+	if (EmbeddedClose.IsBound())
+	{
+		bSettingsOpen = true;
+		ReadOptions();
+	}
+	else if (auto* Frontend = GetFrontend())
 	{
 		Frontend->OnChanged.AddUniqueDynamic(this, &ThisClass::RefreshPage);
 		RefreshPage();
@@ -195,6 +253,10 @@ void UCoreKitFrontendMenu::NativeDestruct()
 
 UWidget* UCoreKitFrontendMenu::GetInitialFocus_Implementation() const
 {
+	if (VideoTab)
+	{
+		return VideoTab;
+	}
 	if (bSettingsOpen && BackButton)
 	{
 		return OptionButtons[0]->GetIsEnabled() ? OptionButtons[0].Get() : OptionButtons[2].Get();
@@ -253,7 +315,8 @@ void UCoreKitFrontendMenu::NativeTick(const FGeometry& Geometry, float DeltaTime
 
 FReply UCoreKitFrontendMenu::NativeOnKeyDown(const FGeometry& Geometry, const FKeyEvent& Event)
 {
-	if (bSettingsOpen && Pages && (Event.GetKey() == EKeys::Escape || Event.GetKey() == EKeys::Gamepad_FaceButton_Right))
+	if (bSettingsOpen && (Pages || EmbeddedClose.IsBound()) &&
+		(Event.GetKey() == EKeys::Escape || Event.GetKey() == EKeys::Gamepad_FaceButton_Right || Event.GetKey() == EKeys::Gamepad_Special_Right))
 	{
 		Back();
 		return FReply::Handled();
@@ -288,6 +351,10 @@ void UCoreKitFrontendMenu::Back()
 	{
 		SetOptionsStatus(LOCTEXT("DirtyBack", "Apply or discard your changes before going back."));
 	}
+	else if (EmbeddedClose.IsBound())
+	{
+		EmbeddedClose.ExecuteIfBound();
+	}
 	else if (auto* Frontend = GetFrontend())
 	{
 		Frontend->CloseSettings();
@@ -295,15 +362,20 @@ void UCoreKitFrontendMenu::Back()
 	}
 }
 
-void UCoreKitFrontendMenu::ReadOptions()
+void UCoreKitFrontendMenu::ReadVideoOptions()
 {
 	if (const auto* Settings = UGameUserSettings::GetGameUserSettings())
 	{
 		CommittedVideo = { Settings->GetScreenResolution(), static_cast<int32>(Settings->GetFullscreenMode()),
 			Settings->GetOverallScalabilityLevel(), Settings->GetFrameRateLimit(), Settings->IsVSyncEnabled() };
 	}
-	CommittedAudio = GetFrontend()->AudioVolumes;
 	DraftVideo = CommittedVideo;
+}
+
+void UCoreKitFrontendMenu::ReadOptions()
+{
+	ReadVideoOptions();
+	CommittedAudio = GetFrontend()->AudioVolumes;
 	DraftAudio = CommittedAudio;
 	if (auto* Input = GetInputSettings(GetOwningLocalPlayer()))
 	{
@@ -482,8 +554,10 @@ void UCoreKitFrontendMenu::CommitOptions()
 	if (DraftAudio != CommittedAudio)
 	{
 		GetFrontend()->SaveAudio(DraftAudio);
+		CommittedAudio = DraftAudio;
 	}
-	ReadOptions();
+	ReadVideoOptions();
+	RefreshOptions();
 	SetOptionsStatus(LOCTEXT("SettingsApplied", "Settings applied."));
 	BackButton->SetUserFocus(GetOwningPlayer());
 }
